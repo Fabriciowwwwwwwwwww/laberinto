@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://c67vx6vq75oyg"]
+
+[ext_resource type="Texture2D" uid="uid://gm8ib72dkt2g" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/m.jpg" id="1_wckas"]
+[ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_bd7et"]
+[ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/main.tscn" id="3_746np"]
+[ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_gmle2"]
+[ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="5_wuclt"]
+[ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="6_wckas"]
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="fondo" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 1949.0
+offset_bottom = 1124.0
+texture = ExtResource("1_wckas")
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_bd7et")
+next_scene = ExtResource("3_746np")
+
+[node name="MainMenu" type="HBoxContainer" parent="TitleScreen"]
+layout_mode = 0
+offset_right = 1939.0
+offset_bottom = 1120.0
+theme = ExtResource("4_gmle2")
+script = ExtResource("5_wuclt")
+
+[node name="LogoContainer" type="MarginContainer" parent="TitleScreen/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 128
+
+[node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="ButtonBox" type="HBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "RESTART"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Options"
+flat = true
+
+[node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(0.959421, 0.967542, 0.990559, 1)
+text = "Exit Game"
+flat = true
+
+[node name="Options" parent="." instance=ExtResource("6_wckas")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 1927.0
+offset_bottom = 1104.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="credits_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_credits_pressed"]
+[connection signal="options_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_options_pressed"]
+[connection signal="start_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_start_pressed"]
+[connection signal="visibility_changed" from="TitleScreen/MainMenu" to="TitleScreen/MainMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/StartButton" to="TitleScreen/MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/OptionsButton" to="TitleScreen/MainMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/QuitButton" to="TitleScreen/MainMenu" method="_on_quit_button_pressed"]
+[connection signal="back" from="Options" to="TitleScreen" method="_on_options_back"]

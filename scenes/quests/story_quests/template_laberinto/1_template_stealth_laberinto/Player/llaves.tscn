@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkim32aqx2vtl"]
+
+[ext_resource type="FontFile" uid="uid://d05uo8wmexkd8" path="res://assets/third_party/fonts/m6x11plus.ttf" id="1_ef5lh"]
+
+[node name="Llaves" type="CanvasLayer"]
+
+[node name="Keys_label" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 20.0
+offset_right = 197.25
+offset_bottom = 113.25
+theme_override_fonts/font = ExtResource("1_ef5lh")
+theme_override_font_sizes/font_size = 64
+text = "Keys"

@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs0y2416wn2vs"]
+
+[ext_resource type="Script" uid="uid://cjb6avqybd13o" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/balas_vista.gd" id="1_ot0w2"]
+[ext_resource type="Theme" uid="uid://coxcra1002kil" path="res://scenes/ui_elements/shared_components/theme.tres" id="2_f8fo0"]
+[ext_resource type="Texture2D" uid="uid://b60weylhhm324" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/bala.png" id="3_f8fo0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ot0w2")
+
+[node name="balas" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="balas"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = -0.009
+anchor_top = 0.018
+anchor_right = -0.009
+anchor_bottom = 0.018
+offset_left = 47.28
+offset_top = 88.84
+offset_right = 569.28
+offset_bottom = 263.84
+theme = ExtResource("2_f8fo0")
+
+[node name="b1" type="TextureRect" parent="balas/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.045
+anchor_right = 0.249
+offset_left = 81.49
+offset_top = 11.0
+offset_right = 374.602
+offset_bottom = 807.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_f8fo0")
+
+[node name="b2" type="TextureRect" parent="balas/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 142.0
+offset_top = 11.0
+offset_right = 547.0
+offset_bottom = 807.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_f8fo0")
+
+[node name="b3" type="TextureRect" parent="balas/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 226.0
+offset_top = 11.0
+offset_right = 631.0
+offset_bottom = 807.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_f8fo0")
+
+[node name="b4" type="TextureRect" parent="balas/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 310.0
+offset_top = 11.0
+offset_right = 715.0
+offset_bottom = 807.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_f8fo0")
+
+[node name="b5" type="TextureRect" parent="balas/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 394.0
+offset_top = 11.0
+offset_right = 799.0
+offset_bottom = 807.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_f8fo0")
+
+[node name="RecargaBar" type="ProgressBar" parent="balas/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.163
+offset_left = 23.0
+offset_top = 134.0
+offset_right = 358.31
+offset_bottom = 161.0

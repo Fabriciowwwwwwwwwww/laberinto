@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dw1fvtg8uedk"
+path="res://.godot/imported/ganar_ganzuas.dialogue-589fedabdebda2912ccb7911a199bafa.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/ganar_ganzuas.dialogue"
+dest_files=["res://.godot/imported/ganar_ganzuas.dialogue-589fedabdebda2912ccb7911a199bafa.tres"]
+
+[params]
+
+defaults=true

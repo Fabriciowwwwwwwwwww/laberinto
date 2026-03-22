@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c52fi7scepryb"]
+
+[ext_resource type="Script" uid="uid://oeppham0jx75" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/assets/mapa/mapa.gd" id="1_kxgk2"]
+[ext_resource type="Texture2D" uid="uid://bvlx57seuur65" path="res://assets/first_party/intro/background.png" id="2_njf4j"]
+[ext_resource type="Texture2D" uid="uid://d22k3gelvtcbm" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/assets/mapa/l.jpg" id="3_6yv51"]
+[ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="3_njf4j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai8ue"]
+texture = ExtResource("2_njf4j")
+modulate_color = Color(1, 1, 1, 0.498039)
+
+[node name="mapa" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_kxgk2")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ai8ue")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 506.0
+offset_top = 130.0
+offset_right = 1370.0
+offset_bottom = 924.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_njf4j")
+texture = ExtResource("3_6yv51")

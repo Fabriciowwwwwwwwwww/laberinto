@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://wnovqafg5pus"
+path="res://.godot/imported/intro_ganzuas.dialogue-73a6ed06049de2a815b1ed29a12d8bfd.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/intro_ganzuas.dialogue"
+dest_files=["res://.godot/imported/intro_ganzuas.dialogue-73a6ed06049de2a815b1ed29a12d8bfd.tres"]
+
+[params]
+
+defaults=true

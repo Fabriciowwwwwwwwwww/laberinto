@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://wgmdsj1sbmja"]
+
+[ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="1_vmxej"]
+[ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="1_xuf5f"]
+[ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_rpgwp"]
+[ext_resource type="PackedScene" uid="uid://6lieuap5vj74" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/template_intro_laberinto.tscn" id="3_l7ju4"]
+[ext_resource type="Texture2D" uid="uid://rwnspnayok4k" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/fondo.png" id="3_snvmp"]
+[ext_resource type="Texture2D" uid="uid://bwcnsnsk82l1c" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/titulo.png" id="4_snvmp"]
+[ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="7_l7ju4"]
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="fondo" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 1949.0
+offset_bottom = 1124.0
+texture = ExtResource("3_snvmp")
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_rpgwp")
+next_scene = ExtResource("3_l7ju4")
+
+[node name="MainMenu" type="HBoxContainer" parent="TitleScreen"]
+layout_mode = 0
+offset_right = 1939.0
+offset_bottom = 1120.0
+theme = ExtResource("1_vmxej")
+script = ExtResource("1_xuf5f")
+
+[node name="LogoContainer" type="MarginContainer" parent="TitleScreen/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 128
+
+[node name="Logo" type="TextureRect" parent="TitleScreen/MainMenu/LogoContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_snvmp")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="ButtonBox" type="VBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Start"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Options"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Credits"
+flat = true
+
+[node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(0.959421, 0.967542, 0.990559, 1)
+text = "Exit Game"
+flat = true
+
+[node name="Options" parent="." instance=ExtResource("7_l7ju4")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 23.0
+offset_top = -3.0
+offset_right = 1940.0
+offset_bottom = 1112.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="credits_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_credits_pressed"]
+[connection signal="options_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_options_pressed"]
+[connection signal="start_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_start_pressed"]
+[connection signal="visibility_changed" from="TitleScreen/MainMenu" to="TitleScreen/MainMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/StartButton" to="TitleScreen/MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/OptionsButton" to="TitleScreen/MainMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/CreditsButton" to="TitleScreen/MainMenu" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/QuitButton" to="TitleScreen/MainMenu" method="_on_quit_button_pressed"]
+[connection signal="back" from="Options" to="TitleScreen" method="_on_options_back"]

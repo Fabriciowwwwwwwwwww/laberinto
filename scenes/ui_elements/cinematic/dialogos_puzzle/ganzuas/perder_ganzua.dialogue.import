@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c1m5w7044vhns"
+path="res://.godot/imported/perder_ganzua.dialogue-ec935cd8dd98c39b9974338a80c8f2a8.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/perder_ganzua.dialogue"
+dest_files=["res://.godot/imported/perder_ganzua.dialogue-ec935cd8dd98c39b9974338a80c8f2a8.tres"]
+
+[params]
+
+defaults=true

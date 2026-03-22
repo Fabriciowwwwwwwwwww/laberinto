@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbhce1xbiodsj"]
+
+[sub_resource type="GDScript" id="GDScript_1efke"]
+
+[sub_resource type="GDScript" id="GDScript_3s6nc"]
+script/source = "# SPDX-FileCopyrightText: The Threadbare Authors
+# SPDX-License-Identifier: MPL-2.0
+@tool
+class_name InventoryItem
+extends Resource
+
+enum ItemType {
+	MEMORY,
+	IMAGINATION,
+	SPIRIT,
+}
+
+const TEXTURES: Dictionary[ItemType, Texture2D] = {
+	ItemType.MEMORY: preload(\"uid://brspc1u02oawt\"),
+	ItemType.IMAGINATION: preload(\"uid://wyiamtqmp4gk\"),
+	ItemType.SPIRIT: preload(\"uid://c4fefrg0tfkpl\")
+}
+
+const WORLD_TEXTURES: Dictionary[ItemType, Texture2D] = {
+	ItemType.MEMORY: preload(\"uid://5wscjc8yqqts\"),
+	ItemType.IMAGINATION: preload(\"uid://6bf8rum68wq3\"),
+	ItemType.SPIRIT: preload(\"uid://cepg1o3ihp055\")
+}
+
+@export var name: String
+@export var type: ItemType
+
+
+func same_type_as(other_item: InventoryItem) -> bool:
+	return type == other_item.type
+
+
+func texture() -> Texture2D:
+	return texture_for_type(type)
+
+
+func get_world_texture() -> Texture2D:
+	return WORLD_TEXTURES[type]
+
+
+static func texture_for_type(a_type: ItemType) -> Texture2D:
+	return TEXTURES[a_type]
+
+
+static func with_type(a_type: ItemType) -> InventoryItem:
+	var item := new()
+	item.type = a_type
+	return item
+
+
+static func item_types() -> Array:
+	return ItemType.values()
+
+
+func type_name() -> String:
+	return ItemType.find_key(type).to_pascal_case()
+"
+
+[sub_resource type="GDScript" id="GDScript_g170w"]
+script/source = "# SPDX-FileCopyrightText: The Threadbare Authors
+# SPDX-License-Identifier: MPL-2.0
+class_name Inventory
+extends Resource
+
+@export var _items: Array[InventoryItem]
+
+
+func get_items() -> Array[InventoryItem]:
+	return _items.duplicate()
+
+
+func clear() -> void:
+	_items.clear()
+
+
+func has_item(item: InventoryItem) -> bool:
+	return item in _items
+
+
+func add_item(item: InventoryItem) -> void:
+	if not item in _items:
+		_items.push_back(item)
+
+
+func remove_item(item: InventoryItem) -> void:
+	_items.erase(item)
+
+
+func amount_of_items() -> int:
+	return _items.size()
+"
+
+[sub_resource type="Resource" id="Resource_igp6c"]
+script = SubResource("GDScript_g170w")
+metadata/_custom_type_script = "uid://b1t0u12edqkoe"
+
+[node name="GameState" type="Node"]
+script = SubResource("GDScript_1efke")
+inventory = SubResource("Resource_igp6c")
+current_spawn_point = NodePath("")

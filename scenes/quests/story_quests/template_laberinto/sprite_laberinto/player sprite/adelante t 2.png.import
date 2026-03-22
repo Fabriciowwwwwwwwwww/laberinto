@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://en7sx180g0wt"
+path="res://.godot/imported/adelante t 2.png-6b6b57d1e5530157b12f2c4c15b158a4.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/adelante t 2.png"
+dest_files=["res://.godot/imported/adelante t 2.png-6b6b57d1e5530157b12f2c4c15b158a4.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

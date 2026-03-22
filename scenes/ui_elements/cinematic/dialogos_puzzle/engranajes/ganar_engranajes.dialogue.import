@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bcvt8bcroeyfi"
+path="res://.godot/imported/ganar_engranajes.dialogue-d2b3e0836f63e7677eb31e8d5cf23c1b.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/ganar_engranajes.dialogue"
+dest_files=["res://.godot/imported/ganar_engranajes.dialogue-d2b3e0836f63e7677eb31e8d5cf23c1b.tres"]
+
+[params]
+
+defaults=true

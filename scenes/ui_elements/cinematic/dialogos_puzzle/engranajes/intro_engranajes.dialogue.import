@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bf6ou62ieo586"
+path="res://.godot/imported/intro_engranajes.dialogue-6f0c0cdc57353584d3f193f6b83ae538.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue"
+dest_files=["res://.godot/imported/intro_engranajes.dialogue-6f0c0cdc57353584d3f193f6b83ae538.tres"]
+
+[params]
+
+defaults=true

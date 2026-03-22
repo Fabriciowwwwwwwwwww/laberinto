@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d24ac4h3shux5"
+path="res://.godot/imported/tiempo_engranajes.dialogue-c7d95e6153b3e6c4e2ff378ce4901f2a.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue"
+dest_files=["res://.godot/imported/tiempo_engranajes.dialogue-c7d95e6153b3e6c4e2ff378ce4901f2a.tres"]
+
+[params]
+
+defaults=true

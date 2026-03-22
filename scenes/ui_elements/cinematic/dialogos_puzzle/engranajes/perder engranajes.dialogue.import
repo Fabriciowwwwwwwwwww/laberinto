@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://becanxxxv4f37"
+path="res://.godot/imported/perder engranajes.dialogue-bc3371f624fb6993076818869decf36c.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue"
+dest_files=["res://.godot/imported/perder engranajes.dialogue-bc3371f624fb6993076818869decf36c.tres"]
+
+[params]
+
+defaults=true
