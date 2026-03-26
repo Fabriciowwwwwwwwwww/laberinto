@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg87x43pey1fd"]
+
+[ext_resource type="Texture2D" uid="uid://dxhvgtytmpiyo" path="res://scenes/quests/story_quests/template_laberinto/candado/candado1.PNG" id="1_1vy70"]
+[ext_resource type="Script" uid="uid://f8xd164deypb" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/candado.gd" id="1_53rvi"]
+[ext_resource type="Texture2D" uid="uid://dlruindy0qpry" path="res://scenes/quests/story_quests/template_laberinto/candado/candado2.PNG" id="2_53rvi"]
+[ext_resource type="Texture2D" uid="uid://bb1a43dp142ss" path="res://scenes/quests/story_quests/template_laberinto/candado/candado3.PNG" id="3_yu4gj"]
+[ext_resource type="Texture2D" uid="uid://c6aq0ek5ug43l" path="res://scenes/quests/story_quests/template_laberinto/candado/candado4.PNG" id="4_usnxm"]
+[ext_resource type="Texture2D" uid="uid://dgy8s0mqie6tj" path="res://scenes/quests/story_quests/template_laberinto/candado/candado5.PNG" id="5_voar4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnat6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1vy70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_53rvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yu4gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_usnxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_voar4")
+}],
+"loop": false,
+"name": &"abierto",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1vy70")
+}],
+"loop": true,
+"name": &"cerrado",
+"speed": 5.0
+}]
+
+[node name="Candado" type="Node2D" groups=["candado"]]
+script = ExtResource("1_53rvi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lnat6")
+animation = &"cerrado"

@@ -5,7 +5,7 @@ signal start_pressed
 signal options_pressed
 signal credits_pressed
 
-@onready var button_box: VBoxContainer = %ButtonBox
+@onready var button_box: HBoxContainer = %ButtonBox
 @onready var start_button: Button = %StartButton
 @onready var quit_button: Button = %QuitButton
 

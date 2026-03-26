@@ -13,7 +13,7 @@ class_name Player_l
 # -------- VIDA --------
 @export var vida_maxima: int = 100
 var vida_actual: int = 100
-@onready var vida_bar: ProgressBar = safe_get_node("../barra vida/ProgressBar")
+@onready var vida_bar: TextureProgressBar = safe_get_node("../barra vida/ProgressBar")
 
 # -------- BALAS --------
 @export var escena_bala: PackedScene
@@ -156,12 +156,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		current_speed = WALK_SPEED
 		is_running = false
-
-	# DEBUG CLAVE 🔥
-	print("RUN:", run_pressed,
-		" | is_running:", is_running,
-		" | stamina:", current_stamina,
-		" | can_run:", can_run)
 
 	handle_stamina(delta)
 
@@ -392,13 +386,11 @@ func sumar_vida(cantidad: int = 25) -> void:
 func handle_stamina(delta: float) -> void:
 	if is_running:
 		current_stamina -= STAMINA_DRAIN_RATE * delta
-		print("🔻 DRENANDO:", current_stamina)
 		if current_stamina <= 0:
 			current_stamina = 0
 			can_run = false
 	else:
 		current_stamina += STAMINA_REGEN_RATE * delta
-		print("🔺 RECUPERANDO:", current_stamina)
 
 		if current_stamina >= MAX_STAMINA:
 			current_stamina = MAX_STAMINA

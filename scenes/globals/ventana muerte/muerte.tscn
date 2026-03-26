@@ -1,173 +1,264 @@
 [gd_scene load_steps=44 format=3 uid="uid://cd8g38yse1gki"]
 
 [ext_resource type="Script" uid="uid://c8f57v8j6uy4h" path="res://scenes/globals/ventana muerte/animacion_muerte.gd" id="1_m1ki3"]
-[ext_resource type="Texture2D" uid="uid://be0fih2u80oqd" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0000.png" id="1_s0sjr"]
-[ext_resource type="Texture2D" uid="uid://ce3ogcwgmqfqq" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0001.png" id="2_m1ki3"]
-[ext_resource type="Texture2D" uid="uid://ofjusp07p80" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0002.png" id="3_kwxb4"]
-[ext_resource type="Texture2D" uid="uid://bk775xjx1uoyx" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0003.png" id="4_xlg7j"]
-[ext_resource type="Texture2D" uid="uid://hw4rmwnefymk" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0004.png" id="5_j6euy"]
-[ext_resource type="Texture2D" uid="uid://brs6cjywar023" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0005.png" id="6_jqm6h"]
-[ext_resource type="Texture2D" uid="uid://cuquv4k78cp8i" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0006.png" id="7_jwdhd"]
-[ext_resource type="Texture2D" uid="uid://rvvdvxg2025w" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0007.png" id="8_fhqce"]
-[ext_resource type="Texture2D" uid="uid://dqqg45dadw532" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0008.png" id="9_1wiv8"]
-[ext_resource type="Texture2D" uid="uid://dudlb0ou8hd65" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0009.png" id="10_5fhyn"]
-[ext_resource type="Texture2D" uid="uid://b164on3cy0k34" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0010.png" id="11_xg2n1"]
-[ext_resource type="Texture2D" uid="uid://cvteepctcq5to" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0011.png" id="12_yk0bk"]
-[ext_resource type="Texture2D" uid="uid://bdewxp0n0agj3" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0012.png" id="13_6fodg"]
-[ext_resource type="Texture2D" uid="uid://bxlnw7wp2gwpr" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0013.png" id="14_hsvfw"]
-[ext_resource type="Texture2D" uid="uid://bp3n2fx6t0otv" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0014.png" id="15_l6cbv"]
-[ext_resource type="Texture2D" uid="uid://gfum35ubdrsh" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0015.png" id="16_18ard"]
-[ext_resource type="Texture2D" uid="uid://cetpvtdi5oe8g" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0016.png" id="17_eswj6"]
-[ext_resource type="Texture2D" uid="uid://t0r2b650k0wl" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0017.png" id="18_30qu3"]
-[ext_resource type="Texture2D" uid="uid://b8fyifh0vvm7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0018.png" id="19_b3mj4"]
-[ext_resource type="Texture2D" uid="uid://brlgu307addit" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0019.png" id="20_qcme5"]
-[ext_resource type="Texture2D" uid="uid://djx5p7f20kf88" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0020.png" id="21_lr7pb"]
-[ext_resource type="Texture2D" uid="uid://cd4stnjtiycby" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0021.png" id="22_8xaap"]
-[ext_resource type="Texture2D" uid="uid://brr46asetco84" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0022.png" id="23_8l117"]
-[ext_resource type="Texture2D" uid="uid://cl4fxchakbh6y" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0023.png" id="24_5srwx"]
-[ext_resource type="Texture2D" uid="uid://cn8ca6vh4gnem" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0024.png" id="25_8suxg"]
-[ext_resource type="Texture2D" uid="uid://h124hscptxkk" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0025.png" id="26_ajxlx"]
-[ext_resource type="Texture2D" uid="uid://c2s7o7go00tui" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0026.png" id="27_dstsf"]
-[ext_resource type="Texture2D" uid="uid://bbcsjr2u42e6f" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0027.png" id="28_2ts6v"]
-[ext_resource type="Texture2D" uid="uid://1gur7227pcen" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0028.png" id="29_3a773"]
-[ext_resource type="Texture2D" uid="uid://duhv1306yjyem" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0029.png" id="30_1vkbr"]
-[ext_resource type="Texture2D" uid="uid://mfggc70835le" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0030.png" id="31_qsu4h"]
-[ext_resource type="Texture2D" uid="uid://c5v5v7euharcq" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0031.png" id="32_0xhvt"]
-[ext_resource type="Texture2D" uid="uid://ctj5d5plwwsft" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0032.png" id="33_4afx1"]
-[ext_resource type="Texture2D" uid="uid://wssdk13dxen7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0033.png" id="34_urdol"]
-[ext_resource type="Texture2D" uid="uid://cavpa7vr7gmd7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0034.png" id="35_52rng"]
-[ext_resource type="Texture2D" uid="uid://d370ogiwpe8xv" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0035.png" id="36_h2bi1"]
-[ext_resource type="Texture2D" uid="uid://q0jw0eldyom5" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0036.png" id="37_8opo4"]
-[ext_resource type="Texture2D" uid="uid://coprl7njqa7fr" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0037.png" id="38_s2iul"]
-[ext_resource type="Texture2D" uid="uid://d0x5dl5fijvi5" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0038.png" id="39_uhp62"]
-[ext_resource type="Texture2D" uid="uid://b4kxfosce7rkj" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0039.png" id="40_yrc11"]
-[ext_resource type="Texture2D" uid="uid://b4h24nsncab2r" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escena_sprite/animacion_muerte/muerte_anim0040.png" id="41_bjbmf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_veojd"]
+load_path = "res://.godot/imported/muerte_anim0000.png-0e0fa1030eb9b9a65f6bb2459cbd2991.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mqq53"]
+load_path = "res://.godot/imported/muerte_anim0001.png-f4a184955e847a0f5e7071aeb534fed4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ttwhe"]
+load_path = "res://.godot/imported/muerte_anim0002.png-46eb9934e7ceed590ef0ed4f5a2aced6.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_00v33"]
+load_path = "res://.godot/imported/muerte_anim0003.png-8ec7d528de784cdde51ddcb0b418d369.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gjat8"]
+load_path = "res://.godot/imported/muerte_anim0004.png-280ca39f874e17c97dea8a49c505da22.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nvpk1"]
+load_path = "res://.godot/imported/muerte_anim0005.png-228126c469bc2354919ebd34786e4117.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7k3ra"]
+load_path = "res://.godot/imported/muerte_anim0006.png-013ca02babf3c7ceb6a74fa9cad0179c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p2rlq"]
+load_path = "res://.godot/imported/muerte_anim0007.png-26b2e7d1d773abee5156dad7a30c2ad2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ejx3m"]
+load_path = "res://.godot/imported/muerte_anim0008.png-e8e1af3f87152622cdcc3d9d1787961c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t2bfs"]
+load_path = "res://.godot/imported/muerte_anim0009.png-234c94272e049ac417b74bd9faeec203.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ft3w3"]
+load_path = "res://.godot/imported/muerte_anim0010.png-b07208b53314642ab5e89e6a06ba6acb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g2ykm"]
+load_path = "res://.godot/imported/muerte_anim0011.png-9ca6c290226e3fe6a8d9d01c40236f6d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dpxgr"]
+load_path = "res://.godot/imported/muerte_anim0012.png-e13c75504ebf9eb78f94c6bc50bcbc26.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fi4gi"]
+load_path = "res://.godot/imported/muerte_anim0013.png-f93a408d77a6f4bb716fb8c2df1ae65b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ejedb"]
+load_path = "res://.godot/imported/muerte_anim0014.png-e1d660430d0edc41714b365652408067.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8u18g"]
+load_path = "res://.godot/imported/muerte_anim0015.png-282dee368acd8210db3bef01d4cd0864.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ahwx"]
+load_path = "res://.godot/imported/muerte_anim0016.png-a47b3ac2988be68c2412acda3d47bd78.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xdb1j"]
+load_path = "res://.godot/imported/muerte_anim0017.png-644cdecbd315aafb4a608c5c7f42e925.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ne18n"]
+load_path = "res://.godot/imported/muerte_anim0018.png-409383ee35d3a023de137a6f6168d12d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uhns4"]
+load_path = "res://.godot/imported/muerte_anim0019.png-e0fcf5bb7593e894579b17f9ccfc42ce.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skytn"]
+load_path = "res://.godot/imported/muerte_anim0020.png-6f243a0d5de61f74480c8d45234b7be4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ad6s0"]
+load_path = "res://.godot/imported/muerte_anim0021.png-68c247041718d04621d27e33bb983937.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_osp2c"]
+load_path = "res://.godot/imported/muerte_anim0022.png-5c6fe87579e72a5a98f117fa55a032d5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1rp17"]
+load_path = "res://.godot/imported/muerte_anim0023.png-c9ee73ab9e687fb280450b3f6716b386.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fuobo"]
+load_path = "res://.godot/imported/muerte_anim0024.png-58e5b724001739dfa59afa97b72fbafa.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mtecg"]
+load_path = "res://.godot/imported/muerte_anim0025.png-f9d50a47ac9d37ade582ef298b4de2e0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6n3vs"]
+load_path = "res://.godot/imported/muerte_anim0026.png-42f5fa07b161aa2913ad92b533dc66f1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1bpca"]
+load_path = "res://.godot/imported/muerte_anim0027.png-d55f0d29d907c23b17cd35f6b68e0e13.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s2uhp"]
+load_path = "res://.godot/imported/muerte_anim0028.png-a3e70e184413294907d4657a50ed557e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4h7qm"]
+load_path = "res://.godot/imported/muerte_anim0029.png-8343621b896d31d9febfc4a435fffe08.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v7u0u"]
+load_path = "res://.godot/imported/muerte_anim0030.png-5e3d7c72bae834b3fa7d33da852bbde1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mtf5c"]
+load_path = "res://.godot/imported/muerte_anim0031.png-819c725d909f747026c14976e8987ed3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fghtu"]
+load_path = "res://.godot/imported/muerte_anim0032.png-577a9e6db52b4658f9b7e924b082e9a3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h8mn5"]
+load_path = "res://.godot/imported/muerte_anim0033.png-8047a7864d35392cf4e8b3b969d7c099.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uur62"]
+load_path = "res://.godot/imported/muerte_anim0034.png-522c6d33fd4b499b10b065e3c9d63395.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4tk05"]
+load_path = "res://.godot/imported/muerte_anim0035.png-4689c12d5240c525d7364abd03b26c08.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m8wsf"]
+load_path = "res://.godot/imported/muerte_anim0036.png-0197fc9732bf660336e86448fe8b66be.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_khqa0"]
+load_path = "res://.godot/imported/muerte_anim0037.png-f299bc3fe9043919302d4026ff0b9c16.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uwb2g"]
+load_path = "res://.godot/imported/muerte_anim0038.png-61495aa4c015af01f70d5fda7f7ac6e1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j6euy"]
+load_path = "res://.godot/imported/muerte_anim0044.png-e40319953181b6ffb5bc4da43061c4e4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jqm6h"]
+load_path = "res://.godot/imported/muerte_anim0045.png-d1cfbd9df02c85977543fda74dae73dd.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2r5t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_s0sjr")
+"texture": SubResource("CompressedTexture2D_veojd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_m1ki3")
+"texture": SubResource("CompressedTexture2D_mqq53")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kwxb4")
+"texture": SubResource("CompressedTexture2D_ttwhe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xlg7j")
+"texture": SubResource("CompressedTexture2D_00v33")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_j6euy")
+"texture": SubResource("CompressedTexture2D_gjat8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_jqm6h")
+"texture": SubResource("CompressedTexture2D_nvpk1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_jwdhd")
+"texture": SubResource("CompressedTexture2D_7k3ra")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_fhqce")
+"texture": SubResource("CompressedTexture2D_p2rlq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_1wiv8")
+"texture": SubResource("CompressedTexture2D_ejx3m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_5fhyn")
+"texture": SubResource("CompressedTexture2D_t2bfs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_xg2n1")
+"texture": SubResource("CompressedTexture2D_ft3w3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_yk0bk")
+"texture": SubResource("CompressedTexture2D_g2ykm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_6fodg")
+"texture": SubResource("CompressedTexture2D_dpxgr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_hsvfw")
+"texture": SubResource("CompressedTexture2D_fi4gi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_l6cbv")
+"texture": SubResource("CompressedTexture2D_ejedb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_18ard")
+"texture": SubResource("CompressedTexture2D_8u18g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_eswj6")
+"texture": SubResource("CompressedTexture2D_2ahwx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_30qu3")
+"texture": SubResource("CompressedTexture2D_xdb1j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_b3mj4")
+"texture": SubResource("CompressedTexture2D_ne18n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_qcme5")
+"texture": SubResource("CompressedTexture2D_uhns4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_lr7pb")
+"texture": SubResource("CompressedTexture2D_skytn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_8xaap")
+"texture": SubResource("CompressedTexture2D_ad6s0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_8l117")
+"texture": SubResource("CompressedTexture2D_osp2c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_5srwx")
+"texture": SubResource("CompressedTexture2D_1rp17")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_8suxg")
+"texture": SubResource("CompressedTexture2D_fuobo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_ajxlx")
+"texture": SubResource("CompressedTexture2D_mtecg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_dstsf")
+"texture": SubResource("CompressedTexture2D_6n3vs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_2ts6v")
+"texture": SubResource("CompressedTexture2D_1bpca")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_3a773")
+"texture": SubResource("CompressedTexture2D_s2uhp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("30_1vkbr")
+"texture": SubResource("CompressedTexture2D_4h7qm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("31_qsu4h")
+"texture": SubResource("CompressedTexture2D_v7u0u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("32_0xhvt")
+"texture": SubResource("CompressedTexture2D_mtf5c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_4afx1")
+"texture": SubResource("CompressedTexture2D_fghtu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("34_urdol")
+"texture": SubResource("CompressedTexture2D_h8mn5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_52rng")
+"texture": SubResource("CompressedTexture2D_uur62")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_h2bi1")
+"texture": SubResource("CompressedTexture2D_4tk05")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_8opo4")
+"texture": SubResource("CompressedTexture2D_m8wsf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_s2iul")
+"texture": SubResource("CompressedTexture2D_khqa0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_uhp62")
+"texture": SubResource("CompressedTexture2D_uwb2g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_yrc11")
+"texture": SubResource("CompressedTexture2D_j6euy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_bjbmf")
+"texture": SubResource("CompressedTexture2D_jqm6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_jqm6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_jqm6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_jqm6h")
 }],
 "loop": false,
 "name": &"muerte",
@@ -184,6 +275,5 @@ position = Vector2(965, 560.25)
 scale = Vector2(1.60231, 0.733484)
 sprite_frames = SubResource("SpriteFrames_k2r5t")
 animation = &"muerte"
-frame_progress = 0.861201
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=122 format=3 uid="uid://chvtgpol8gre1"]
+[gd_scene load_steps=116 format=3 uid="uid://chvtgpol8gre1"]
 
 [ext_resource type="Script" uid="uid://bk38eo8gcj710" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/script/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://w73k44wrhxmg" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/bala.tscn" id="2_ox34k"]
-[ext_resource type="Texture2D" uid="uid://bunogih2fwn1v" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/adelante t.png" id="3_gw71t"]
 [ext_resource type="Texture2D" uid="uid://dq13rdala6w2d" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/recarga_arma.png" id="4_ghlnt"]
 [ext_resource type="Texture2D" uid="uid://bq02gt23fv5dc" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/atras t.png" id="4_h7bcu"]
 [ext_resource type="Texture2D" uid="uid://cou2dehpdlx54" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/revolver disparo.png" id="4_ox34k"]
@@ -12,25 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://btsb5ueyr4y1n" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/idle.png" id="7_3o2ny"]
 [ext_resource type="AudioStream" uid="uid://bhcgh2km5s6jl" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/Sonido de Disparo de Mosquete - Efecto de sonido.ogg" id="7_g5575"]
 [ext_resource type="Texture2D" uid="uid://4hxhx0tddkrc" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/assets/light.png" id="7_ynr7a"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v0h00"]
-atlas = ExtResource("3_gw71t")
-region = Rect2(0, 0, 608, 1467)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_42g2w"]
-atlas = ExtResource("4_h7bcu")
-region = Rect2(2560, 0, 640, 1376)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gw71t"]
-load_path = "res://.godot/imported/lado t.png-7dd8d94e9309fa1838e382f6b88f3032.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8qb0"]
-atlas = SubResource("CompressedTexture2D_gw71t")
-region = Rect2(0, 0, 736, 1218)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30pn6"]
-atlas = SubResource("CompressedTexture2D_gw71t")
-region = Rect2(0, 0, 736, 1218)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_biinv"]
 atlas = ExtResource("5_h7bcu")
@@ -242,38 +222,6 @@ region = Rect2(2432, 5884, 608, 1471)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ntmi"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v0h00")
-}],
-"loop": true,
-"name": &"IdleAbajo",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_42g2w")
-}],
-"loop": true,
-"name": &"IdleArriba",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8qb0")
-}],
-"loop": true,
-"name": &"IdleDerecha",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30pn6")
-}],
-"loop": true,
-"name": &"IdleIzquierda",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_biinv")
@@ -831,8 +779,7 @@ texture_filter = 1
 position = Vector2(0, 0.25)
 scale = Vector2(0.04, 0.019)
 sprite_frames = SubResource("SpriteFrames_4ntmi")
-animation = &"MoveArriba"
-frame_progress = 0.580677
+animation = &"MoveAbajo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 4)
