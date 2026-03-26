@@ -163,7 +163,7 @@ offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
 offset_bottom = -59.0
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="label_carta_1_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta"]
@@ -171,8 +171,8 @@ offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
 offset_bottom = 121.0
-rotation = 3.1415927
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+rotation = 3.14159
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="carta2" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
@@ -184,7 +184,7 @@ offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
 offset_bottom = -59.0
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="label_carta_2_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta2"]
@@ -192,8 +192,8 @@ offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
 offset_bottom = 121.0
-rotation = 3.1415927
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+rotation = 3.14159
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="carta3" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
@@ -205,7 +205,7 @@ offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
 offset_bottom = -59.0
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="label_carta_3_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta3"]
@@ -213,8 +213,8 @@ offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
 offset_bottom = 121.0
-rotation = 3.1415927
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+rotation = 3.14159
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="carta4" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
@@ -226,7 +226,7 @@ offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
 offset_bottom = -59.0
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="label_carta_4_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta4"]
@@ -234,8 +234,8 @@ offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
 offset_bottom = 121.0
-rotation = 3.1415927
-theme_override_colors/font_color = Color(0.0014122723, 0.00033109038, 0.00035865666, 0.5882353)
+rotation = 3.14159
+theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
 [node name="fondo" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
@@ -258,8 +258,8 @@ script = ExtResource("5_ny7wo")
 [node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje"]
 
 [node name="panel de reloj" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay"]
-position = Vector2(180.00003, 135.49997)
-scale = Vector2(0.546875, 0.59090924)
+position = Vector2(180, 135.5)
+scale = Vector2(0.546875, 0.590909)
 texture = ExtResource("7_fs4et")
 
 [node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay"]

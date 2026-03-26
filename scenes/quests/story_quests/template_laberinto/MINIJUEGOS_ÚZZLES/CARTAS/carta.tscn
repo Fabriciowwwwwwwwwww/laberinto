@@ -4,17 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://b4j5w1mnexnr6" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/casta corazon.png" id="2_1hm47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnejf"]
-size = Vector2(68, 96)
+size = Vector2(139.5, 196.5)
 
 [node name="carta" type="Area2D"]
 script = ExtResource("1_1hm47")
 
 [node name="carta" type="Sprite2D" parent="."]
-position = Vector2(-1.9999994, 0)
-scale = Vector2(0.972973, 1.0189624)
+position = Vector2(-2, 0)
+scale = Vector2(0.972973, 1.01896)
 texture = ExtResource("2_1hm47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(3, -2)
+position = Vector2(-1.75, -1.25)
 shape = SubResource("RectangleShape2D_dnejf")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dhydhpp43urah"]
+[gd_scene load_steps=10 format=4 uid="uid://dhydhpp43urah"]
 
 [ext_resource type="Script" uid="uid://n1guv6m28qbw" path="res://scenes/ui_elements/dialogue/components/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="2_dbsi0"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="Texture2D" uid="uid://dng5bc3xaex85" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel/panel_antiguo.png" id="3_dbsi0"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="5_qmeow"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmeow"]
 texture = ExtResource("3_dbsi0")
@@ -20,9 +21,6 @@ sampling_rate = 96000.0
 
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_i865q"]
 packet_sequence = SubResource("OggPacketSequence_m6qgf")
-tags = {
-"encoder": "Lavc58.134.100 libvorbis"
-}
 loop = true
 
 [node name="DialogueBalloon" type="CanvasLayer"]
@@ -36,9 +34,17 @@ anchors_preset = 0
 theme = ExtResource("2_dbsi0")
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon"]
-layout_mode = 0
-offset_right = 1918.0
-offset_bottom = 1125.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 1928.0
+offset_bottom = 1124.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qmeow")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/PanelContainer"]
@@ -64,7 +70,17 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/table_border = Color(0.556248, 0.318013, 0.217202, 1)
+theme_override_colors/default_color = Color(0.91, 0.88, 0.83, 1)
+theme_override_fonts/normal_font = ExtResource("5_qmeow")
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 50
 text = "Ah! Another wanderer. It's been awhile since anyone came looking for answers instead of treasure."
+horizontal_alignment = 1
+vertical_alignment = 1
 skip_action = &"dialogue_skip"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/PanelContainer/VBoxContainer"]
