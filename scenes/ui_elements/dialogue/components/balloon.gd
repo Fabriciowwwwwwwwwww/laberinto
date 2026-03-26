@@ -73,9 +73,11 @@ var _player_name: String = ""
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 @onready var talk_sound_player: AudioStreamPlayer = $TalkSoundPlayer
+@onready var overlay: AnimatedSprite2D = $Balloon/PanelContainer/AnimatedSprite2D
 
 
 func _ready() -> void:
+	overlay.play("idle")
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 

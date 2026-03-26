@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://bo2gd4sehdugm"]
 
 [ext_resource type="Script" uid="uid://y88qplkioj1q" path="res://scenes/globals/pause/pause_overlay.gd" id="1_lf64b"]
-[ext_resource type="Texture2D" uid="uid://bvlx57seuur65" path="res://assets/first_party/intro/background.png" id="2_1tcw0"]
+[ext_resource type="Texture2D" uid="uid://dwq0rcbc2remu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/fondo_pausa.png" id="2_ai8ue"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="2_sd5t1"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="3_sd5t1"]
 [ext_resource type="Texture2D" uid="uid://dean5bvssdkll" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel/p.png" id="4_ai8ue"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai8ue"]
-texture = ExtResource("2_1tcw0")
+texture = ExtResource("2_ai8ue")
 modulate_color = Color(1, 1, 1, 0.498039)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tcw0"]
@@ -30,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 10
 theme_override_styles/panel = SubResource("StyleBoxTexture_ai8ue")
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -38,14 +39,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.0
-offset_top = -183.0
-offset_right = 237.0
-offset_bottom = 183.0
+offset_left = -254.5
+offset_top = -278.5
+offset_right = 254.5
+offset_bottom = 278.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_1tcw0")
+tab_alignment = 1
 current_tab = 0
+tabs_position = 1
 tabs_visible = false
 
 [node name="PauseMenu" type="PanelContainer" parent="TabContainer"]
@@ -57,6 +61,7 @@ metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PauseMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="TabContainer/PauseMenu/VBoxContainer"]
 layout_mode = 2
@@ -65,6 +70,7 @@ theme_type_variation = &"PlayerRibbon"
 
 [node name="Label" type="Label" parent="TabContainer/PauseMenu/VBoxContainer/PanelContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 80
 text = "Game Paused"
 
 [node name="ResumeButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer"]
@@ -72,6 +78,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 60
 text = "Resume"
 
 [node name="OptionsButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer"]
@@ -79,6 +86,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 60
 text = "Options"
 
 [node name="TitleScreenButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer"]
@@ -86,6 +94,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 60
 text = "Exit to Title"
 
 [node name="Options" parent="TabContainer" instance=ExtResource("3_sd5t1")]
