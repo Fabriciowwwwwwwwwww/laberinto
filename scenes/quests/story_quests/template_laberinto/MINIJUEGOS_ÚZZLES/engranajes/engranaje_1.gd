@@ -2,6 +2,8 @@ extends Area2D
 
 @export var gear_id: int = 0
 @export var rotation_state: int = 0
+@onready var sonido_engranaje: AudioStreamPlayer2D =$sonido_engranaje
+@onready var sonido_seleccion: AudioStreamPlayer2D =$sonido_seleccion
 
 @export var spin_speed: float = 180
 
@@ -61,7 +63,7 @@ func _input_event(viewport, event, shape_idx) -> void:
 func _on_mouse_entered() -> void:
 	if is_spinning:
 		return
-
+	sonido_seleccion.play()
 	is_hovered = true
 	target_scale = base_scale * 1.1
 
@@ -79,6 +81,7 @@ func _on_mouse_exited() -> void:
 # CAMBIO
 # -------------------------
 func toggle_direction() -> void:
+	sonido_engranaje.play()
 	rotation_state = (rotation_state + 1) % 2
 	spin_direction = 1 if rotation_state == 0 else -1
 

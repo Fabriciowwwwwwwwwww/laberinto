@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var index: int = 0
+@onready var sonido_seleccion: AudioStreamPlayer2D =$sonido_seleccion
 
 var escala_original := Vector2.ONE
 var tween: Tween
@@ -29,6 +30,7 @@ func _on_mouse_entered():
 		tween.kill()
 	
 	tween = create_tween()
+	sonido_seleccion.play()
 	tween.tween_property(self, "scale", escala_original * 1.1, 0.15)
 	tween.parallel().tween_property(self, "modulate", Color(1.2,1.2,1.2), 0.15)
 

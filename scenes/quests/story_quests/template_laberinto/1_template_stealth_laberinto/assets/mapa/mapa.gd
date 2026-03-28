@@ -16,3 +16,7 @@ func toggle_mapa():
 	abierto = !abierto
 	visible = abierto
 	get_tree().paused = abierto
+
+
+func _on_button_pressed() -> void:
+	toggle_mapa()

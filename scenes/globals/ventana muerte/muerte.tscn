@@ -1,6 +1,31 @@
-[gd_scene load_steps=44 format=3 uid="uid://cd8g38yse1gki"]
+[gd_scene load_steps=71 format=3 uid="uid://cd8g38yse1gki"]
 
 [ext_resource type="Script" uid="uid://c8f57v8j6uy4h" path="res://scenes/globals/ventana muerte/animacion_muerte.gd" id="1_m1ki3"]
+[ext_resource type="Texture2D" uid="uid://cv7vlvxl31v8a" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-001.png" id="2_mtecg"]
+[ext_resource type="Texture2D" uid="uid://bfr54eqka3bdt" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-002.png" id="3_6n3vs"]
+[ext_resource type="Texture2D" uid="uid://hd1red4ptifr" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-003.png" id="4_1bpca"]
+[ext_resource type="Texture2D" uid="uid://hmsbw5vyqv0a" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-004.png" id="5_s2uhp"]
+[ext_resource type="Texture2D" uid="uid://b0ms4ah0jv6kq" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-005.png" id="6_4h7qm"]
+[ext_resource type="Texture2D" uid="uid://dmv7ed3w8v4sv" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-006.png" id="7_v7u0u"]
+[ext_resource type="Texture2D" uid="uid://4uw8rgxdfyts" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-007.png" id="8_mtf5c"]
+[ext_resource type="Texture2D" uid="uid://bk7jsw6o5deb2" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-008.png" id="9_fghtu"]
+[ext_resource type="Texture2D" uid="uid://dbv6ymwl3wujl" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-009.png" id="10_h8mn5"]
+[ext_resource type="Texture2D" uid="uid://pyhm1e0wadfb" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-010.png" id="11_uur62"]
+[ext_resource type="Texture2D" uid="uid://d37xy3lc7egq4" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-011.png" id="12_4tk05"]
+[ext_resource type="Texture2D" uid="uid://bnppufwphhhh8" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-012.png" id="13_m8wsf"]
+[ext_resource type="Texture2D" uid="uid://cdbfvok61iy24" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-013.png" id="14_khqa0"]
+[ext_resource type="Texture2D" uid="uid://b22300l43sw8e" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-014.png" id="15_uwb2g"]
+[ext_resource type="Texture2D" uid="uid://bbm011ciiqjg0" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-015.png" id="16_di6n7"]
+[ext_resource type="Texture2D" uid="uid://d0q7wtwpg2h" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-016.png" id="17_s0sjr"]
+[ext_resource type="Texture2D" uid="uid://klhr3bplmmpf" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-017.png" id="18_m1ki3"]
+[ext_resource type="Texture2D" uid="uid://cr4uheqeg2yiy" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-018.png" id="19_kwxb4"]
+[ext_resource type="Texture2D" uid="uid://bdmppsngnqq8r" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-019.png" id="20_xlg7j"]
+[ext_resource type="Texture2D" uid="uid://4qnhssgf47ye" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-020.png" id="21_j6euy"]
+[ext_resource type="Texture2D" uid="uid://blcp4be6ybcy7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-021.png" id="22_jqm6h"]
+[ext_resource type="Texture2D" uid="uid://cgy1pekv0devk" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-022.png" id="23_jwdhd"]
+[ext_resource type="Texture2D" uid="uid://hydgptvmu6xk" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-023.png" id="24_fhqce"]
+[ext_resource type="Texture2D" uid="uid://b7cyldaijwvew" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-024.png" id="25_1wiv8"]
+[ext_resource type="Texture2D" uid="uid://c0hnqjrrjix1d" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-025.png" id="26_5fhyn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_veojd"]
 load_path = "res://.godot/imported/muerte_anim0000.png-0e0fa1030eb9b9a65f6bb2459cbd2991.ctex"
@@ -265,15 +290,112 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xg2n1"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yk0bk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mtecg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6n3vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1bpca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s2uhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4h7qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v7u0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mtf5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fghtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h8mn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uur62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4tk05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_m8wsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_khqa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_uwb2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_di6n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_s0sjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_m1ki3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kwxb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xlg7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j6euy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jqm6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jwdhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fhqce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1wiv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_5fhyn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 11.0
+}]
+
 [node name="muerte" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_m1ki3")
 next_scene_path = "res://scenes/menus/title/muerto/muerto_menu.tscn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.47918278, 0.47918278, 0.47918278, 1)
 position = Vector2(965, 560.25)
 scale = Vector2(1.60231, 0.733484)
 sprite_frames = SubResource("SpriteFrames_k2r5t")
 animation = &"muerte"
+frame = 15
+frame_progress = 0.7373685
+
+[node name="efecto" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_xg2n1")
+position = Vector2(971.5, 575)
+scale = Vector2(1.50703, 1.6)
+sprite_frames = SubResource("SpriteFrames_yk0bk")
+animation = &"idle"
+frame_progress = 0.5973264
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

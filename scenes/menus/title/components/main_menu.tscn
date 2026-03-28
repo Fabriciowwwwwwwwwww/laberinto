@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wgmdsj1sbmja"]
+[gd_scene load_steps=10 format=3 uid="uid://wgmdsj1sbmja"]
 
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="1_vmxej"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="1_xuf5f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bwcnsnsk82l1c" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/titulo.png" id="4_snvmp"]
 [ext_resource type="Script" uid="uid://ie713t5y3hif" path="res://scenes/menus/title/components/logo_container.gd" id="6_68a5i"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="7_l7ju4"]
+[ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="8_q86al"]
 
 [node name="MainMenu" type="CanvasLayer"]
 
@@ -40,10 +41,10 @@ script = ExtResource("6_68a5i")
 
 [node name="Logo" type="TextureRect" parent="TitleScreen/MainMenu/controlLogo"]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 164.0
-offset_right = 1341.0
-offset_bottom = 1010.67
+offset_left = 75.0
+offset_top = -44.0
+offset_right = 1345.0
+offset_bottom = 802.67
 size_flags_vertical = 4
 texture = ExtResource("4_snvmp")
 expand_mode = 5
@@ -64,8 +65,8 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BigFlatButton"
-theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
 text = "Start"
 flat = true
 
@@ -92,6 +93,9 @@ theme_type_variation = &"BigFlatButton"
 theme_override_colors/font_color = Color(0.959421, 0.967542, 0.990559, 1)
 text = "Exit Game"
 flat = true
+
+[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+stream = ExtResource("8_q86al")
 
 [node name="Options" parent="." instance=ExtResource("7_l7ju4")]
 visible = false

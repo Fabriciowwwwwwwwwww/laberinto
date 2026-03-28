@@ -5,6 +5,7 @@ var current_index := 0
 
 func _ready():
 	if music_list.size() > 0:
+		print("se activo la musica de main")
 		stream = music_list[current_index]
 		play()
 		connect("finished", Callable(self, "_on_music_finished"))

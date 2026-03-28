@@ -1,11 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://c67vx6vq75oyg"]
+[gd_scene load_steps=14 format=3 uid="uid://c67vx6vq75oyg"]
 
-[ext_resource type="Texture2D" uid="uid://gm8ib72dkt2g" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/m.jpg" id="1_wckas"]
+[ext_resource type="Texture2D" uid="uid://bpjipmpriiqla" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/fondo_muerte.png" id="1_y5bh0"]
 [ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_bd7et"]
 [ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/main.tscn" id="3_746np"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_gmle2"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="5_wuclt"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="6_u60h7"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="6_wckas"]
+[ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="6_xd8qt"]
+[ext_resource type="Texture2D" uid="uid://djgovt6f25uvi" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton opciones.png" id="7_u60h7"]
+[ext_resource type="Texture2D" uid="uid://cn0gt1ihqvbcu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton salir.png" id="8_1tae7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
+texture = ExtResource("6_xd8qt")
+expand_margin_left = 40.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ldy66"]
+texture = ExtResource("7_u60h7")
+expand_margin_left = 40.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncxay"]
+texture = ExtResource("8_1tae7")
+expand_margin_left = 40.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
 
 [node name="MainMenu" type="CanvasLayer"]
 
@@ -14,7 +39,7 @@ offset_left = -1.0
 offset_top = -4.0
 offset_right = 1949.0
 offset_bottom = 1124.0
-texture = ExtResource("1_wckas")
+texture = ExtResource("1_y5bh0")
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -39,40 +64,53 @@ theme_override_constants/margin_left = 128
 [node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_constants/margin_left = 128
-theme_override_constants/margin_right = 128
+theme_override_constants/margin_left = 131
+theme_override_constants/margin_top = 134
+theme_override_constants/margin_right = 92
 
-[node name="ButtonBox" type="HBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins"]
+[node name="ButtonBox" type="VBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 87
 
 [node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
 theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
 theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_u60h7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_kkbmu")
 text = "RESTART"
-flat = true
 
 [node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
 theme_type_variation = &"BigFlatButton"
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
+theme_override_fonts/font = ExtResource("6_u60h7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_ldy66")
 text = "Options"
-flat = true
 
 [node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
 theme_type_variation = &"BigFlatButton"
-theme_override_colors/font_color = Color(0.959421, 0.967542, 0.990559, 1)
+theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
+theme_override_fonts/font = ExtResource("6_u60h7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_ncxay")
 text = "Exit Game"
-flat = true
 
 [node name="Options" parent="." instance=ExtResource("6_wckas")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

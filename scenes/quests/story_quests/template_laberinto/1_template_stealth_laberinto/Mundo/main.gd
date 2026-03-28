@@ -1,7 +1,8 @@
 extends Node2D 
+@export var music_tracks: Array[AudioStream]
 
 func _ready() -> void:
-	# Espera a que se instancien todos los nodos
+	MusicManager.play_playlist(music_tracks)
 	await get_tree().process_frame
 
 	# Buscar jugador en la escena

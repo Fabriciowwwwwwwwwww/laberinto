@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var tiempo_total: float = 30.0
-@export var victorias_necesarias: int = 3 # 🔥 EDITABLE EN INSPECTOR
-
+@export var tiempo_total: float = 15.0
+@export var victorias_necesarias: int = 3
+@export var music_tracks: Array[AudioStream]
 var cinematic_node: Node
 var cartas_nodos: Array = []
 
@@ -23,6 +23,11 @@ var cartas_nodos: Array = []
 @onready var label_carta4_arriba: Label = $"carta4/label_carta_4_parte de arriba"
 @onready var label_carta4_abajo: Label = $"carta4/label_carta_4_parte de abajo"
 
+@onready var sonido_cartas: AudioStreamPlayer2D = $"../cartas"
+@onready var sonido_barajar: AudioStreamPlayer2D =$"../barajar" 
+@onready var sonido_reloj: AudioStreamPlayer2D = $"../AudioStreamPlayer2D2"
+
+
 # LOGICA
 var tiempo_restante: float
 var puzzle_activo: bool = false
@@ -30,14 +35,17 @@ var ha_interactuado: bool = false
 
 var valores_cartas: Array = []
 var seleccionadas: Array = []
+
 var objetivo: int = 0
+var tipo_operacion: String = ""
+var solution: Array = []
 
 var victorias_actuales: int = 0
 
 # -------------------------
 # READY
 # -------------------------
-func _ready():
+func _ready() -> void:
 	add_to_group("puzzle")
 
 	for n in get_tree().get_nodes_in_group("cartas"):
@@ -55,7 +63,7 @@ func _ready():
 # -------------------------
 # RESET
 # -------------------------
-func resetear_cartas():
+func resetear_cartas() -> void:
 	seleccionadas.clear()
 
 	for c in cartas_nodos:
@@ -66,13 +74,13 @@ func resetear_cartas():
 # -------------------------
 # FLUJO
 # -------------------------
-func iniciar_intro():
+func iniciar_intro() -> void:
 	if cinematic_node:
 		await cinematic_node.cinematica_terminada
-	
+	MusicManager.play_playlist(music_tracks)
 	await iniciar_flujo()
 
-func iniciar_flujo():
+func iniciar_flujo() -> void:
 	iniciar_puzzle()
 	await get_tree().create_timer(0.2).timeout
 	iniciar_tiempo()
@@ -80,20 +88,22 @@ func iniciar_flujo():
 # -------------------------
 # INICIO
 # -------------------------
-func iniciar_puzzle():
+func iniciar_puzzle() -> void:
 	puzzle_activo = false
 	ha_interactuado = false
 
 	resetear_cartas()
 	generar_cartas()
-	generar_objetivo()
+	generate_solution()
 
+	if cinematic_node:
+		cinematic_node.set_solucion(solution)
+	sonido_cartas.play()
 	animacion.play("revelar_cartas")
-
-	# 🔥 ahora sí espera bien la animación
 	await animacion.animation_finished
 
 	mostrar_cartas()
+
 	puzzle_activo = true
 
 	tiempo_restante = tiempo_total
@@ -102,7 +112,7 @@ func iniciar_puzzle():
 # -------------------------
 # CARTAS
 # -------------------------
-func generar_cartas():
+func generar_cartas() -> void:
 	valores_cartas.clear()
 
 	for i in range(4):
@@ -120,31 +130,43 @@ func generar_cartas():
 	label_carta4_arriba.text = str(valores_cartas[3])
 	label_carta4_abajo.text = str(valores_cartas[3])
 
-func mostrar_cartas():
+func mostrar_cartas() -> void:
 	for c in cartas_nodos:
 		c.visible = true
 
-func ocultar_cartas():
+func ocultar_cartas() -> void:
 	for c in cartas_nodos:
 		c.visible = false
 
 # -------------------------
-# OBJETIVO
+# SOLUCION (SUMA / MULT)
 # -------------------------
-func generar_objetivo():
+func generate_solution() -> void:
+	solution.clear()
+
 	var i = randi_range(0, 3)
 	var j = randi_range(0, 3)
 
 	while j == i:
 		j = randi_range(0, 3)
 
-	objetivo = valores_cartas[i] + valores_cartas[j]
-	print("🎯 Objetivo:", objetivo)
+	var tipo = randi_range(0, 1)
+
+	if tipo == 0:
+		tipo_operacion = "SUMA"
+		objetivo = valores_cartas[i] + valores_cartas[j]
+	else:
+		tipo_operacion = "MULT"
+		objetivo = valores_cartas[i] * valores_cartas[j]
+
+	solution = [i, j]
+
+	print("🎯 OBJETIVO:", tipo_operacion, objetivo)
 
 # -------------------------
 # INPUT
 # -------------------------
-func seleccionar_carta(index):
+func seleccionar_carta(index) -> void:
 	if not puzzle_activo:
 		return
 
@@ -155,37 +177,47 @@ func seleccionar_carta(index):
 
 	ha_interactuado = true
 
+	print("Seleccionadas:", seleccionadas)
+
 # -------------------------
 # ENTER
 # -------------------------
-func _input(event):
+func _input(event) -> void:
 	if event.is_action_pressed("ui_accept") and puzzle_activo:
-		
+
 		if not ha_interactuado:
 			return
-		ocultar_cartas()
+
 		puzzle_activo = false
+
+		# 🔥 ocultar instantáneo antes de animación
 		ocultar_cartas()
+
 		await get_tree().process_frame
+		sonido_cartas.play()
 		animacion.play("esconder_cartas")
 		await animacion.animation_finished
-
-		ocultar_cartas()
 
 		await verificar_suma()
 
 # -------------------------
 # VERIFICAR
 # -------------------------
-func verificar_suma():
-	var suma = 0
+func verificar_suma() -> void:
+	var resultado = 0
 
-	for i in seleccionadas:
-		suma += valores_cartas[i]
+	if tipo_operacion == "SUMA":
+		for i in seleccionadas:
+			resultado += valores_cartas[i]
 
-	print("Suma:", suma)
+	elif tipo_operacion == "MULT":
+		resultado = 1
+		for i in seleccionadas:
+			resultado *= valores_cartas[i]
 
-	if suma == objetivo:
+	print("Resultado:", resultado)
+
+	if resultado == objetivo:
 		await ganar()
 	else:
 		await perder("error")
@@ -193,44 +225,51 @@ func verificar_suma():
 # -------------------------
 # GANAR
 # -------------------------
-func ganar():
+func ganar() -> void:
 	print("✅ GANASTE")
-
 	cronometro.stop()
+	puzzle_activo = false
 	victorias_actuales += 1
 
+	animacion.play("barajar_cartas")
+	await animacion.animation_finished
 
-	# 🔥 progreso
 	if cinematic_node:
+		MusicManager.fade_out(1.0)  # 🔥 baja música
 		await cinematic_node.notificar_progreso(victorias_actuales, victorias_necesarias)
+		MusicManager.fade_in(1.0)   # 🔥 la regresa
 
-	# 🔥 final o siguiente ronda
 	if victorias_actuales >= victorias_necesarias:
 		if cinematic_node:
+			MusicManager.fade_out(1.0)
 			await cinematic_node.notificar_ganador()
+			MusicManager.fade_in(1.0)
 	else:
 		await reiniciar_flujo()
 
 # -------------------------
 # PERDER
 # -------------------------
-func perder(tipo := "error"):
+func perder(tipo := "error") -> void:
 	print("❌ FALLASTE")
 
 	cronometro.stop()
+	puzzle_activo = false
 
+	sonido_barajar.play()
 	animacion.play("barajar_cartas")
 	await animacion.animation_finished
 
 	if cinematic_node:
+		MusicManager.fade_out(1.0)
 		await cinematic_node.notificar_perdida(tipo)
+		MusicManager.fade_in(1.0)
 
 	await reiniciar_flujo()
-
 # -------------------------
 # TIEMPO
 # -------------------------
-func _on_cronometro_tick():
+func _on_cronometro_tick() -> void:
 	if not puzzle_activo:
 		return
 
@@ -243,18 +282,14 @@ func _on_cronometro_tick():
 # -------------------------
 # RESET
 # -------------------------
-func reiniciar_flujo():
+func reiniciar_flujo() -> void:
 	puzzle_activo = false
 	await get_tree().create_timer(0.3).timeout
 	iniciar_puzzle()
 	iniciar_tiempo()
-# -------------------------
-# TIEMPO
-# -------------------------
 
-	
 # -------------------------
 # TIMER
 # -------------------------
-func iniciar_tiempo():
+func iniciar_tiempo() -> void:
 	cronometro.start()

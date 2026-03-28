@@ -1,284 +1,184 @@
 extends Node2D
 
-@export var tiempo_total: float = 15.0
-@export var victorias_necesarias: int = 3
+@export var num_gears: int = 7
+@export var tiempo_total: float = 30.0
 
+var solution: Array[int] = []
+var gears: Array = []
 var cinematic_node: Node
-var cartas_nodos: Array = []
+@onready var sonido_reloj: AudioStreamPlayer2D = $"../sonido_reloj"
+@onready var sonido_candado: AudioStreamPlayer2D = $"../sonido_candado"
 
 @onready var cronometro: Timer = $"../Cronometro"
 @onready var label_cronometro: Label = $"../ScreenOverlay/CronometroLabel"
-@onready var animacion: AnimatedSprite2D = $animacion_cartas
 
-# LABELS
-@onready var label_carta1_arriba: Label = $"carta/label_carta_1_parte de arriba"
-@onready var label_carta1_abajo: Label = $"carta/label_carta_1_parte de abajo"
-
-@onready var label_carta2_arriba: Label = $"carta2/label_carta_2_parte de arriba"
-@onready var label_carta2_abajo: Label = $"carta2/label_carta_2_parte de abajo"
-
-@onready var label_carta3_arriba: Label = $"carta3/label_carta_3_parte de arriba"
-@onready var label_carta3_abajo: Label = $"carta3/label_carta_3_parte de abajo"
-
-@onready var label_carta4_arriba: Label = $"carta4/label_carta_4_parte de arriba"
-@onready var label_carta4_abajo: Label = $"carta4/label_carta_4_parte de abajo"
-
-# LOGICA
 var tiempo_restante: float
 var puzzle_activo: bool = false
 var ha_interactuado: bool = false
 
-var valores_cartas: Array = []
-var seleccionadas: Array = []
-
-var objetivo: int = 0
-var tipo_operacion: String = ""
-var solution: Array = []
-
-var victorias_actuales: int = 0
-
 # -------------------------
-# READY
+# INIT
 # -------------------------
-func _ready():
+func _ready() -> void:
 	add_to_group("puzzle")
-
-	for n in get_tree().get_nodes_in_group("cartas"):
-		cartas_nodos.append(n)
-
-	resetear_cartas()
 
 	cronometro.wait_time = 1.0
 	cronometro.timeout.connect(_on_cronometro_tick)
 
 	cinematic_node = get_tree().get_first_node_in_group("cinematica")
 
-	await iniciar_intro()
+	var nodes = get_tree().get_nodes_in_group("engranaje")
+	for n in nodes:
+		gears.append(n)
 
-# -------------------------
-# RESET
-# -------------------------
-func resetear_cartas():
-	seleccionadas.clear()
-
-	for c in cartas_nodos:
-		c.visible = false
-		if c.has_method("resetear"):
-			c.resetear()
-
-# -------------------------
-# FLUJO
-# -------------------------
-func iniciar_intro():
-	if cinematic_node:
-		await cinematic_node.cinematica_terminada
-	
-	await iniciar_flujo()
-
-func iniciar_flujo():
-	iniciar_puzzle()
-	await get_tree().create_timer(0.2).timeout
-	iniciar_tiempo()
-
-# -------------------------
-# INICIO
-# -------------------------
-func iniciar_puzzle():
-	puzzle_activo = false
-	ha_interactuado = false
-
-	resetear_cartas()
-	generar_cartas()
+	# 🔥 GENERAR ANTES DE LA INTRO
 	generate_solution()
 
 	if cinematic_node:
 		cinematic_node.set_solucion(solution)
 
-	animacion.play("revelar_cartas")
-	await animacion.animation_finished
+	await iniciar_intro()
 
-	mostrar_cartas()
+# -------------------------
+# INTRO
+# -------------------------
+func iniciar_intro() -> void:
+	if cinematic_node:
+		await cinematic_node.cinematica_terminada
 
+	await iniciar_flujo()
+
+# -------------------------
+# FLUJO
+# -------------------------
+func iniciar_flujo() -> void:
+	iniciar_puzzle()
+	await get_tree().create_timer(0.2).timeout
+	iniciar_tiempo()
+	sonido_reloj.play()
+
+# -------------------------
+# INPUT
+# -------------------------
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and puzzle_activo:
+		if not ha_interactuado:
+			print("⚠️ Mueve al menos un engranaje")
+			return
+		
+		await check_solution()
+
+func registrar_interaccion() -> void:
+	ha_interactuado = true
+
+# -------------------------
+# INICIO DEL PUZZLE
+# -------------------------
+func iniciar_puzzle() -> void:
 	puzzle_activo = true
+	ha_interactuado = false
 
 	tiempo_restante = tiempo_total
 	label_cronometro.text = "Tiempo: %02d" % int(tiempo_restante)
 
 # -------------------------
-# CARTAS
+# GENERAR SOLUCIÓN
 # -------------------------
-func generar_cartas():
-	valores_cartas.clear()
-
-	for i in range(4):
-		valores_cartas.append(randi_range(1, 10))
-
-	label_carta1_arriba.text = str(valores_cartas[0])
-	label_carta1_abajo.text = str(valores_cartas[0])
-
-	label_carta2_arriba.text = str(valores_cartas[1])
-	label_carta2_abajo.text = str(valores_cartas[1])
-
-	label_carta3_arriba.text = str(valores_cartas[2])
-	label_carta3_abajo.text = str(valores_cartas[2])
-
-	label_carta4_arriba.text = str(valores_cartas[3])
-	label_carta4_abajo.text = str(valores_cartas[3])
-
-func mostrar_cartas():
-	for c in cartas_nodos:
-		c.visible = true
-
-func ocultar_cartas():
-	for c in cartas_nodos:
-		c.visible = false
-
-# -------------------------
-# SOLUCION (SUMA / MULT)
-# -------------------------
-func generate_solution():
+func generate_solution() -> void:
 	solution.clear()
 
-	var i = randi_range(0, 3)
-	var j = randi_range(0, 3)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 
-	while j == i:
-		j = randi_range(0, 3)
+	for i in range(num_gears):
+		solution.append(rng.randi_range(0, 1))
 
-	var tipo = randi_range(0, 1)
+# -------------------------
+# CHECK
+# -------------------------
+func check_solution() -> void:
+	puzzle_activo = false
+	cronometro.stop()
 
-	if tipo == 0:
-		tipo_operacion = "SUMA"
-		objetivo = valores_cartas[i] + valores_cartas[j]
+	var correcto := true
+
+	for i in range(gears.size()):
+		if gears[i].rotation_state != solution[i]:
+			correcto = false
+			break
+
+	if correcto:
+		await puzzle_solved()
 	else:
-		tipo_operacion = "MULT"
-		objetivo = valores_cartas[i] * valores_cartas[j]
-
-	solution = [i, j]
-
-	print("🎯 OBJETIVO:", tipo_operacion, objetivo)
-
-# -------------------------
-# INPUT
-# -------------------------
-func seleccionar_carta(index):
-	if not puzzle_activo:
-		return
-
-	if index in seleccionadas:
-		seleccionadas.erase(index)
-	else:
-		seleccionadas.append(index)
-
-	ha_interactuado = true
-
-	print("Seleccionadas:", seleccionadas)
-
-# -------------------------
-# ENTER
-# -------------------------
-func _input(event):
-	if event.is_action_pressed("ui_accept") and puzzle_activo:
-
-		if not ha_interactuado:
-			return
-
-		puzzle_activo = false
-
-		# 🔥 ocultar instantáneo antes de animación
-		ocultar_cartas()
-
-		await get_tree().process_frame
-
-		animacion.play("esconder_cartas")
-		await animacion.animation_finished
-
-		await verificar_suma()
-
-# -------------------------
-# VERIFICAR
-# -------------------------
-func verificar_suma():
-	var resultado = 0
-
-	if tipo_operacion == "SUMA":
-		for i in seleccionadas:
-			resultado += valores_cartas[i]
-
-	elif tipo_operacion == "MULT":
-		resultado = 1
-		for i in seleccionadas:
-			resultado *= valores_cartas[i]
-
-	print("Resultado:", resultado)
-
-	if resultado == objetivo:
-		await ganar()
-	else:
-		await perder("error")
+		await perder()
 
 # -------------------------
 # GANAR
 # -------------------------
-func ganar():
-	print("✅ GANASTE")
-
+func puzzle_solved() -> void:
+	print("🎉 GANASTE")
+	sonido_candado.play()
+	puzzle_activo = false
 	cronometro.stop()
-	victorias_actuales += 1
 
-	# animación SIEMPRE
-	animacion.play("barajar_cartas")
-	await animacion.animation_finished
+	get_tree().call_group("candado", "abrir_candado")
 
 	if cinematic_node:
-		await cinematic_node.notificar_progreso(victorias_actuales, victorias_necesarias)
-
-	if victorias_actuales >= victorias_necesarias:
-		if cinematic_node:
-			await cinematic_node.notificar_ganador()
-	else:
-		await reiniciar_flujo()
+		await cinematic_node.notificar_ganador() # 🔥 ESTA ES LA CLAVE
 
 # -------------------------
 # PERDER
 # -------------------------
-func perder(tipo := "error"):
+func perder() -> void:
+	sonido_reloj.stop()
 	print("❌ FALLASTE")
 
+	puzzle_activo = false
 	cronometro.stop()
 
-	animacion.play("barajar_cartas")
-	await animacion.animation_finished
+	for g in gears:
+		g.forzar_detener()
+
+	# 🔥 GENERAR NUEVA SOLUCIÓN ANTES DEL DIÁLOGO
+	generate_solution()
 
 	if cinematic_node:
-		await cinematic_node.notificar_perdida(tipo)
+		cinematic_node.set_solucion(solution)
+		await cinematic_node.notificar_perdida("error")
 
 	await reiniciar_flujo()
-
 # -------------------------
 # TIEMPO
 # -------------------------
-func _on_cronometro_tick():
+func _on_cronometro_tick() -> void:
 	if not puzzle_activo:
 		return
-
 	tiempo_restante -= 1
 	label_cronometro.text = "Tiempo: %02d" % int(tiempo_restante)
-
 	if tiempo_restante <= 0:
-		await perder("tiempo")
+		print("⏰ TIEMPO AGOTADO")
+		puzzle_activo = false
+		cronometro.stop()
+		for g in gears:
+			g.forzar_detener()
+		generate_solution()
+		if cinematic_node:
+			cinematic_node.set_solucion(solution)
+			await cinematic_node.notificar_perdida("tiempo")
+		await reiniciar_flujo()
+# -------------------------
+# TIMER START
+# -------------------------
+func iniciar_tiempo() -> void:
+	cronometro.start()
+func reiniciar_flujo() -> void:
 
-# -------------------------
-# RESET
-# -------------------------
-func reiniciar_flujo():
-	puzzle_activo = false
+	for g in gears:
+		g.reset_total()
+
 	await get_tree().create_timer(0.3).timeout
+
+	# ❌ QUITAR generate_solution()
+
 	iniciar_puzzle()
 	iniciar_tiempo()
-
-# -------------------------
-# TIMER
-# -------------------------
-func iniciar_tiempo():
-	cronometro.start()

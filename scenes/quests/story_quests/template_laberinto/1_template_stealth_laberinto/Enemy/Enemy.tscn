@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cs7pboo6eqjfb"]
+[gd_scene load_steps=58 format=3 uid="uid://cs7pboo6eqjfb"]
 
 [ext_resource type="Script" uid="uid://dypv8hj74hl31" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Enemy/Enemy.gd" id="1_epr5s"]
 [ext_resource type="Texture2D" uid="uid://b4uddna3p375v" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/enemigo_sprite/d.png" id="2_jaomq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnjhv2vmgn6vu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/enemigo_sprite/ATRAS.png" id="5_hintw"]
 [ext_resource type="Texture2D" uid="uid://buwgetvvt5khj" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/Smoke-Sheet.png" id="5_jaomq"]
 [ext_resource type="AudioStream" uid="uid://cjll58ed2epjs" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/Punch Sound Effect (Realistic) (320 KBps).ogg" id="5_qvu3t"]
+[ext_resource type="AudioStream" uid="uid://cg3g0cec0kvlh" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto enemigo2.mp3" id="8_1qm4n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ky4ru"]
 atlas = ExtResource("2_jaomq")
@@ -376,11 +377,6 @@ collision_mask = 2
 script = ExtResource("1_epr5s")
 WALK_SPEED = 100.0
 RUN_SPEED = 250.0
-run_duration = null
-walk_duration = null
-rango_ataque = null
-dano = null
-tiempo_entre_ataques = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -408,5 +404,10 @@ interp_to_end = 0.121
 use_fixed_seed = true
 seed = 387688870
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="golpe" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qvu3t")
+
+[node name="idle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_1qm4n")
+pitch_scale = 0.74
+parameters/looping = true

@@ -1,38 +1,50 @@
 extends Node
 
-@export var music_tracks: Array[AudioStream] = []
-@export var music_special: AudioStream
-
-var current_index := 0
 var player := AudioStreamPlayer.new()
+var tracks: Array[AudioStream] = []
+var current_index := 0
 var playing_special := false
 
 func _ready():
 	add_child(player)
 	player.finished.connect(_on_music_finished)
-	if music_tracks.size() > 0:
-		play_next()
 
-func play_next():
-	if playing_special:
+func play_playlist(new_tracks: Array[AudioStream]):
+	if new_tracks.is_empty():
 		return
-	if music_tracks.size() == 0:
+	
+	tracks = new_tracks
+	current_index = 0
+	playing_special = false
+	_play_current()
+
+func _play_current():
+	if tracks.is_empty():
 		return
-	player.stream = music_tracks[current_index]
+	
+	player.stream = tracks[current_index]
 	player.play()
-	current_index = (current_index + 1) % music_tracks.size()
 
 func _on_music_finished():
-	if not playing_special:
-		play_next()
-	else:
+	if playing_special:
 		playing_special = false
 		current_index = 0
-		play_next()
+	else:
+		current_index = (current_index + 1) % tracks.size()
+	
+	_play_current()
 
 func play_special(track: AudioStream):
 	if not track:
 		return
+	
 	playing_special = true
 	player.stream = track
 	player.play()
+func fade_out(duration := 1.0):
+	var tween = create_tween()
+	tween.tween_property(player, "volume_db", -40, duration)
+
+func fade_in(duration := 1.0):
+	var tween = create_tween()
+	tween.tween_property(player, "volume_db", 0, duration)

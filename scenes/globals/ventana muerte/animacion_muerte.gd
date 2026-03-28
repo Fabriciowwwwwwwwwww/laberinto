@@ -3,9 +3,10 @@ extends Node2D
 @export var next_scene_path: String
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var efecto: AnimatedSprite2D = $efecto
 func _ready() -> void:
 	sprite.play("muerte")
+	efecto.play("idle")
 	sprite.animation_finished.connect(_on_animacion_terminada)
 
 func _on_animacion_terminada():

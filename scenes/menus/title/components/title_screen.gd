@@ -5,7 +5,6 @@ extends Control
 
 @onready var main_menu = $MainMenu
 @onready var options = $"../Options"
-@onready var credits: Control = %Credits
 
 
 func _input(event: InputEvent) -> void:
@@ -32,10 +31,8 @@ func _on_main_menu_options_pressed() -> void:
 
 func _on_main_menu_credits_pressed() -> void:
 	main_menu.hide()
-	credits.show()
 
 func _on_credits_back() -> void:
-	credits.hide()
 	main_menu.show()
 
 func _on_options_back() -> void:

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="laberinto_sombras"
 run/main_scene="uid://wgmdsj1sbmja"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://bgs5s52hkygv2"
 config/icon="uid://cw8vv8lilixgf"
 

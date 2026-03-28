@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lqmdd2cldk6q"]
+[gd_scene load_steps=6 format=3 uid="uid://lqmdd2cldk6q"]
 
 [ext_resource type="Texture2D" uid="uid://ejjn7fvc068m" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/engranaje1.png" id="1_hbun4"]
 [ext_resource type="Script" uid="uid://pwbdbwxixgvq" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/engranaje_1.gd" id="2_fwf6b"]
+[ext_resource type="AudioStream" uid="uid://p7kk3xed46qd" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto golpe engranaje.mp3" id="3_05731"]
+[ext_resource type="AudioStream" uid="uid://dgcj13cjps8pm" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto seleccion.mp3" id="4_yvav7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fwf6b"]
 radius = 68.593
@@ -17,3 +19,9 @@ texture = ExtResource("1_hbun4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 1)
 shape = SubResource("CircleShape2D_fwf6b")
+
+[node name="sonido_engranaje" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_05731")
+
+[node name="sonido_seleccion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yvav7")

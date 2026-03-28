@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var dust_particles: GPUParticles2D = $DustParticles
-@onready var sonido: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+@onready var sonido: AudioStreamPlayer2D = $golpe
+@onready var idle_sonido: AudioStreamPlayer2D = $idle
 @export var WALK_SPEED: float = 200.0
 @export var RUN_SPEED: float = 350.0
 @export var run_duration: float = 2.0
@@ -26,8 +26,9 @@ var run_timer: float = 0.0
 var is_running: bool = false
 
 func _ready() -> void:
-	current_speed = WALK_SPEED
 	
+	current_speed = WALK_SPEED
+	idle_sonido.play()
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 10.0
 	navigation_agent.avoidance_enabled = true

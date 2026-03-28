@@ -64,28 +64,32 @@ animations = [{
 }]
 
 [node name="barra vida" type="CanvasLayer"]
+scale = Vector2(0.69, 0.69)
+transform = Transform2D(0.69, 0, 0, 0.69, 0, 0)
 script = ExtResource("1_hxg3h")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
+z_index = -4
 texture_repeat = 3
 anchors_preset = -1
 anchor_right = 0.224
-offset_left = 17.0
-offset_top = 9.0
-offset_right = 918.92
-offset_bottom = 615.0
-scale = Vector2(0.5, 0.5)
+offset_left = -1.4492741
+offset_top = 4.8840632
+offset_right = 900.47076
+offset_bottom = 610.88403
+scale = Vector2(0.4, 0.4)
 tooltip_text = "sadsadasdas"
 value = 100.0
 texture_under = ExtResource("1_8rqnt")
 texture_progress = ExtResource("2_yabe7")
-texture_progress_offset = Vector2(50, 310)
+texture_progress_offset = Vector2(48.79, 310)
+metadata/_edit_use_anchors_ = true
 
 [node name="vida" type="Label" parent="."]
-offset_left = 216.0
-offset_top = 182.0
-offset_right = 465.0
-offset_bottom = 235.0
+offset_left = 146.76811
+offset_top = 137.91306
+offset_right = 395.76813
+offset_bottom = 190.91306
 theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_c1mco")
@@ -93,6 +97,6 @@ theme_override_font_sizes/font_size = 40
 text = "VIDA:100/100"
 
 [node name="fuego" type="AnimatedSprite2D" parent="."]
-position = Vector2(347, 85)
+position = Vector2(265.6087, 62.550728)
 sprite_frames = SubResource("SpriteFrames_rxdb6")
 animation = &"idle"

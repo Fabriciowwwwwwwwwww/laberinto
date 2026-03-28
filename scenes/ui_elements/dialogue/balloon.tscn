@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dhydhpp43urah"]
+[gd_scene load_steps=38 format=4 uid="uid://dhydhpp43urah"]
 
 [ext_resource type="Script" uid="uid://n1guv6m28qbw" path="res://scenes/ui_elements/dialogue/components/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://hydgptvmu6xk" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-023.png" id="29_wubkm"]
 [ext_resource type="Texture2D" uid="uid://b7cyldaijwvew" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-024.png" id="30_r1f6m"]
 [ext_resource type="Texture2D" uid="uid://c0hnqjrrjix1d" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-025.png" id="31_58fbo"]
+[ext_resource type="AudioStream" uid="uid://c4dffnu7m0rj6" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/musica cinematica.mp3" id="32_noh7p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmeow"]
 texture = ExtResource("3_dbsi0")
@@ -132,6 +133,9 @@ sampling_rate = 96000.0
 
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_i865q"]
 packet_sequence = SubResource("OggPacketSequence_m6qgf")
+tags = {
+"encoder": "Lavc58.134.100 libvorbis"
+}
 loop = true
 
 [node name="DialogueBalloon" type="CanvasLayer"]
@@ -181,15 +185,16 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/table_border = Color(0.556248, 0.318013, 0.217202, 1)
 theme_override_colors/default_color = Color(0.91, 0.88, 0.83, 1)
+theme_override_colors/table_border = Color(0.556248, 0.318013, 0.217202, 1)
 theme_override_fonts/normal_font = ExtResource("5_qmeow")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 50
 theme_override_font_sizes/bold_italics_font_size = 50
 theme_override_font_sizes/italics_font_size = 50
 theme_override_font_sizes/mono_font_size = 50
-theme_override_font_sizes/normal_font_size = 80
-theme_override_font_sizes/bold_font_size = 50
 text = "Ah! Another wanderer. It's been awhile since anyone came looking for answers instead of treasure."
+autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 skip_action = &"dialogue_skip"
@@ -231,12 +236,15 @@ position = Vector2(971.5, 575)
 scale = Vector2(1.50703, 1.6)
 sprite_frames = SubResource("SpriteFrames_k3elf")
 animation = &"idle"
-frame_progress = 0.384797
+frame_progress = 0.70518875
 
 [node name="TalkSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamOggVorbis_i865q")
 volume_db = 2.0
 parameters/looping = true
+
+[node name="musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_noh7p")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/PanelContainer/VBoxContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

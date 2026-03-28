@@ -420,17 +420,17 @@ scale = Vector2(0.6, 0.6)
 [node name="InteractLabel" type="Label" parent="ui_container"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -13.0
-offset_top = 5.0
-offset_right = 93.0
-offset_bottom = 177.0
+offset_left = -63.0
+offset_top = 6.0
+offset_right = 143.0
+offset_bottom = 48.0
 scale = Vector2(0.5, 0.5)
 theme = ExtResource("4_3oco3")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 45
 text = "vida"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-3, 15)
+position = Vector2(-12, 12)
 color = Color(0.862097, 0.858727, 1.15514e-06, 1)
 energy = 2.0
 shadow_enabled = true

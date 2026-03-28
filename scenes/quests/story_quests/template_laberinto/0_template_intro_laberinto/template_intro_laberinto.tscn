@@ -3496,3 +3496,4 @@ autoplay = true
 
 [node name="SequencePuzzleAssistant" parent="." instance=ExtResource("10_dtbad")]
 position = Vector2(872, 284)
+npc_name = "Mayordomo"

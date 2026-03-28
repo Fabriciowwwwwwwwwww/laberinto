@@ -1,6 +1,13 @@
-# SPDX-FileCopyrightText: The Threadbare Authors
-# SPDX-License-Identifier: MPL-2.0
 ~ start
-listo para empezar el juego las reglas son
+[TUTORIAL]
+Controles del viajero:[br]
+WASD — Moverse[br]
+Shift — Correr[br]
+Click derecho — Disparar[br]
+E — Interactuar[br]
+G — Ver mapa[br][br]
+Recoge:[br]
+Luz — Vida[br]
+Munición — Defensa[br]
+Curas — Recuperación
 => END
-

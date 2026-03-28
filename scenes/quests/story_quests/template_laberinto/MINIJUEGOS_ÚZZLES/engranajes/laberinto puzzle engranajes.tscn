@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4ncxcwf7mqin"]
+[gd_scene load_steps=15 format=3 uid="uid://b4ncxcwf7mqin"]
 
 [ext_resource type="Script" uid="uid://b6pt2hk3seevl" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/puzzle_engranaje.gd" id="1_usyd0"]
 [ext_resource type="Texture2D" uid="uid://ci0hmxh3abuf1" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/fondo engranaje.png" id="3_rd50c"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dg87x43pey1fd" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/candado.tscn" id="6_tvrh5"]
 [ext_resource type="Script" uid="uid://bada25bf3g5vh" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/cinematica_engranaje.gd" id="7_4bfed"]
 [ext_resource type="Texture2D" uid="uid://dyn1gdivjk3gu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/barrras/recarga/recarga_panel balas.png" id="7_pn3y3"]
+[ext_resource type="AudioStream" uid="uid://c78urf8vxxt7v" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto abrir candado.mp3" id="8_thfwp"]
+[ext_resource type="AudioStream" uid="uid://m773crn785f8" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3" id="9_csqs0"]
 [ext_resource type="Resource" uid="uid://bf6ou62ieo586" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue" id="9_tvrh5"]
 [ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="10_tjdpl"]
 [ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="10_w1vj3"]
@@ -26,7 +28,7 @@ script = ExtResource("1_usyd0")
 
 [node name="Engranaje1" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
 z_index = 33
-position = Vector2(164, 467)
+position = Vector2(245, 391)
 
 [node name="Engranaje2" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
 z_index = 33
@@ -62,7 +64,7 @@ texture = ExtResource("3_rd50c")
 wait_time = 2.884
 
 [node name="Sprite2D2" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
-position = Vector2(-244, 249)
+position = Vector2(-242, 249.00002)
 scale = Vector2(0.149415, 0.164063)
 texture = ExtResource("4_tjdpl")
 centered = false
@@ -89,6 +91,13 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "ghghg"
 
+[node name="sonido_candado" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje"]
+stream = ExtResource("8_thfwp")
+
+[node name="sonido_reloj" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje"]
+stream = ExtResource("9_csqs0")
+parameters/looping = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, 7)
 anchor_mode = 0
@@ -96,7 +105,7 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="cinematica" type="Node2D" parent="." groups=["cinematica"]]
-position = Vector2(3, 6)
+position = Vector2(109, -83)
 script = ExtResource("7_4bfed")
 dialogue = ExtResource("9_tvrh5")
 perder_dialogue = ExtResource("10_w1vj3")

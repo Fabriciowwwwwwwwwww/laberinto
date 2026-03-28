@@ -1,20 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://c52fi7scepryb"]
+[gd_scene load_steps=10 format=3 uid="uid://c52fi7scepryb"]
 
 [ext_resource type="Script" uid="uid://oeppham0jx75" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/assets/mapa/mapa.gd" id="1_kxgk2"]
-[ext_resource type="Texture2D" uid="uid://bvlx57seuur65" path="res://assets/first_party/intro/background.png" id="2_njf4j"]
+[ext_resource type="Texture2D" uid="uid://dng5bc3xaex85" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel/panel_antiguo.png" id="2_njf4j"]
 [ext_resource type="Texture2D" uid="uid://d22k3gelvtcbm" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/assets/mapa/l.jpg" id="3_6yv51"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="3_njf4j"]
+[ext_resource type="Texture2D" uid="uid://dvkcqsk1tookn" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/icono/mapa_icono.png" id="5_6yv51"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m5xte"]
+texture = ExtResource("5_6yv51")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6yv51"]
+texture = ExtResource("5_6yv51")
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1polg"]
+texture = ExtResource("5_6yv51")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai8ue"]
 texture = ExtResource("2_njf4j")
-modulate_color = Color(1, 1, 1, 0.498039)
+modulate_color = Color(1, 1, 1, 0.82400006)
 
 [node name="mapa" type="CanvasLayer"]
 process_mode = 3
-layer = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1670.0
+offset_top = 962.0
+offset_right = 1835.0
+offset_bottom = 1087.0
+theme_override_colors/font_focus_color = Color(0.9499975, 0.9499975, 0.9499975, 0)
+theme_override_styles/normal = SubResource("StyleBoxTexture_m5xte")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6yv51")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1polg")
+
+[node name="mapa_vista" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("1_kxgk2")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="mapa_vista"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,13 +45,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ai8ue")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="mapa_vista"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="mapa_vista/Control"]
+z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,3 +65,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_njf4j")
 texture = ExtResource("3_6yv51")
+
+[connection signal="pressed" from="Button" to="mapa_vista" method="_on_button_pressed"]
