@@ -25,8 +25,10 @@ func _ready() -> void:
 	# 🔸 Mostrar diálogo introductorio automático
 	if dialogue:
 		print("💬 Mostrando diálogo inicial...")
+		MusicManager.fade_out(1.0)  # 🔥 baja música
 		DialogueManager.show_dialogue_balloon(dialogue, "", [self])
 		await DialogueManager.dialogue_ended
+		MusicManager.fade_in(1.0)  # 🔥 baja música
 		print("✅ Diálogo inicial terminado")
 
 	# ❗ Esperar a que el jugador HABLE MANUALMENTE con el NPC

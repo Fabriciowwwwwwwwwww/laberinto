@@ -26,7 +26,8 @@ var run_timer: float = 0.0
 var is_running: bool = false
 
 func _ready() -> void:
-	
+	sonido.bus = "SFX"
+	idle_sonido.bus = "SFX"
 	current_speed = WALK_SPEED
 	idle_sonido.play()
 	navigation_agent.path_desired_distance = 4.0

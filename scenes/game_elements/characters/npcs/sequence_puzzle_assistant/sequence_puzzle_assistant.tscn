@@ -7,6 +7,6 @@
 script = ExtResource("2_2ol1d")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(2.0000005, -42.937496)
-scale = Vector2(0.22265626, 0.14339194)
-frame_progress = 0.9543647
+position = Vector2(2, -42.9375)
+scale = Vector2(0.222656, 0.143392)
+frame_progress = 0.954365

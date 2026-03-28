@@ -5,7 +5,7 @@ const SETTINGS_PATH := "user://settings.cfg"
 const VOLUME_SECTION := "Volume"
 const MIN_VOLUME := -30.0
 const DEFAULT_VOLUMES: Dictionary[String, float] = {
-	"Music": -15.0,
+	"Music": 0.0,
 }
 
 var _settings := ConfigFile.new()

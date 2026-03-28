@@ -4,24 +4,25 @@ extends HBoxContainer
 signal start_pressed
 signal options_pressed
 signal credits_pressed
-
+@onready var ui_sound: AudioStreamPlayer2D = $"ButtonBoxMargins/ButtonBox/sonido cambio"
 @onready var button_box: VBoxContainer = %ButtonBox
 @onready var start_button: Button = %StartButton
 @onready var quit_button: Button = %QuitButton
 
 
 func _ready() -> void:
-	# Hide the quit button on the web: handling the quit request requires
-	# custom code in the HTML shell that we do not have yet.
+	ui_sound.bus = "SFX"
 	quit_button.visible = OS.get_name() != "Web"
 
-	# Wait for fade-in transition to finish before grabbing focus, so that the
-	# start button does not appear interactive while input is blocked.
 	if Transitions.is_running():
 		await Transitions.finished
 
 	_on_visibility_changed()
 
+	# 🔥 conectar sonido a TODOS los botones
+	for b in button_box.get_children():
+		if b is Button:
+			b.focus_entered.connect(_on_button_focus)
 
 func _on_start_button_pressed() -> void:
 	start_pressed.emit()
@@ -42,3 +43,5 @@ func _on_quit_button_pressed() -> void:
 func _on_visibility_changed() -> void:
 	if visible and start_button:
 		start_button.grab_focus()
+func _on_button_focus():
+	ui_sound.play()

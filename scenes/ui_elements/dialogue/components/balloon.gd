@@ -78,6 +78,8 @@ var _player_name: String = ""
 
 
 func _ready() -> void:
+	musica.bus = "Music"            # 🎵 música de fondo
+	talk_sound_player.bus = "SFX"   # 🔊 voces / efectos
 	musica.play()
 	overlay.play("idle")
 	balloon.hide()

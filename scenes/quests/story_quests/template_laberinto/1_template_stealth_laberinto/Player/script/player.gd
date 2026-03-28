@@ -5,7 +5,7 @@ class_name Player_l
 @onready var animated_arma: AnimatedSprite2D = $arma/AnimatedSprite2D
 @onready var stamina_bar: ProgressBar = $Stamina
 @onready var arma_node: Node2D = $arma
-
+@onready var arma_sonido: Node2D = $arma/arma_sonido
 # -------- LLAVES --------
 @onready var llaves: Node = safe_get_node("../llaves")
 @onready var keys_label: Label = safe_get_node("../llaves/Keys_label")
@@ -54,6 +54,7 @@ func safe_get_node(path: NodePath) -> Node:
 # READY
 # =====================================================
 func _ready() -> void:
+	arma_sonido.bus = "SFX"
 	add_to_group("player")
 
 	vida_actual = vida_maxima
@@ -217,7 +218,7 @@ func disparar() -> void:
 
 	if balas_vista and balas_vista.procesar_disparo():
 
-		$arma/arma_sonido.play()
+		arma_sonido.play()
 		animated_arma.play("disparo_revolver")
 
 		var bala = escena_bala.instantiate()

@@ -20,6 +20,8 @@ var ha_interactuado: bool = false
 # INIT
 # -------------------------
 func _ready() -> void:
+	sonido_reloj.bus = "SFX"
+	sonido_candado.bus = "SFX"
 	add_to_group("puzzle")
 
 	cronometro.wait_time = 1.0

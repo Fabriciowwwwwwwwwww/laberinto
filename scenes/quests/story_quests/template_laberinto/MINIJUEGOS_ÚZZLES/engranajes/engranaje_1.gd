@@ -24,6 +24,8 @@ var target_scale: Vector2
 # READY
 # -------------------------
 func _ready() -> void:
+	sonido_engranaje.bus = "SFX"
+	sonido_seleccion.bus = "SFX"
 	puzzle = get_tree().get_first_node_in_group("puzzle")
 
 	base_scale = scale
