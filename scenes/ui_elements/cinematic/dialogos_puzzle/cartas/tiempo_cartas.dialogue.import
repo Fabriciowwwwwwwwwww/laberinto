@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dw24mm2vinjdk"
+path="res://.godot/imported/tiempo_cartas.dialogue-2040fea374d214498ccfe8ac623d86e5.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/tiempo_cartas.dialogue"
+dest_files=["res://.godot/imported/tiempo_cartas.dialogue-2040fea374d214498ccfe8ac623d86e5.tres"]
+
+[params]
+
+defaults=true

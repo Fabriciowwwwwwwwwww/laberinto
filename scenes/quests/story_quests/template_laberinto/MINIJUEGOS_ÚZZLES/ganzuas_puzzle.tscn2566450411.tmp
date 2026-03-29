@@ -7,10 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://ccgf5cxjp4x15" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/Biblioteca - sonidos/clock-ticking-sound-effect-240503.ogg" id="6_n1g68"]
 [ext_resource type="AudioStream" uid="uid://mwn71vna1no2" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/Biblioteca - sonidos/sword-hit-7160.ogg" id="7_1xc5j"]
 [ext_resource type="Texture2D" uid="uid://cdbv3cpswlyl7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel.png" id="8_0fkfl"]
-[ext_resource type="Resource" uid="uid://kvbp5kcv32d1" path="res://scenes/ui_elements/cinematic/perder_primera_vez.dialogue" id="8_n1g68"]
-[ext_resource type="Resource" uid="uid://cphpij2mcytag" path="res://scenes/ui_elements/cinematic/perder.dialogue" id="9_1xc5j"]
-[ext_resource type="Resource" uid="uid://bow6uavno62s4" path="res://scenes/ui_elements/cinematic/ganar.dialogue" id="10_0fkfl"]
+[ext_resource type="Resource" uid="uid://2fajvjptkdni" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/perder_ganzua_primera.dialogue" id="10_s5kdh"]
+[ext_resource type="Resource" uid="uid://c1m5w7044vhns" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/perder_ganzua.dialogue" id="11_s5kdh"]
 [ext_resource type="PackedScene" uid="uid://dgskqx4yo8g1k" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/pestillo_area.tscn" id="12_l35ml"]
+[ext_resource type="Resource" uid="uid://dw1fvtg8uedk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/ganar_ganzuas.dialogue" id="12_s5kdh"]
 
 [sub_resource type="GDScript" id="GDScript_n1g68"]
 script/source = "extends Node2D
@@ -194,7 +194,7 @@ position_smoothing_enabled = true
 [node name="cinematica" type="Node2D" parent="." groups=["cinematica"]]
 position = Vector2(3, 6)
 script = ExtResource("5_b67jx")
-tiempo_dialogue = ExtResource("8_n1g68")
-perder_dialogue = ExtResource("9_1xc5j")
-ganar_dialogue = ExtResource("10_0fkfl")
+tiempo_dialogue = ExtResource("10_s5kdh")
+perder_dialogue = ExtResource("11_s5kdh")
+ganar_dialogue = ExtResource("12_s5kdh")
 next_scene = "uid://bl3lutxcqiq34"

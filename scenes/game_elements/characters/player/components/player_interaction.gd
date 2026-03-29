@@ -22,14 +22,9 @@ func _ready():
 
 	if arma_node:
 		arma_node.visible = false
-	else:
-		print("❌ No se encontró el nodo 'arma' dentro del jugador.")
 
 	if camara:
 		camara.zoom *= 2.1
-		print("🔍 Zoom reducido desde el inicio:", camara.zoom)
-	else:
-		print("❌ No se encontró la cámara en el jugador.")
 
 func _get_is_interacting() -> bool:
 	return not interact_zone.monitoring

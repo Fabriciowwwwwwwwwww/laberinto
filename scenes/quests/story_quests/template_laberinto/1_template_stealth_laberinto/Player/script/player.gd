@@ -69,7 +69,6 @@ func _ready() -> void:
 	if keys_label == null:
 		print("❌ No se encontró Keys_label")
 	else:
-		print("✅ Keys_label encontrado")
 		update_keys_ui()
 
 	# VIDA

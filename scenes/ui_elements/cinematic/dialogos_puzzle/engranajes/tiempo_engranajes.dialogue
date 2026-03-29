@@ -1,9 +1,7 @@
 ~ start
-El tiempo… se ha agotado.
+[GEAR_TIMEOUT]
 
-El patrón correcto era:
+El tiempo…[br]se ha desvanecido entre tus manos.[br]Los engranajes se detienen,[br]y con ellos…[br]tu oportunidad.[br]El mecanismo reinicia su canto…
+Escucha mejor esta vez.[br]{{solucion_texto}}
 
-{{solucion_texto}}
-
-No puedo dudar otra vez.
 => END

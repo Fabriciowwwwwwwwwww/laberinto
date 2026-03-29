@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://ckklv6mylmmmd"]
+[gd_scene load_steps=45 format=3 uid="uid://ckklv6mylmmmd"]
 
 [ext_resource type="Script" uid="uid://d7bu4wrffq1k" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/puzzle_cartas.gd" id="1_6y78b"]
 [ext_resource type="AudioStream" uid="uid://cf0ylmq0fvdin" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/musica mnijuego.mp3" id="2_5qu7x"]
 [ext_resource type="Texture2D" uid="uid://t2acjyq2lruu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0009.png" id="2_7r8vo"]
+[ext_resource type="PackedScene" uid="uid://chp411lja2iom" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/dial.tscn" id="3_4s20y"]
 [ext_resource type="Texture2D" uid="uid://cyqxj8q3sql66" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0010.png" id="3_6y78b"]
 [ext_resource type="Texture2D" uid="uid://ci0hmxh3abuf1" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/fondo engranaje.png" id="3_gfiwo"]
 [ext_resource type="Texture2D" uid="uid://vi0n47ikvtqk" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0011.png" id="4_mjncv"]
@@ -13,15 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://c6na84oxc4e3k" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0014.png" id="7_5qu7x"]
 [ext_resource type="Texture2D" uid="uid://cdbv3cpswlyl7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel.png" id="7_fs4et"]
 [ext_resource type="Texture2D" uid="uid://da8yxar0o334s" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0015.png" id="8_4s20y"]
-[ext_resource type="Script" uid="uid://bada25bf3g5vh" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/cinematica_engranaje.gd" id="8_pgwb0"]
-[ext_resource type="Resource" uid="uid://bf6ou62ieo586" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue" id="9_2tmyd"]
 [ext_resource type="Texture2D" uid="uid://bfo8dydulri1r" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0016.png" id="9_mod83"]
-[ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="10_hpfow"]
 [ext_resource type="Texture2D" uid="uid://bcka0c63icouq" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0017.png" id="10_y2bkd"]
-[ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="11_83rl4"]
 [ext_resource type="Texture2D" uid="uid://0ckbxd737j02" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0018.png" id="11_xshs0"]
 [ext_resource type="Texture2D" uid="uid://iid5vre8ogwb" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0019.png" id="12_4uxrl"]
-[ext_resource type="Resource" uid="uid://bcvt8bcroeyfi" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/ganar_engranajes.dialogue" id="12_qfhlg"]
 [ext_resource type="Texture2D" uid="uid://vqt78upr157w" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0020.png" id="13_2t3f6"]
 [ext_resource type="Texture2D" uid="uid://thrdefri0fvf" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0021.png" id="14_1whqq"]
 [ext_resource type="Texture2D" uid="uid://bxq740kwcc4ru" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/cartas3/cartas0022.png" id="15_bglu8"]
@@ -42,6 +38,11 @@
 [ext_resource type="AudioStream" uid="uid://c4pam5f07v2vw" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto barajar cartas.mp3" id="34_cb32b"]
 [ext_resource type="AudioStream" uid="uid://ccgf5cxjp4x15" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/Biblioteca - sonidos/clock-ticking-sound-effect-240503.ogg" id="35_5qu7x"]
 [ext_resource type="AudioStream" uid="uid://35frdlhp4pxn" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto revelar cartas.mp3" id="36_4s20y"]
+[ext_resource type="Script" uid="uid://du877xi2vt2pb" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/CinematicaCartas.gd" id="38_6y78b"]
+[ext_resource type="Resource" uid="uid://dumj8rl7f5dbo" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/intro_cartas.dialogue" id="39_5qu7x"]
+[ext_resource type="Resource" uid="uid://60eq7qv7aiks" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/perdiste_cartas.dialogue" id="40_4s20y"]
+[ext_resource type="Resource" uid="uid://dw24mm2vinjdk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/tiempo_cartas.dialogue" id="41_mod83"]
+[ext_resource type="Resource" uid="uid://cdu4n6qhiu75n" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/ganar_cartas.dialogue" id="42_y2bkd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c4hdn"]
 animations = [{
@@ -154,6 +155,7 @@ z_index = 1
 [node name="objetos" type="Node2D" parent="OnTheGround/Puzzle_engranaje" groups=["puzzle"]]
 script = ExtResource("1_6y78b")
 music_tracks = Array[AudioStream]([ExtResource("2_5qu7x")])
+dial_scene = ExtResource("3_4s20y")
 
 [node name="animacion_cartas" type="AnimatedSprite2D" parent="OnTheGround/Puzzle_engranaje/objetos"]
 position = Vector2(507, 398)
@@ -182,6 +184,7 @@ text = "5"
 
 [node name="carta2" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(418, 322)
+simbolo = "diamante"
 index = 1
 
 [node name="label_carta_2_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta2"]
@@ -203,6 +206,7 @@ text = "5"
 
 [node name="carta3" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(586, 315)
+simbolo = "trebol"
 index = 2
 
 [node name="label_carta_3_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta3"]
@@ -224,6 +228,7 @@ text = "5"
 
 [node name="carta4" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(747, 311)
+simbolo = "espada"
 index = 3
 
 [node name="label_carta_4_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta4"]
@@ -245,8 +250,8 @@ text = "5"
 
 [node name="fondo" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
 z_index = -1
-position = Vector2(498, 321)
-scale = Vector2(0.644531, 0.555176)
+position = Vector2(486.0001, 290.5)
+scale = Vector2(0.62890613, 0.56347656)
 texture = ExtResource("3_gfiwo")
 
 [node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_engranaje"]
@@ -289,19 +294,29 @@ parameters/looping = true
 stream = ExtResource("36_4s20y")
 parameters/looping = true
 
+[node name="CajaFuerte" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OnTheGround/Puzzle_engranaje/CajaFuerte"]
+offset_right = 937.0
+offset_bottom = 511.0
+
+[node name="confirmar" type="Button" parent="OnTheGround/Puzzle_engranaje/CajaFuerte"]
+offset_right = 63.0
+offset_bottom = 53.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, 7)
 anchor_mode = 0
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="cinematica" type="Node2D" parent="." groups=["cinematica"]]
+[node name="CinematicaCartas" type="Node2D" parent="." groups=["cinematica"]]
 position = Vector2(3, 6)
-script = ExtResource("8_pgwb0")
-dialogue = ExtResource("9_2tmyd")
-perder_dialogue = ExtResource("10_hpfow")
-tiempo_dialogue = ExtResource("11_83rl4")
-ganar_dialogue = ExtResource("12_qfhlg")
-next_scene = "uid://bl3lutxcqiq34"
+script = ExtResource("38_6y78b")
+dialogue = ExtResource("39_5qu7x")
+perder_dialogue = ExtResource("40_4s20y")
+tiempo_dialogue = ExtResource("41_mod83")
+ganar_dialogue = ExtResource("42_y2bkd")
 
-[connection signal="cinematica_terminada" from="cinematica" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]
+[connection signal="pressed" from="OnTheGround/Puzzle_engranaje/CajaFuerte/confirmar" to="OnTheGround/Puzzle_engranaje/objetos" method="_on_confirmar_pressed"]
+[connection signal="cinematica_terminada" from="CinematicaCartas" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]

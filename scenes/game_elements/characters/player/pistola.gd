@@ -37,7 +37,5 @@ func actualizar_pistola():
 func disparar():
 	var bala = escena_bala.instantiate()
 	bala.global_position =$pistola/Marker2D.global_position
-	print("Marker pos local: ", $pistola/Marker2D.position)
-	print("Marker pos global: ", $pistola/Marker2D.global_position)
 	bala.direction = Vector2.RIGHT.rotated($pistola.global_rotation)
 	get_tree().current_scene.add_child(bala)

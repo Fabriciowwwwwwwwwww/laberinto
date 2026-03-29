@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://lqmdd2cldk6q"]
+[gd_scene load_steps=7 format=3 uid="uid://lqmdd2cldk6q"]
 
 [ext_resource type="Texture2D" uid="uid://ejjn7fvc068m" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/engranaje1.png" id="1_hbun4"]
 [ext_resource type="Script" uid="uid://pwbdbwxixgvq" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/engranaje_1.gd" id="2_fwf6b"]
 [ext_resource type="AudioStream" uid="uid://p7kk3xed46qd" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto golpe engranaje.mp3" id="3_05731"]
 [ext_resource type="AudioStream" uid="uid://dgcj13cjps8pm" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto seleccion.mp3" id="4_yvav7"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="5_yvav7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fwf6b"]
 radius = 68.593
@@ -25,3 +26,14 @@ stream = ExtResource("3_05731")
 
 [node name="sonido_seleccion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_yvav7")
+
+[node name="numero" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -23.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_yvav7")
+theme_override_font_sizes/font_size = 30
+text = "1"

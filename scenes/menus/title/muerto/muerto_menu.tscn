@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c67vx6vq75oyg"]
+[gd_scene load_steps=17 format=3 uid="uid://c67vx6vq75oyg"]
 
 [ext_resource type="Texture2D" uid="uid://bpjipmpriiqla" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/fondo_muerte.png" id="1_y5bh0"]
 [ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_bd7et"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="6_xd8qt"]
 [ext_resource type="Texture2D" uid="uid://djgovt6f25uvi" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton opciones.png" id="7_u60h7"]
 [ext_resource type="Texture2D" uid="uid://cn0gt1ihqvbcu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton salir.png" id="8_1tae7"]
+[ext_resource type="Texture2D" uid="uid://ccavio2v8sk7c" path="res://assets/third_party/tiny-swords/UI/Banners/Carved_3Slides.png" id="8_kkbmu"]
+[ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_u60h7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
 texture = ExtResource("6_xd8qt")
@@ -17,6 +19,15 @@ expand_margin_left = 40.0
 expand_margin_top = 30.0
 expand_margin_right = 40.0
 expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jdh17"]
+texture = ExtResource("8_kkbmu")
+texture_margin_left = 64.0
+texture_margin_top = 12.0
+texture_margin_right = 64.0
+texture_margin_bottom = 12.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ldy66"]
 texture = ExtResource("7_u60h7")
@@ -81,10 +92,18 @@ custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
 theme_type_variation = &"BigFlatButton"
 theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
-theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
 theme_override_fonts/font = ExtResource("6_u60h7")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jdh17")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_kkbmu")
 text = "RESTART"
 
 [node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
@@ -96,6 +115,14 @@ theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
 theme_override_fonts/font = ExtResource("6_u60h7")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ldy66")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ldy66")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
@@ -107,7 +134,19 @@ theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
 theme_override_fonts/font = ExtResource("6_u60h7")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ncxay")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ncxay")
 text = "Exit Game"
+
+[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+stream = ExtResource("10_u60h7")
 
 [node name="Options" parent="." instance=ExtResource("6_wckas")]
 visible = false

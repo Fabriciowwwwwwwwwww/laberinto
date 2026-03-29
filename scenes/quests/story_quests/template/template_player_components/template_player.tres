@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://btpi5486cfjb6" path="res://scenes/quests/story_quests/template/template_player_components/template_player_attack_01.png" id="1_m5whc"]
 [ext_resource type="Texture2D" uid="uid://bqrhaksc3vx8m" path="res://scenes/quests/story_quests/template/template_player_components/template_player_defeated.png" id="2_qxir4"]
-[ext_resource type="Texture2D" uid="uid://baphbbn46501e" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/Sprite-0002 (Set de persoanje principal).png" id="4_bi3qj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yg72c"]
 atlas = ExtResource("1_m5whc")
@@ -28,24 +27,26 @@ region = Rect2(0, 0, 192, 192)
 atlas = ExtResource("2_qxir4")
 region = Rect2(192, 0, 192, 192)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ebfn"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi3qj"]
-atlas = ExtResource("4_bi3qj")
+atlas = SubResource("CompressedTexture2D_5ebfn")
 region = Rect2(281, 482, 273, 479)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjf71"]
-atlas = ExtResource("4_bi3qj")
+atlas = SubResource("CompressedTexture2D_5ebfn")
 region = Rect2(281, 1440, 273, 479)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyp3i"]
-atlas = ExtResource("4_bi3qj")
+atlas = SubResource("CompressedTexture2D_5ebfn")
 region = Rect2(554, 1440, 273, 479)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxir4"]
-atlas = ExtResource("4_bi3qj")
+atlas = SubResource("CompressedTexture2D_5ebfn")
 region = Rect2(8, 1440, 273, 479)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw7ra"]
-atlas = ExtResource("4_bi3qj")
+atlas = SubResource("CompressedTexture2D_5ebfn")
 region = Rect2(827, 1440, 273, 479)
 
 [resource]

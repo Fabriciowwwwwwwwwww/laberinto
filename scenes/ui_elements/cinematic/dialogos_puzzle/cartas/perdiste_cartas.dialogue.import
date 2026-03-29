@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://60eq7qv7aiks"
+path="res://.godot/imported/perdiste_cartas.dialogue-7b8017f8e11002ee99a42f3495878343.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/perdiste_cartas.dialogue"
+dest_files=["res://.godot/imported/perdiste_cartas.dialogue-7b8017f8e11002ee99a42f3495878343.tres"]
+
+[params]
+
+defaults=true

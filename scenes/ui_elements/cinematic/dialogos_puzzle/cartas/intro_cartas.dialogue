@@ -1,0 +1,6 @@
+~ start
+¡Atención! Tu objetivo es resolver este puzzle.
+Tipo de operación: {{tipo_operacion}}
+Resultado esperado: {{objetivo}}
+Escoge las cartas correctas para conseguirlo.
+=> END

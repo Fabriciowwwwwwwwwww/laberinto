@@ -1,5 +1,5 @@
 extends Area2D
-
+@export var simbolo: String = "corazon" # o espada, trebol, diamante
 @export var index: int = 0
 @onready var sonido_seleccion: AudioStreamPlayer2D =$sonido_seleccion
 

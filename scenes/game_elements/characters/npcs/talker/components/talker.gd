@@ -3,7 +3,7 @@
 class_name Talker
 extends NPC
 
-const DEFAULT_DIALOGUE: DialogueResource = preload("res://scenes/quests/story_quests/template/3_template_sequence_puzzle/template_sequence_puzzle.dialogue")
+const DEFAULT_DIALOGUE: DialogueResource = preload("res://scenes/quests/story_quests/template/3_template_sequence_puzzle/dialogo_mayordomo_intro.dialogue")
 
 @export var npc_name: String
 @export var dialogue: DialogueResource = DEFAULT_DIALOGUE

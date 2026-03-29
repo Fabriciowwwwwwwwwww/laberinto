@@ -1,7 +1,6 @@
 ~ start
-Mayordomo: Observa cuidadosamente...
-
-{{solucion_texto}}
-
-No falles esta vez.
+[GEAR_INTRO][br]Observa con detenimiento…[br]Los engranajes susurran un orden,[br]una secuencia impuesta por algo… más antiguo.
+Cada giro tiene un propósito,[br]cada dirección, un destino.
+Recuerda:[br]{{solucion_texto}}
+Cuando creas haber entendido…[br]Presiona ENTER,[br]y el juicio será revelado.
 => END

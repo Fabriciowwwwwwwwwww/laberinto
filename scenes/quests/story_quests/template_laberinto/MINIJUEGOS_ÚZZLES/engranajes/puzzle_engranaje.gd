@@ -120,13 +120,17 @@ func check_solution() -> void:
 func puzzle_solved() -> void:
 	print("🎉 GANASTE")
 	sonido_candado.play()
+
 	puzzle_activo = false
 	cronometro.stop()
 
 	get_tree().call_group("candado", "abrir_candado")
 
+	# ⏳ ESPERAR animación
+	await get_tree().create_timer(1.5).timeout
+
 	if cinematic_node:
-		await cinematic_node.notificar_ganador() # 🔥 ESTA ES LA CLAVE
+		await cinematic_node.notificar_ganador()
 
 # -------------------------
 # PERDER

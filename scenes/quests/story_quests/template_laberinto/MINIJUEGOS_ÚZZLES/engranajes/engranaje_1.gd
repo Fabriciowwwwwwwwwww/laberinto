@@ -1,9 +1,10 @@
 extends Area2D
 
-@export var gear_id: int = 0
+@export var gear_id: String = "0"
 @export var rotation_state: int = 0
 @onready var sonido_engranaje: AudioStreamPlayer2D =$sonido_engranaje
 @onready var sonido_seleccion: AudioStreamPlayer2D =$sonido_seleccion
+@onready var id: Label =$numero
 
 @export var spin_speed: float = 180
 
@@ -24,6 +25,7 @@ var target_scale: Vector2
 # READY
 # -------------------------
 func _ready() -> void:
+	id.text=gear_id
 	sonido_engranaje.bus = "SFX"
 	sonido_seleccion.bus = "SFX"
 	puzzle = get_tree().get_first_node_in_group("puzzle")

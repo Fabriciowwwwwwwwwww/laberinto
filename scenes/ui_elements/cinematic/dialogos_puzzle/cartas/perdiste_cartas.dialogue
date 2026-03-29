@@ -1,0 +1,5 @@
+~ start
+¡Incorrecto! No lograste resolver el puzzle.
+Recuerda la operación: {{tipo_operacion}}
+Objetivo: {{objetivo}}
+=> END

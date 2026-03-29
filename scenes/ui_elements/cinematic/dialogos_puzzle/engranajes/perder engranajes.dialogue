@@ -1,9 +1,7 @@
 ~ start
-…He fallado.
 
-El patrón era:
+[GEAR_FAIL][br]El orden ha sido quebrantado.[br]Los engranajes rechazan tu decisión,[br]como si el tiempo mismo negara tu intento.
+Escucha nuevamente…[br]{{solucion_texto}}
+El camino correcto aún existe,[br]esperando ser comprendido.
 
-{{solucion_texto}}
-
-Debo intentarlo nuevamente.
 => END

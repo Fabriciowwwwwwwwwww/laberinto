@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cdu4n6qhiu75n"
+path="res://.godot/imported/ganar_cartas.dialogue-15115de7ce4ff5ee410fe30b477aa1ca.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/ganar_cartas.dialogue"
+dest_files=["res://.godot/imported/ganar_cartas.dialogue-15115de7ce4ff5ee410fe30b477aa1ca.tres"]
+
+[params]
+
+defaults=true

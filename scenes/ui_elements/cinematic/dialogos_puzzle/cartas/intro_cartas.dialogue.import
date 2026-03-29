@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dumj8rl7f5dbo"
+path="res://.godot/imported/intro_cartas.dialogue-b7662352895c0663af8c599d42f1349b.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/intro_cartas.dialogue"
+dest_files=["res://.godot/imported/intro_cartas.dialogue-b7662352895c0663af8c599d42f1349b.tres"]
+
+[params]
+
+defaults=true

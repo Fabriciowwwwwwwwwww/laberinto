@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://chp411lja2iom"]
+
+[ext_resource type="Script" uid="uid://ds2hp23c0t4k0" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/dial.gd" id="1_wlvq5"]
+[ext_resource type="Texture2D" uid="uid://ckwsauhbhlod6" path="res://assets/third_party/inputs/keyboard-and-mouse/Dark/Arrow_Down_Key_Dark.png" id="2_0iecu"]
+
+[node name="Dial" type="HBoxContainer"]
+anchors_preset = -1
+anchor_right = 0.013
+anchor_bottom = 0.017
+offset_left = 1.0
+offset_right = 86.04
+offset_bottom = 11.959999
+script = ExtResource("1_wlvq5")
+
+[node name="Flecha Arriba" type="Button" parent="."]
+layout_mode = 2
+text = "arriba"
+
+[node name="Flecha Abajo" type="Button" parent="."]
+layout_mode = 2
+text = "abajo"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_0iecu")
+
+[connection signal="pressed" from="Flecha Arriba" to="." method="_on_flecha_arriba_pressed"]
+[connection signal="pressed" from="Flecha Abajo" to="." method="_on_flecha_abajo_pressed"]

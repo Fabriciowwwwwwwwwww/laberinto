@@ -4,7 +4,7 @@ class_name cinematica
 signal cinematica_terminada
 
 ## Diálogo inicial
-@export var dialogue: DialogueResource = preload("res://scenes/ui_elements/cinematic/cinematic_placeholder.dialogue")
+@export var dialogue: DialogueResource = preload("res://scenes/ui_elements/cinematic/dialogos_puzzle/ganzuas/intro_ganzuas.dialogue")
 
 ## Diálogos adicionales
 @export var tiempo_dialogue: DialogueResource

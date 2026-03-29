@@ -1,0 +1,5 @@
+~ start
+¡Correcto! Has resuelto el puzzle.
+Recuerda la operación: {{tipo_operacion}}
+Objetivo: {{objetivo}}
+=> END
