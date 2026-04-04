@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4j5w1mnexnr6"
-path="res://.godot/imported/casta corazon.png-4ab364f0c9620ebb023bca232904f2d0.ctex"
+uid="uid://bm36j31j53hv3"
+path="res://.godot/imported/llave.jpg-386b4d68f1803e0cadc43a663c63419b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/casta corazon.png"
-dest_files=["res://.godot/imported/casta corazon.png-4ab364f0c9620ebb023bca232904f2d0.ctex"]
+source_file="res://scenes/quests/story_quests/template_laberinto/minijuego bosque/llave.jpg"
+dest_files=["res://.godot/imported/llave.jpg-386b4d68f1803e0cadc43a663c63419b.ctex"]
 
 [params]
 

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cvjvko1jbx8gw"]
+
+[ext_resource type="Script" uid="uid://btfn8q4mfy0kk" path="res://scenes/quests/story_quests/template_laberinto/minijuego bosque/cabaña.gd" id="1_2v8yf"]
+[ext_resource type="Texture2D" uid="uid://d774u3cep03p" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/edificios sprite/casa.png" id="1_qb8ou"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v8yf"]
+radius = 9.345689
+height = 18.691378
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v8yf"]
+radius = 58.420887
+
+[node name="Cabaña" type="StaticBody2D" unique_id=1942275644]
+script = ExtResource("1_2v8yf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=818302845]
+position = Vector2(6, 3)
+scale = Vector2(0.23258464, 0.3486328)
+texture = ExtResource("1_qb8ou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341079432]
+position = Vector2(18, 63)
+rotation = -1.5184364
+scale = Vector2(2.39, 2.39)
+shape = SubResource("CapsuleShape2D_2v8yf")
+
+[node name="Area2D_Entrada" type="Area2D" parent="." unique_id=1017101854]
+position = Vector2(-59, 75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Entrada" unique_id=1859499068]
+shape = SubResource("CircleShape2D_2v8yf")
+
+[connection signal="area_entered" from="Area2D_Entrada" to="." method="_on_area_2d_entrada_area_entered"]

@@ -1,0 +1,53 @@
+[gd_scene format=4 uid="uid://b8mywvmgsxqb"]
+
+[ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player.tscn" id="1_0hk23"]
+[ext_resource type="Script" uid="uid://c1qbygoidof11" path="res://scenes/quests/story_quests/template_laberinto/minijuego bosque/interior_cabana.gd" id="1_bg4i1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7m8u"]
+size = Vector2(72.5, 152)
+
+[node name="InteriorCabana" type="Node2D" unique_id=660336382]
+script = ExtResource("1_bg4i1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=457542811]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2000.0
+offset_top = -1000.0
+offset_right = 2383.0
+offset_bottom = 1480.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0740935, 0.0496062, 0.0467346, 1)
+
+[node name="Board2D" type="Node2D" parent="." unique_id=1154030226]
+
+[node name="Floor" type="TileMapLayer" parent="Board2D" unique_id=1295361959]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD8//7/AgAAAAAAAAD9//7/AgABAAAAAAD+//7/AgACAAAAAAD///7/AgAAAAAAAAAAAP7/AgABAAAAAAABAP7/AgAAAAAAAAACAP7/AgABAAAAAAADAP7/AgACAAAAAAABAP//AgACAAAAAAACAP//AgABAAAAAAADAP//AgACAAAAAAABAAAAAgACAAAAAAACAAAAAgABAAAAAAADAAAAAgACAAAAAAD/////AgACAAAAAAAAAP//AgABAAAAAAD//wAAAgACAAAAAAAAAAAAAgABAAAAAAD9////AgABAAAAAAD+////AgACAAAAAAD9/wAAAgABAAAAAAD+/wAAAgACAAAAAAD8////AgAAAAAAAAD8/wAAAgAAAAAAAAA=")
+
+[node name="BackgroundThread" type="TileMapLayer" parent="Board2D" unique_id=2065184047]
+texture_filter = 1
+
+[node name="TargetThread" type="TileMapLayer" parent="Board2D" unique_id=1700560033]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD8////AAAAAAAADQA=")
+
+[node name="Foreground" type="TileMapLayer" parent="Board2D" unique_id=895904097]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD+////AAAAAAAACAACAP//AAAAAAAABgD/////AAAAAAAACAABAP//AAAAAAAACQD7//3/AAAAAAAABwD7//7/AAAAAAAABwD7////AAAAAAAABwD7/wAAAAAAAAAAAQD7/wEAAAAAAAAABwD8/wEAAAAAAAAABwD9/wEAAAAAAAAAAQD+/wEAAAAAAAAABwD//wEAAAAAAAAABwAAAAEAAAAAAAAAAQABAAEAAAAAAAAABwACAAEAAAAAAAAABwADAAEAAAAAAAAABwAEAAEAAAAAAAAABwAEAAAAAAAAAAAAAQAEAP//AAAAAAAABwAEAP7/AAAAAAAABwAEAP3/AAAAAAAABwADAP3/AAAAAAAABwACAP3/AAAAAAAAAQABAP3/AAAAAAAABwAAAP3/AAAAAAAABwD///3/AAAAAAAAAQD+//3/AAAAAAAABwD9//3/AAAAAAAABwD8//3/AAAAAAAAAQD8//7/BgAAAAAAAQD8/wAABgAAAAAAAgA=")
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="." unique_id=1844035994]
+
+[node name="Player" parent="." unique_id=637906554 instance=ExtResource("1_0hk23")]
+position = Vector2(-1, 0)
+
+[node name="Area2D_Entrada" type="Area2D" parent="." unique_id=1711558562]
+position = Vector2(-226, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Entrada" unique_id=413335033]
+position = Vector2(17, 8)
+shape = SubResource("RectangleShape2D_f7m8u")

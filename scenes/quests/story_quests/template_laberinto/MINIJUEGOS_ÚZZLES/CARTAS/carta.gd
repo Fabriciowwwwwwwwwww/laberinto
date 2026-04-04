@@ -1,18 +1,45 @@
 extends Area2D
-@export var simbolo: String = "corazon" # o espada, trebol, diamante
+
 @export var index: int = 0
-@onready var sonido_seleccion: AudioStreamPlayer2D =$sonido_seleccion
+
+@onready var sonido_seleccion: AudioStreamPlayer2D = $sonido_seleccion
+@onready var imagen: Sprite2D = $carta
+
+var simbolo: String
+
+var simbolos = ["espada", "diamante", "corazon", "trebol"]
+
+var texturas = {
+	"diamante": preload("res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/carta diamante.png"),
+	"espada": preload("res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/carta espada.png"),
+	"corazon": preload("res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/carta corazon.png"),
+	"trebol": preload("res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/carta trebol.png"),
+}
 
 var escala_original := Vector2.ONE
 var tween: Tween
 var seleccionada := false
 
+# -------------------------
+# READY
+# -------------------------
 func _ready():
 	escala_original = scale
+	
+	randomizar_simbolo() # 🔥 CLAVE
 	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	input_event.connect(_on_input_event)
+
+# -------------------------
+# RANDOM SIMBOLO
+# -------------------------
+func randomizar_simbolo():
+	var random_index = randi() % simbolos.size()
+	simbolo = simbolos[random_index]
+	
+	imagen.texture = texturas[simbolo]
 
 # -------------------------
 # RESET VISUAL
@@ -21,6 +48,9 @@ func resetear():
 	seleccionada = false
 	scale = escala_original
 	modulate = Color(1,1,1)
+
+	# 🔥 OPCIONAL: si quieres que cambie cada ronda
+	randomizar_simbolo()
 
 # -------------------------
 # HOVER

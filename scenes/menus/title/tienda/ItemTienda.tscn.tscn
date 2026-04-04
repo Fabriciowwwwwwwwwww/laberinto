@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bypna5vieglgg"]
+
+[ext_resource type="Texture2D" uid="uid://xgalf60vavis" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/enemigo ataque.png" id="1_jvvun"]
+[ext_resource type="Script" uid="uid://ddu1onkdrpngl" path="res://scenes/menus/title/tienda/item_tienda.tscn.gd" id="1_lxehs"]
+
+[node name="ItemTienda_tscn" type="Control" unique_id=354755083]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lxehs")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2100637541]
+layout_mode = 0
+offset_left = -62.0
+offset_top = -59.0
+offset_right = 109.0
+offset_bottom = 76.0
+texture = ExtResource("1_jvvun")
+
+[node name="Label" type="Label" parent="." unique_id=539004414]
+layout_mode = 0
+offset_left = -46.0
+offset_top = 35.0
+offset_right = 20.0
+offset_bottom = 84.0
+text = "item de
+ hombre"

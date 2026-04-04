@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cs7pboo6eqjfb"]
+[gd_scene format=3 uid="uid://cs7pboo6eqjfb"]
 
 [ext_resource type="Script" uid="uid://dypv8hj74hl31" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Enemy/Enemy.gd" id="1_epr5s"]
 [ext_resource type="Texture2D" uid="uid://b4uddna3p375v" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/enemigo_sprite/d.png" id="2_jaomq"]

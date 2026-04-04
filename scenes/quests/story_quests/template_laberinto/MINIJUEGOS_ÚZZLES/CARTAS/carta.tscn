@@ -1,23 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://qxo1cnjskj4a"]
+[gd_scene format=3 uid="uid://qxo1cnjskj4a"]
 
 [ext_resource type="Script" uid="uid://y0ahh4k2smyn" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/carta.gd" id="1_1hm47"]
-[ext_resource type="Texture2D" uid="uid://b4j5w1mnexnr6" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/casta corazon.png" id="2_1hm47"]
+[ext_resource type="Texture2D" uid="uid://hq487o4h84f2" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/carta diamante.png" id="2_dnejf"]
 [ext_resource type="AudioStream" uid="uid://dgcj13cjps8pm" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto seleccion.mp3" id="3_dnejf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnejf"]
 size = Vector2(139.5, 196.5)
 
-[node name="carta" type="Area2D"]
+[node name="carta" type="Area2D" unique_id=976794651]
 script = ExtResource("1_1hm47")
 
-[node name="carta" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
-scale = Vector2(0.972973, 1.01896)
-texture = ExtResource("2_1hm47")
+[node name="carta" type="Sprite2D" parent="." unique_id=1655767945]
+position = Vector2(-2.8264866, 3.8146973e-06)
+scale = Vector2(0.652968, 0.6335404)
+texture = ExtResource("2_dnejf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466804365]
 position = Vector2(-1.75, -1.25)
 shape = SubResource("RectangleShape2D_dnejf")
 
-[node name="sonido_seleccion" type="AudioStreamPlayer2D" parent="."]
+[node name="sonido_seleccion" type="AudioStreamPlayer2D" parent="." unique_id=632061479]
 stream = ExtResource("3_dnejf")

@@ -1,0 +1,4 @@
+
+~ start
+{{npc_name}}: [[Hi|Hello|Greetings]], {{player_name}}
+=> END

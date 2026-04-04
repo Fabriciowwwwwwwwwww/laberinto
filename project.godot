@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="laberinto_sombras"
 run/main_scene="uid://wgmdsj1sbmja"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://bgs5s52hkygv2"
 config/icon="uid://cw8vv8lilixgf"
 
@@ -27,6 +31,7 @@ SceneSwitcher2="*res://scenes/globals/scene_switcher/scene_switcher.gd"
 GameStateLaberinto="*res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/GameStateLaberinto.tscn"
 MusicManager="*res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/MusicManager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Gamestateminijuegos="*uid://deo2xguf545v"
 
 [debug]
 
@@ -52,7 +57,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/sprite_frames_exported_textures/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 

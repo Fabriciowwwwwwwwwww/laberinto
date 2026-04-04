@@ -54,8 +54,26 @@ func safe_get_node(path: NodePath) -> Node:
 # READY
 # =====================================================
 func _ready() -> void:
-	arma_sonido.bus = "SFX"
 	add_to_group("player")
+
+	# 🔥 SI VIENE DEL EXTERIOR → aparece dentro de la cabaña
+	if Gamestateminijuegos.viene_de_exterior:
+		var spawn = get_tree().get_first_node_in_group("spawn_interior")
+
+		if spawn:
+			global_position = spawn.global_position
+			print("SPAWN INTERIOR:", global_position)
+
+		Gamestateminijuegos.viene_de_exterior = false
+
+	# 🔥 SI VIENE DEL INTERIOR → vuelve afuera
+	elif Gamestateminijuegos.viene_de_interior:
+		global_position = Gamestateminijuegos.posicion_entrada_exterior + Vector2(0, 80) # 🔥 empuja hacia abajo
+		print("VOLVIENDO AFUERA:", global_position)
+
+		Gamestateminijuegos.viene_de_interior = false
+
+	arma_sonido.bus = "SFX"
 
 	vida_actual = vida_maxima
 	current_speed = WALK_SPEED
@@ -225,8 +243,7 @@ func disparar() -> void:
 		bala.direction = Vector2.RIGHT.rotated($arma.global_rotation)
 
 		get_tree().current_scene.add_child(bala)
-	else:
-		print("Sin balas")
+
 
 
 func recargar() -> void:

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3738jisblhfu"
+path="res://.godot/imported/ganar_engranajes_nuevo.dialogue-73ffc6cc9f9bbf90c886d5746cb65a9d.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/dialogue/components/ganar_engranajes_nuevo.dialogue"
+dest_files=["res://.godot/imported/ganar_engranajes_nuevo.dialogue-73ffc6cc9f9bbf90c886d5746cb65a9d.tres"]
+
+[params]
+
+defaults=true

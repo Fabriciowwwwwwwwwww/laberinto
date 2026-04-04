@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://bvcabfkw3suma"]
+
+[ext_resource type="Texture2D" uid="uid://d2nrukoovnva1" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/tienda fondo.png" id="1_jup2a"]
+[ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_5m3y5"]
+[ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/main.tscn" id="3_t4bl3"]
+[ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_28rsc"]
+[ext_resource type="Script" uid="uid://csvn2alr54qfb" path="res://scenes/menus/title/tienda/shop_manager.gd" id="5_gu363"]
+[ext_resource type="Texture2D" uid="uid://k5qch86xsjit" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/tienda.png" id="6_3kuj7"]
+[ext_resource type="PackedScene" uid="uid://bypna5vieglgg" path="res://scenes/menus/title/tienda/ItemTienda.tscn.tscn" id="6_5m3y5"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="7_woldp"]
+[ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="8_0431q"]
+[ext_resource type="Texture2D" uid="uid://ccavio2v8sk7c" path="res://assets/third_party/tiny-swords/UI/Banners/Carved_3Slides.png" id="9_aulq3"]
+[ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_1xxiq"]
+[ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="11_jb2p7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
+texture = ExtResource("8_0431q")
+expand_margin_left = 40.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jdh17"]
+texture = ExtResource("9_aulq3")
+texture_margin_left = 64.0
+texture_margin_top = 12.0
+texture_margin_right = 64.0
+texture_margin_bottom = 12.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1792263213]
+
+[node name="fondo" type="TextureRect" parent="." unique_id=565000839]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 1949.0
+offset_bottom = 1124.0
+texture = ExtResource("1_jup2a")
+
+[node name="TitleScreen" type="Control" parent="." unique_id=1008541433]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_5m3y5")
+next_scene = ExtResource("3_t4bl3")
+
+[node name="ShopManager" type="Control" parent="TitleScreen" unique_id=1014309890]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = -1027.0
+offset_right = 2003.0
+offset_bottom = 93.0
+theme = ExtResource("4_28rsc")
+script = ExtResource("5_gu363")
+animacion_duracion = 1.2
+animacion_delay = 0.2
+tipo_transicion = 10
+skins = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
+bailes = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
+poderes = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
+
+[node name="CategoryLabel" type="Label" parent="TitleScreen/ShopManager" unique_id=76165652]
+z_index = 1
+layout_mode = 0
+offset_left = 719.0
+offset_top = 85.0
+offset_right = 914.0
+offset_bottom = 170.0
+text = "CategoryLabel "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/ShopManager" unique_id=1611701514]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 12.0
+offset_right = 1673.0
+offset_bottom = 1036.0
+texture = ExtResource("6_3kuj7")
+
+[node name="comprar_button" type="Button" parent="TitleScreen/ShopManager" unique_id=631390162]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(530, 120)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 804.0
+offset_right = 1747.0
+offset_bottom = 924.0
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(0.7874414, 0.6954561, 0, 0.666)
+theme_override_fonts/font = ExtResource("7_woldp")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_kkbmu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jdh17")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_kkbmu")
+text = "Comprar"
+
+[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/ShopManager" unique_id=268118537]
+position = Vector2(2, 566)
+stream = ExtResource("10_1xxiq")
+
+[node name="GridContainer" type="Control" parent="TitleScreen/ShopManager" unique_id=377417091]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = 229.0
+offset_right = -409.0
+offset_bottom = -408.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 200)
+pivot_offset_ratio = Vector2(220, 200)
+
+[node name="PanelPreview" type="Control" parent="TitleScreen/ShopManager" unique_id=427483105]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.885, 2.885)
+pivot_offset = Vector2(200, 200)
+pivot_offset_ratio = Vector2(200, 200)
+
+[node name="Options" parent="." unique_id=1515614371 instance=ExtResource("11_jb2p7")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 1927.0
+offset_bottom = 1104.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="visibility_changed" from="TitleScreen/ShopManager" to="TitleScreen/ShopManager" method="_on_visibility_changed"]
+[connection signal="pressed" from="TitleScreen/ShopManager/comprar_button" to="TitleScreen/ShopManager" method="_on_comprar_button_pressed"]
+[connection signal="back" from="Options" to="TitleScreen" method="_on_options_back"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://p5pp73efr80p"
+path="res://.godot/imported/final cartas.dialogue-3f2ff00e7c9d41d1634844947c1722fd.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/final cartas.dialogue"
+dest_files=["res://.godot/imported/final cartas.dialogue-3f2ff00e7c9d41d1634844947c1722fd.tres"]
+
+[params]
+
+defaults=true

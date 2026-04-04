@@ -177,7 +177,8 @@ func _input(event) -> void:
 		ocultar_cartas()
 
 		await get_tree().process_frame
-		sonido_cartas.play()
+		
+		# ❌ SIN sonido aquí
 		animacion.play("esconder_cartas")
 		await animacion.animation_finished
 
@@ -246,23 +247,27 @@ func ganar() -> void:
 	guardar_seleccion()
 	victorias_actuales += 1
 
-	animacion.play("barajar_cartas")
+	if sonido_cartas.playing:
+		sonido_cartas.stop()
+	sonido_cartas.play()
+
+	animacion.play("esconder_cartas")
 	await animacion.animation_finished
 
-	# ✅ 1. GENERAMOS LA SIGUIENTE SOLUCIÓN ANTES DEL DIÁLOGO
+	# 🔥 SOLO SI NO ES LA ÚLTIMA
 	if victorias_actuales < victorias_necesarias:
 		generate_solution()
 		if cinematic_node:
 			cinematic_node.set_solucion([], tipo_operacion, objetivo)
 
-	# ✅ 2. AHORA SÍ NOTIFICAMOS (Ya tiene los datos nuevos)
-	if cinematic_node:
-		await cinematic_node.notificar_progreso(victorias_actuales, victorias_necesarias)
+		if cinematic_node:
+			await cinematic_node.notificar_progreso(victorias_actuales, victorias_necesarias)
 
-	if victorias_actuales >= victorias_necesarias:
-		await iniciar_fase_final()
-	else:
 		await reiniciar_flujo()
+
+	# 🔥 SI ES LA ÚLTIMA → NO PROGRESO
+	else:
+		await iniciar_fase_final()
 
 # -------------------------
 # PERDER (MODIFICADO)
@@ -270,22 +275,24 @@ func ganar() -> void:
 func perder(tipo := "error") -> void:
 	cronometro.stop()
 
+	# ✅ SONIDO DE BARajar SOLO AQUÍ
+	if sonido_barajar.playing:
+		sonido_barajar.stop()
 	sonido_barajar.play()
+
 	animacion.play("barajar_cartas")
 	await animacion.animation_finished
 
-	# ✅ 1. GENERAMOS NUEVA SOLUCIÓN PARA EL REINTENTO
+	# Nueva solución
 	generate_solution()
 	if cinematic_node:
 		cinematic_node.set_solucion([], tipo_operacion, objetivo)
 
-	# ✅ 2. NOTIFICAMOS LA PÉRDIDA
+	# Notificar pérdida
 	if cinematic_node:
 		await cinematic_node.notificar_perdida(tipo)
-		# Nota: quitamos el await cinematic_terminada de aquí si ya está en la función notificar
 
 	await reiniciar_flujo()
-
 # -------------------------
 # INICIO (MODIFICADO)
 # -------------------------
@@ -294,10 +301,7 @@ func iniciar_puzzle() -> void:
 	ha_interactuado = false
 	resetear_cartas()
 
-	# ❌ QUITAMOS EL GENERATE_SOLUTION DE AQUÍ
-	# Porque ahora lo hacemos en ready, ganar o perder.
-
-	sonido_cartas.play()
+	# ❌ SIN sonido aquí
 	animacion.play("revelar_cartas")
 	await animacion.animation_finished
 
@@ -328,47 +332,34 @@ func iniciar_fase_final() -> void:
 	cronometro.stop()
 	puzzle_activo = false
 	ocultar_cartas()
-	
-	# Limpiar HBoxContainer
+
+	# 🎬 CINEMÁTICA PREVIA
+	if cinematic_node:
+		await cinematic_node.notificar_previo_final()
+
+	# limpiar
 	for child in contenedor_diales.get_children():
 		child.queue_free()
-	
-	# Instanciar tantos diales como símbolos haya en la secuencia
-	for i in secuencia_simbolos.size():
+
+	for i in range(secuencia_simbolos.size()):
 		var nuevo_dial = dial_scene.instantiate()
 		contenedor_diales.add_child(nuevo_dial)
-		
-		# Forzamos al array a tener el tamaño correcto con el valor inicial del dial
-		if input_usuario.size() < secuencia_simbolos.size():
-			input_usuario.resize(secuencia_simbolos.size())
+
+		input_usuario.resize(secuencia_simbolos.size())
 		input_usuario[i] = nuevo_dial.get_valor()
 
-		# Conectamos la señal para que actualice el array cuando el jugador toque las flechas
+		var index = i
 		nuevo_dial.valor_cambiado.connect(func(nuevo_nombre):
-			input_usuario[i] = nuevo_nombre
-			print("Código actualizado en posición ", i, ": ", nuevo_nombre)
+			input_usuario[index] = nuevo_nombre
 		)
 
 	canvas_final.visible = true
-	
 
 
 func agregar_input(simbolo: String) -> void:
 	input_usuario.append(str(simbolo))
 
-	if input_usuario.size() == secuencia_simbolos.size():
-		await verificar_codigo_final()
 
-func verificar_codigo_final() -> void:
-	print("Jugador:", input_usuario)
-	print("Correcto:", secuencia_simbolos)
-
-	if input_usuario == secuencia_simbolos:
-		await cinematic_node.notificar_ganador()
-	else:
-		input_usuario.clear()
-		await cinematic_node.notificar_perdida("codigo")
-		await iniciar_fase_final()
 
 # -------------------------
 # VISUAL
@@ -391,15 +382,17 @@ func resetear_cartas() -> void:
 
 
 func _on_confirmar_pressed() -> void:
-	if str(input_usuario) == str(secuencia_simbolos):
+	print("Jugador:", input_usuario)
+	print("Correcto:", secuencia_simbolos)
+
+	if input_usuario == secuencia_simbolos:
 		print("✅ CÓDIGO CORRECTO")
 		canvas_final.visible = false
-		await cinematic_node.notificar_ganador()
+		await cinematic_node.notificar_final_ganado()
 	else:
 		print("❌ CÓDIGO INCORRECTO - REINICIANDO TODO")
 		canvas_final.visible = false
 		
-		# Reset total estilo Resident Evil
 		victorias_actuales = 0
 		secuencia_simbolos.clear()
 		input_usuario.clear()

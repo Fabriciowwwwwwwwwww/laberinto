@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ckklv6mylmmmd"]
+[gd_scene format=3 uid="uid://ckklv6mylmmmd"]
 
 [ext_resource type="Script" uid="uid://d7bu4wrffq1k" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/puzzle_cartas.gd" id="1_6y78b"]
 [ext_resource type="AudioStream" uid="uid://cf0ylmq0fvdin" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/musica mnijuego.mp3" id="2_5qu7x"]
@@ -43,6 +43,8 @@
 [ext_resource type="Resource" uid="uid://60eq7qv7aiks" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/perdiste_cartas.dialogue" id="40_4s20y"]
 [ext_resource type="Resource" uid="uid://dw24mm2vinjdk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/tiempo_cartas.dialogue" id="41_mod83"]
 [ext_resource type="Resource" uid="uid://cdu4n6qhiu75n" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/ganar_cartas.dialogue" id="42_y2bkd"]
+[ext_resource type="Resource" uid="uid://dbfdhc5mdmqel" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/previo_final_dialogo.dialogue" id="44_y2bkd"]
+[ext_resource type="Resource" uid="uid://p5pp73efr80p" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/cartas/final cartas.dialogue" id="45_xshs0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c4hdn"]
 animations = [{
@@ -143,29 +145,29 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="SequencePuzzleTemplate" type="Node2D"]
+[node name="SequencePuzzleTemplate" type="Node2D" unique_id=159929962]
 position = Vector2(-2, -44)
 
-[node name="OnTheGround" type="Node2D" parent="."]
+[node name="OnTheGround" type="Node2D" parent="." unique_id=335999737]
 y_sort_enabled = true
 
-[node name="Puzzle_engranaje" type="Node2D" parent="OnTheGround"]
+[node name="Puzzle_engranaje" type="Node2D" parent="OnTheGround" unique_id=1294164361]
 z_index = 1
 
-[node name="objetos" type="Node2D" parent="OnTheGround/Puzzle_engranaje" groups=["puzzle"]]
+[node name="objetos" type="Node2D" parent="OnTheGround/Puzzle_engranaje" unique_id=2045606828 groups=["puzzle"]]
 script = ExtResource("1_6y78b")
 music_tracks = Array[AudioStream]([ExtResource("2_5qu7x")])
 dial_scene = ExtResource("3_4s20y")
 
-[node name="animacion_cartas" type="AnimatedSprite2D" parent="OnTheGround/Puzzle_engranaje/objetos"]
+[node name="animacion_cartas" type="AnimatedSprite2D" parent="OnTheGround/Puzzle_engranaje/objetos" unique_id=2052949879]
 position = Vector2(507, 398)
 sprite_frames = SubResource("SpriteFrames_c4hdn")
 animation = &"esconder_cartas"
 
-[node name="carta" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
+[node name="carta" parent="OnTheGround/Puzzle_engranaje/objetos" unique_id=1914150399 groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(254, 325)
 
-[node name="label_carta_1_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta"]
+[node name="label_carta_1_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta" unique_id=1206124914]
 offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
@@ -173,7 +175,7 @@ offset_bottom = -59.0
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="label_carta_1_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta"]
+[node name="label_carta_1_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta" unique_id=2061795165]
 offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
@@ -182,12 +184,11 @@ rotation = 3.14159
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="carta2" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
+[node name="carta2" parent="OnTheGround/Puzzle_engranaje/objetos" unique_id=1834778735 groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(418, 322)
-simbolo = "diamante"
 index = 1
 
-[node name="label_carta_2_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta2"]
+[node name="label_carta_2_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta2" unique_id=2134351576]
 offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
@@ -195,7 +196,7 @@ offset_bottom = -59.0
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="label_carta_2_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta2"]
+[node name="label_carta_2_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta2" unique_id=251788109]
 offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
@@ -204,12 +205,11 @@ rotation = 3.14159
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="carta3" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
+[node name="carta3" parent="OnTheGround/Puzzle_engranaje/objetos" unique_id=1536671656 groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(586, 315)
-simbolo = "trebol"
 index = 2
 
-[node name="label_carta_3_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta3"]
+[node name="label_carta_3_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta3" unique_id=942284671]
 offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
@@ -217,7 +217,7 @@ offset_bottom = -59.0
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="label_carta_3_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta3"]
+[node name="label_carta_3_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta3" unique_id=1517756228]
 offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
@@ -226,12 +226,11 @@ rotation = 3.14159
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="carta4" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["cartas"] instance=ExtResource("29_6y78b")]
+[node name="carta4" parent="OnTheGround/Puzzle_engranaje/objetos" unique_id=1543818079 groups=["cartas"] instance=ExtResource("29_6y78b")]
 position = Vector2(747, 311)
-simbolo = "espada"
 index = 3
 
-[node name="label_carta_4_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta4"]
+[node name="label_carta_4_parte de arriba" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta4" unique_id=1064127223]
 offset_left = 32.0
 offset_top = -92.0
 offset_right = 77.0
@@ -239,7 +238,7 @@ offset_bottom = -59.0
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="label_carta_4_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta4"]
+[node name="label_carta_4_parte de abajo" type="Label" parent="OnTheGround/Puzzle_engranaje/objetos/carta4" unique_id=164591398]
 offset_left = -47.0
 offset_top = 88.0
 offset_right = -2.0
@@ -248,16 +247,16 @@ rotation = 3.14159
 theme_override_colors/font_color = Color(0.00141227, 0.00033109, 0.000358657, 0.588235)
 text = "5"
 
-[node name="fondo" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
+[node name="fondo" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje" unique_id=1876877739]
 z_index = -1
 position = Vector2(486.0001, 290.5)
 scale = Vector2(0.62890613, 0.56347656)
 texture = ExtResource("3_gfiwo")
 
-[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_engranaje"]
+[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_engranaje" unique_id=1748093528]
 wait_time = 2.884
 
-[node name="mano" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
+[node name="mano" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje" unique_id=919522960]
 position = Vector2(367, 506)
 scale = Vector2(0.149415, 0.164063)
 texture = ExtResource("4_uxfgg")
@@ -265,14 +264,14 @@ centered = false
 offset = Vector2(-1450.94, -100)
 script = ExtResource("5_ny7wo")
 
-[node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje"]
+[node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje" unique_id=1764083192]
 
-[node name="panel de reloj" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay"]
+[node name="panel de reloj" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay" unique_id=1823803302]
 position = Vector2(180, 135.5)
 scale = Vector2(0.546875, 0.590909)
 texture = ExtResource("7_fs4et")
 
-[node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay"]
+[node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay" unique_id=1541112879]
 offset_left = 98.0
 offset_top = 93.0
 offset_right = 330.0
@@ -282,41 +281,45 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "ghghg"
 
-[node name="barajar" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje"]
+[node name="barajar" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje" unique_id=2032603803]
 stream = ExtResource("34_cb32b")
 parameters/looping = false
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje"]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje" unique_id=1479706425]
 stream = ExtResource("35_5qu7x")
 parameters/looping = true
 
-[node name="cartas" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje"]
+[node name="cartas" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje" unique_id=346259938]
 stream = ExtResource("36_4s20y")
-parameters/looping = true
+parameters/looping = false
 
-[node name="CajaFuerte" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje"]
+[node name="CajaFuerte" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje" unique_id=1622708249]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OnTheGround/Puzzle_engranaje/CajaFuerte"]
+[node name="HBoxContainer" type="HBoxContainer" parent="OnTheGround/Puzzle_engranaje/CajaFuerte" unique_id=296961376]
 offset_right = 937.0
 offset_bottom = 511.0
 
-[node name="confirmar" type="Button" parent="OnTheGround/Puzzle_engranaje/CajaFuerte"]
+[node name="confirmar" type="Button" parent="OnTheGround/Puzzle_engranaje/CajaFuerte" unique_id=758404170]
 offset_right = 63.0
 offset_bottom = 53.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=689992407]
 position = Vector2(6, 7)
 anchor_mode = 0
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="CinematicaCartas" type="Node2D" parent="." groups=["cinematica"]]
+[node name="CinematicaCartas" type="Node2D" parent="." unique_id=1601480955 groups=["cinematica"]]
 position = Vector2(3, 6)
 script = ExtResource("38_6y78b")
+progreso_dialogue = ExtResource("42_y2bkd")
 dialogue = ExtResource("39_5qu7x")
 perder_dialogue = ExtResource("40_4s20y")
 tiempo_dialogue = ExtResource("41_mod83")
-ganar_dialogue = ExtResource("42_y2bkd")
+ganar_dialogue = ExtResource("45_xshs0")
+previo_final_dialogue = ExtResource("44_y2bkd")
+final_dialogue = ExtResource("45_xshs0")
+next_scene = "uid://bl3lutxcqiq34"
 
 [connection signal="pressed" from="OnTheGround/Puzzle_engranaje/CajaFuerte/confirmar" to="OnTheGround/Puzzle_engranaje/objetos" method="_on_confirmar_pressed"]
 [connection signal="cinematica_terminada" from="CinematicaCartas" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]

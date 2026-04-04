@@ -2,15 +2,20 @@ extends Node2D
 class_name CinematicaCartas
 
 signal cinematica_terminada
-
+@export var progreso_dialogue: DialogueResource  # 👈 NUEVO
+# 🎬 DIALOGOS
 @export var dialogue: DialogueResource
 @export var perder_dialogue: DialogueResource
 @export var tiempo_dialogue: DialogueResource
 @export var ganar_dialogue: DialogueResource
+@export var previo_final_dialogue: DialogueResource
+@export var final_dialogue: DialogueResource
 
+# 🌍 ESCENA
 @export_file("*.tscn") var next_scene: String
 @export var spawn_point_path: String
 
+# 🧠 DATOS
 var solucion_actual: Array = []
 var tipo_operacion: String = ""
 var objetivo: int = 0
@@ -34,19 +39,48 @@ func reproducir_intro() -> void:
 		print("📢 MOSTRANDO DIALOGO INTRO")
 
 		var balloon = DialogueManager.show_dialogue_balloon(
-			dialogue,
-			"",
-			[self]
+			dialogue, "", [self]
 		)
 
-		# 🔥 CLAVE: esperar correctamente
 		if balloon:
 			await DialogueManager.dialogue_ended
 
-	else:
-		print("⚠️ NO HAY DIALOGUE ASIGNADO")
-
 	print("✅ Cinemática Cartas: FIN INTRO")
+	cinematica_terminada.emit()
+
+# -------------------------
+# PREVIO FINAL
+# -------------------------
+func notificar_previo_final() -> void:
+	if previo_final_dialogue:
+		print("📢 MOSTRANDO DIALOGO PREVIO FINAL")
+
+		var balloon = DialogueManager.show_dialogue_balloon(
+			previo_final_dialogue, "", [self]
+		)
+
+		if balloon:
+			await DialogueManager.dialogue_ended
+
+	cinematica_terminada.emit()
+
+# -------------------------
+# FINAL GANADO
+# -------------------------
+func notificar_final_ganado() -> void:
+	if final_dialogue:
+		print("📢 MOSTRANDO DIALOGO FINAL GANADO")
+
+		var balloon = DialogueManager.show_dialogue_balloon(
+			final_dialogue, "", [self]
+		)
+
+		if balloon:
+			await DialogueManager.dialogue_ended
+
+	# 🔥 cambio de escena SOLO aquí
+	_on_cambio_de_escena()
+
 	cinematica_terminada.emit()
 
 # -------------------------
@@ -80,30 +114,18 @@ func notificar_perdida(tipo := "error") -> void:
 	cinematica_terminada.emit()
 
 # -------------------------
-# GANAR
-# -------------------------
-func notificar_ganador() -> void:
-	if ganar_dialogue:
-		print("📢 MOSTRANDO DIALOGO GANAR")
-
-		var balloon = DialogueManager.show_dialogue_balloon(ganar_dialogue, "", [self])
-		if balloon:
-			await DialogueManager.dialogue_ended
-
-		_on_cambio_de_escena()
-
-	cinematica_terminada.emit()
-
-# -------------------------
-# PROGRESO
+# PROGRESO (GANAR RONDA)
 # -------------------------
 func notificar_progreso(actual: int, total: int) -> void:
 	print("Progreso:", actual, "/", total)
 
-	if ganar_dialogue:
+	if progreso_dialogue:
 		print("📢 MOSTRANDO DIALOGO PROGRESO")
 
-		var balloon = DialogueManager.show_dialogue_balloon(ganar_dialogue, "", [self])
+		var balloon = DialogueManager.show_dialogue_balloon(
+			progreso_dialogue, "", [self]
+		)
+
 		if balloon:
 			await DialogueManager.dialogue_ended
 
