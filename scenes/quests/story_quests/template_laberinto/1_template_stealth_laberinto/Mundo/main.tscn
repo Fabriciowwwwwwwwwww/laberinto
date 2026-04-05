@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bl3lutxcqiq34"]
+[gd_scene load_steps=0 format=4 uid="uid://bl3lutxcqiq34"]
 
 [ext_resource type="Script" uid="uid://d1w3stfp8a4f0" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/main.gd" id="1_ejnlw"]
 [ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player.tscn" id="1_rgcj6"]
@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cm2ldwt2752ue" path="res://scenes/quests/story_quests/template_laberinto/Objetos/Escenas/puerta_ganzua.tscn" id="11_whg8k"]
 [ext_resource type="Script" uid="uid://41683hv5l7l3" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/spaw_enemigos.gd" id="13_eig7k"]
 [ext_resource type="Script" uid="uid://bp4tndbe5ab0n" path="res://scenes/quests/story_quests/template_laberinto/Objetos/Script/puerta.gd" id="14_1wq28"]
-[ext_resource type="PackedScene" uid="uid://b4ncxcwf7mqin" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/engranajes/laberinto puzzle engranajes.tscn" id="14_88uci"]
-[ext_resource type="PackedScene" uid="uid://b71qb4sq1dg87" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/ganzuas_puzzle.tscn" id="14_od6ok"]
+[ext_resource type="PackedScene" uid="uid://b4ncxcwf7mqin" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/engranajes/laberinto puzzle engranajes.tscn" id="14_88uci"]
+[ext_resource type="PackedScene" uid="uid://b71qb4sq1dg87" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/ganzuas_puzzle.tscn" id="14_od6ok"]
 [ext_resource type="PackedScene" uid="uid://dkim32aqx2vtl" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/llaves.tscn" id="20_1uqpu"]
 [ext_resource type="PackedScene" uid="uid://c52fi7scepryb" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/assets/mapa/mapa.tscn" id="21_4nw38"]
 [ext_resource type="PackedScene" uid="uid://bdm3mrriev6ic" path="res://scenes/quests/story_quests/template_laberinto/Objetos/Escenas/vida.tscn" id="23_88uci"]

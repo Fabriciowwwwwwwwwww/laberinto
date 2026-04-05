@@ -20,7 +20,7 @@ func _on_body_entered(body):
 		Gamestateminijuegos.viene_de_interior = true
 
 		SceneSwitcher2.change_to_file_with_transition(
-			"res://scenes/quests/story_quests/template_laberinto/minijuego_bosque.tscn",
+			"res://scenes/quests/story_quests/template_laberinto/minijuego bosque/minijuego_bosque.tscn",
 			"",
 			Transition.Effect.FADE,
 			Transition.Effect.FADE

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://chp411lja2iom"]
+[gd_scene load_steps=0 format=3 uid="uid://chp411lja2iom"]
 
-[ext_resource type="Script" uid="uid://ds2hp23c0t4k0" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/CARTAS/dial.gd" id="1_wlvq5"]
+[ext_resource type="Script" uid="uid://ds2hp23c0t4k0" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/CARTAS/dial.gd" id="1_wlvq5"]
 [ext_resource type="Texture2D" uid="uid://ckwsauhbhlod6" path="res://assets/third_party/inputs/keyboard-and-mouse/Dark/Arrow_Down_Key_Dark.png" id="2_0iecu"]
 [ext_resource type="Texture2D" uid="uid://ubl3q3pgb4ga" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/dial btn arriba.png" id="2_5lrrr"]
 [ext_resource type="Texture2D" uid="uid://ctwb6ld40jjkd" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/dial uno.png" id="3_pcsti"]

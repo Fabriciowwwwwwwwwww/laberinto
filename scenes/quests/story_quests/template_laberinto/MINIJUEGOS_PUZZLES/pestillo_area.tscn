@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgskqx4yo8g1k"]
 
-[ext_resource type="Script" uid="uid://bpnv78v5cqqs7" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_ÚZZLES/pestillo_area.gd" id="1_aouwh"]
+[ext_resource type="Script" uid="uid://bpnv78v5cqqs7" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/pestillo_area.gd" id="1_aouwh"]
 [ext_resource type="Texture2D" uid="uid://chflxgkw5udl1" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/g4.png" id="2_25kxt"]
 [ext_resource type="AudioStream" uid="uid://duiku5ns67i5w" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/Biblioteca - sonidos/mouse-click-117076.ogg" id="3_25kxt"]
 
