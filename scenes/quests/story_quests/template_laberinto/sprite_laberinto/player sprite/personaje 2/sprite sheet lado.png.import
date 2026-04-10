@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvh8j1lr1jbse"
-path="res://.godot/imported/correr defrente.png-c36a5dc9003ed32f697a28cbdcb9c0f0.ctex"
+uid="uid://bprmv75rkn54t"
+path="res://.godot/imported/sprite sheet lado.png-5dfef6602aabec5fe41dad215b6b9df3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/personaje 2/correr defrente.png"
-dest_files=["res://.godot/imported/correr defrente.png-c36a5dc9003ed32f697a28cbdcb9c0f0.ctex"]
+source_file="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/personaje 2/sprite sheet lado.png"
+dest_files=["res://.godot/imported/sprite sheet lado.png-5dfef6602aabec5fe41dad215b6b9df3.ctex"]
 
 [params]
 
