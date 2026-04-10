@@ -37,7 +37,7 @@ var can_run: bool = true
 
 # -------- INTERACCIONES --------
 var current_chest: Chest = null
-var current_door: Puerta = null
+var current_door: Node = null  # O simplemente 'var current_door = null'
 var keys_collected: int = 0
 
 
@@ -284,7 +284,7 @@ func set_current_chest(chest: Chest)-> void:
 func clear_current_chest()-> void: 
 	current_chest = null 
 	
-func set_current_door(door: Puerta)-> void:
+func set_current_door(door)-> void:
 	if current_door and current_door != door: 
 		current_door.player_exit() 
 	current_door = door 

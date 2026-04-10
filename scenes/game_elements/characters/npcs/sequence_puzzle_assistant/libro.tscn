@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ckvr0tgct7tl1"]
+
+[ext_resource type="PackedScene" uid="uid://ipvcfv2g0oi1" path="res://scenes/game_elements/characters/npcs/talker/talker.tscn" id="1_adyrk"]
+[ext_resource type="Script" uid="uid://cfdpmffk2m4dd" path="res://scenes/game_elements/characters/npcs/sequence_puzzle_assistant/components/sequence_puzzle_assistant.gd" id="2_vtipf"]
+
+[node name="libro" unique_id=325887037 instance=ExtResource("1_adyrk")]
+script = ExtResource("2_vtipf")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-2, -27)
+scale = Vector2(0.222656, 0.143392)
+frame_progress = 0.954365
+
+[node name="InteractArea" parent="." index="2"]
+action = "Leer"

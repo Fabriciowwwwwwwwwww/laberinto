@@ -5,26 +5,18 @@ var is_interacting: bool:
 	get = _get_is_interacting
 
 @onready var interact_zone: Area2D = %InteractZone
-@onready var camara_main: Camera2D = get_tree().root.get_node("Intro/Camera2D")
 @onready var interact_marker: Marker2D = %InteractMarker
 @onready var interact_label: FixedSizeLabel = %InteractLabel
 @onready var player: Player = self.owner as Player
 
+# Solo mantenemos estas referencias para prenderlas/apagarlas durante la charla
 @onready var arma_node := get_parent().get_node_or_null("arma")
 @onready var luz := get_parent().get_node_or_null("PointLight2D")
-@onready var camara: Camera2D = get_parent().get_node_or_null("Camera2D")
+@onready var cam_player: Camera2D = get_parent().get_node_or_null("Camera2D")
 
 func _ready():
-	if camara_main and camara:
-		camara_main.make_current()
-		camara.enabled = false
-		luz.visible = false
-
-	if arma_node:
-		arma_node.visible = false
-
-	if camara:
-		camara.zoom *= 2.1
+	# Ya no configuramos cámaras aquí, la Intro se encarga.
+	pass
 
 func _get_is_interacting() -> bool:
 	return not interact_zone.monitoring
@@ -61,12 +53,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 			arma_node.visible = false
 
 func _on_interaction_ended() -> void:
+	# Al terminar la charla (ej. con el NPC), devolvemos el control a la cámara del jugador
 	interact_zone.monitoring = true
 
 	if arma_node:
 		arma_node.visible = true
 
-	if camara:
-		luz.visible = true
-		camara.make_current()
-		camara.enabled = true
+	if cam_player:
+		if luz: luz.visible = true
+		cam_player.make_current()
+		cam_player.enabled = true

@@ -41,6 +41,7 @@ func sacudir():
 	activo = true
 
 	animated_sprite_2d.play("mover")
+	print("se movio")
 	await animated_sprite_2d.animation_finished
 	animated_sprite_2d.play("idle")
 
@@ -56,3 +57,7 @@ func _notification(what: int) -> void:
 
 		NOTIFICATION_EDITOR_PRE_SAVE:
 			animated_sprite_2d.frame_progress = 0
+
+
+func _on_static_body_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

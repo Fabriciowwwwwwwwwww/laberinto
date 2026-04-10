@@ -1,5 +1,4 @@
 extends StaticBody2D
-class_name Puerta
 
 @export var next_scene_path: PackedScene
 
@@ -12,8 +11,8 @@ var player_in_range: bool = false
 var is_unlocked: bool = false
 var current_player: Player_l = null
 
-# 🔥 cantidad de piezas necesarias
-@export var piezas_necesarias := 3
+# 🔥 Cantidad de piezas necesarias (ajustado a 22 para este minijuego)
+@export var piezas_necesarias := 2
 
 # ---------------------------------------------------
 func _ready() -> void:
@@ -46,32 +45,43 @@ func player_exit() -> void:
 	hide_ui()
 
 # ---------------------------------------------------
+# ---------------------------------------------------
 func check_door_status() -> void:
-	var piezas = Gamestateminijuegos.piezas_recogidas.size()
+	if not current_player: return
 
-	if piezas >= piezas_necesarias and not is_unlocked:
-		unlock_door()
+	# 1. Buscamos el nodo de reglas que tiene las piezas
+	var reglas = current_player.get_node_or_null("MINIJUEGOREGLAS")
+	var piezas_actuales = 0
+	
+	if reglas:
+		# Leemos el array de piezas que vas llenando
+		piezas_actuales = reglas.piezas_recolectadas.size()
+	
+	# 2. Lógica de apertura
+	if piezas_actuales >= piezas_necesarias:
+		if not is_unlocked:
+			unlock_door()
+		else:
+			show_unlocked_ui()
+	else:
+		# 3. Aquí es donde ocurre la magia del "22, 21, 20..."
+		show_locked_ui(piezas_actuales)
 
-	elif piezas < piezas_necesarias:
-		show_locked_ui(piezas)
-
-	elif is_unlocked:
-		show_unlocked_ui()
-
+func show_locked_ui(piezas_actuales: int) -> void:
+	ui_container.visible = true
+	# Calculamos cuánto falta exactamente
+	var faltan = piezas_necesarias - piezas_actuales
+	interact_label.text = "Faltan " + str(faltan) + " piezas"
 # ---------------------------------------------------
 func unlock_door() -> void:
 	is_unlocked = true
-	animated_sprite_2d.play("Abierto")
+	if animated_sprite_2d.sprite_frames.has_animation("Abierto"):
+		animated_sprite_2d.play("Abierto")
 	show_unlocked_ui()
 	print("🚪 Puerta desbloqueada!")
 
 # ---------------------------------------------------
-func show_locked_ui(piezas_actuales: int) -> void:
-	ui_container.visible = true
 
-	var faltan = piezas_necesarias - piezas_actuales
-
-	interact_label.text = "Faltan " + str(faltan) + " piezas"
 
 # ---------------------------------------------------
 func show_unlocked_ui() -> void:
@@ -89,11 +99,11 @@ func interact() -> void:
 
 # ---------------------------------------------------
 func change_scene() -> void:
-	print("🚪 Entrando a:", next_scene_path)
-
-	SceneSwitcher2.change_to_packed_with_transition(
-		next_scene_path,
-		"",
-		Transition.Effect.FADE,
-		Transition.Effect.FADE
-	)
+	if next_scene_path:
+		print("🚪 Entrando a:", next_scene_path.resource_path)
+		SceneSwitcher2.change_to_packed_with_transition(
+			next_scene_path,
+			"",
+			Transition.Effect.FADE,
+			Transition.Effect.FADE
+		)

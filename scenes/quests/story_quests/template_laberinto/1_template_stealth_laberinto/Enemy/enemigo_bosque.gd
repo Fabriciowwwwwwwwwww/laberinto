@@ -33,7 +33,7 @@ var max_repeticiones := 3
 
 # ---------------------------------------------------
 func _ready():
-	add_to_group("enemigo")
+	add_to_group("enemy")
 	jugador = get_tree().get_first_node_in_group("player")
 	randomize()
 
