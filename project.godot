@@ -32,6 +32,7 @@ GameStateLaberinto="*res://scenes/quests/story_quests/template_laberinto/1_templ
 MusicManager="*res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/MusicManager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Gamestateminijuegos="*uid://deo2xguf545v"
+GameStateSkin="*uid://c4nktf2ex8td8"
 
 [debug]
 

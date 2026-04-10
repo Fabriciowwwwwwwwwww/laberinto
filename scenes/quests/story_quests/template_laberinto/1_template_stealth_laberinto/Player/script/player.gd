@@ -55,6 +55,7 @@ func safe_get_node(path: NodePath) -> Node:
 # =====================================================
 func _ready() -> void:
 	add_to_group("player")
+	aplicar_skin()  # 👈 AÑADE ESTO
 
 	# 🔥 SI VIENE DEL EXTERIOR → aparece dentro de la cabaña
 	if Gamestateminijuegos.viene_de_exterior:
@@ -417,3 +418,7 @@ func handle_stamina(delta: float) -> void:
 
 	update_stamina_bar()
 	# Guardar el estado del jugador
+func aplicar_skin():
+	if GameStateSkin.skin_actual:
+		animated_sprite_2d.sprite_frames = GameStateSkin.skin_actual
+		animated_sprite_2d.play("idle")

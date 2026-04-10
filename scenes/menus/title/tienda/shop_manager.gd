@@ -187,21 +187,37 @@ func actualizar_vista():
 
 # -------------------------
 func actualizar_preview():
+
 	if lista_actual.is_empty():
 		return
 
-	for c in preview.get_children():
-		c.queue_free()
+	var item = content.get_child(indice)
+	var frames = item.sprite_frames
 
-	var nuevo = lista_actual[indice].instantiate()
-	preview.add_child(nuevo)
+	var anim = $Panel/AnimatedSprite2D
 
-	nuevo.scale = Vector2(3,3)
-	nuevo.position = Vector2.ZERO
+	if not frames:
+		print("No frames")
+		return
+
+	anim.sprite_frames = frames
+	anim.play("idle")
+
+	anim.centered = true
+	anim.position = $Panel.size / 2
+	anim.scale = Vector2(0.4, 0.4)  # 🔥 AJUSTA AQUÍ
+
 
 # -------------------------
 func seleccionar():
 	print("[SHOP]: Seleccionado:", indice)
 
 func _on_comprar_button_pressed():
-	print("[SHOP]: Comprado:", indice)
+	var item = content.get_child(indice)
+
+	GameStateSkin.skin_actual = item.sprite_frames
+
+	# aplicar en tiempo real
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.aplicar_skin()

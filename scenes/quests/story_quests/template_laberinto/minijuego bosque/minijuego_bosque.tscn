@@ -11961,6 +11961,7 @@ size = Vector2(25.5, 20.25)
 texture_filter = 1
 position = Vector2(-8, 0)
 script = ExtResource("1_plsab")
+music_tracks = Array[AudioStream]([null])
 
 [node name="OnTheGround" type="Node2D" parent="." unique_id=1505524834]
 y_sort_enabled = true
@@ -12078,8 +12079,7 @@ scale = Vector2(0.951431, 0.99394)
 position = Vector2(-553, -1206)
 scale = Vector2(0.819425, 0.975979)
 
-
-[node name="Tree42" parent="arboles" groups=["arbol"] instance=ExtResource("9_eunj6")]
+[node name="Tree42" parent="arboles" unique_id=1184607196 groups=["arbol"] instance=ExtResource("9_eunj6")]
 position = Vector2(119.999985, 221)
 scale = Vector2(0.905221, 0.987917)
 
@@ -12091,8 +12091,7 @@ scale = Vector2(0.951431, 0.99394)
 position = Vector2(-682, -346)
 scale = Vector2(0.951431, 0.99394)
 
-
-[node name="Tree14" parent="arboles" groups=["arbol"] instance=ExtResource("9_eunj6")]
+[node name="Tree14" parent="arboles" unique_id=327944557 groups=["arbol"] instance=ExtResource("9_eunj6")]
 position = Vector2(-771, -649)
 scale = Vector2(0.951431, 0.99394)
 

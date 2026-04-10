@@ -6,12 +6,14 @@
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_28rsc"]
 [ext_resource type="Script" uid="uid://csvn2alr54qfb" path="res://scenes/menus/title/tienda/shop_manager.gd" id="5_gu363"]
 [ext_resource type="Texture2D" uid="uid://k5qch86xsjit" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/tienda.png" id="6_3kuj7"]
-[ext_resource type="PackedScene" uid="uid://bypna5vieglgg" path="res://scenes/menus/title/tienda/ItemTienda.tscn.tscn" id="6_5m3y5"]
+[ext_resource type="PackedScene" uid="uid://bypna5vieglgg" path="res://scenes/menus/title/tienda/skin_clasica.tscn" id="6_5m3y5"]
+[ext_resource type="PackedScene" uid="uid://dxh0vyi1yhml4" path="res://scenes/menus/title/tienda/skin_terror.tscn" id="7_t4bl3"]
 [ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="7_woldp"]
 [ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="8_0431q"]
 [ext_resource type="Texture2D" uid="uid://ccavio2v8sk7c" path="res://assets/third_party/tiny-swords/UI/Banners/Carved_3Slides.png" id="9_aulq3"]
 [ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_1xxiq"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="11_jb2p7"]
+[ext_resource type="Texture2D" uid="uid://d3ntd0erv0qc5" path="res://assets/third_party/inputs/keyboard-and-mouse/Blanks/Blank_Black_Mouse.png" id="13_28rsc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
 texture = ExtResource("8_0431q")
@@ -28,6 +30,17 @@ texture_margin_right = 64.0
 texture_margin_bottom = 12.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5m3y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_28rsc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1792263213]
 
@@ -57,7 +70,7 @@ script = ExtResource("5_gu363")
 animacion_duracion = 1.2
 animacion_delay = 0.2
 tipo_transicion = 10
-skins = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
+skins = Array[PackedScene]([ExtResource("7_t4bl3"), ExtResource("6_5m3y5")])
 bailes = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
 poderes = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
 
@@ -122,15 +135,19 @@ grow_vertical = 2
 pivot_offset = Vector2(200, 200)
 pivot_offset_ratio = Vector2(220, 200)
 
-[node name="PanelPreview" type="Control" parent="TitleScreen/ShopManager" unique_id=427483105]
-visible = false
-custom_minimum_size = Vector2(200, 0)
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(2.885, 2.885)
-pivot_offset = Vector2(200, 200)
-pivot_offset_ratio = Vector2(200, 200)
+[node name="Panel" type="Panel" parent="TitleScreen/ShopManager" unique_id=693066833]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = 1623.0
+offset_top = 408.0
+offset_right = 1628.0
+offset_bottom = 413.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TitleScreen/ShopManager/Panel" unique_id=592490258]
+z_index = 7
+position = Vector2(35, -2)
+scale = Vector2(0.9999999, 0.9999999)
+sprite_frames = SubResource("SpriteFrames_5m3y5")
 
 [node name="Options" parent="." unique_id=1515614371 instance=ExtResource("11_jb2p7")]
 visible = false

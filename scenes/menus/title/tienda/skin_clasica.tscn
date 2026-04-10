@@ -2,13 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://xgalf60vavis" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/enemigo ataque.png" id="1_jvvun"]
 [ext_resource type="Script" uid="uid://ddu1onkdrpngl" path="res://scenes/menus/title/tienda/item_tienda.tscn.gd" id="1_lxehs"]
+[ext_resource type="SpriteFrames" uid="uid://blbseyfi7ctrr" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/animacion_player_1.tres" id="2_go1lv"]
 
 [node name="ItemTienda_tscn" type="Control" unique_id=354755083]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_lxehs")
+sprite_frames = ExtResource("2_go1lv")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2100637541]
+[node name="texturaitem" type="TextureRect" parent="." unique_id=2100637541]
 layout_mode = 0
 offset_left = -62.0
 offset_top = -59.0
@@ -22,5 +24,5 @@ offset_left = -46.0
 offset_top = 35.0
 offset_right = 20.0
 offset_bottom = 84.0
-text = "item de
- hombre"
+text = "SKIN TERROR
+"
