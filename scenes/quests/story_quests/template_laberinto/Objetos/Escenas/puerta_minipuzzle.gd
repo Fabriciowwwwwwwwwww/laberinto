@@ -12,7 +12,7 @@ var is_unlocked: bool = false
 var current_player: Player_l = null
 
 # 🔥 Cantidad de piezas necesarias (ajustado a 22 para este minijuego)
-@export var piezas_necesarias := 2
+@export var piezas_necesarias := 22
 
 # ---------------------------------------------------
 func _ready() -> void:

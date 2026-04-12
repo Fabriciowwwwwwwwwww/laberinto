@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://wgmdsj1sbmja"]
+[gd_scene load_steps=11 format=3 uid="uid://wgmdsj1sbmja"]
 
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="1_vmxej"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="1_xuf5f"]
 [ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_rpgwp"]
 [ext_resource type="PackedScene" uid="uid://6lieuap5vj74" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/template_intro_laberinto.tscn" id="3_l7ju4"]
 [ext_resource type="Texture2D" uid="uid://rwnspnayok4k" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/fondo.png" id="3_snvmp"]
+[ext_resource type="PackedScene" uid="uid://bvcabfkw3suma" path="res://scenes/menus/title/tienda/tienda.tscn" id="4_l8ymi"]
 [ext_resource type="Texture2D" uid="uid://bwcnsnsk82l1c" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/titulo.png" id="4_snvmp"]
 [ext_resource type="Script" uid="uid://ie713t5y3hif" path="res://scenes/menus/title/components/logo_container.gd" id="6_68a5i"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="7_l7ju4"]
@@ -26,6 +27,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_rpgwp")
 next_scene = ExtResource("3_l7ju4")
+tienda = ExtResource("4_l8ymi")
 
 [node name="MainMenu" type="HBoxContainer" parent="TitleScreen"]
 layout_mode = 0
@@ -65,9 +67,19 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BigFlatButton"
-theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
 text = "Start"
+flat = true
+
+[node name="tienda" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigFlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1.90745, 1.68861, 1.90745, 1)
+text = "Store
+"
 flat = true
 
 [node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
@@ -112,8 +124,10 @@ grow_vertical = 1
 [connection signal="credits_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_credits_pressed"]
 [connection signal="options_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_options_pressed"]
 [connection signal="start_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_start_pressed"]
+[connection signal="tienda_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_tienda_pressed"]
 [connection signal="visibility_changed" from="TitleScreen/MainMenu" to="TitleScreen/MainMenu" method="_on_visibility_changed"]
 [connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/StartButton" to="TitleScreen/MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/tienda" to="TitleScreen/MainMenu" method="_on_tienda_pressed"]
 [connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/OptionsButton" to="TitleScreen/MainMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/CreditsButton" to="TitleScreen/MainMenu" method="_on_credits_button_pressed"]
 [connection signal="pressed" from="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox/QuitButton" to="TitleScreen/MainMenu" method="_on_quit_button_pressed"]

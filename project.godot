@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="laberinto_sombras"
 run/main_scene="uid://wgmdsj1sbmja"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://bgs5s52hkygv2"
 config/icon="uid://cw8vv8lilixgf"
 
@@ -32,7 +32,7 @@ GameStateLaberinto="*res://scenes/quests/story_quests/template_laberinto/1_templ
 MusicManager="*res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/MusicManager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Gamestateminijuegos="*uid://deo2xguf545v"
-GameStateSkin="*uid://c4nktf2ex8td8"
+GameStateSkin="*res://scenes/globals/game_state/game_state_skin.gd"
 
 [debug]
 

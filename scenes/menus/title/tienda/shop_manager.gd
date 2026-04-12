@@ -213,11 +213,34 @@ func seleccionar():
 	print("[SHOP]: Seleccionado:", indice)
 
 func _on_comprar_button_pressed():
+	print("🛒 Comprar presionado")
+
+	if indice < 0 or indice >= content.get_child_count():
+		print("❌ Índice inválido")
+		return
+
 	var item = content.get_child(indice)
+
+	if not item.sprite_frames:
+		print("❌ Sin sprite_frames")
+		return
 
 	GameStateSkin.skin_actual = item.sprite_frames
 
-	# aplicar en tiempo real
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.aplicar_skin()
+
+	var ruta = "res://scenes/menus/title/components/main_menu.tscn"
+
+	if ResourceLoader.exists(ruta):
+		var nextscene = load(ruta)
+
+		SceneSwitcher2.change_to_packed_with_transition(
+			nextscene,
+			^"",
+			Transition.Effect.FADE,
+			Transition.Effect.FADE
+		)
+	else:
+		print("❌ Ruta inválida")

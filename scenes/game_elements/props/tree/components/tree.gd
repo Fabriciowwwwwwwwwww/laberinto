@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 const DEFAULT_SPRITE_FRAME: SpriteFrames = preload("uid://d36eq8tqdaxdy")
@@ -10,8 +9,9 @@ const DEFAULT_SPRITE_FRAME: SpriteFrames = preload("uid://d36eq8tqdaxdy")
 
 var activo := false
 
+
 func _ready() -> void:
-	add_to_group("arbol") # 🔥 IMPORTANTE
+	add_to_group("arbol") # Grupo de árboles
 	_set_sprite_frames(sprite_frames)
 
 	var frames_length: int = animated_sprite_2d.sprite_frames.get_frame_count(
@@ -41,10 +41,11 @@ func sacudir():
 	activo = true
 
 	animated_sprite_2d.play("mover")
-	print("se movio")
-	await animated_sprite_2d.animation_finished
-	animated_sprite_2d.play("idle")
+	print("🌳 El árbol se movió")
 
+	await animated_sprite_2d.animation_finished
+
+	animated_sprite_2d.play("idle")
 	activo = false
 
 
@@ -59,5 +60,12 @@ func _notification(what: int) -> void:
 			animated_sprite_2d.frame_progress = 0
 
 
-func _on_static_body_2d_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+# 🔥 DETECCIÓN DEL ENEMIGO
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if activo:
+		return
+
+	var cuerpo = area.get_parent()
+
+	if cuerpo and cuerpo.is_in_group("enemy"):
+		sacudir()
