@@ -18,7 +18,9 @@ signal interaction_ended
 ## Lógica del puzzle
 
 ## Sobreescribimos para emitir la señal cuando el diálogo termine
-func _on_dialogue_ended(_dialogue_resource: DialogueResource) -> void:
+
+func _on_dialogue_ended(_dialogue_resource):
 	super._on_dialogue_ended(_dialogue_resource)
-	print("🟡 [NPC] Señal de fin de interacción recibida. Emite 'interaction_ended'")
+
+	print("🟡 NPC terminó diálogo")
 	interaction_ended.emit()

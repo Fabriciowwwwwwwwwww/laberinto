@@ -7,6 +7,6 @@ func _ready() -> void:
 	if player:
 		var cam = player.get_node_or_null("Camera2D")
 		if cam:
-			cam.zoom = Vector2(2, 2)  # 🔥 ZOOM
+			cam.zoom = Vector2(1.5, 1.5)  # 🔥 ZOOM
 	MusicManager.play_playlist(music_tracks)
 	await get_tree().process_frame

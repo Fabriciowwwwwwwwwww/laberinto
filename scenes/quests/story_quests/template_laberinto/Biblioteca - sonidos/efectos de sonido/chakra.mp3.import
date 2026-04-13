@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2v1e5eokv6na"
+path="res://.godot/imported/chakra.mp3-38804dd931da2498a4c6dd5766ef69ec.mp3str"
+
+[deps]
+
+source_file="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/chakra.mp3"
+dest_files=["res://.godot/imported/chakra.mp3-38804dd931da2498a4c6dd5766ef69ec.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

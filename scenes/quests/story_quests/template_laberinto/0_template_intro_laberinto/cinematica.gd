@@ -1,35 +1,66 @@
 class_name Cinematica
 extends Node2D
 
-@export var dialogue: DialogueResource = preload("res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/template_intro_components_laberinto/template_intro_laberinto.dialogue")
-
+@export var dialogue: DialogueResource
 @export_file("*.tscn") var next_scene: String
 @export var spawn_point_path: String
-@export var npc_node_path: NodePath
-
-# 🔥 NUEVO → controlar si cambia de escena o no
 @export var usar_next_scene: bool = true
 
-var jugador_ha_hablado := false
+var npc = null
 
 # ---------------------------------------------------
 func _ready() -> void:
-	var npc = get_node_or_null(npc_node_path)
 
-	if npc and npc.has_signal("interaction_ended"):
+	# 🔥 BUSCAR NPC REAL EN ESCENA
+	await get_tree().process_frame
+
+	npc = get_tree().get_first_node_in_group("npc_dialogo")
+
+	if npc == null:
+		print("❌ NPC NO ENCONTRADO EN GRUPO")
+		return
+
+	print("✅ NPC REAL encontrado:", npc.name)
+
+	# 🔥 CONECTAR SEÑAL
+	if not npc.is_connected("interaction_ended", Callable(self, "_on_npc_interaction_ended")):
 		npc.connect("interaction_ended", Callable(self, "_on_npc_interaction_ended"))
+		print("✅ Señal conectada correctamente")
 
-	# 🔥 reproducir diálogo automáticamente
+	# 🔥 DIÁLOGO INICIAL
 	await reproducir_dialogo()
 
-	# 🔥 esperar interacción SOLO si hay NPC
-	if npc:
-		await _esperar_confirmacion_npc()
+	print("🟢 Intro terminada, esperando NPC...")
 
-	# 🔥 SOLO cambia de escena si está activado
+
+# ---------------------------------------------------
+func reproducir_dialogo() -> void:
+
+	if not dialogue:
+		return
+
+	# 🔻 APAGAR MÚSICA
+	MusicManager.fade_out(1.0)
+
+	# 🔥 mostrar diálogo
+	DialogueManager.show_dialogue_balloon(dialogue, "", [self])
+	await DialogueManager.dialogue_ended
+
+	# ❌ NO vuelvas a prender música aquí
+	# MusicManager.fade_in(1.0)  ← ELIMINA ESTO
+
+
+# ---------------------------------------------------
+func _on_npc_interaction_ended() -> void:
+
+	print("🔥 RECIBÍ LA SEÑAL DEL NPC")
+
+	# 🔺 VOLVER MÚSICA
+	MusicManager.fade_in(1.0)
+
 	if usar_next_scene and next_scene != "":
-		if not is_inside_tree():
-			return
+		
+		print("➡ TELETRANSPORTANDO A:", next_scene)
 
 		SceneSwitcher2.change_to_file_with_transition(
 			next_scene,
@@ -37,28 +68,3 @@ func _ready() -> void:
 			Transition.Effect.FADE,
 			Transition.Effect.FADE
 		)
-
-# ---------------------------------------------------
-# 🔥 FUNCIÓN REUTILIZABLE (CLAVE)
-func reproducir_dialogo() -> void:
-	if not dialogue:
-		return
-
-	MusicManager.fade_out(1.0)
-
-	DialogueManager.show_dialogue_balloon(dialogue, "", [self])
-
-	await DialogueManager.dialogue_ended
-
-	MusicManager.fade_in(1.0)
-
-# ---------------------------------------------------
-func _on_npc_interaction_ended() -> void:
-	jugador_ha_hablado = true
-
-# ---------------------------------------------------
-func _esperar_confirmacion_npc() -> void:
-	while not jugador_ha_hablado:
-		if not is_inside_tree():
-			return
-		await get_tree().create_timer(0.01).timeout

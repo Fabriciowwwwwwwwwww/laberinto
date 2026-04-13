@@ -370,7 +370,7 @@ radius = 5.25
 height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17k3e"]
-radius = 71.02156
+radius = 21.03717
 
 [node name="enemigo_bosque" type="CharacterBody2D" unique_id=136090840 groups=["enemy"]]
 z_index = 4
@@ -399,8 +399,8 @@ stream = ExtResource("8_3jq25")
 pitch_scale = 0.74
 parameters/looping = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=754539202]
+[node name="AreaAtaque" type="Area2D" parent="." unique_id=754539202]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1437313598]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAtaque" unique_id=1437313598]
 shape = SubResource("CircleShape2D_17k3e")
 debug_color = Color(0.7003045, 0.44861883, 0.5488861, 0.41960785)

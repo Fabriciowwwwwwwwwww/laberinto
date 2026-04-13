@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=82 format=3 uid="uid://drh4sjfgbnx8s"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://drh4sjfgbnx8s"]
 
 [ext_resource type="Texture2D" uid="uid://cvh8j1lr1jbse" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/personaje 2/correr defrente.png" id="5_lc4ha"]
 [ext_resource type="Texture2D" uid="uid://bprmv75rkn54t" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/personaje 2/sprite sheet lado.png" id="6_1ypjl"]

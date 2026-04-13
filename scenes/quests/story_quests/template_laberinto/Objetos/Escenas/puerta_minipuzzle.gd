@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 @export var next_scene_path: PackedScene
-
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var interact_label: Label = $ui_container/InteractLabel
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -12,7 +11,7 @@ var is_unlocked: bool = false
 var current_player: Player_l = null
 
 # 🔥 Cantidad de piezas necesarias (ajustado a 22 para este minijuego)
-@export var piezas_necesarias := 22
+@export var piezas_necesarias := 8
 
 # ---------------------------------------------------
 func _ready() -> void:

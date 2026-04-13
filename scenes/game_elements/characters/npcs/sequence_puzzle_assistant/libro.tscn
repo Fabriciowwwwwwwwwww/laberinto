@@ -7,8 +7,8 @@
 script = ExtResource("2_vtipf")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(-2, -27)
-scale = Vector2(0.222656, 0.143392)
+position = Vector2(2, -26)
+scale = Vector2(0.064453125, 0.10782881)
 frame_progress = 0.954365
 
 [node name="InteractArea" parent="." index="2"]
