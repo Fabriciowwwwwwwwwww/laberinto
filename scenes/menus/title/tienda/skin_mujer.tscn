@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://oi2oyweusede"]
+[gd_scene format=3 uid="uid://oi2oyweusede"]
 
 [ext_resource type="Script" uid="uid://ddu1onkdrpngl" path="res://scenes/menus/title/tienda/item_tienda.tscn.gd" id="1_sr71j"]
 [ext_resource type="SpriteFrames" uid="uid://uprumcm242wi" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player recursos skin/animacion_player_3.tres" id="2_sr71j"]

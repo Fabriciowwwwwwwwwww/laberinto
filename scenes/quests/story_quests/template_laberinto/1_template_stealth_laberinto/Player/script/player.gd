@@ -365,11 +365,16 @@ signal jugador_derrotado
 
 func morir() -> void:
 	emit_signal("jugador_derrotado")
-	
+
+	# 🔥 SI ESTÁ EN MINIJUEGO → NO CAMBIAR ESCENA
+	if get_tree().current_scene.is_in_group("minijuego"):
+		return
+
+	# 🔴 comportamiento normal (fuera del minijuego)
 	GameStateLaberinto.reset()
-	
+
 	var nextscene = preload("res://scenes/globals/ventana muerte/muerte.tscn")
-	
+
 	SceneSwitcher2.change_to_packed_with_transition(
 		nextscene,
 		^"",

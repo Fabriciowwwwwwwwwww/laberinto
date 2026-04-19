@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3lldk3lo2mwl"]
+[gd_scene format=3 uid="uid://b3lldk3lo2mwl"]
 
 [ext_resource type="PackedScene" uid="uid://ipvcfv2g0oi1" path="res://scenes/game_elements/characters/npcs/talker/talker.tscn" id="1_fe08d"]
 [ext_resource type="Script" uid="uid://cfdpmffk2m4dd" path="res://scenes/game_elements/characters/npcs/sequence_puzzle_assistant/components/sequence_puzzle_assistant.gd" id="2_2ol1d"]
+[ext_resource type="SpriteFrames" uid="uid://bbcpywqejfeh1" path="res://mayordomo.tres" id="3_06m7m"]
 
-[node name="SequencePuzzleAssistant" instance=ExtResource("1_fe08d")]
+[node name="mayordomo" unique_id=1071545079 instance=ExtResource("1_fe08d")]
 script = ExtResource("2_2ol1d")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(2, -42.9375)
 scale = Vector2(0.222656, 0.143392)
-frame_progress = 0.954365
+sprite_frames = ExtResource("3_06m7m")
+animation = &"default"
+autoplay = ""

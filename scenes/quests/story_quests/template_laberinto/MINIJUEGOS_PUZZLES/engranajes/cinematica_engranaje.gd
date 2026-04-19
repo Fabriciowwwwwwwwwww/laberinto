@@ -51,18 +51,11 @@ func _ready() -> void:
 # INTRO
 # -------------------------
 func reproducir_intro() -> void:
-	await get_tree().process_frame  # 🔥 ESPERA A QUE TODO SE ACTUALICE
+	await get_tree().process_frame
 
 	print("🎬 Intro iniciando...")
-	print("TEXTO QUE SE ENVIARÁ:\n" + solucion_texto)
 
-	if dialogue:
-		await DialogueManager.show_dialogue_balloon(
-			dialogue,
-			"",
-			[self]
-		)
-		await DialogueManager.dialogue_ended
+	await reproducir_dialogo_con_musica(dialogue)
 
 	print("✅ Intro terminada")
 	cinematica_terminada.emit()
@@ -71,6 +64,7 @@ func reproducir_intro() -> void:
 # PERDER (ERROR / TIEMPO)
 # -------------------------
 func notificar_perdida(tipo := "error") -> void:
+
 	tipo_perdida = tipo
 
 	var dialogo: DialogueResource = null
@@ -80,13 +74,7 @@ func notificar_perdida(tipo := "error") -> void:
 	else:
 		dialogo = perder_dialogue
 
-	if dialogo:
-		await DialogueManager.show_dialogue_balloon(
-			dialogo,
-			"",
-			[self]
-		)
-		await DialogueManager.dialogue_ended
+	await reproducir_dialogo_con_musica(dialogo)
 
 	cinematica_terminada.emit()
 
@@ -94,16 +82,13 @@ func notificar_perdida(tipo := "error") -> void:
 # GANAR
 # -------------------------
 func notificar_ganador() -> void:
+
 	ha_ganado = true
 
-	if ganar_dialogue:
-		await DialogueManager.show_dialogue_balloon(
-			ganar_dialogue,
-			"",
-			[self]
-		)
-		await DialogueManager.dialogue_ended
-		_on_cambio_de_escena()
+	await reproducir_dialogo_con_musica(ganar_dialogue)
+
+	_on_cambio_de_escena()
+	cinematica_terminada.emit()
 
 	cinematica_terminada.emit()
 func _on_cambio_de_escena() -> void:
@@ -115,14 +100,29 @@ func _on_cambio_de_escena() -> void:
 			Transition.Effect.FADE
 		)
 func notificar_progreso(actual: int, total: int) -> void:
+
 	print("Progreso:", actual, "/", total)
 
-	if ganar_dialogue:
-		await DialogueManager.show_dialogue_balloon(
-			ganar_dialogue,
-			"",
-			[self]
-		)
-		await DialogueManager.dialogue_ended
+	await reproducir_dialogo_con_musica(ganar_dialogue)
 
 	cinematica_terminada.emit()
+
+	cinematica_terminada.emit()
+func reproducir_dialogo_con_musica(dialogo: DialogueResource) -> void:
+
+	if not dialogo:
+		return
+
+	# 🔻 apagar música
+	MusicManager.fade_out(1.0)
+
+	await DialogueManager.show_dialogue_balloon(
+		dialogo,
+		"",
+		[self]
+	)
+
+	await DialogueManager.dialogue_ended
+
+	# 🔺 volver música
+	MusicManager.fade_in(1.0)

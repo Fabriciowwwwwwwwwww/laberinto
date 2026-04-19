@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=38 format=3 uid="uid://d36eq8tqdaxdy"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d36eq8tqdaxdy"]
 
 [ext_resource type="Texture2D" uid="uid://yk3g6qvsjf54" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/arbol-v2_dark.png" id="1_n7buj"]
 [ext_resource type="Texture2D" uid="uid://dspmx2bek2uh6" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/arbol sprite sacudir.png" id="2_ydkyq"]
