@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvcabfkw3suma"]
+[gd_scene load_steps=18 format=3 uid="uid://bvcabfkw3suma"]
 
 [ext_resource type="Texture2D" uid="uid://d2nrukoovnva1" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/tienda fondo.png" id="1_jup2a"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_28rsc"]
 [ext_resource type="Script" uid="uid://csvn2alr54qfb" path="res://scenes/menus/title/tienda/shop_manager.gd" id="5_gu363"]
 [ext_resource type="Texture2D" uid="uid://k5qch86xsjit" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/tienda.png" id="6_3kuj7"]
 [ext_resource type="PackedScene" uid="uid://bypna5vieglgg" path="res://scenes/menus/title/tienda/skin_clasica.tscn" id="6_5m3y5"]
+[ext_resource type="PackedScene" uid="uid://cscet1b7tmssk" path="res://scenes/menus/title/tienda/skin_estudiante.tscn" id="7_28rsc"]
 [ext_resource type="PackedScene" uid="uid://dxh0vyi1yhml4" path="res://scenes/menus/title/tienda/skin_terror.tscn" id="7_t4bl3"]
 [ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="7_woldp"]
 [ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="8_0431q"]
@@ -67,7 +68,7 @@ script = ExtResource("5_gu363")
 animacion_duracion = 1.2
 animacion_delay = 0.2
 tipo_transicion = 10
-skins = Array[PackedScene]([ExtResource("7_t4bl3"), ExtResource("6_5m3y5"), ExtResource("8_gu363")])
+skins = Array[PackedScene]([ExtResource("7_t4bl3"), ExtResource("6_5m3y5"), ExtResource("8_gu363"), ExtResource("7_28rsc")])
 bailes = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
 poderes = Array[PackedScene]([ExtResource("6_5m3y5"), ExtResource("6_5m3y5")])
 

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b8n8xgolm22fh"
+path="res://.godot/imported/reglas_minijuego_bosque.dialogue-8b803328e232c4d18de12aec5b5a7413.tres"
+
+[deps]
+
+source_file="res://scenes/menus/intro/components/reglas_minijuego_bosque.dialogue"
+dest_files=["res://.godot/imported/reglas_minijuego_bosque.dialogue-8b803328e232c4d18de12aec5b5a7413.tres"]
+
+[params]
+
+defaults=true
