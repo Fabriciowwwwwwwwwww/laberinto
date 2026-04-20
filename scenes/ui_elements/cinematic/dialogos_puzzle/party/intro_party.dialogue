@@ -1,0 +1,19 @@
+~ start
+npc: Algo no está bien aquí...
+npc: Todo ha sido movido de su lugar.
+
+npc: Observa con atención.
+npc: Cada objeto tiene su sitio... y debes recordarlo.
+
+-> END
+
+~ inicio_juego
+npc: El tiempo corre...
+npc: Ordena todo antes de que sea tarde.
+
+npc: Recuerda... no necesitas perfección.
+npc: Solo superar el 70%.
+
+npc: ¡Muévete!
+
+-> END

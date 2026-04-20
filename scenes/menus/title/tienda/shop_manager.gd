@@ -8,7 +8,7 @@ enum ShopCategory { SKIN, BAILE, PODER }
 @export var tipo_transicion := Tween.TRANS_CUBIC
 @export var tipo_ease := Tween.EASE_OUT
 
-
+@onready var sonido = $"sonido cambio"
 
 @onready var content = $GridContainer
 @onready var label_categoria = $CategoryLabel
@@ -85,11 +85,13 @@ func cambiar_categoria(dir):
 
 # -------------------------
 func cargar_categoria():
+	# limpiar
 	for c in content.get_children():
 		c.queue_free()
 
-	await get_tree().process_frame  # 🔥 IMPORTANTE
+	await get_tree().process_frame
 
+	# seleccionar lista
 	match categoria_actual:
 		ShopCategory.SKIN:
 			lista_actual = skins
@@ -101,24 +103,39 @@ func cargar_categoria():
 			lista_actual = poderes
 			label_categoria.text = "PODER"
 
-	for item in lista_actual:
-		var nodo = item.instantiate()
-		content.add_child(nodo)
+	# crear items
+	for i in range(lista_actual.size()):
+		var item = lista_actual[i].instantiate()
+		content.add_child(item)
 
-		# 🔥 RESET VISUAL COMPLETO
-		nodo.visible = true
-		nodo.modulate = Color.WHITE
-		nodo.scale = Vector2.ONE
-		nodo.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		# reset visual
+		item.visible = true
+		item.modulate = Color.WHITE
+		item.scale = Vector2.ONE
+		item.set_anchors_preset(Control.PRESET_TOP_LEFT)
 
+		# 🔥 IMPORTANTE: permitir input de mouse
+		item.mouse_filter = Control.MOUSE_FILTER_STOP
+
+		# 🔥 conectar hover (usar variable local para evitar bug)
+		var idx = i
+		item.mouse_entered.connect(func():
+			_on_item_hover(idx)
+		)
+
+		# 🔥 conectar click
+		item.gui_input.connect(func(event):
+			_on_item_click(event, idx)
+		)
+
+	# reset selección
 	indice = 0
 	pagina_actual = 0
 
-	await get_tree().process_frame  # 🔥 clave
+	await get_tree().process_frame
 
 	actualizar_vista()
 	actualizar_preview()
-
 # -------------------------
 func mover(dir):
 	if lista_actual.is_empty():
@@ -132,10 +149,12 @@ func mover(dir):
 	elif indice >= lista_actual.size():
 		indice = 0
 
-	# 🔥 calcular pagina correctamente
 	pagina_actual = int(indice / items_por_pagina)
 
-	print("[SHOP]:", anterior, "→", indice, " | PAG:", pagina_actual)
+	# 🔊 SONIDO
+	if anterior != indice:
+		sonido.stop()
+		sonido.play()
 
 	actualizar_vista()
 	actualizar_preview()
@@ -244,3 +263,18 @@ func _on_comprar_button_pressed():
 		)
 	else:
 		print("❌ Ruta inválida")
+func _on_item_hover(i):
+	if indice != i:
+		indice = i
+		pagina_actual = int(indice / items_por_pagina)
+
+		sonido.stop()
+		sonido.play()
+
+		actualizar_vista()
+		actualizar_preview()
+		
+func _on_item_click(event, i):
+	if event is InputEventMouseButton and event.pressed:
+		indice = i
+		seleccionar()

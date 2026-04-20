@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cdt8al61mg0kk"
+path="res://.godot/imported/intro_party.dialogue-a0f835eeb8997a2ebf0c7ccf1624a8fa.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/intro_party.dialogue"
+dest_files=["res://.godot/imported/intro_party.dialogue-a0f835eeb8997a2ebf0c7ccf1624a8fa.tres"]
+
+[params]
+
+defaults=true
