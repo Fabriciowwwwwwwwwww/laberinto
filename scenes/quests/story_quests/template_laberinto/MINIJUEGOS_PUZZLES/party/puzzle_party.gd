@@ -7,9 +7,9 @@ extends Node2D
 @export var objetos: Array[PackedScene]
 
 # 🧩 REFERENCIAS
-@onready var zona_objetos = $ZonaObjetos
+@onready var zona_objetos = $zona_objetos
 @onready var slots = $ZonaSlots.get_children()
-@onready var resultado_label = $ResultadoLabel
+@onready var resultado_label = $"ScreenOverlay/$ResultadoLabel"
 
 # 🧠 DATA
 var solucion_actual: Array = []

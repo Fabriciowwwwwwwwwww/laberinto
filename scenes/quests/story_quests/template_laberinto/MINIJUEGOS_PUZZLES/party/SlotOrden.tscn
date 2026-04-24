@@ -9,7 +9,7 @@ anchors_preset = 0
 script = ExtResource("1_cqdne")
 id_correcto = 1
 
-[node name="img" type="TextureRect" parent="." unique_id=437410349]
+[node name="Texture" type="TextureRect" parent="." unique_id=437410349]
 layout_mode = 0
 offset_left = -362.0
 offset_top = -233.0

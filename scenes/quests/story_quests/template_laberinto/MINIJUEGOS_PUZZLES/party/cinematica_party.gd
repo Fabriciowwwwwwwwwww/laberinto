@@ -11,9 +11,10 @@ signal cinematica_terminada
 var solucion: Array = []
 
 # 🎨 REFERENCIAS
-@onready var contenedor = $CanvasLayer/ContenedorSolucion
-@onready var label_titulo = $CanvasLayer/LabelTitulo
-@onready var label_countdown = $CanvasLayer/LabelCuentaAtras
+@onready var canvas: CanvasLayer = $CanvasLayer
+@onready var contenedor: Control = $CanvasLayer/ContenedorSolucion
+@onready var label_titulo: Label = $CanvasLayer/LabelTitulo
+@onready var label_countdown: Label = $CanvasLayer/LabelCuentaAtras
 
 # ⏱️ CONFIG
 @export var tiempo_mostrar := 3.0
@@ -22,6 +23,15 @@ var solucion: Array = []
 # -------------------------
 func _ready():
 	add_to_group("cinematica")
+
+	# 🔥 seguridad (evita null)
+	if contenedor == null:
+		push_error("❌ ContenedorSolucion no encontrado")
+	if label_titulo == null:
+		push_error("❌ LabelTitulo no encontrado")
+	if label_countdown == null:
+		push_error("❌ LabelCuentaAtras no encontrado")
+
 	await iniciar_cinematica()
 
 # -------------------------
@@ -33,6 +43,9 @@ func iniciar_cinematica():
 	await get_tree().process_frame
 
 	print("🎬 Cinemática Orden: INICIO")
+
+	# 🔥 mostrar UI
+	canvas.visible = true
 
 	# 🎬 DIÁLOGO INTRO
 	if dialogue_intro:
@@ -51,6 +64,9 @@ func iniciar_cinematica():
 	# ⏳ CUENTA REGRESIVA
 	await cuenta_regresiva()
 
+	# 🔥 OCULTAR TODO (IMPORTANTE)
+	canvas.visible = false
+
 	# 🎬 DIÁLOGO INICIO JUEGO
 	if dialogue_inicio_juego:
 		var balloon2 = DialogueManager.show_dialogue_balloon(
@@ -64,7 +80,8 @@ func iniciar_cinematica():
 
 # -------------------------
 func mostrar_solucion():
-	label_titulo.text = "MEMORIZA EL ORDEN"
+	if label_titulo:
+		label_titulo.text = "MEMORIZA EL ORDEN"
 
 	# limpiar anterior
 	for c in contenedor.get_children():
@@ -72,12 +89,12 @@ func mostrar_solucion():
 
 	await get_tree().process_frame
 
-	# crear visual
+	# 🔥 crear visual de solución
 	for item_data in solucion:
 
-		var textura = null
+		var textura: Texture2D = null
 
-		# 🔥 SOPORTA PackedScene
+		# 🔥 PackedScene (tus objetos)
 		if item_data is PackedScene:
 			var instancia = item_data.instantiate()
 
@@ -87,11 +104,12 @@ func mostrar_solucion():
 			elif instancia.has_method("get_texture"):
 				textura = instancia.get_texture()
 
-		# 🔥 SOPORTA Texture directa
+			instancia.queue_free() # evitar leaks
+
+		# 🔥 Texture directa
 		elif item_data is Texture2D:
 			textura = item_data
 
-		# ❌ si no hay textura, saltar
 		if textura == null:
 			continue
 
@@ -99,24 +117,28 @@ func mostrar_solucion():
 		sprite.texture = textura
 		sprite.custom_minimum_size = Vector2(120, 120)
 		sprite.expand = true
+		sprite.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
 		# ✨ fade inicial
 		sprite.modulate.a = 0
 
 		contenedor.add_child(sprite)
 
-		# ✨ animación aparición
+		# ✨ animación
 		var tween = create_tween()
-		tween.tween_property(sprite, "modulate:a", 1, 0.4)
+		tween.tween_property(sprite, "modulate:a", 1.0, 0.4)
 
 # -------------------------
 func cuenta_regresiva():
+	if label_countdown == null:
+		return
+
 	label_countdown.visible = true
 
 	for i in range(tiempo_countdown, 0, -1):
 		label_countdown.text = str(i)
 
-		# ✨ pequeño efecto escala
+		# ✨ animación escala
 		label_countdown.scale = Vector2(1.5, 1.5)
 
 		var tween = create_tween()
@@ -125,9 +147,8 @@ func cuenta_regresiva():
 		await get_tree().create_timer(1.0).timeout
 
 	label_countdown.text = "¡YA!"
-
-	# ✨ efecto final
 	label_countdown.scale = Vector2(2, 2)
+
 	await get_tree().create_timer(0.5).timeout
 
 	label_countdown.visible = false

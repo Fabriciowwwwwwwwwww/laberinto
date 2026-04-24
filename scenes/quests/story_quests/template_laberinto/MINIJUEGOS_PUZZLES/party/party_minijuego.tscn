@@ -20,6 +20,7 @@ y_sort_enabled = true
 [node name="Puzzle_party" type="Node2D" parent="OnTheGround" unique_id=1326489705]
 z_index = 1
 script = ExtResource("1_yuar3")
+objetos = Array[PackedScene]([ExtResource("8_b7400"), ExtResource("8_b7400")])
 
 [node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_party" unique_id=1326856104]
 z_index = -1
@@ -46,6 +47,16 @@ scale = Vector2(0.682373, 0.666512)
 texture = ExtResource("5_wkryt")
 
 [node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=1267992021]
+offset_left = 127.0
+offset_top = 149.0
+offset_right = 359.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "ghghg"
+
+[node name="$ResultadoLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=1928714420]
 offset_left = 127.0
 offset_top = 149.0
 offset_right = 359.0
@@ -98,7 +109,6 @@ dialogue_intro = ExtResource("11_wkryt")
 dialogue_inicio_juego = ExtResource("11_wkryt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="cinematica_party" unique_id=636969772]
-visible = false
 
 [node name="LabelCuentaAtras" type="Label" parent="cinematica_party/CanvasLayer" unique_id=2058493873]
 offset_left = 158.0
@@ -122,3 +132,7 @@ offset_right = 2925.68
 offset_bottom = 2014.9684
 scale = Vector2(0.644531, 0.555176)
 texture = ExtResource("2_umjeh")
+
+[node name="ContenedorSolucion" type="Panel" parent="cinematica_party/CanvasLayer" unique_id=1432902114]
+offset_right = 40.0
+offset_bottom = 40.0
