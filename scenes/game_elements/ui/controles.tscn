@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://t70efh1qahgl"]
+
+[ext_resource type="Script" uid="uid://c0cl6equkvn6e" path="res://scenes/game_elements/ui/ui_mobile.gd" id="1_8n4ko"]
+[ext_resource type="Texture2D" uid="uid://flpjtxwlli1s" path="res://assets/third_party/tiny-swords/UI/Pointers/04.png" id="2_vyf80"]
+
+[node name="Controles" type="CanvasLayer" unique_id=1218260552]
+
+[node name="UI_Mobile" type="Control" parent="." unique_id=1428481048]
+layout_mode = 3
+anchor_right = 0.13700001
+anchor_bottom = 0.105000004
+offset_right = 1717.96
+offset_bottom = 1041.4
+script = ExtResource("1_8n4ko")
+
+[node name="Disparar" type="Button" parent="UI_Mobile" unique_id=315964450]
+layout_mode = 0
+offset_left = 1210.0
+offset_top = 539.0
+offset_right = 1386.0
+offset_bottom = 658.0
+text = "Disparar"
+
+[node name="Interactuar" type="Button" parent="UI_Mobile" unique_id=721444170]
+layout_mode = 0
+offset_left = 1177.0
+offset_top = 793.0
+offset_right = 1353.0
+offset_bottom = 912.0
+text = "interactuar"
+
+[node name="Correr" type="Button" parent="UI_Mobile" unique_id=1826571234]
+layout_mode = 0
+offset_left = 1525.0
+offset_top = 684.0
+offset_right = 1701.0
+offset_bottom = 803.0
+text = "correr"
+
+[node name="joystick" type="TouchScreenButton" parent="UI_Mobile" unique_id=1487652218]
+position = Vector2(229, 851)
+texture_normal = ExtResource("2_vyf80")

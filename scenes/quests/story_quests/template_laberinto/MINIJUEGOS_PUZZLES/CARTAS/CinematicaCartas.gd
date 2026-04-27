@@ -1,19 +1,10 @@
-extends Node2D
+extends CinematicaBase
 class_name CinematicaCartas
 
-signal cinematica_terminada
-@export var progreso_dialogue: DialogueResource  # 👈 NUEVO
-# 🎬 DIALOGOS
-@export var dialogue: DialogueResource
-@export var perder_dialogue: DialogueResource
-@export var tiempo_dialogue: DialogueResource
-@export var ganar_dialogue: DialogueResource
+# 🎬 DIÁLOGOS ESPECÍFICOS (Los básicos ya vienen del padre)
+@export var progreso_dialogue: DialogueResource 
 @export var previo_final_dialogue: DialogueResource
 @export var final_dialogue: DialogueResource
-
-# 🌍 ESCENA
-@export_file("*.tscn") var next_scene: String
-@export var spawn_point_path: String
 
 # 🧠 DATOS
 var solucion_actual: Array = []
@@ -21,124 +12,44 @@ var tipo_operacion: String = ""
 var objetivo: int = 0
 
 # -------------------------
-# READY
-# -------------------------
-func _ready() -> void:
-	add_to_group("cinematica")
-	await reproducir_intro()
-
-# -------------------------
-# INTRO
-# -------------------------
-func reproducir_intro() -> void:
-	await get_tree().process_frame
-
-	print("🎬 Cinemática Cartas: INICIO")
-
-	if dialogue:
-		print("📢 MOSTRANDO DIALOGO INTRO")
-
-		var balloon = DialogueManager.show_dialogue_balloon(
-			dialogue, "", [self]
-		)
-
-		if balloon:
-			await DialogueManager.dialogue_ended
-
-	print("✅ Cinemática Cartas: FIN INTRO")
-	cinematica_terminada.emit()
-
-# -------------------------
-# PREVIO FINAL
-# -------------------------
-func notificar_previo_final() -> void:
-	if previo_final_dialogue:
-		print("📢 MOSTRANDO DIALOGO PREVIO FINAL")
-
-		var balloon = DialogueManager.show_dialogue_balloon(
-			previo_final_dialogue, "", [self]
-		)
-
-		if balloon:
-			await DialogueManager.dialogue_ended
-
-	cinematica_terminada.emit()
-
-# -------------------------
-# FINAL GANADO
-# -------------------------
-func notificar_final_ganado() -> void:
-	if final_dialogue:
-		print("📢 MOSTRANDO DIALOGO FINAL GANADO")
-
-		var balloon = DialogueManager.show_dialogue_balloon(
-			final_dialogue, "", [self]
-		)
-
-		if balloon:
-			await DialogueManager.dialogue_ended
-
-	# 🔥 cambio de escena SOLO aquí
-	_on_cambio_de_escena()
-
-	cinematica_terminada.emit()
-
-# -------------------------
-# SET SOLUCION
+# SETUP (Lógica específica)
 # -------------------------
 func set_solucion(sol: Array, tipo: String, valor_objetivo: int) -> void:
 	solucion_actual = sol.duplicate()
 	tipo_operacion = tipo
 	objetivo = valor_objetivo
-
-	print("📥 Cinemática recibe solución:", solucion_actual, "Tipo:", tipo_operacion, "Objetivo:", objetivo)
-
-# -------------------------
-# PERDER
-# -------------------------
-func notificar_perdida(tipo := "error") -> void:
-	var dialogo: DialogueResource = null
-
-	if tipo == "tiempo":
-		dialogo = tiempo_dialogue
-	else:
-		dialogo = perder_dialogue
-
-	if dialogo:
-		print("📢 MOSTRANDO DIALOGO PERDER")
-
-		var balloon = DialogueManager.show_dialogue_balloon(dialogo, "", [self])
-		if balloon:
-			await DialogueManager.dialogue_ended
-
-	cinematica_terminada.emit()
+	print("📥 Cartas recibe: ", solucion_actual, " Tipo: ", tipo_operacion, " Obj: ", objetivo)
 
 # -------------------------
-# PROGRESO (GANAR RONDA)
+# EVENTOS DE ESTADO (Usando al Padre)
 # -------------------------
+
 func notificar_progreso(actual: int, total: int) -> void:
-	print("Progreso:", actual, "/", total)
+	print("🃏 Progreso Cartas:", actual, "/", total)
+	await reproducir_dialogo(progreso_dialogue)
+	cinematica_terminada.emit()
 
-	if progreso_dialogue:
-		print("📢 MOSTRANDO DIALOGO PROGRESO")
-
-		var balloon = DialogueManager.show_dialogue_balloon(
-			progreso_dialogue, "", [self]
-		)
-
-		if balloon:
-			await DialogueManager.dialogue_ended
-
+func notificar_perdida(tipo := "error") -> void:
+	var dialogo = dialogue_tiempo if tipo == "tiempo" else dialogue_perder
+	await reproducir_dialogo(dialogo)
 	cinematica_terminada.emit()
 
 # -------------------------
-# CAMBIO ESCENA
+# SECUENCIA FINAL
 # -------------------------
-func _on_cambio_de_escena() -> void:
-	if next_scene != "":
-		SceneSwitcher2.change_to_file_with_transition(
-			next_scene,
-			spawn_point_path,
-			Transition.Effect.FADE,
-			Transition.Effect.FADE
-		)
+
+func notificar_previo_final() -> void:
+	await reproducir_dialogo(previo_final_dialogue)
+	cinematica_terminada.emit()
+
+func notificar_final_ganado() -> void:
+	# 1. Diálogo final
+	await reproducir_dialogo(final_dialogue)
+	
+	# 2. Persistencia (Heredado)
+	marcar_como_vista()
+	
+	# 3. Cambio de escena (Heredado)
+	cambiar_escena()
+	
+	cinematica_terminada.emit()

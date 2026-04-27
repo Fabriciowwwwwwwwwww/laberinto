@@ -28,49 +28,33 @@ func is_cancel(event: InputEvent) -> bool:
 
 # -------------------------
 # 🖱️ PRESIONADO GENERICO
-func is_pressed(event: InputEvent) -> bool:
-	if event is InputEventMouseButton:
-		return event.pressed
 
-	if event is InputEventScreenTouch:
-		return event.pressed
 
-	return false
+func is_pressed(event) -> bool:
+	return (
+		(event is InputEventMouseButton and event.pressed) or
+		(event is InputEventScreenTouch and event.pressed)
+	)
 
-# -------------------------
-# 🖱️ SOLTADO
-func is_released(event: InputEvent) -> bool:
-	if event is InputEventMouseButton:
-		return not event.pressed
+func is_released(event) -> bool:
+	return (
+		(event is InputEventMouseButton and not event.pressed) or
+		(event is InputEventScreenTouch and not event.pressed)
+	)
 
-	if event is InputEventScreenTouch:
-		return not event.pressed
+func is_drag(event) -> bool:
+	return (
+		event is InputEventMouseMotion or
+		event is InputEventScreenDrag
+	)
 
-	return false
-
-# -------------------------
-# 🖐️ DRAG / ARRASTRE
-func is_drag(event: InputEvent) -> bool:
-	if event is InputEventMouseMotion:
-		return true
-
-	if event is InputEventScreenDrag:
-		return true
-
-	return false
-
-# -------------------------
-# 📍 POSICION
-func get_position(event: InputEvent) -> Vector2:
+func get_position(event) -> Vector2:
 	if event is InputEventMouse:
 		return event.position
-
 	if event is InputEventScreenTouch:
 		return event.position
-
 	if event is InputEventScreenDrag:
 		return event.position
-
 	return Vector2.ZERO
 
 # -------------------------

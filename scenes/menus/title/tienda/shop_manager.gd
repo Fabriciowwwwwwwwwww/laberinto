@@ -61,16 +61,27 @@ func animar_entrada():
 		.set_ease(tipo_ease)
 # -------------------------
 func _input(event):
+
+	# 👉 DERECHA
 	if event.is_action_pressed("ui_right"):
 		cambiar_categoria(1)
+
+	# 👉 IZQUIERDA
 	elif event.is_action_pressed("ui_left"):
 		cambiar_categoria(-1)
+
+	# 👉 ABAJO
 	elif event.is_action_pressed("ui_down"):
 		mover(1)
+
+	# 👉 ARRIBA
 	elif event.is_action_pressed("ui_up"):
 		mover(-1)
-	elif event.is_action_pressed("ui_accept"):
-		seleccionar()
+
+	# 👉 CLICK / TOUCH (IMPORTANTE 🔥)
+	elif InputManager.is_pressed(event):
+		# opcional: podrías usar esto para seleccionar si quieres
+		pass
 
 # -------------------------
 func cambiar_categoria(dir):

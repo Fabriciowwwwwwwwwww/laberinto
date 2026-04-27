@@ -1,19 +1,8 @@
 [gd_scene format=3 uid="uid://dh1wpgnarnphb"]
 
 [ext_resource type="Script" uid="uid://2j2pa7ckx235" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/party/slot_orden.gd" id="1_cqdne"]
-[ext_resource type="Texture2D" uid="uid://2poirdkbwl4i" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/party/engranaje1.png" id="1_kxrx8"]
 
 [node name="slot" type="Control" unique_id=1345732888]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cqdne")
-id_correcto = 1
-
-[node name="Texture" type="TextureRect" parent="." unique_id=437410349]
-layout_mode = 0
-offset_left = -362.0
-offset_top = -233.0
-offset_right = 1174.0
-offset_bottom = 791.0
-scale = Vector2(0.493, 0.5)
-texture = ExtResource("1_kxrx8")

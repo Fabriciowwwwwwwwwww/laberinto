@@ -1,154 +1,72 @@
-extends Node2D
+extends CinematicaBase
 class_name CinematicaOrden
 
-signal cinematica_terminada
-
-# 🎬 DIALOGOS
-@export var dialogue_intro: DialogueResource
-@export var dialogue_inicio_juego: DialogueResource
-
-# 🧠 DATOS
-var solucion: Array = []
-
-# 🎨 REFERENCIAS
 @onready var canvas: CanvasLayer = $CanvasLayer
 @onready var contenedor: Control = $CanvasLayer/ContenedorSolucion
-@onready var label_titulo: Label = $CanvasLayer/LabelTitulo
 @onready var label_countdown: Label = $CanvasLayer/LabelCuentaAtras
 
-# ⏱️ CONFIG
-@export var tiempo_mostrar := 3.0
-@export var tiempo_countdown := 3
+@export var tiempo_mostrar: float = 3.0
+var puzzle_ref: Node = null
+var solucion: Array = []
 
-# -------------------------
-func _ready():
-	add_to_group("cinematica")
-
-	# 🔥 seguridad (evita null)
-	if contenedor == null:
-		push_error("❌ ContenedorSolucion no encontrado")
-	if label_titulo == null:
-		push_error("❌ LabelTitulo no encontrado")
-	if label_countdown == null:
-		push_error("❌ LabelCuentaAtras no encontrado")
-
-	await iniciar_cinematica()
-
-# -------------------------
 func set_solucion(sol: Array):
 	solucion = sol.duplicate()
 
-# -------------------------
-func iniciar_cinematica():
-	await get_tree().process_frame
+func set_puzzle(p):
+	puzzle_ref = p
 
-	print("🎬 Cinemática Orden: INICIO")
-
-	# 🔥 mostrar UI
-	canvas.visible = true
-
-	# 🎬 DIÁLOGO INTRO
-	if dialogue_intro:
-		var balloon = DialogueManager.show_dialogue_balloon(
-			dialogue_intro, "", [self]
-		)
-		if balloon:
-			await DialogueManager.dialogue_ended
-
-	# 🎨 MOSTRAR SOLUCIÓN
+func ejecutar_secuencia_intro():
+	if canvas: canvas.visible = true
+	await reproducir_dialogo(dialogue_intro)
 	await mostrar_solucion()
-
-	# ⏳ TIEMPO PARA MEMORIZAR
 	await get_tree().create_timer(tiempo_mostrar).timeout
-
-	# ⏳ CUENTA REGRESIVA
-	await cuenta_regresiva()
-
-	# 🔥 OCULTAR TODO (IMPORTANTE)
-	canvas.visible = false
-
-	# 🎬 DIÁLOGO INICIO JUEGO
-	if dialogue_inicio_juego:
-		var balloon2 = DialogueManager.show_dialogue_balloon(
-			dialogue_inicio_juego, "", [self]
-		)
-		if balloon2:
-			await DialogueManager.dialogue_ended
-
-	print("🎮 INICIA MINIJUEGO")
+	await ejecutar_cuenta_atras()
+	if canvas: canvas.visible = false
 	cinematica_terminada.emit()
 
-# -------------------------
-func mostrar_solucion():
-	if label_titulo:
-		label_titulo.text = "MEMORIZA EL ORDEN"
+func ejecutar_derrota():
+	if canvas: canvas.visible = true
+	
+	# Mostrar la solución generada para la siguiente ronda
+	await mostrar_solucion()
+	
+	# Diálogo de perder (el jugador ve la solución mientras lee)
+	await reproducir_dialogo(dialogue_perder)
+	
+	await get_tree().create_timer(1.0).timeout
+	if canvas: canvas.visible = false
 
-	# limpiar anterior
+func mostrar_solucion():
 	for c in contenedor.get_children():
-		c.queue_free()
+		c.free()
 
 	await get_tree().process_frame
 
-	# 🔥 crear visual de solución
-	for item_data in solucion:
+	if puzzle_ref == null or solucion.is_empty(): return
 
-		var textura: Texture2D = null
+	var zona_slots = puzzle_ref.get_node_or_null("ZonaSlots")
+	var slots = zona_slots.get_children()
 
-		# 🔥 PackedScene (tus objetos)
-		if item_data is PackedScene:
-			var instancia = item_data.instantiate()
+	for i in range(solucion.size()):
+		var item = solucion[i]
+		if not is_instance_valid(item) or not item.textura: continue
 
-			if instancia is Sprite2D:
-				textura = instancia.texture
-
-			elif instancia.has_method("get_texture"):
-				textura = instancia.get_texture()
-
-			instancia.queue_free() # evitar leaks
-
-		# 🔥 Texture directa
-		elif item_data is Texture2D:
-			textura = item_data
-
-		if textura == null:
-			continue
-
-		var sprite = TextureRect.new()
-		sprite.texture = textura
-		sprite.custom_minimum_size = Vector2(120, 120)
-		sprite.expand = true
+		var sprite := TextureRect.new()
+		sprite.texture = item.textura
+		sprite.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		sprite.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-
-		# ✨ fade inicial
-		sprite.modulate.a = 0
-
+		sprite.custom_minimum_size = Vector2(100, 100)
+		
 		contenedor.add_child(sprite)
 
-		# ✨ animación
-		var tween = create_tween()
-		tween.tween_property(sprite, "modulate:a", 1.0, 0.4)
+		# Posicionar sobre el slot (que ya fue movido aleatoriamente en el puzzle)
+		if i < slots.size():
+			sprite.global_position = slots[i].global_position
 
-# -------------------------
-func cuenta_regresiva():
-	if label_countdown == null:
-		return
-
+func ejecutar_cuenta_atras():
+	if not label_countdown: return
 	label_countdown.visible = true
-
-	for i in range(tiempo_countdown, 0, -1):
+	for i in range(3, 0, -1):
 		label_countdown.text = str(i)
-
-		# ✨ animación escala
-		label_countdown.scale = Vector2(1.5, 1.5)
-
-		var tween = create_tween()
-		tween.tween_property(label_countdown, "scale", Vector2.ONE, 0.3)
-
 		await get_tree().create_timer(1.0).timeout
-
-	label_countdown.text = "¡YA!"
-	label_countdown.scale = Vector2(2, 2)
-
-	await get_tree().create_timer(0.5).timeout
-
 	label_countdown.visible = false

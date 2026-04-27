@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://dm6oxiovwwraj"]
 
 [ext_resource type="Script" uid="uid://x56scgp6w2pp" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/party/item_orden.gd" id="1_fk80k"]
-[ext_resource type="Texture2D" uid="uid://2poirdkbwl4i" path="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/party/engranaje1.png" id="2_xbtbh"]
+[ext_resource type="Texture2D" uid="uid://dxhvgtytmpiyo" path="res://scenes/quests/story_quests/template_laberinto/candado/candado1.PNG" id="2_fk80k"]
 
 [node name="obj" type="Control" unique_id=1023186845]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_fk80k")
+textura = ExtResource("2_fk80k")
 
-[node name="Texture" type="TextureRect" parent="." unique_id=437410349]
-layout_mode = 0
-offset_left = -359.0
-offset_top = -217.0
-offset_right = 1177.0
-offset_bottom = 807.0
-scale = Vector2(0.493, 0.5)
-texture = ExtResource("2_xbtbh")
+[node name="Texture" type="TextureRect" parent="." unique_id=1988486038]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5

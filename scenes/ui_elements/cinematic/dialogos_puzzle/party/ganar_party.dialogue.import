@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b1vsis4g0cxj4"
+path="res://.godot/imported/ganar_party.dialogue-a571c92ed476a9bdf763f3e9c95e123b.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/ganar_party.dialogue"
+dest_files=["res://.godot/imported/ganar_party.dialogue-a571c92ed476a9bdf763f3e9c95e123b.tres"]
+
+[params]
+
+defaults=true
