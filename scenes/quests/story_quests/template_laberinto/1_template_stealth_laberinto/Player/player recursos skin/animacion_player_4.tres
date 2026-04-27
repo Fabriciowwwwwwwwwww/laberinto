@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=73 format=3 uid="uid://cbp6brnhuedwl"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cbp6brnhuedwl"]
 
 [ext_resource type="Texture2D" uid="uid://c8h621xrpsd37" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/personaje 4/idle 4.png" id="1_d58m6"]
 [ext_resource type="Texture2D" uid="uid://dkrv832ublhmp" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/player sprite/personaje 4/atras 4.png" id="2_8lec6"]

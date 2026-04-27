@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player_l
-
+var disparo_presionado := false
+var interact_presionado := false
+var last_input_pos := Vector2.ZERO
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animated_arma: AnimatedSprite2D = $arma/AnimatedSprite2D
 @onready var stamina_bar: ProgressBar = $Stamina
@@ -53,6 +55,17 @@ func safe_get_node(path: NodePath) -> Node:
 # =====================================================
 # READY
 # =====================================================
+func _input(event):
+
+	# 📱 TOUCH / CLICK
+	if InputManager.is_pressed(event):
+		last_input_pos = InputManager.get_position(event)
+		disparo_presionado = true
+		interact_presionado = true
+
+	# 📱 DRAG (apuntar)
+	elif InputManager.is_drag(event):
+		last_input_pos = InputManager.get_position(event)
 func _ready() -> void:
 	add_to_group("player")
 	aplicar_skin()  # 👈 AÑADE ESTO
@@ -183,11 +196,15 @@ func _physics_process(delta: float) -> void:
 	# =========================
 	actualizar_pistola()
 
+
 	if Input.is_action_just_pressed("disparar"):
 		disparar()
 
-	if Input.is_action_just_pressed("recargar"):
-		recargar()
+	# MOBILE
+	if disparo_presionado:
+		disparar()
+		disparo_presionado = false
+
 	
 
 	# =========================
@@ -206,6 +223,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	handle_interaction()
+	interact_presionado = false
 # =====================================================
 # PISTOLA
 # =====================================================
@@ -223,15 +241,20 @@ func update_stamina_bar() -> void:
 			style.bg_color = Color(0.8, 0.2, 0.2, 1.0)
 func actualizar_pistola() -> void:
 
-	var direccion: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	var target: Vector2
+
+	if last_input_pos != Vector2.ZERO:
+		target = get_viewport().get_canvas_transform().affine_inverse() * last_input_pos
+	else:
+		target = get_global_mouse_position()
+
+	var direccion: Vector2 = (target - global_position).normalized()
 	var angulo: float = direccion.angle()
 
 	arma_node.rotation = angulo
 	arma_node.position = Vector2.RIGHT.rotated(angulo) * 23.0
 
 	animated_arma.flip_v = rad_to_deg(angulo) > 90 or rad_to_deg(angulo) < -90
-
-
 func disparar() -> void:
 
 	if balas_vista and balas_vista.procesar_disparo():
@@ -297,12 +320,21 @@ func clear_current_door()-> void:
 # =====================================================
 func handle_interaction() -> void:
 
+	# PC
 	if current_chest and Input.is_action_pressed("Interact"):
 		current_chest.start_interaction()
-	elif current_chest and not Input.is_action_pressed("Interact"):
+
+	elif current_chest:
 		current_chest.stop_interaction()
 
 	if current_door and Input.is_action_just_pressed("Interact"):
+		current_door.interact()
+
+	# MOBILE
+	if current_chest and interact_presionado:
+		current_chest.start_interaction()
+
+	if current_door and interact_presionado:
 		current_door.interact()
 
 

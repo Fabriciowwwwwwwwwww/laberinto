@@ -148,23 +148,32 @@ func _on_mutated(_mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	# See if we need to skip typing of the dialogue
+	# 🎯 Usar InputManager
+	var pressed = InputManager.is_pressed(event)
+
+	# 🔥 Skip del texto (click o toque)
 	if dialogue_label.is_typing:
-		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
-		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
-		if mouse_was_clicked or skip_button_was_pressed:
+		var skip_pressed = event.is_action_pressed(skip_action)
+
+		if pressed or skip_pressed:
 			get_viewport().set_input_as_handled()
 			dialogue_label.skip_typing()
 			return
 
-	if not is_waiting_for_input: return
-	if dialogue_line.responses.size() > 0: return
+	# 🚫 Si no debe avanzar aún
+	if not is_waiting_for_input:
+		return
 
-	# When there are no response options the balloon itself is the clickable thing
+	if dialogue_line.responses.size() > 0:
+		return
+
 	get_viewport().set_input_as_handled()
 
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+	# 🎯 Avanzar diálogo (click o toque)
+	if pressed:
 		next(dialogue_line.next_id)
+
+	# 🎮 También soporta teclado / botón
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 

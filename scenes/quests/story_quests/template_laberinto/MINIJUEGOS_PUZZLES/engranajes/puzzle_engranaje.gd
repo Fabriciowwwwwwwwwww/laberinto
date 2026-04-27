@@ -63,12 +63,24 @@ func iniciar_flujo() -> void:
 # INPUT
 # -------------------------
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and puzzle_activo:
-		if not ha_interactuado:
-			print("⚠️ Mueve al menos un engranaje")
-			return
-		
-		await check_solution()
+
+	if not puzzle_activo:
+		return
+
+	# SOLO TECLADO (PC)
+	if event is InputEventKey and event.pressed:
+		if event.is_action_pressed("ui_accept"):
+
+			if not ha_interactuado:
+				print("⚠️ Mueve al menos un engranaje")
+				return
+
+			await check_solution()
+
+	# 📱 MÓVIL (botón UI, no click en engranaje)
+	if event is InputEventScreenTouch and event.pressed:
+		# ❗ NO validar aquí directamente
+		pass
 
 func registrar_interaccion() -> void:
 	ha_interactuado = true

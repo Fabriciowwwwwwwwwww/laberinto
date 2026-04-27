@@ -33,6 +33,7 @@ MusicManager="*res://scenes/quests/story_quests/template_laberinto/1_template_st
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Gamestateminijuegos="*uid://deo2xguf545v"
 GameStateSkin="*res://scenes/globals/game_state/game_state_skin.gd"
+InputManager="*uid://dhugoxa13ug7i"
 
 [debug]
 

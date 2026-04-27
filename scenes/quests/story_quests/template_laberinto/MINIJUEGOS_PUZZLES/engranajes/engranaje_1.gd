@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 # INPUT
 # -------------------------
 func _input_event(viewport, event, shape_idx) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if (event is InputEventMouseButton or event is InputEventScreenTouch) and event.pressed:
 
 		if puzzle and not puzzle.puzzle_activo:
 			return
@@ -60,7 +60,6 @@ func _input_event(viewport, event, shape_idx) -> void:
 
 		is_spinning = true
 		toggle_direction()
-
 # -------------------------
 # HOVER
 # -------------------------

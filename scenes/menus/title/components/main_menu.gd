@@ -22,10 +22,13 @@ func _ready() -> void:
 
 	_on_visibility_changed()
 
-	# 🔥 conectar sonido a TODOS los botones
 	for b in button_box.get_children():
 		if b is Button:
 			b.focus_entered.connect(_on_button_focus)
+			b.mouse_entered.connect(func(): _on_mouse_enter_button(b))
+
+func _on_mouse_enter_button(button):
+	button.grab_focus()
 
 func _on_start_button_pressed() -> void:
 	start_pressed.emit()

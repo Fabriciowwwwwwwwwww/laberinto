@@ -114,10 +114,10 @@ position_smoothing_enabled = true
 [node name="cinematica" type="Node2D" parent="." unique_id=837253594 groups=["cinematica"]]
 position = Vector2(109, -83)
 script = ExtResource("7_4bfed")
-dialogue = ExtResource("11_csqs0")
-perder_dialogue = ExtResource("12_g64ev")
-tiempo_dialogue = ExtResource("13_3hkmn")
-ganar_dialogue = ExtResource("14_carfk")
+dialogue_intro = ExtResource("11_csqs0")
+dialogue_ganar = ExtResource("14_carfk")
+dialogue_perder = ExtResource("12_g64ev")
+dialogue_tiempo = ExtResource("13_3hkmn")
 next_scene = "uid://bl3lutxcqiq34"
 
 [connection signal="cinematica_terminada" from="cinematica" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]

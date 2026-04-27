@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 signal valor_cambiado(nuevo_valor)
 

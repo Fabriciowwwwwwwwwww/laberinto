@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dshab1f8hkesd"
+path="res://.godot/imported/perder party.dialogue-d955a79a49fbacd14d562bc009ec08a7.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/perder party.dialogue"
+dest_files=["res://.godot/imported/perder party.dialogue-d955a79a49fbacd14d562bc009ec08a7.tres"]
+
+[params]
+
+defaults=true

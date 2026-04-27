@@ -137,15 +137,17 @@ func pixel_to_grid(pixel_pos: Vector2) -> Vector2:
 	return Vector2(int(pixel_pos.x / CELL_SIZE), int(pixel_pos.y / CELL_SIZE))
 
 func _gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				start_drawing(event.position)
-			else:
-				finish_drawing()
-	elif event is InputEventMouseMotion:
+	# 🎯 Detectar click / touch
+	if InputManager.is_pressed(event):
+		start_drawing(InputManager.get_position(event))
+
+	elif InputManager.is_released(event):
+		finish_drawing()
+
+	# 🎯 Detectar drag (mouse o dedo)
+	elif InputManager.is_drag(event):
 		if is_drawing:
-			continue_drawing(event.position)
+			continue_drawing(InputManager.get_position(event))
 
 func start_drawing(mouse_pos: Vector2):
 	var grid_pos = pixel_to_grid(mouse_pos)

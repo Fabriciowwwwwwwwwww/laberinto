@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk5bu3g2klawm"
-path="res://.godot/imported/template_sign.png-6d910533d11f7ae48fc2339a9c933766.ctex"
+uid="uid://df5tmyroe8411"
+path="res://.godot/imported/escenario_party.png-ca5396d0b3912aab2bdeca55a5727e67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/template_sign.png"
-dest_files=["res://.godot/imported/template_sign.png-6d910533d11f7ae48fc2339a9c933766.ctex"]
+source_file="res://scenes/quests/story_quests/template_laberinto/MINIJUEGOS_PUZZLES/party/escenario_party.png"
+dest_files=["res://.godot/imported/escenario_party.png-ca5396d0b3912aab2bdeca55a5727e67.ctex"]
 
 [params]
 

@@ -27,7 +27,10 @@ func actualizar_revelado(mouse_pos: Vector2, radio: float):
 
 # CLICK PARA FIJAR
 func _on_click(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
+	if descubierto:
+		return
+
+	if InputManager.is_pressed(event):
 		descubrir()
 
 func descubrir():
