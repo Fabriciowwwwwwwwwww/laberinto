@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://di641mn4gf7yp"
+path="res://.godot/imported/Rain Sounds 15 seconds soundtrack (320 KBps).ogg-08b9939c6f05d829657fccd9475b45fb.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/Rain Sounds 15 seconds soundtrack (320 KBps).ogg"
+dest_files=["res://.godot/imported/Rain Sounds 15 seconds soundtrack (320 KBps).ogg-08b9939c6f05d829657fccd9475b45fb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

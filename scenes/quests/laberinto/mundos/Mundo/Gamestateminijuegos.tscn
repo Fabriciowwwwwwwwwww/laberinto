@@ -1,0 +1,6 @@
+[gd_scene load_steps=0 format=3 uid="uid://d24cg1e85b6t5"]
+
+[ext_resource type="Script" uid="uid://deo2xguf545v" path="res://scenes/quests/laberinto/mundos/Mundo/gamestateminijuegos.gd" id="1_o63lv"]
+
+[node name="Gamestateminijuegos" type="Node2D" unique_id=1301974622]
+script = ExtResource("1_o63lv")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=0 format=3 uid="uid://bypna5vieglgg"]
 
-[ext_resource type="Texture2D" uid="uid://xgalf60vavis" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/enemigo ataque.png" id="1_jvvun"]
+[ext_resource type="Texture2D" uid="uid://xgalf60vavis" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo ataque.png" id="1_jvvun"]
 [ext_resource type="Script" uid="uid://ddu1onkdrpngl" path="res://scenes/menus/title/tienda/item_tienda.tscn.gd" id="1_lxehs"]
-[ext_resource type="SpriteFrames" uid="uid://blbseyfi7ctrr" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player recursos skin/animacion_player_1.tres" id="2_go1lv"]
+[ext_resource type="SpriteFrames" uid="uid://blbseyfi7ctrr" path="res://scenes/quests/laberinto/mundos/Player/player recursos skin/animacion_player_1.tres" id="2_go1lv"]
 
 [node name="ItemTienda_tscn" type="Control" unique_id=354755083]
 layout_mode = 3

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bo2gd4sehdugm"]
 
 [ext_resource type="Script" uid="uid://y88qplkioj1q" path="res://scenes/globals/pause/pause_overlay.gd" id="1_lf64b"]
-[ext_resource type="Texture2D" uid="uid://dwq0rcbc2remu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/escenas/fondo_pausa.png" id="2_ai8ue"]
+[ext_resource type="Texture2D" uid="uid://dwq0rcbc2remu" path="res://scenes/quests/laberinto/sprite_laberinto/escenas/fondo_pausa.png" id="2_ai8ue"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="2_sd5t1"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="3_sd5t1"]
-[ext_resource type="Texture2D" uid="uid://dean5bvssdkll" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel/p.png" id="4_ai8ue"]
+[ext_resource type="Texture2D" uid="uid://dean5bvssdkll" path="res://scenes/quests/laberinto/sprite_laberinto/panel/p.png" id="4_ai8ue"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai8ue"]
 texture = ExtResource("2_ai8ue")

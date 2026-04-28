@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cx54aog1wevox"
+path="res://.godot/imported/suspenso ambiente 4.ogg-4567c0577e5ea158ab3c9411dd81768c.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Musicas/suspenso ambiente 4.ogg"
+dest_files=["res://.godot/imported/suspenso ambiente 4.ogg-4567c0577e5ea158ab3c9411dd81768c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

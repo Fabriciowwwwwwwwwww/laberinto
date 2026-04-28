@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhcgh2km5s6jl"
+path="res://.godot/imported/Sonido de Disparo de Mosquete - Efecto de sonido.ogg-afb6fe868be306408a4a291f8f9c184c.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Sonido de Disparo de Mosquete - Efecto de sonido.ogg"
+dest_files=["res://.godot/imported/Sonido de Disparo de Mosquete - Efecto de sonido.ogg-afb6fe868be306408a4a291f8f9c184c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

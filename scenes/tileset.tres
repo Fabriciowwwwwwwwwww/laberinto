@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=53 format=3 uid="uid://07fq3rspk8ia"]
 
-[ext_resource type="Texture2D" uid="uid://c6duyguv72xym" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/Ground.png" id="6_em2qm"]
-[ext_resource type="Texture2D" uid="uid://qu7ncgatnbye" path="res://scenes/quests/story_quests/template_laberinto/0_template_intro_laberinto/piso intro 1.png" id="6_qhdiu"]
-[ext_resource type="Texture2D" uid="uid://bduvll431wekx" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/mainlevbuild.png" id="9_nwor3"]
+[ext_resource type="Texture2D" uid="uid://c6duyguv72xym" path="res://scenes/quests/laberinto/sprite_laberinto/Ground.png" id="6_em2qm"]
+[ext_resource type="Texture2D" uid="uid://qu7ncgatnbye" path="res://scenes/quests/laberinto/0_template_intro_laberinto/piso intro 1.png" id="6_qhdiu"]
+[ext_resource type="Texture2D" uid="uid://bduvll431wekx" path="res://scenes/quests/laberinto/sprite_laberinto/mainlevbuild.png" id="9_nwor3"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0wfyh"]
 tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 1, 131072, 1, 2, 1, 65537, 0, 65537, 65537, 1, 131073, 65537, 2, 2, 131073, 0, 65538, 131073, 1, 131074, 131073, 2)

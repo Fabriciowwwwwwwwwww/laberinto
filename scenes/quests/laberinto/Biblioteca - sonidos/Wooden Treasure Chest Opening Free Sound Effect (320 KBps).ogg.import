@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b6hq2ugm8p75a"
+path="res://.godot/imported/Wooden Treasure Chest Opening Free Sound Effect (320 KBps).ogg-f276642b3e7c970f2e4e17ffe6b1b072.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Wooden Treasure Chest Opening Free Sound Effect (320 KBps).ogg"
+dest_files=["res://.godot/imported/Wooden Treasure Chest Opening Free Sound Effect (320 KBps).ogg-f276642b3e7c970f2e4e17ffe6b1b072.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

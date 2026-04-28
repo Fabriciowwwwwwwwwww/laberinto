@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cq4sfq3qxa83i"
+path="res://.godot/imported/old-doll-_piano-cover_.ogg-cea00961962ecf784585c88573872670.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Musicas/old-doll-_piano-cover_.ogg"
+dest_files=["res://.godot/imported/old-doll-_piano-cover_.ogg-cea00961962ecf784585c88573872670.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

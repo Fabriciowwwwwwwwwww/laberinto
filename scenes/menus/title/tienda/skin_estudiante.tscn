@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cscet1b7tmssk"]
+[gd_scene load_steps=4 format=3 uid="uid://cscet1b7tmssk"]
 
 [ext_resource type="Script" uid="uid://ddu1onkdrpngl" path="res://scenes/menus/title/tienda/item_tienda.tscn.gd" id="1_uko5s"]
-[ext_resource type="SpriteFrames" uid="uid://cbp6brnhuedwl" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player recursos skin/animacion_player_4.tres" id="2_uko5s"]
-[ext_resource type="Texture2D" uid="uid://cq6pqfjo5nsqt" path="res://assets/third_party/tiny-swords/UI/Pointers/06.png" id="3_2ghr8"]
+[ext_resource type="SpriteFrames" uid="uid://cbp6brnhuedwl" path="res://scenes/quests/laberinto/mundos/Player/player recursos skin/animacion_player_4.tres" id="2_uko5s"]
+[ext_resource type="Texture2D" uid="uid://o2yjtk1ner24" path="res://scenes/quests/laberinto/sprite_laberinto/icono/ic1.png" id="3_uko5s"]
 
 [node name="ItemTienda_tscn" type="Control"]
 layout_mode = 3
@@ -16,13 +16,13 @@ offset_left = -62.0
 offset_top = -59.0
 offset_right = 109.0
 offset_bottom = 76.0
-texture = ExtResource("3_2ghr8")
+texture = ExtResource("3_uko5s")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -46.0
-offset_top = 35.0
-offset_right = 20.0
-offset_bottom = 84.0
+offset_left = -22.0
+offset_top = 83.0
+offset_right = 81.0
+offset_bottom = 132.0
 text = "SKIN MASTER
 "

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dt8a15gqigb3v"
+path="res://.godot/imported/template_intro_laberinto.dialogue-9ba3037c8dfaead1872b60f6c6fad7fe.tres"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/0_template_intro_laberinto/template_intro_components_laberinto/template_intro_laberinto.dialogue"
+dest_files=["res://.godot/imported/template_intro_laberinto.dialogue-9ba3037c8dfaead1872b60f6c6fad7fe.tres"]
+
+[params]
+
+defaults=true

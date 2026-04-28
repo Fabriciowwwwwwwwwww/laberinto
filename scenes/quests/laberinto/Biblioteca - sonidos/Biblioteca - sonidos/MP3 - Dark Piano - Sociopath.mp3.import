@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://q87vrpyyiccq"
+path="res://.godot/imported/MP3 - Dark Piano - Sociopath.mp3-829d960ea20d857c78cdd7954dae5bdd.mp3str"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/MP3 - Dark Piano - Sociopath.mp3"
+dest_files=["res://.godot/imported/MP3 - Dark Piano - Sociopath.mp3-829d960ea20d857c78cdd7954dae5bdd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

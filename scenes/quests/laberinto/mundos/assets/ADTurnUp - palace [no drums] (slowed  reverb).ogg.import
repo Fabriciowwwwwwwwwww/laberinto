@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dotnvcasx2h2i"
+path="res://.godot/imported/ADTurnUp - palace [no drums] (slowed  reverb).ogg-f50ba7be9621cf8b563190698b9332ab.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/mundos/assets/ADTurnUp - palace [no drums] (slowed  reverb).ogg"
+dest_files=["res://.godot/imported/ADTurnUp - palace [no drums] (slowed  reverb).ogg-f50ba7be9621cf8b563190698b9332ab.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

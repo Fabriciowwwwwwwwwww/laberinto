@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mwn71vna1no2"
+path="res://.godot/imported/sword-hit-7160.ogg-e76e6c05cd8cf74c8a5d5ccff0999a12.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/sword-hit-7160.ogg"
+dest_files=["res://.godot/imported/sword-hit-7160.ogg-e76e6c05cd8cf74c8a5d5ccff0999a12.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

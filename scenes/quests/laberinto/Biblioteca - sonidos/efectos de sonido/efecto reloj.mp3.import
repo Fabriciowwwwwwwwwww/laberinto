@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://m773crn785f8"
+path="res://.godot/imported/efecto reloj.mp3-7d0da34fbce60a0819e6191d37812558.mp3str"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3"
+dest_files=["res://.godot/imported/efecto reloj.mp3-7d0da34fbce60a0819e6191d37812558.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

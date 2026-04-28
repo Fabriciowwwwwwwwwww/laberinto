@@ -1,0 +1,101 @@
+[gd_scene load_steps=0 format=3 uid="uid://67dqf6ap87vk"]
+
+[ext_resource type="Texture2D" uid="uid://guae02eq7p0x" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/vida/barra_vida.png" id="1_8rqnt"]
+[ext_resource type="Script" uid="uid://dcyu7td262qok" path="res://scenes/quests/laberinto/mundos/Player/barra_vida.gd" id="1_hxg3h"]
+[ext_resource type="Texture2D" uid="uid://b201wuqdggyes" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/vida/fill.png" id="2_yabe7"]
+[ext_resource type="Texture2D" uid="uid://bjakp6o3lhvcr" path="res://assets/third_party/tiny-swords/Effects/Fire/Fire.png" id="3_yabe7"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="4_c1mco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxg3h"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1mco"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lax0f"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arwmg"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh06b"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n22f"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llwwe"]
+atlas = ExtResource("3_yabe7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxdb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxg3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1mco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lax0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arwmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh06b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n22f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llwwe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 17.0
+}]
+
+[node name="barra vida" type="CanvasLayer" unique_id=80591700]
+scale = Vector2(0.69, 0.69)
+transform = Transform2D(0.69, 0, 0, 0.69, 0, 0)
+script = ExtResource("1_hxg3h")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1314559364]
+z_index = -4
+texture_repeat = 3
+anchors_preset = -1
+anchor_right = 0.224
+offset_left = -2.8985507
+offset_top = 25.173908
+offset_right = 899.0214
+offset_bottom = 631.1739
+scale = Vector2(0.4, 0.4)
+tooltip_text = "sadsadasdas"
+value = 100.0
+texture_under = ExtResource("1_8rqnt")
+texture_progress = ExtResource("2_yabe7")
+texture_progress_offset = Vector2(48.79, 310)
+
+[node name="vida" type="Label" parent="." unique_id=1987859035]
+offset_left = 145.31885
+offset_top = 158.2029
+offset_right = 395.31885
+offset_bottom = 211.2029
+theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c1mco")
+theme_override_font_sizes/font_size = 40
+text = "VIDA:100/100"
+
+[node name="fuego" type="AnimatedSprite2D" parent="." unique_id=1168171769]
+position = Vector2(264.15942, 82.840576)
+sprite_frames = SubResource("SpriteFrames_rxdb6")
+animation = &"idle"

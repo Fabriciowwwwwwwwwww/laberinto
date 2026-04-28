@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://cpm5o35ede3qs"]
+[gd_resource type="SpriteFrames" load_steps=0 format=3 uid="uid://cpm5o35ede3qs"]
 
-[ext_resource type="Texture2D" uid="uid://ctwb6ld40jjkd" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/cartas/dial uno.png" id="1_r3eoe"]
+[ext_resource type="Texture2D" uid="uid://ctwb6ld40jjkd" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/dial uno.png" id="1_r3eoe"]
 
 [resource]
 animations = [{

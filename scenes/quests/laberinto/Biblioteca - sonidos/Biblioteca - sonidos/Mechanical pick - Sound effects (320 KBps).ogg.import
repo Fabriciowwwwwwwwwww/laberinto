@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brwyfcutqkh6m"
+path="res://.godot/imported/Mechanical pick - Sound effects (320 KBps).ogg-9bd1a3c84c7a937c1cc6e00bd7ef08f5.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/Mechanical pick - Sound effects (320 KBps).ogg"
+dest_files=["res://.godot/imported/Mechanical pick - Sound effects (320 KBps).ogg-9bd1a3c84c7a937c1cc6e00bd7ef08f5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

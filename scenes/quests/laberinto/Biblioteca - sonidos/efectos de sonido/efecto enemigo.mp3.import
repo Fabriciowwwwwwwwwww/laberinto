@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sbchd5ajote5"
+path="res://.godot/imported/efecto enemigo.mp3-f9a98a885c174dfb0c56162cfbdf2810.mp3str"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto enemigo.mp3"
+dest_files=["res://.godot/imported/efecto enemigo.mp3-f9a98a885c174dfb0c56162cfbdf2810.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

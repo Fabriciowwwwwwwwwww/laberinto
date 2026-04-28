@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcbya8xqp3vqk"
+path="res://.godot/imported/Dark Piano - Sociopath.ogg-4a364e56c190c6d43d683655e44dbb2e.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/Dark Piano - Sociopath.ogg"
+dest_files=["res://.godot/imported/Dark Piano - Sociopath.ogg-4a364e56c190c6d43d683655e44dbb2e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

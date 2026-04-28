@@ -1,0 +1,177 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs0y2416wn2vs"]
+
+[ext_resource type="Script" uid="uid://cjb6avqybd13o" path="res://scenes/quests/laberinto/mundos/balas_vista.gd" id="1_ot0w2"]
+[ext_resource type="Theme" uid="uid://coxcra1002kil" path="res://scenes/ui_elements/shared_components/theme.tres" id="2_f8fo0"]
+[ext_resource type="Texture2D" uid="uid://exq80upujxjs" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/recarga/recarga_panel.png" id="3_x5boc"]
+[ext_resource type="Texture2D" uid="uid://p6107y6jjjf8" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/recarga/balas.png" id="4_bxm3k"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="5_fb2d4"]
+
+[node name="balas" type="CanvasLayer"]
+script = ExtResource("1_ot0w2")
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = -0.07722918
+anchor_top = 0.018000003
+anchor_right = -0.07722918
+anchor_bottom = 0.018000003
+offset_left = 167.28003
+offset_top = 213.84
+offset_right = 689.28
+offset_bottom = 388.84
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("2_f8fo0")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.005473495
+anchor_top = -0.10857132
+anchor_right = 0.92755526
+anchor_bottom = 1.6474643
+offset_left = -30.0
+offset_top = -21.0
+offset_right = 505.0
+offset_bottom = 217.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_x5boc")
+metadata/_edit_use_anchors_ = true
+
+[node name="b1" type="TextureRect" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.01462229
+anchor_top = 0.089795925
+anchor_right = 0.27937776
+anchor_bottom = 0.08979597
+offset_left = 110.490005
+offset_top = 60.0
+offset_right = 157.02199
+offset_bottom = 560.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_bxm3k")
+metadata/_edit_use_anchors_ = true
+
+[node name="b2" type="TextureRect" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030377721
+anchor_top = 0.089795925
+anchor_right = 0.030377734
+anchor_bottom = 0.08979597
+offset_left = 111.0
+offset_top = 60.0
+offset_right = 311.0
+offset_bottom = 560.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_bxm3k")
+metadata/_edit_use_anchors_ = true
+
+[node name="b3" type="TextureRect" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030377734
+anchor_top = 0.089795925
+anchor_right = 0.030377734
+anchor_bottom = 0.08979597
+offset_left = 135.0
+offset_top = 60.0
+offset_right = 335.0
+offset_bottom = 560.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_bxm3k")
+metadata/_edit_use_anchors_ = true
+
+[node name="b4" type="TextureRect" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030377734
+anchor_top = 0.089795925
+anchor_right = 0.030377734
+anchor_bottom = 0.08979597
+offset_left = 159.0
+offset_top = 60.0
+offset_right = 359.0
+offset_bottom = 560.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_bxm3k")
+metadata/_edit_use_anchors_ = true
+
+[node name="b5" type="TextureRect" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030377734
+anchor_top = 0.089795925
+anchor_right = 0.030377734
+anchor_bottom = 0.08979597
+offset_left = 183.0
+offset_top = 60.0
+offset_right = 383.0
+offset_bottom = 560.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_bxm3k")
+metadata/_edit_use_anchors_ = true
+
+[node name="RecargaBar" type="ProgressBar" parent="Panel"]
+modulate = Color(0.90328646, 0.55560607, 0.48138827, 1)
+self_modulate = Color(0.9935462, 0.9524966, 0.9999997, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04214565
+anchor_top = 0.16816324
+anchor_right = 0.042145595
+anchor_bottom = 0.1681632
+offset_left = 248.0
+offset_top = 72.0
+offset_right = 1697.9999
+offset_bottom = 191.99994
+scale = Vector2(0.2, 0.4)
+theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
+theme_override_colors/font_outline_color = Color(0.6271909, 0.69444144, 0.55898935, 1)
+theme_override_font_sizes/font_size = 60
+max_value = 10.0
+metadata/_edit_use_anchors_ = true
+
+[node name="indicador" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.12588945
+anchor_top = 0.25306118
+anchor_right = 0.0810071
+anchor_bottom = 0.36163262
+offset_left = 247.14288
+offset_top = 122.85715
+offset_right = 442.14288
+offset_bottom = 159.85715
+theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+theme_override_fonts/font = ExtResource("5_fb2d4")
+theme_override_font_sizes/font_size = 42
+text = "RECARGANDO"
+metadata/_edit_use_anchors_ = true
+
+[node name="numero_balas_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.027367193
+anchor_top = 0.081632644
+anchor_right = 0.03010407
+anchor_bottom = 0.15591836
+offset_left = 334.2857
+offset_top = 30.0
+offset_right = 427.2857
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
+theme_override_colors/font_shadow_color = Color(0.09700715, 0.051546216, 0.08018138, 1)
+theme_override_colors/font_outline_color = Color(0.76156753, 0.50864387, 0.31872687, 1)
+theme_override_fonts/font = ExtResource("5_fb2d4")
+theme_override_font_sizes/font_size = 44
+text = "BALAS"
+metadata/_edit_use_anchors_ = true

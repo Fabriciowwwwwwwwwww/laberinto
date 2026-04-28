@@ -1,17 +1,17 @@
-[gd_scene format=3 uid="uid://c67vx6vq75oyg"]
+[gd_scene load_steps=17 format=3 uid="uid://c67vx6vq75oyg"]
 
-[ext_resource type="Texture2D" uid="uid://ddsh06bcpqs6j" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/fondo temporal.jpg" id="1_1tae7"]
+[ext_resource type="Texture2D" uid="uid://ddsh06bcpqs6j" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/fondo temporal.jpg" id="1_1tae7"]
 [ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_bd7et"]
-[ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Mundo/main.tscn" id="3_746np"]
+[ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/laberinto/mundos/Mundo/main.tscn" id="3_746np"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_gmle2"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="5_wuclt"]
 [ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="6_u60h7"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="6_wckas"]
-[ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="6_xd8qt"]
-[ext_resource type="Texture2D" uid="uid://djgovt6f25uvi" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton opciones.png" id="7_u60h7"]
-[ext_resource type="Texture2D" uid="uid://cn0gt1ihqvbcu" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton salir.png" id="8_1tae7"]
+[ext_resource type="Texture2D" uid="uid://bxw8fftaam5po" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton reintentar.png" id="6_xd8qt"]
+[ext_resource type="Texture2D" uid="uid://djgovt6f25uvi" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton opciones.png" id="7_u60h7"]
+[ext_resource type="Texture2D" uid="uid://cn0gt1ihqvbcu" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton salir.png" id="8_1tae7"]
 [ext_resource type="Texture2D" uid="uid://ccavio2v8sk7c" path="res://assets/third_party/tiny-swords/UI/Banners/Carved_3Slides.png" id="8_kkbmu"]
-[ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/story_quests/template_laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_u60h7"]
+[ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_u60h7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
 texture = ExtResource("6_xd8qt")
@@ -43,16 +43,16 @@ expand_margin_top = 30.0
 expand_margin_right = 40.0
 expand_margin_bottom = 30.0
 
-[node name="MainMenu" type="CanvasLayer" unique_id=1084749206]
+[node name="MainMenu" type="CanvasLayer"]
 
-[node name="fondo" type="TextureRect" parent="." unique_id=703941001]
+[node name="fondo" type="TextureRect" parent="."]
 offset_left = -1.0
 offset_top = -4.0
 offset_right = 1949.0
 offset_bottom = 1124.0
 texture = ExtResource("1_1tae7")
 
-[node name="TitleScreen" type="Control" parent="." unique_id=1162099463]
+[node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -60,33 +60,33 @@ offset_bottom = 40.0
 script = ExtResource("2_bd7et")
 next_scene = ExtResource("3_746np")
 
-[node name="MainMenu" type="HBoxContainer" parent="TitleScreen" unique_id=1375412527]
+[node name="MainMenu" type="HBoxContainer" parent="TitleScreen"]
 layout_mode = 0
 offset_right = 1939.0
 offset_bottom = 1120.0
 theme = ExtResource("4_gmle2")
 script = ExtResource("5_wuclt")
 
-[node name="LogoContainer" type="MarginContainer" parent="TitleScreen/MainMenu" unique_id=1484606357]
+[node name="LogoContainer" type="MarginContainer" parent="TitleScreen/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 128
 
-[node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu" unique_id=1403014664]
+[node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 131
 theme_override_constants/margin_top = 134
 theme_override_constants/margin_right = 92
 
-[node name="ButtonBox" type="VBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins" unique_id=1996980519]
+[node name="ButtonBox" type="VBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 87
 
-[node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=2135547356]
+[node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
@@ -106,7 +106,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_jdh17")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_kkbmu")
 text = "RESTART"
 
-[node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=2093821410]
+[node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
@@ -125,7 +125,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_ldy66")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ldy66")
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1071679992]
+[node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
@@ -145,10 +145,10 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_ncxay")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ncxay")
 text = "Exit Game"
 
-[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=984930978]
+[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
 stream = ExtResource("10_u60h7")
 
-[node name="Options" parent="." unique_id=1270235187 instance=ExtResource("6_wckas")]
+[node name="Options" parent="." instance=ExtResource("6_wckas")]
 visible = false
 anchors_preset = 0
 anchor_right = 0.0
