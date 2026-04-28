@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://b4ncxcwf7mqin"]
+[gd_scene format=3 uid="uid://b4ncxcwf7mqin"]
 
 [ext_resource type="Script" uid="uid://b6pt2hk3seevl" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_engranajes/puzzle_engranaje.gd" id="1_usyd0"]
 [ext_resource type="Texture2D" uid="uid://ci0hmxh3abuf1" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_engranajes/fondo engranaje.png" id="3_rd50c"]
@@ -114,6 +114,7 @@ position_smoothing_enabled = true
 [node name="cinematica" type="Node2D" parent="." unique_id=837253594 groups=["cinematica"]]
 position = Vector2(109, -83)
 script = ExtResource("7_4bfed")
+reproducir_una_vez = false
 dialogue_intro = ExtResource("11_csqs0")
 dialogue_ganar = ExtResource("14_carfk")
 dialogue_perder = ExtResource("12_g64ev")

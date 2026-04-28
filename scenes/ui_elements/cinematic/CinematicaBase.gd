@@ -48,4 +48,5 @@ func cambiar_escena():
 		SceneSwitcher2.change_to_file_with_transition(next_scene, spawn_point_path)
 
 func _finalizar_directo():
-	queue_free()
+	print("⏭️ Cinemática saltada (ya vista)")
+	cinematica_terminada.emit()

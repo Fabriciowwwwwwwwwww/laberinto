@@ -24,7 +24,7 @@ func _ready():
 	if textura_lupa:
 		lupa.texture = textura_lupa
 	
-	lupa.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	lupa.mouse_filter = Control.MOUSE_FILTER_STOP
 	lupa.visible = false
 
 # -------------------------
@@ -43,7 +43,6 @@ func toggle_mapa():
 	get_tree().paused = abierto
 	
 	if abierto:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		lupa.visible = true
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -62,9 +61,8 @@ func _process(delta):
 	if not abierto:
 		return
 	
-	var mouse_pos = get_viewport().get_mouse_position()
-	lupa.position = mouse_pos - (lupa.size / 2)
+
 	
 	# 🔥 detectar revelables
 	for r in get_tree().get_nodes_in_group("revelables"):
-		r.actualizar_revelado(mouse_pos, radio_lupa)
+		r.actualizar_revelado(lupa.global_position, radio_lupa)

@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("enemy"):
 		if "recibir_daño" in body:
-			body.recibir_daño(20)
+			body.recibir_daño(13)
 		_reproducir_impacto()
 	elif body.is_in_group("wall") or body is TileMap:
 		_reproducir_impacto()

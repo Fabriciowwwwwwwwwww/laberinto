@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://w73k44wrhxmg"]
+[gd_scene format=3 uid="uid://w73k44wrhxmg"]
 
 [ext_resource type="Script" uid="uid://c7rcylk71lh65" path="res://scenes/quests/laberinto/mundos/Player/script/bala.gd" id="1_bpl8n"]
 [ext_resource type="Texture2D" uid="uid://8ndhqe1ulmh" path="res://scenes/quests/laberinto/sprite_laberinto/bala_revolver.png" id="2_bpl8n"]
@@ -75,15 +75,15 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" unique_id=1885370349]
 collision_layer = 17
 script = ExtResource("1_bpl8n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307748311]
 scale = Vector2(0.05, 0.05)
 shape = SubResource("CircleShape2D_86x2f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=857943337]
 z_index = 7
 texture_filter = 1
 position = Vector2(17, 4)

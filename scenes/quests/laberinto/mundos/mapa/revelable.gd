@@ -13,15 +13,15 @@ func _ready():
 	input_event.connect(_on_click)
 
 # 🔥 ESTA FUNCIÓN LA LLAMA EL MAPA
-func actualizar_revelado(mouse_pos: Vector2, radio: float):
+func actualizar_revelado(lupa_pos: Vector2, radio: float):
 	if descubierto:
 		return
 	
-	var distancia = global_position.distance_to(mouse_pos)
+	var distancia = global_position.distance_to(lupa_pos)
 	
 	if distancia < radio:
 		sprite.visible = true
-		modulate = Color(1,1,1,0.6) # preview
+		modulate = Color(1,1,1,0.6)
 	else:
 		sprite.visible = false
 
@@ -30,7 +30,7 @@ func _on_click(viewport, event, shape_idx):
 	if descubierto:
 		return
 
-	if InputManager.is_pressed(event):
+	if event is InputEventMouseButton and event.pressed:
 		descubrir()
 
 func descubrir():

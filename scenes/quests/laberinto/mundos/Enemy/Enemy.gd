@@ -12,10 +12,14 @@ extends CharacterBody2D
 @export var rango_ataque: float = 90.0
 @export var dano: int = 10
 @export var tiempo_entre_ataques: float = 0.8
+@onready var vida_bar: ProgressBar = $VidaBar
 
+var vida_max: int = 100
+var barra_visible_timer: float = 0.0
+var tiempo_mostrar_barra: float = 2.0
 var puede_atacar: bool = true
 var animacion_bloqueada: bool = false
-var vida: int = 50
+var vida: int = 100
 var puede_moverse: bool = true
 var current_speed: float
 var last_direction: Vector2 = Vector2.DOWN
@@ -26,6 +30,9 @@ var run_timer: float = 0.0
 var is_running: bool = false
 
 func _ready() -> void:
+	vida_bar.max_value = vida_max
+	vida_bar.value = vida
+	vida_bar.visible = false
 	sonido.bus = "SFX"
 	idle_sonido.bus = "SFX"
 	current_speed = WALK_SPEED
@@ -40,8 +47,14 @@ func _ready() -> void:
 	call_deferred("setup_navigation")
 
 func recibir_daño(cantidad: int) -> void:
+	print("daño recibo por la bala ",cantidad)
 	vida -= cantidad
 	puede_moverse = false
+	
+	# 🔥 actualizar barra
+	vida_bar.value = vida
+	vida_bar.visible = true
+	barra_visible_timer = tiempo_mostrar_barra
 	
 	if vida <= 0:
 		queue_free()
@@ -116,6 +129,11 @@ func setup_navigation() -> void:
 		navigation_agent.velocity_computed.connect(_on_velocity_computed)
 
 func _physics_process(delta: float) -> void:
+	if vida_bar.visible:
+		barra_visible_timer -= delta
+		vida_bar.rotation = 0  # evita que rote si tu enemigo rota
+		if barra_visible_timer <= 0:
+			vida_bar.visible = false
 	if not puede_moverse:
 		velocity = Vector2.ZERO
 		handle_animations(Vector2.ZERO)

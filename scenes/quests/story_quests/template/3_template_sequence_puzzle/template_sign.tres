@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b5pj1pt7r6hdg"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b5pj1pt7r6hdg"]
 
 [ext_resource type="Texture2D" uid="uid://cvtiud8bcqt8h" path="res://scenes/quests/story_quests/template/3_template_sequence_puzzle/template_sign.png" id="1_ck40f"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://cs7pboo6eqjfb"]
+[gd_scene format=3 uid="uid://cs7pboo6eqjfb"]
 
 [ext_resource type="Script" uid="uid://dypv8hj74hl31" path="res://scenes/quests/laberinto/mundos/Enemy/Enemy.gd" id="1_epr5s"]
 [ext_resource type="Texture2D" uid="uid://b4uddna3p375v" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/d.png" id="2_jaomq"]
@@ -370,7 +370,14 @@ animations = [{
 radius = 5.25
 height = 16.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwelj"]
+bg_color = Color(0, 0, 0, 0.5529412)
+border_color = Color(0.30756426, 0.45182592, 0.23593599, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyedu"]
+bg_color = Color(0.54901963, 0.003921569, 0.11372549, 1)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=967855762 groups=["enemy"]]
 z_index = 4
 scale = Vector2(4, 4)
 collision_mask = 2
@@ -378,7 +385,7 @@ script = ExtResource("1_epr5s")
 WALK_SPEED = 100.0
 RUN_SPEED = 250.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=757782057]
 texture_filter = 1
 position = Vector2(0, -2.38419e-07)
 scale = Vector2(0.0299822, 0.0187849)
@@ -386,14 +393,14 @@ sprite_frames = SubResource("SpriteFrames_hintw")
 animation = &"subir"
 frame_progress = 0.575488
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1372568658 groups=["enemy"]]
 light_mask = 0
 position = Vector2(0, -2.5)
 shape = SubResource("CapsuleShape2D_hintw")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=425579464]
 
-[node name="DustParticles" type="GPUParticles2D" parent="."]
+[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=847184073]
 z_index = 3
 amount = 3
 amount_ratio = 0.3407
@@ -404,10 +411,22 @@ interp_to_end = 0.121
 use_fixed_seed = true
 seed = 387688870
 
-[node name="golpe" type="AudioStreamPlayer2D" parent="."]
+[node name="golpe" type="AudioStreamPlayer2D" parent="." unique_id=1104719106]
 stream = ExtResource("5_qvu3t")
 
-[node name="idle" type="AudioStreamPlayer2D" parent="."]
+[node name="idle" type="AudioStreamPlayer2D" parent="." unique_id=59802802]
 stream = ExtResource("8_1qm4n")
 pitch_scale = 0.74
 parameters/looping = true
+
+[node name="VidaBar" type="ProgressBar" parent="." unique_id=1550029320]
+offset_left = -6.25
+offset_top = -14.75
+offset_right = 6.25
+offset_bottom = -12.75
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_gwelj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nyedu")
+max_value = 50.0
+value = 5.0
+show_percentage = false

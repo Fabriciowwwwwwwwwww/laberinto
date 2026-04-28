@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://bl3lutxcqiq34"]
+[gd_scene format=4 uid="uid://bl3lutxcqiq34"]
 
 [ext_resource type="Script" uid="uid://d1w3stfp8a4f0" path="res://scenes/quests/laberinto/mundos/Mundo/main.gd" id="1_ejnlw"]
 [ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/laberinto/mundos/Player/player.tscn" id="1_rgcj6"]
@@ -2748,7 +2748,7 @@ puerta_id = "puerta_ganzua3"
 next_scene = ExtResource("14_od6ok")
 
 [node name="puerta_ganzua4" parent="puertas" unique_id=931156348 instance=ExtResource("11_whg8k")]
-position = Vector2(3257, -4025)
+position = Vector2(3249.0002, -4019)
 scale = Vector2(3.1, 3.1)
 puerta_id = "puerta_ganzua4"
 next_scene = ExtResource("14_88uci")
