@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://chvtgpol8gre1"]
+[gd_scene format=3 uid="uid://chvtgpol8gre1"]
 
 [ext_resource type="Script" uid="uid://bk38eo8gcj710" path="res://scenes/quests/laberinto/mundos/Player/script/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://w73k44wrhxmg" path="res://scenes/quests/laberinto/mundos/Player/bala.tscn" id="2_ox34k"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d26ba4iuys465" path="res://scenes/quests/laberinto/sprite_laberinto/revolver default.png" id="5_ynr7a"]
 [ext_resource type="AudioStream" uid="uid://bhcgh2km5s6jl" path="res://scenes/quests/laberinto/Biblioteca - sonidos/Sonido de Disparo de Mosquete - Efecto de sonido.ogg" id="7_g5575"]
 [ext_resource type="Texture2D" uid="uid://4hxhx0tddkrc" path="res://scenes/quests/laberinto/mundos/assets/light.png" id="7_ynr7a"]
+[ext_resource type="Script" uid="uid://bsljr1rep7q2a" path="res://scenes/quests/laberinto/mundos/Player/mine_weapon.gd" id="9_pixqf"]
+[ext_resource type="PackedScene" uid="uid://c1i80066ra7oa" path="res://scenes/quests/laberinto/mundos/Player/armas/mina.tscn" id="10_gkna8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(11, 11)
@@ -373,13 +375,13 @@ animations = [{
 "speed": 21.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1221295918 groups=["player"]]
 scale = Vector2(4, 4)
 collision_layer = 65535
 script = ExtResource("1_l8h54")
 escena_bala = ExtResource("2_ox34k")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497153032]
 texture_filter = 1
 position = Vector2(0.089999795, 0.25)
 scale = Vector2(0.038665157, 0.019)
@@ -387,15 +389,15 @@ sprite_frames = ExtResource("3_g5575")
 animation = &"MoveDerecha"
 frame_progress = 0.81637424
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=766209185]
 position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_4ntmi")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1691988283]
 position = Vector2(0.25, 0)
 zoom = Vector2(2, 2)
 
-[node name="Stamina" type="ProgressBar" parent="."]
+[node name="Stamina" type="ProgressBar" parent="." unique_id=84246637]
 z_index = 3
 texture_filter = 1
 offset_left = -10.0
@@ -404,24 +406,30 @@ offset_right = 64.0
 offset_bottom = 8.0
 scale = Vector2(0.3, 0.3)
 
-[node name="arma" type="Node2D" parent="."]
+[node name="arma" type="Node2D" parent="." unique_id=1080398005]
 
-[node name="Marker2D" type="Marker2D" parent="arma"]
+[node name="Marker2D" type="Marker2D" parent="arma" unique_id=1805633641]
 position = Vector2(-15.5, 1.25)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="arma"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="arma" unique_id=743620316]
 texture_filter = 1
 position = Vector2(-10.25, -0.874999)
 scale = Vector2(0.21875, 0.335938)
 sprite_frames = SubResource("SpriteFrames_axhvq")
 animation = &"disparo_revolver"
 
-[node name="arma_sonido" type="AudioStreamPlayer2D" parent="arma"]
+[node name="arma_sonido" type="AudioStreamPlayer2D" parent="arma" unique_id=413085838]
 stream = ExtResource("7_g5575")
 volume_db = -13.0
 
-[node name="PointLight2D" type="PointLight2D" parent="." groups=["player"]]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1614003867 groups=["player"]]
 position = Vector2(-0.24999997, 0.75)
 scale = Vector2(0.770782, 0.598541)
 energy = 1.5
 texture = ExtResource("7_ynr7a")
+
+[node name="MineWeapon" type="Node2D" parent="." unique_id=723047138 node_paths=PackedStringArray("spawn_point", "facing_node")]
+script = ExtResource("9_pixqf")
+mine_scene = ExtResource("10_gkna8")
+spawn_point = NodePath(".")
+facing_node = NodePath("../AnimatedSprite2D")
