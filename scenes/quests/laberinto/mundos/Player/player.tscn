@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://4hxhx0tddkrc" path="res://scenes/quests/laberinto/mundos/assets/light.png" id="7_ynr7a"]
 [ext_resource type="Script" uid="uid://bsljr1rep7q2a" path="res://scenes/quests/laberinto/mundos/Player/mine_weapon.gd" id="9_pixqf"]
 [ext_resource type="PackedScene" uid="uid://c1i80066ra7oa" path="res://scenes/quests/laberinto/mundos/Player/armas/mina.tscn" id="10_gkna8"]
+[ext_resource type="Script" uid="uid://paryyaybx0sm" path="res://scenes/quests/laberinto/mundos/Player/veneno_manager.gd" id="11_cqn6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(11, 11)
@@ -433,3 +434,10 @@ script = ExtResource("9_pixqf")
 mine_scene = ExtResource("10_gkna8")
 spawn_point = NodePath(".")
 facing_node = NodePath("../AnimatedSprite2D")
+
+[node name="venenoTimer" type="Timer" parent="." unique_id=1913852019]
+
+[node name="veneno_manager" type="Node2D" parent="." unique_id=1651536153]
+script = ExtResource("11_cqn6s")
+
+[connection signal="timeout" from="venenoTimer" to="veneno_manager" method="_on_veneno_timer_timeout"]
