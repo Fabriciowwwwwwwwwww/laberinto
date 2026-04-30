@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://c1i80066ra7oa"]
+
+[ext_resource type="Script" uid="uid://bocomsxgeqk21" path="res://scenes/quests/laberinto/mundos/Player/armas/mina.gd" id="1_kht74"]
+[ext_resource type="Texture2D" uid="uid://bgi0acljk0ut7" path="res://assets/third_party/tiny-swords/Effects/Explosion/Explosions.png" id="2_57xkl"]
+[ext_resource type="Texture2D" uid="uid://3a1tbp5aw24v" path="res://scenes/quests/laberinto/sprite_laberinto/armas/bomba.png" id="3_atjji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxom7"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_202wc"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aitvk"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mfb7"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxfxn"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwbj2"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbk3m"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yytns"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mveu0"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5rgk"]
+atlas = ExtResource("2_57xkl")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkjop"]
+atlas = ExtResource("3_atjji")
+region = Rect2(0, 0, 319, 324)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxpt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_202wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aitvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mfb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxfxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwbj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbk3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yytns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mveu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5rgk")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 17.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkjop")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Mina" type="Area2D" unique_id=1208596912]
+script = ExtResource("1_kht74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518802225]
+shape = SubResource("CircleShape2D_wxom7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1693823317]
+position = Vector2(2, 0)
+scale = Vector2(0.19769295, 0.15799817)
+sprite_frames = SubResource("SpriteFrames_gxpt2")
+animation = &"explosion"
+frame = 8
+frame_progress = 1.0

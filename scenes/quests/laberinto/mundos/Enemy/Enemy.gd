@@ -58,7 +58,7 @@ func recibir_daño(cantidad: int) -> void:
 	
 	if vida <= 0:
 		queue_free()
-		remove_from_group("enemigos")
+		remove_from_group("enemy")
 	
 	navigation_agent.set_velocity(Vector2.ZERO)
 	animated_sprite_2d.play("golpeado")
