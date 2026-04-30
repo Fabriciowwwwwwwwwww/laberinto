@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcvpdish7mcw4"
-path="res://.godot/imported/mayordomo 3.png-473fff5c5264da3f44606aeb24949239.ctex"
+uid="uid://dv6g52uet68vw"
+path="res://.godot/imported/objetos2.png-f683ce4d79fc4903c797286f98895175.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/laberinto/sprite_laberinto/ncp _sprite/mayordomo 3.png"
-dest_files=["res://.godot/imported/mayordomo 3.png-473fff5c5264da3f44606aeb24949239.ctex"]
+source_file="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos2.png"
+dest_files=["res://.godot/imported/objetos2.png-f683ce4d79fc4903c797286f98895175.ctex"]
 
 [params]
 

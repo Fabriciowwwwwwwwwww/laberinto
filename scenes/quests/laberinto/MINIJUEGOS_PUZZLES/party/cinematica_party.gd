@@ -5,7 +5,7 @@ class_name CinematicaOrden
 @onready var contenedor: Control = $CanvasLayer/ContenedorSolucion
 @onready var label_countdown: Label = $CanvasLayer/LabelCuentaAtras
 
-@export var tiempo_mostrar: float = 3.0
+@export var tiempo_mostrar: float = 10
 var puzzle_ref: Node = null
 var solucion: Array = []
 
@@ -66,7 +66,7 @@ func mostrar_solucion():
 func ejecutar_cuenta_atras():
 	if not label_countdown: return
 	label_countdown.visible = true
-	for i in range(3, 0, -1):
+	for i in range(10, 0, -1):
 		label_countdown.text = str(i)
 		await get_tree().create_timer(1.0).timeout
 	label_countdown.visible = false

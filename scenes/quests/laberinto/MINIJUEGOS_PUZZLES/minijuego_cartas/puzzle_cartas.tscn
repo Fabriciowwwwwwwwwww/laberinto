@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cf2cr28fr1806" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/cartas3/cartas0007.png" id="29_6cbho"]
 [ext_resource type="Texture2D" uid="uid://dxry1dog6wiis" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/cartas3/cartas0008.png" id="30_e60jm"]
 [ext_resource type="PackedScene" uid="uid://qxo1cnjskj4a" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_cartas/carta.tscn" id="31_mk4af"]
-[ext_resource type="Texture2D" uid="uid://ci0hmxh3abuf1" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_engranajes/fondo engranaje.png" id="32_p6rru"]
+[ext_resource type="Texture2D" uid="uid://cruwch54x1fx8" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/escenario_cartas.png" id="32_16dm7"]
 [ext_resource type="Texture2D" uid="uid://bnl6ebckmh21m" path="res://scenes/quests/laberinto/sprite_laberinto/icono/guante.png" id="33_16dm7"]
 [ext_resource type="Script" uid="uid://dalkeu5s747vy" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_ganzuas/sprite_2d_2.gd" id="34_yxsas"]
 [ext_resource type="Texture2D" uid="uid://cdbv3cpswlyl7" path="res://scenes/quests/laberinto/sprite_laberinto/panel.png" id="35_tmpca"]
@@ -249,9 +249,9 @@ text = "5"
 
 [node name="fondo" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
 z_index = -1
-position = Vector2(486.0001, 290.5)
-scale = Vector2(0.62890613, 0.56347656)
-texture = ExtResource("32_p6rru")
+position = Vector2(489.83795, 293.3213)
+scale = Vector2(0.65790045, 0.5440025)
+texture = ExtResource("32_16dm7")
 
 [node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_engranaje"]
 wait_time = 2.884

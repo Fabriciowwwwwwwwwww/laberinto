@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df3jddp6hv6me"
-path="res://.godot/imported/altar.png-c255aab55bdfb7c093dcd7c5442e4628.ctex"
+uid="uid://bcvpdish7mcw4"
+path="res://.godot/imported/mayordomo 3.png-aa401cefb612933193f3ee29b7f31b20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/laberinto/sprite_laberinto/ncp _sprite/altar.png"
-dest_files=["res://.godot/imported/altar.png-c255aab55bdfb7c093dcd7c5442e4628.ctex"]
+source_file="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/mayordomo 3.png"
+dest_files=["res://.godot/imported/mayordomo 3.png-aa401cefb612933193f3ee29b7f31b20.ctex"]
 
 [params]
 
