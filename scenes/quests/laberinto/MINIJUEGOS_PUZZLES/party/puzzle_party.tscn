@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dimnje0s5j2sq"]
+[gd_scene load_steps=20 format=3 uid="uid://dimnje0s5j2sq"]
 
 [ext_resource type="Script" uid="uid://ctkwktoaeiheg" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/puzzle_party.gd" id="1_8faka"]
 [ext_resource type="Texture2D" uid="uid://df5tmyroe8411" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/escenario_party.png" id="2_5py0x"]
 [ext_resource type="Script" uid="uid://dalkeu5s747vy" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_ganzuas/sprite_2d_2.gd" id="4_ap2hj"]
-[ext_resource type="Texture2D" uid="uid://dyn1gdivjk3gu" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/recarga/recarga_panel balas.png" id="5_8d8ow"]
 [ext_resource type="Texture2D" uid="uid://iunolm0p3bpd" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos1.png" id="6_4x57o"]
 [ext_resource type="AudioStream" uid="uid://m773crn785f8" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3" id="6_mgnpj"]
 [ext_resource type="Texture2D" uid="uid://dv6g52uet68vw" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos2.png" id="7_4dpcg"]
@@ -46,28 +45,34 @@ unique_name_in_owner = true
 [node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_party"]
 unique_name_in_owner = true
 
-[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
-position = Vector2(241, 182.688)
-scale = Vector2(0.682373, 0.666512)
-texture = ExtResource("5_8d8ow")
-
 [node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
 unique_name_in_owner = true
 offset_left = 127.0
 offset_top = 149.0
-offset_right = 359.0
-offset_bottom = 250.0
+offset_right = 187.0
+offset_bottom = 212.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "0"
 
+[node name="lavel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
+unique_name_in_owner = true
+offset_left = 62.0
+offset_top = 55.0
+offset_right = 255.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "TIEMPO :"
+
 [node name="ResultadoLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
 unique_name_in_owner = true
-offset_left = 119.0
-offset_top = 297.0
-offset_right = 351.0
-offset_bottom = 398.0
+offset_left = 122.0
+offset_top = 234.0
+offset_right = 354.0
+offset_bottom = 363.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
@@ -326,22 +331,6 @@ next_scene = "uid://bl3lutxcqiq34"
 [node name="CanvasLayer" type="CanvasLayer" parent="cinematica_party"]
 unique_name_in_owner = true
 
-[node name="LabelCuentaAtras" type="Label" parent="cinematica_party/CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 158.0
-offset_top = 174.0
-offset_right = 198.0
-offset_bottom = 197.0
-text = "fdggfg"
-
-[node name="LabelTitulo" type="Label" parent="cinematica_party/CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 1122.0
-offset_top = 130.0
-offset_right = 1162.0
-offset_bottom = 153.0
-text = "gfhffff"
-
 [node name="Sprite2D" type="TextureRect" parent="cinematica_party/CanvasLayer"]
 z_index = -1
 offset_right = 1536.0
@@ -354,9 +343,21 @@ unique_name_in_owner = true
 anchors_preset = -1
 anchor_top = 0.001
 anchor_bottom = 0.001
-offset_top = -1.12
-offset_right = 1920.0
-offset_bottom = 1118.88
+offset_left = -2.0
+offset_top = 22.88
+offset_right = 1909.0
+offset_bottom = 1116.88
+
+[node name="LabelCuentaAtras" type="Label" parent="cinematica_party/CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 129.0
+offset_top = 147.0
+offset_right = 322.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
