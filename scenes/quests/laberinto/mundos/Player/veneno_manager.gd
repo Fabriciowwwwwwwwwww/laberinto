@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 
 		# 🔹 Sprite como círculo celeste transparente
 		var sprite := Sprite2D.new()
-		sprite.texture = preload("res://assets/third_party/inputs/keyboard-and-mouse/Blanks/Blank_White_Enter.png") 
+		sprite.texture = preload("res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/Items/Bottle.png") 
 		sprite.modulate = Color(0.3, 0.8, 1.0, 0.4)  # celeste con alpha
 		sprite.scale = Vector2(1.5, 1.5) # tamaño del área
 		sprite.centered = true

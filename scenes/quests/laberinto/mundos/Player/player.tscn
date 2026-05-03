@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://bsljr1rep7q2a" path="res://scenes/quests/laberinto/mundos/Player/mine_weapon.gd" id="9_pixqf"]
 [ext_resource type="PackedScene" uid="uid://c1i80066ra7oa" path="res://scenes/quests/laberinto/mundos/Player/armas/mina.tscn" id="10_gkna8"]
 [ext_resource type="Script" uid="uid://paryyaybx0sm" path="res://scenes/quests/laberinto/mundos/Player/veneno_manager.gd" id="11_cqn6s"]
+[ext_resource type="PackedScene" uid="uid://blnt1qv27rdmb" path="res://scenes/quests/laberinto/mundos/Player/armas/PoisonArea.tscn" id="12_coucn"]
+[ext_resource type="Script" uid="uid://ekj5cao6f68f" path="res://scenes/quests/laberinto/mundos/Player/area_2d.gd" id="13_p7okw"]
+[ext_resource type="Script" uid="uid://obouhx1qs3ll" path="res://scenes/quests/laberinto/mundos/Player/xp_manager.gd" id="14_ae5wj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(11, 11)
@@ -376,6 +379,9 @@ animations = [{
 "speed": 21.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ae5wj"]
+radius = 18.04335
+
 [node name="Player" type="CharacterBody2D" unique_id=1221295918 groups=["player"]]
 scale = Vector2(4, 4)
 collision_layer = 65535
@@ -439,5 +445,18 @@ facing_node = NodePath("../AnimatedSprite2D")
 
 [node name="veneno_manager" type="Node2D" parent="." unique_id=1651536153]
 script = ExtResource("11_cqn6s")
+poison_area_scene = ExtResource("12_coucn")
+
+[node name="PlayerXPCollector" type="Area2D" parent="." unique_id=1495993968]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("13_p7okw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerXPCollector" unique_id=1265056411]
+shape = SubResource("CircleShape2D_ae5wj")
+
+[node name="XPManager" type="Node2D" parent="." unique_id=2021721784]
+script = ExtResource("14_ae5wj")
 
 [connection signal="timeout" from="venenoTimer" to="veneno_manager" method="_on_veneno_timer_timeout"]
+[connection signal="body_entered" from="PlayerXPCollector" to="PlayerXPCollector" method="_on_body_entered"]

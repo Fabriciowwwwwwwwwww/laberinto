@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://xao041ccf3r6"]
+
+[ext_resource type="Script" uid="uid://blme8a8l7t6cs" path="res://scenes/quests/laberinto/mundos/vista_experiencia.gd" id="1_cxsst"]
+[ext_resource type="Theme" uid="uid://coxcra1002kil" path="res://scenes/ui_elements/shared_components/theme.tres" id="2_qvjpf"]
+[ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="5_osptm"]
+
+[node name="vista_experiencia" type="CanvasLayer" unique_id=11346750]
+script = ExtResource("1_cxsst")
+
+[node name="Panel" type="Panel" parent="." unique_id=1903406998]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = -0.07722918
+anchor_top = 0.018000003
+anchor_right = -0.07722918
+anchor_bottom = 0.018000003
+offset_left = 1658.28
+offset_top = 28.840012
+offset_right = 2180.28
+offset_bottom = 203.84001
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("2_qvjpf")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelXP" type="Label" parent="Panel" unique_id=1783407524]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.30104005
+anchor_top = 0.1714284
+anchor_right = -0.21866459
+anchor_bottom = 0.27999982
+offset_left = 334.2857
+offset_top = 30.0
+offset_right = 427.2857
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
+theme_override_colors/font_shadow_color = Color(0.09700715, 0.051546216, 0.08018138, 1)
+theme_override_colors/font_outline_color = Color(0.76156753, 0.50864387, 0.31872687, 1)
+theme_override_fonts/font = ExtResource("5_osptm")
+theme_override_font_sizes/font_size = 44
+text = "experiencia"
+metadata/_edit_use_anchors_ = true

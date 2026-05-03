@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var dust_particles: GPUParticles2D = $DustParticles
 @onready var sonido: AudioStreamPlayer2D = $golpe
 @onready var idle_sonido: AudioStreamPlayer2D = $idle
 @export var WALK_SPEED: float = 200.0
@@ -10,16 +9,18 @@ extends CharacterBody2D
 @export var run_duration: float = 2.0
 @export var walk_duration: float = 4.0
 @export var rango_ataque: float = 90.0
-@export var dano: int = 10
+@onready var drop_xp =$experiencia
+@export var dano: int = 60
 @export var tiempo_entre_ataques: float = 0.8
 @onready var vida_bar: ProgressBar = $VidaBar
-
-var vida_max: int = 100
+var knockback_velocity: Vector2 = Vector2.ZERO
+var knockback_time: float = 0.0
+var vida_max: int = 60
 var barra_visible_timer: float = 0.0
 var tiempo_mostrar_barra: float = 2.0
 var puede_atacar: bool = true
 var animacion_bloqueada: bool = false
-var vida: int = 100
+@export var vida: int = 10
 var puede_moverse: bool = true
 var current_speed: float
 var last_direction: Vector2 = Vector2.DOWN
@@ -28,8 +29,13 @@ var path_update_timer: float = 0.0
 const PATH_UPDATE_INTERVAL: float = 0.2
 var run_timer: float = 0.0
 var is_running: bool = false
-
+var timer_golpe: Timer
 func _ready() -> void:
+	timer_golpe = Timer.new()
+	timer_golpe.one_shot = true
+	timer_golpe.wait_time = 0.3
+	add_child(timer_golpe)
+	timer_golpe.timeout.connect(_fin_golpe)
 	vida_bar.max_value = vida_max
 	vida_bar.value = vida
 	vida_bar.visible = false
@@ -43,52 +49,40 @@ func _ready() -> void:
 	navigation_agent.radius = 16.0
 	navigation_agent.max_speed = RUN_SPEED
 
-	setup_dust_particles()
 	call_deferred("setup_navigation")
-
+func aplicar_knockback(dir: Vector2, fuerza: float):
+	knockback_velocity = dir * fuerza
+	knockback_time = 0.3 # duración del empuje
+	puede_moverse = false
+var en_cooldown_golpe := false
 func recibir_daño(cantidad: int) -> void:
-	print("daño recibo por la bala ",cantidad)
+	if en_cooldown_golpe:
+		return
+
+	en_cooldown_golpe = true
 	vida -= cantidad
 	puede_moverse = false
-	
-	# 🔥 actualizar barra
+
 	vida_bar.value = vida
 	vida_bar.visible = true
 	barra_visible_timer = tiempo_mostrar_barra
-	
+
 	if vida <= 0:
+		if drop_xp:
+			drop_xp.soltar_xp()
 		queue_free()
-		remove_from_group("enemy")
-	
+		return
+
 	navigation_agent.set_velocity(Vector2.ZERO)
-	animated_sprite_2d.play("golpeado")
-	
-	await get_tree().create_timer(0.3).timeout
+
+	if animated_sprite_2d.animation != "golpeado":
+		animated_sprite_2d.play("golpeado")
+
+	timer_golpe.start()  # ✅ AQUÍ está la clave
+func _fin_golpe():
 	puede_moverse = true
+	en_cooldown_golpe = false
 
-# ------------------ PARTÍCULAS ------------------
-
-func setup_dust_particles() -> void:
-	if not dust_particles:
-		dust_particles = GPUParticles2D.new()
-		add_child(dust_particles)
-
-	dust_particles.emitting = false
-	dust_particles.amount = 15
-	dust_particles.lifetime = 0.8
-	dust_particles.position = Vector2(0, 10)
-
-	var particle_material: ParticleProcessMaterial = ParticleProcessMaterial.new()
-	particle_material.direction = Vector3(0, -1, 0)
-	particle_material.initial_velocity_min = 20.0
-	particle_material.initial_velocity_max = 40.0
-	particle_material.gravity = Vector3(0, 50, 0)
-	particle_material.scale_min = 0.3
-	particle_material.scale_max = 0.7
-	#particle_material.color_ramp = create_dust_gradient()
-
-	dust_particles.process_material = particle_material
-	dust_particles.texture = create_dust_texture()
 
 func create_dust_gradient() -> Gradient:
 	var gradient: Gradient = Gradient.new()
@@ -129,6 +123,12 @@ func setup_navigation() -> void:
 		navigation_agent.velocity_computed.connect(_on_velocity_computed)
 
 func _physics_process(delta: float) -> void:
+	if knockback_time > 0:
+		knockback_time -= delta
+		velocity = velocity.lerp(knockback_velocity, 0.4)
+		move_and_slide()
+		return
+
 	if vida_bar.visible:
 		barra_visible_timer -= delta
 		vida_bar.rotation = 0  # evita que rote si tu enemigo rota
@@ -166,7 +166,6 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		handle_animations(Vector2.ZERO)
 
-	update_dust_particles()
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
@@ -188,9 +187,7 @@ func update_speed(delta: float) -> void:
 			is_running = true
 			run_timer = 0.0
 
-func update_dust_particles() -> void:
-	if dust_particles:
-		dust_particles.emitting = is_running and velocity.length() > 10.0
+
 
 # ------------------ ANIMACIONES ------------------
 

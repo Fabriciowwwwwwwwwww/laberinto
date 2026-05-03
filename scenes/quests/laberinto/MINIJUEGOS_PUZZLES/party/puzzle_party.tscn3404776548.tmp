@@ -1,0 +1,368 @@
+[gd_scene format=3 uid="uid://dimnje0s5j2sq"]
+
+[ext_resource type="Script" uid="uid://ctkwktoaeiheg" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/puzzle_party.gd" id="1_8faka"]
+[ext_resource type="Texture2D" uid="uid://df5tmyroe8411" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/escenario_party.png" id="2_5py0x"]
+[ext_resource type="Script" uid="uid://dalkeu5s747vy" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_ganzuas/sprite_2d_2.gd" id="4_ap2hj"]
+[ext_resource type="Texture2D" uid="uid://dyn1gdivjk3gu" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/recarga/recarga_panel balas.png" id="5_8d8ow"]
+[ext_resource type="Texture2D" uid="uid://iunolm0p3bpd" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos1.png" id="6_4x57o"]
+[ext_resource type="AudioStream" uid="uid://m773crn785f8" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3" id="6_mgnpj"]
+[ext_resource type="Texture2D" uid="uid://dv6g52uet68vw" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos2.png" id="7_4dpcg"]
+[ext_resource type="PackedScene" uid="uid://dm6oxiovwwraj" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/ItemOrden.tscn" id="7_w6pte"]
+[ext_resource type="Texture2D" uid="uid://ctiw74oi0fupl" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos3.png" id="8_7gf6n"]
+[ext_resource type="Texture2D" uid="uid://5xr78csfj4mj" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos4.png" id="9_yy211"]
+[ext_resource type="Texture2D" uid="uid://thkoqkehqqgi" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos5.png" id="10_1fbcq"]
+[ext_resource type="Texture2D" uid="uid://cie17j4m0ypno" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos7.png" id="11_ejc8p"]
+[ext_resource type="PackedScene" uid="uid://dh1wpgnarnphb" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/SlotOrden.tscn" id="11_evk0e"]
+[ext_resource type="Texture2D" uid="uid://bel24lk3uhkq6" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos8.png" id="12_6n4r7"]
+[ext_resource type="Script" uid="uid://dpvrq3o0yy5he" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/cinematica_party.gd" id="12_op77u"]
+[ext_resource type="Resource" uid="uid://cdt8al61mg0kk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/intro_party.dialogue" id="13_d0tjr"]
+[ext_resource type="Resource" uid="uid://b1vsis4g0cxj4" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/ganar_party.dialogue" id="14_ap2hj"]
+[ext_resource type="Resource" uid="uid://dshab1f8hkesd" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/perder party.dialogue" id="15_8d8ow"]
+[ext_resource type="Resource" uid="uid://btp77714l1sgp" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/tiempo_party.dialogue" id="16_mgnpj"]
+[ext_resource type="Texture2D" uid="uid://bnl6ebckmh21m" path="res://scenes/quests/laberinto/sprite_laberinto/icono/guante.png" id="17_s7p1y"]
+
+[node name="MinijuegoManager" type="Node2D" unique_id=196795345]
+unique_name_in_owner = true
+
+[node name="OnTheGround" type="Node2D" parent="." unique_id=1068130635]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Puzzle_party" type="Node2D" parent="OnTheGround" unique_id=84675089]
+unique_name_in_owner = true
+z_index = 1
+script = ExtResource("1_8faka")
+
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_party" unique_id=2115432030]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(960.7001, 560)
+scale = Vector2(1.2490885, 1.09375)
+texture = ExtResource("2_5py0x")
+
+[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_party" unique_id=534535568]
+unique_name_in_owner = true
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_party" unique_id=288946544]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=496093232]
+position = Vector2(241, 182.688)
+scale = Vector2(0.682373, 0.666512)
+texture = ExtResource("5_8d8ow")
+
+[node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=8673364]
+unique_name_in_owner = true
+offset_left = 127.0
+offset_top = 149.0
+offset_right = 359.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0"
+
+[node name="ResultadoLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=2058881484]
+unique_name_in_owner = true
+offset_left = 119.0
+offset_top = 297.0
+offset_right = 351.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0
+"
+
+[node name="sonido_reloj" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_party" unique_id=684268513]
+unique_name_in_owner = true
+stream = ExtResource("6_mgnpj")
+parameters/looping = false
+
+[node name="zona_objetos" type="Control" parent="OnTheGround/Puzzle_party" unique_id=633830781]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 953.0
+offset_bottom = 557.0
+mouse_filter = 2
+
+[node name="obj" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1064714440 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -158.0
+offset_right = 998.0
+offset_bottom = -158.0
+id_correcto = 1
+textura = ExtResource("6_4x57o")
+
+[node name="obj2" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=50260153 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 588.0
+offset_top = 586.0
+offset_right = 588.0
+offset_bottom = 586.0
+id_correcto = 2
+textura = ExtResource("7_4dpcg")
+
+[node name="obj3" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1063736709 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -16.0
+offset_right = 998.0
+offset_bottom = -16.0
+id_correcto = 3
+textura = ExtResource("8_7gf6n")
+
+[node name="obj4" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=240256055 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -16.0
+offset_right = 998.0
+offset_bottom = -16.0
+id_correcto = 4
+textura = ExtResource("9_yy211")
+
+[node name="obj5" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=287994273 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -16.0
+offset_right = 998.0
+offset_bottom = -16.0
+id_correcto = 5
+textura = ExtResource("10_1fbcq")
+
+[node name="obj6" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=560538323 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -16.0
+offset_right = 998.0
+offset_bottom = -16.0
+id_correcto = 6
+textura = ExtResource("11_ejc8p")
+
+[node name="obj7" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1591095574 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -16.0
+offset_right = 998.0
+offset_bottom = -16.0
+id_correcto = 7
+textura = ExtResource("8_7gf6n")
+
+[node name="obj8" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=260972061 instance=ExtResource("7_w6pte")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 998.0
+offset_top = -16.0
+offset_right = 998.0
+offset_bottom = -16.0
+id_correcto = 8
+textura = ExtResource("12_6n4r7")
+
+[node name="ZonaSlots" type="Control" parent="OnTheGround/Puzzle_party" unique_id=1557962293]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 959.0
+offset_bottom = 558.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="slot" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1754888617 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot2" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=551179791 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot3" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=129510823 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot4" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1396106408 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot5" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1160264750 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot6" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=623000113 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot7" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=10447509 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot8" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1587668148 instance=ExtResource("11_evk0e")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="aceptar" type="Button" parent="OnTheGround/Puzzle_party" unique_id=804411924]
+offset_left = 1719.0
+offset_top = 971.0
+offset_right = 1785.0
+offset_bottom = 1002.0
+text = "evaluar"
+
+[node name="cinematica_party" type="Node2D" parent="." unique_id=471856979 groups=["cinematica"]]
+unique_name_in_owner = true
+position = Vector2(109, -83)
+script = ExtResource("12_op77u")
+dialogue_intro = ExtResource("13_d0tjr")
+dialogue_ganar = ExtResource("14_ap2hj")
+dialogue_perder = ExtResource("15_8d8ow")
+dialogue_tiempo = ExtResource("16_mgnpj")
+next_scene = "uid://bl3lutxcqiq34"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="cinematica_party" unique_id=1553873598]
+unique_name_in_owner = true
+
+[node name="LabelCuentaAtras" type="Label" parent="cinematica_party/CanvasLayer" unique_id=317234231]
+unique_name_in_owner = true
+offset_left = 158.0
+offset_top = 174.0
+offset_right = 301.0
+offset_bottom = 247.0
+text = "fdggfg"
+
+[node name="LabelTitulo" type="Label" parent="cinematica_party/CanvasLayer" unique_id=1148328879]
+unique_name_in_owner = true
+offset_left = 1122.0
+offset_top = 130.0
+offset_right = 1162.0
+offset_bottom = 153.0
+text = "gfhffff"
+
+[node name="Sprite2D" type="TextureRect" parent="cinematica_party/CanvasLayer" unique_id=2128670760]
+z_index = -1
+offset_right = 1536.0
+offset_bottom = 1024.0
+scale = Vector2(1.2490885, 1.09375)
+texture = ExtResource("2_5py0x")
+
+[node name="ContenedorSolucion" type="Panel" parent="cinematica_party/CanvasLayer" unique_id=1599219767]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_top = 0.001
+anchor_bottom = 0.001
+offset_left = -8.0
+offset_top = -17.12
+offset_right = 1912.0
+offset_bottom = 1102.88
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1109543324]
+unique_name_in_owner = true
+anchor_mode = 0
+enabled = false
+position_smoothing_enabled = true
+
+[node name="mano" type="Sprite2D" parent="." unique_id=59577089]
+position = Vector2(1846, 476.00006)
+scale = Vector2(1.1887412, 1.0079002)
+texture = ExtResource("17_s7p1y")
+centered = false
+offset = Vector2(-50, -50)
+script = ExtResource("4_ap2hj")
+
+[connection signal="pressed" from="OnTheGround/Puzzle_party/aceptar" to="OnTheGround/Puzzle_party" method="_on_aceptar_pressed"]

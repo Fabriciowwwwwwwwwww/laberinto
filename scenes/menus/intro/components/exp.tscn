@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://v7mvl2nemw3l"]
+
+[ext_resource type="Script" uid="uid://bbakfy8dhv2fh" path="res://scenes/menus/intro/components/px.gd" id="1_76mqw"]
+[ext_resource type="Texture2D" uid="uid://cb4q26fdiahdu" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/EFECTS AND ORBS.png" id="2_55k1f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55k1f"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u827j"]
+radius = 6.0
+
+[node name="Px" type="CharacterBody2D" unique_id=845280513]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_76mqw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=610830806]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1498465812]
+shape = SubResource("CircleShape2D_55k1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=139689542]
+modulate = Color(1.2742168, 1.2445716, 0.3403929, 1)
+self_modulate = Color(0.73352885, 0.6185274, 0.3215325, 1)
+position = Vector2(1.1920929e-07, 2.3841858e-07)
+scale = Vector2(0.16499999, 0.1635913)
+texture = ExtResource("2_55k1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1265687559]
+shape = SubResource("CircleShape2D_u827j")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cb8rql51f35tv" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/ataque.png" id="3_jaomq"]
 [ext_resource type="Texture2D" uid="uid://cmb3oul3tw78n" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/atack.png" id="4_jaomq"]
 [ext_resource type="Texture2D" uid="uid://dnjhv2vmgn6vu" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/ATRAS.png" id="5_hintw"]
-[ext_resource type="Texture2D" uid="uid://buwgetvvt5khj" path="res://scenes/quests/laberinto/sprite_laberinto/Smoke-Sheet.png" id="5_jaomq"]
 [ext_resource type="AudioStream" uid="uid://cjll58ed2epjs" path="res://scenes/quests/laberinto/Biblioteca - sonidos/Punch Sound Effect (Realistic) (320 KBps).ogg" id="5_qvu3t"]
 [ext_resource type="AudioStream" uid="uid://cg3g0cec0kvlh" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto enemigo2.mp3" id="8_1qm4n"]
+[ext_resource type="Script" uid="uid://8ava27tlmw2m" path="res://scenes/quests/laberinto/mundos/Enemy/experiencia.gd" id="8_gwelj"]
+[ext_resource type="PackedScene" uid="uid://v7mvl2nemw3l" path="res://scenes/menus/intro/components/exp.tscn" id="9_nyedu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ky4ru"]
 atlas = ExtResource("2_jaomq")
@@ -384,6 +385,8 @@ collision_mask = 2
 script = ExtResource("1_epr5s")
 WALK_SPEED = 100.0
 RUN_SPEED = 250.0
+dano = 10
+vida = 60
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=757782057]
 texture_filter = 1
@@ -399,17 +402,6 @@ position = Vector2(0, -2.5)
 shape = SubResource("CapsuleShape2D_hintw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=425579464]
-
-[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=847184073]
-z_index = 3
-amount = 3
-amount_ratio = 0.3407
-sub_emitter = NodePath(".")
-texture = ExtResource("5_jaomq")
-lifetime = 0.05
-interp_to_end = 0.121
-use_fixed_seed = true
-seed = 387688870
 
 [node name="golpe" type="AudioStreamPlayer2D" parent="." unique_id=1104719106]
 stream = ExtResource("5_qvu3t")
@@ -430,3 +422,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_nyedu")
 max_value = 50.0
 value = 5.0
 show_percentage = false
+
+[node name="experiencia" type="Node2D" parent="." unique_id=1896962830]
+script = ExtResource("8_gwelj")
+xp_orb_scene = ExtResource("9_nyedu")
