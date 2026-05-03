@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://blnt1qv27rdmb"]
+
+[ext_resource type="Script" uid="uid://dufnvlgga76c5" path="res://scenes/quests/laberinto/mundos/Player/armas/PoisonArea.gd" id="1_yc47m"]
+[ext_resource type="Texture2D" uid="uid://368j0tjog70a" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno1.png" id="2_g06n1"]
+[ext_resource type="Texture2D" uid="uid://br3i7sx3mka2a" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno2.png" id="3_t5l8j"]
+[ext_resource type="Texture2D" uid="uid://dp13k3wkhktir" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno3.png" id="4_0udvf"]
+[ext_resource type="Texture2D" uid="uid://cwwtdxg1pvo35" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno4.png" id="5_7yl78"]
+[ext_resource type="Texture2D" uid="uid://ny1va72feerv" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno5.png" id="6_hqwia"]
+[ext_resource type="Texture2D" uid="uid://8bajtkmup0ah" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno6.png" id="7_pqgxl"]
+[ext_resource type="Texture2D" uid="uid://cx8v0ma6tqex8" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno7.png" id="8_wdft0"]
+[ext_resource type="Texture2D" uid="uid://bisydikwgxrcn" path="res://scenes/quests/laberinto/sprite_laberinto/arma player sprite/AttackArea/veneno.png" id="9_rhh7h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0306"]
+radius = 68.18358
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jsbij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g06n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t5l8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0udvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7yl78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hqwia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pqgxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wdft0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rhh7h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 11.0
+}]
+
+[node name="PoisonArea" type="Node2D" unique_id=1672839864]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2017782292]
+script = ExtResource("1_yc47m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1759227144]
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_e0306")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=1552243757]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1954285902]
+modulate = Color(0.4745098, 0.5372549, 0.15686275, 0.59607846)
+position = Vector2(-2.0000038, -18)
+scale = Vector2(0.15185086, 0.15930185)
+sprite_frames = SubResource("SpriteFrames_jsbij")
+animation = &"idle"
+frame_progress = 0.94972384
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=646050701]
