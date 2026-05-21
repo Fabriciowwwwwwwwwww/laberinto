@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4ncxcwf7mqin"]
+
+[ext_resource type="Script" uid="uid://b6pt2hk3seevl" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/puzzle_engranaje.gd" id="1_usyd0"]
+[ext_resource type="Texture2D" uid="uid://ci0hmxh3abuf1" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/fondo engranaje.png" id="3_rd50c"]
+[ext_resource type="Texture2D" uid="uid://bclfap0ejgyac" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/ganzua.png" id="3_tvrh5"]
+[ext_resource type="Script" uid="uid://dalkeu5s747vy" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/sprite_2d_2.gd" id="4_w1vj3"]
+[ext_resource type="PackedScene" uid="uid://lqmdd2cldk6q" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/engranaje.tscn" id="5_tjdpl"]
+[ext_resource type="PackedScene" uid="uid://dg87x43pey1fd" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/candado.tscn" id="6_tvrh5"]
+[ext_resource type="Script" uid="uid://bada25bf3g5vh" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/cinematica_engranaje.gd" id="7_4bfed"]
+[ext_resource type="Texture2D" uid="uid://cdbv3cpswlyl7" path="res://scenes/quests/story_quests/template_laberinto/sprite_laberinto/panel.png" id="7_ueg2s"]
+[ext_resource type="Resource" uid="uid://bf6ou62ieo586" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue" id="9_tvrh5"]
+[ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="10_tjdpl"]
+[ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="10_w1vj3"]
+[ext_resource type="Resource" uid="uid://bcvt8bcroeyfi" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/ganar_engranajes.dialogue" id="11_tjdpl"]
+
+[node name="SequencePuzzleTemplate" type="Node2D"]
+
+[node name="OnTheGround" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Puzzle_engranaje" type="Node2D" parent="OnTheGround"]
+z_index = 1
+
+[node name="objetos" type="Node2D" parent="OnTheGround/Puzzle_engranaje" groups=["puzzle"]]
+script = ExtResource("1_usyd0")
+
+[node name="Engranaje1" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(164, 467)
+
+[node name="Engranaje2" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(173, 198)
+
+[node name="Engranaje3" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(388, 204)
+
+[node name="Engranaje4" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(426, 462)
+
+[node name="Engranaje5" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(581, 450)
+
+[node name="Engranaje6" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(552, 208)
+
+[node name="Engranaje7" parent="OnTheGround/Puzzle_engranaje/objetos" groups=["engranaje"] instance=ExtResource("5_tjdpl")]
+z_index = 33
+position = Vector2(683, 310)
+
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
+z_index = -1
+position = Vector2(490.00015, 289.74988)
+scale = Vector2(0.6445311, 0.55517596)
+texture = ExtResource("3_rd50c")
+
+[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_engranaje"]
+wait_time = 2.884
+
+[node name="Sprite2D2" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje"]
+position = Vector2(229, 252)
+scale = Vector2(0.687505, 1.12154)
+texture = ExtResource("3_tvrh5")
+centered = false
+offset = Vector2(-280, 0)
+script = ExtResource("4_w1vj3")
+
+[node name="Candado" parent="OnTheGround/Puzzle_engranaje" instance=ExtResource("6_tvrh5")]
+position = Vector2(881, 281)
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_engranaje"]
+
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay"]
+position = Vector2(249.375, 203.75)
+scale = Vector2(0.68237305, 0.7910557)
+texture = ExtResource("7_ueg2s")
+
+[node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay"]
+offset_left = 133.375
+offset_top = 157.74997
+offset_right = 365.375
+offset_bottom = 258.74997
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "ghghg"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6, 7)
+anchor_mode = 0
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="cinematica" type="Node2D" parent="." groups=["cinematica"]]
+position = Vector2(3, 6)
+script = ExtResource("7_4bfed")
+dialogue = ExtResource("9_tvrh5")
+tiempo_dialogue = ExtResource("10_tjdpl")
+perder_dialogue = ExtResource("10_w1vj3")
+ganar_dialogue = ExtResource("11_tjdpl")
+next_scene = "uid://bl3lutxcqiq34"
+
+[connection signal="cinematica_terminada" from="cinematica" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]

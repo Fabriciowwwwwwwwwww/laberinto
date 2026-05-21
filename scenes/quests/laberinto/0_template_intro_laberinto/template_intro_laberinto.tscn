@@ -1,6 +1,6 @@
-[gd_scene load_steps=0 format=4 uid="uid://6lieuap5vj74"]
+[gd_scene format=4 uid="uid://6lieuap5vj74"]
 
-[ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/laberinto/mundos/Player/player.tscn" id="1_27w4w"]
+[ext_resource type="PackedScene" path="res://scenes/quests/laberinto/mundos/Player/player.scn" id="1_27w4w"]
 [ext_resource type="Script" uid="uid://diaqnsrupdjvf" path="res://scenes/quests/laberinto/0_template_intro_laberinto/template_intro_laberinto.gd" id="1_dtbad"]
 [ext_resource type="AudioStream" uid="uid://cx54aog1wevox" path="res://scenes/quests/laberinto/Biblioteca - sonidos/Musicas/suspenso ambiente 4.ogg" id="2_2r85q"]
 [ext_resource type="Script" uid="uid://bpu6jo4kvehlg" path="res://scenes/game_elements/characters/player/components/player_interaction.gd" id="2_imdvi"]

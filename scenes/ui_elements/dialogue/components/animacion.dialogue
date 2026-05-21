@@ -1,0 +1,17 @@
+~ intro
+
+show sombra_idle
+
+Sombra: No deberías estar aquí...
+
+show sombra_loco
+
+Sombra: Ellos ya despertaron...
+
+play_sound ruido
+
+show sombra_dark
+
+Sombra: Corre.
+
+=> END

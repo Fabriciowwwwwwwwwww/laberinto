@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://8l5vhbgjf5a5"]
+[gd_scene format=3 uid="uid://8l5vhbgjf5a5"]
 
-[ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/laberinto/mundos/Player/player.tscn" id="1_vf4dt"]
+[ext_resource type="PackedScene" path="res://scenes/quests/laberinto/mundos/Player/player.scn" id="1_vf4dt"]
 
 [node name="Mundo" type="Node2D"]
 

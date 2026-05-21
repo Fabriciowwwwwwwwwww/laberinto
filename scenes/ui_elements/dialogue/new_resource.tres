@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3 uid="uid://u5gl6t3xqefr"] [ID:U5GL6T3XQEFR_5C4648]
+
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_2mu30"] [ID:DBS4435DSF3RY_PATH_RES_ADDONS_5DC38C]
+
+[resource] [ID:RESOURCE_2D5240]
+script = ExtResource("1_2mu30") [ID:SCRIPT_EXTRESOURCE_1_2MU30_EACFAA]
+using_states = PackedStringArray() [ID:USING_STATES_PACKEDSTRINGARRAY_AF2938]
+character_names = PackedStringArray() [ID:CHARACTER_NAMES_PACKEDSTRINGAR_829C77]
+metadata/_custom_type_script = "uid://dbs4435dsf3ry" [ID:DBS4435DSF3RY_846512]
+=> END

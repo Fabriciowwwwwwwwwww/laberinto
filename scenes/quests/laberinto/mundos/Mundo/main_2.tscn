@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://6fyc4ox0yb8u"]
+[gd_scene format=4 uid="uid://6fyc4ox0yb8u"]
 
 [ext_resource type="Script" uid="uid://oc8skhrkiauu" path="res://scenes/quests/laberinto/mundos/Mundo/main_2.gd" id="1_af3aw"]
 [ext_resource type="Texture2D" uid="uid://c7us1k5iev48l" path="res://scenes/quests/laberinto/mundos/assets/wall.png" id="1_o6nwk"]
@@ -11,7 +11,7 @@
 [ext_resource type="Shader" uid="uid://cpbks3frkmpyi" path="res://scenes/quests/laberinto/mundos/Mundo/Scroll.gdshader" id="9_yhmn2"]
 [ext_resource type="Texture2D" uid="uid://b6g7sgthr5ifc" path="res://scenes/quests/laberinto/mundos/assets/Ambiental1.png" id="10_yhmn2"]
 [ext_resource type="PackedScene" uid="uid://67dqf6ap87vk" path="res://scenes/quests/laberinto/mundos/Player/barra_vida.tscn" id="11_xe38f"]
-[ext_resource type="PackedScene" uid="uid://cs0y2416wn2vs" path="res://scenes/quests/laberinto/mundos/balas_vista.tscn" id="12_u1ljk"]
+[ext_resource type="PackedScene" uid="uid://jmv4rxv46cqu" path="res://scenes/quests/laberinto/mundos/balas_vista.scn" id="12_u1ljk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j0kai"]
 vertices = PackedVector2Array(5274, -3518, 6094, -3202, 2642, -3202, 4918, -3518, 4098, -3518, 3742, -3518, 5274, -4302, 5274, -4770, 6094, -4974, 2642, -4974, 4918, -4770, 4154, -4826, 3742, -3986, 4918, -4302, 4154, -4358, 3798, -4826, 3798, -4358, 4098, -3986, 4918, -3986, 5274, -3986)

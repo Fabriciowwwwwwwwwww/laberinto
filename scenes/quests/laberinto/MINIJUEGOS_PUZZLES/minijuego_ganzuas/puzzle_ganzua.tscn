@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b71qb4sq1dg87"]
+[gd_scene format=3 uid="uid://b71qb4sq1dg87"]
 
 [ext_resource type="PackedScene" uid="uid://dgskqx4yo8g1k" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_ganzuas/pestillo_area.tscn" id="1_rgdwr"]
 [ext_resource type="Texture2D" uid="uid://flyh6bo5sd6m" path="res://scenes/quests/laberinto/sprite_laberinto/g3.png" id="2_2kkqu"]
@@ -115,46 +115,46 @@ func _on_cinematica_cinematica_terminada() -> void:
 	pass  # Ya no es necesario si se usa el grupo \"cinematica\"
 "
 
-[node name="SequencePuzzleTemplate" type="Node2D"]
+[node name="SequencePuzzleTemplate" type="Node2D" unique_id=2002147690]
 
-[node name="OnTheGround" type="Node2D" parent="."]
+[node name="OnTheGround" type="Node2D" parent="." unique_id=950692683]
 y_sort_enabled = true
 
-[node name="Puzzle" type="Node2D" parent="OnTheGround"]
+[node name="Puzzle" type="Node2D" parent="OnTheGround" unique_id=2057693742]
 z_index = 1
 script = SubResource("GDScript_n1g68")
 
-[node name="objetos" type="Node2D" parent="OnTheGround/Puzzle"]
+[node name="objetos" type="Node2D" parent="OnTheGround/Puzzle" unique_id=307656192]
 
-[node name="Area2D1" parent="OnTheGround/Puzzle/objetos" groups=["pestillos"] instance=ExtResource("1_rgdwr")]
+[node name="Area2D1" parent="OnTheGround/Puzzle/objetos" unique_id=339571455 groups=["pestillos"] instance=ExtResource("1_rgdwr")]
 position = Vector2(423, 401)
 
-[node name="Area2D2" parent="OnTheGround/Puzzle/objetos" groups=["pestillos"] instance=ExtResource("1_rgdwr")]
+[node name="Area2D2" parent="OnTheGround/Puzzle/objetos" unique_id=281092379 groups=["pestillos"] instance=ExtResource("1_rgdwr")]
 position = Vector2(512, 403)
 
-[node name="Area2D3" parent="OnTheGround/Puzzle/objetos" groups=["pestillos"] instance=ExtResource("1_rgdwr")]
+[node name="Area2D3" parent="OnTheGround/Puzzle/objetos" unique_id=1982600681 groups=["pestillos"] instance=ExtResource("1_rgdwr")]
 position = Vector2(602, 403)
 
-[node name="Area2D4" parent="OnTheGround/Puzzle/objetos" groups=["pestillos"] instance=ExtResource("1_rgdwr")]
+[node name="Area2D4" parent="OnTheGround/Puzzle/objetos" unique_id=1868964212 groups=["pestillos"] instance=ExtResource("1_rgdwr")]
 position = Vector2(686, 402)
 
-[node name="Area2D5" parent="OnTheGround/Puzzle/objetos" groups=["pestillos"] instance=ExtResource("1_rgdwr")]
+[node name="Area2D5" parent="OnTheGround/Puzzle/objetos" unique_id=1556834548 groups=["pestillos"] instance=ExtResource("1_rgdwr")]
 position = Vector2(766, 402)
 
-[node name="Area2D6" parent="OnTheGround/Puzzle/objetos" groups=["pestillos"] instance=ExtResource("1_rgdwr")]
+[node name="Area2D6" parent="OnTheGround/Puzzle/objetos" unique_id=1175295239 groups=["pestillos"] instance=ExtResource("1_rgdwr")]
 position = Vector2(848, 402)
 
-[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle"]
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle" unique_id=374980272]
 z_index = -1
 texture_filter = 1
 position = Vector2(480.875, 284.5)
 scale = Vector2(0.963135, 0.55957)
 texture = ExtResource("2_2kkqu")
 
-[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle"]
+[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle" unique_id=1572076367]
 wait_time = 2.884
 
-[node name="Sprite2D2" type="Sprite2D" parent="OnTheGround/Puzzle"]
+[node name="Sprite2D2" type="Sprite2D" parent="OnTheGround/Puzzle" unique_id=1978598134]
 position = Vector2(229, 252)
 scale = Vector2(0.687505, 1.12154)
 texture = ExtResource("3_gbocr")
@@ -162,21 +162,21 @@ centered = false
 offset = Vector2(-280, 0)
 script = ExtResource("4_yp5q3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle" unique_id=1090508982]
 stream = ExtResource("5_m0t5i")
 parameters/looping = true
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle"]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle" unique_id=1283160739]
 stream = ExtResource("6_olp5u")
 
-[node name="ScreenOverlay" type="CanvasLayer" parent="."]
+[node name="ScreenOverlay" type="CanvasLayer" parent="." unique_id=1227840689]
 
-[node name="Sprite2D" type="Sprite2D" parent="ScreenOverlay"]
+[node name="Sprite2D" type="Sprite2D" parent="ScreenOverlay" unique_id=79113083]
 position = Vector2(327, 240)
 scale = Vector2(0.682373, 0.791056)
 texture = ExtResource("7_ybaj5")
 
-[node name="CronometroLabel" type="Label" parent="ScreenOverlay"]
+[node name="CronometroLabel" type="Label" parent="ScreenOverlay" unique_id=379489008]
 offset_left = 211.0
 offset_top = 194.0
 offset_right = 443.0
@@ -186,17 +186,17 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "ghghg"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2102961051]
 position = Vector2(6, 7)
 anchor_mode = 0
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="cinematica" type="Node2D" parent="." groups=["cinematica"]]
+[node name="cinematica" type="Node2D" parent="." unique_id=1612828143 groups=["cinematica"]]
 position = Vector2(3, 6)
 script = ExtResource("8_cbaed")
 dialogue_intro = ExtResource("9_sjsed")
 dialogue_ganar = ExtResource("10_vbuhw")
 dialogue_perder = ExtResource("12_cnuxu")
 dialogue_tiempo = ExtResource("11_sjowk")
-next_scene = "uid://bl3lutxcqiq34"
+next_scene = "uid://vxw6popqntit"

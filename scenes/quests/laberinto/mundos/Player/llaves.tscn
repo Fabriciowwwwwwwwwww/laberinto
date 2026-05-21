@@ -1,15 +1,32 @@
 [gd_scene format=3 uid="uid://dkim32aqx2vtl"]
 
 [ext_resource type="FontFile" uid="uid://d05uo8wmexkd8" path="res://assets/third_party/fonts/m6x11plus.ttf" id="1_ef5lh"]
+[ext_resource type="Texture2D" uid="uid://c7sayxos1qssh" path="res://scenes/quests/laberinto/sprite_laberinto/sprite main paneles/panel llave.png" id="2_i5wo4"]
+[ext_resource type="Texture2D" uid="uid://j1ju0vmaia6d" path="res://scenes/quests/laberinto/mundos/Mundo/3e56a511-0544-4738-9f93-8b59127a53e5.png" id="3_82cxj"]
 
 [node name="Llaves" type="CanvasLayer" unique_id=2002742542]
+layer = 0
 
 [node name="Keys_label" type="Label" parent="." unique_id=236386705]
 z_index = 3
-offset_left = 10.0
-offset_top = -6.0
-offset_right = 171.25
-offset_bottom = 87.25
+offset_left = 102.0
+offset_top = 572.0
+offset_right = 263.25
+offset_bottom = 665.25
 theme_override_fonts/font = ExtResource("1_ef5lh")
 theme_override_font_sizes/font_size = 64
-text = "Keys"
+text = "0/10"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1904300824]
+offset_top = 369.0
+offset_right = 324.0
+offset_bottom = 656.0
+texture = ExtResource("2_i5wo4")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1124054773]
+visible = false
+offset_left = -12.0
+offset_right = 1919.0
+offset_bottom = 1125.0
+texture = ExtResource("3_82cxj")

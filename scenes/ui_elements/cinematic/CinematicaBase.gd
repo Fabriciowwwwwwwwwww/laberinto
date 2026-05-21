@@ -11,7 +11,7 @@ signal cinematica_terminada
 @export var dialogue_perder: DialogueResource
 @export var dialogue_tiempo: DialogueResource
 @export var usar_next_scene: bool = true  # <--- ESTA ES LA LÍNEA QUE FALTA
-@export_file("*.tscn") var next_scene: String
+@export_file("*.scn") var next_scene: String
 @export var spawn_point_path: String
 
 func _ready() -> void:

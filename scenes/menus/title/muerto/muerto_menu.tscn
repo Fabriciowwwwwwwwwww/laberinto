@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c67vx6vq75oyg"]
+[gd_scene format=3 uid="uid://c67vx6vq75oyg"]
 
 [ext_resource type="Texture2D" uid="uid://ddsh06bcpqs6j" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/fondo temporal.jpg" id="1_1tae7"]
 [ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_bd7et"]
-[ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/laberinto/mundos/Mundo/main.tscn" id="3_746np"]
+[ext_resource type="PackedScene" uid="uid://vxw6popqntit" path="res://scenes/quests/laberinto/mundos/Mundo/main.scn" id="3_kkbmu"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="4_gmle2"]
+[ext_resource type="PackedScene" uid="uid://bvcabfkw3suma" path="res://scenes/menus/title/tienda/tienda.tscn" id="4_ldy66"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="5_wuclt"]
 [ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="6_u60h7"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="6_wckas"]
@@ -43,50 +44,51 @@ expand_margin_top = 30.0
 expand_margin_right = 40.0
 expand_margin_bottom = 30.0
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="MainMenu" type="CanvasLayer" unique_id=1317766809]
 
-[node name="fondo" type="TextureRect" parent="."]
+[node name="fondo" type="TextureRect" parent="." unique_id=1298234938]
 offset_left = -1.0
 offset_top = -4.0
 offset_right = 1949.0
 offset_bottom = 1124.0
 texture = ExtResource("1_1tae7")
 
-[node name="TitleScreen" type="Control" parent="."]
+[node name="TitleScreen" type="Control" parent="." unique_id=228277575]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_bd7et")
-next_scene = ExtResource("3_746np")
+next_scene = ExtResource("3_kkbmu")
+tienda = ExtResource("4_ldy66")
 
-[node name="MainMenu" type="HBoxContainer" parent="TitleScreen"]
+[node name="MainMenu" type="HBoxContainer" parent="TitleScreen" unique_id=1331346562]
 layout_mode = 0
 offset_right = 1939.0
 offset_bottom = 1120.0
 theme = ExtResource("4_gmle2")
 script = ExtResource("5_wuclt")
 
-[node name="LogoContainer" type="MarginContainer" parent="TitleScreen/MainMenu"]
+[node name="LogoContainer" type="MarginContainer" parent="TitleScreen/MainMenu" unique_id=677310348]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 128
 
-[node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu"]
+[node name="ButtonBoxMargins" type="MarginContainer" parent="TitleScreen/MainMenu" unique_id=584665918]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 131
 theme_override_constants/margin_top = 134
 theme_override_constants/margin_right = 92
 
-[node name="ButtonBox" type="VBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins"]
+[node name="ButtonBox" type="VBoxContainer" parent="TitleScreen/MainMenu/ButtonBoxMargins" unique_id=215893887]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 87
 
-[node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+[node name="StartButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1846089610]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
@@ -106,7 +108,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_jdh17")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_kkbmu")
 text = "RESTART"
 
-[node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+[node name="OptionsButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1096626762]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
@@ -123,9 +125,9 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_ldy66")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_ldy66")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ldy66")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ldy66")
-text = "Options"
+text = "OPTIONS"
 
-[node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+[node name="QuitButton" type="Button" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1227980328]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(530, 120)
 layout_mode = 2
@@ -143,12 +145,12 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ncxay")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_ncxay")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ncxay")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ncxay")
-text = "Exit Game"
+text = "EXIT GAME"
 
-[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox"]
+[node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1889516095]
 stream = ExtResource("10_u60h7")
 
-[node name="Options" parent="." instance=ExtResource("6_wckas")]
+[node name="Options" parent="." unique_id=578351305 instance=ExtResource("6_wckas")]
 visible = false
 anchors_preset = 0
 anchor_right = 0.0

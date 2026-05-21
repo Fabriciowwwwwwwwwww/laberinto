@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://lqmdd2cldk6q"]
+
+[ext_resource type="Texture2D" uid="uid://ejjn7fvc068m" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/engranaje1.png" id="1_hbun4"]
+[ext_resource type="Script" uid="uid://pwbdbwxixgvq" path="res://scenes/quests/story_quests/template_laberinto/3_laberinto_sequence_puzzle/engranajes/engranaje_1.gd" id="2_fwf6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fwf6b"]
+radius = 68.593
+
+[node name="Engranaje" type="Node2D"]
+script = ExtResource("2_fwf6b")
+is_motor = null
+is_goal = null
+
+[node name="Engranaje1" type="Sprite2D" parent="."]
+position = Vector2(23, 20)
+scale = Vector2(0.493, 0.5)
+texture = ExtResource("1_hbun4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 1)
+shape = SubResource("CircleShape2D_fwf6b")

@@ -1,5 +1,6 @@
+class_name EnemyBase
 extends CharacterBody2D
-
+@onready var vida_etiqueta: Label =$"vida del enemigo"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sonido: AudioStreamPlayer2D = $golpe
@@ -39,6 +40,7 @@ func _ready() -> void:
 	vida_bar.max_value = vida_max
 	vida_bar.value = vida
 	vida_bar.visible = false
+	vida_etiqueta.visible = false
 	sonido.bus = "SFX"
 	idle_sonido.bus = "SFX"
 	current_speed = WALK_SPEED
@@ -52,7 +54,7 @@ func _ready() -> void:
 	call_deferred("setup_navigation")
 func aplicar_knockback(dir: Vector2, fuerza: float):
 	knockback_velocity = dir * fuerza
-	knockback_time = 0.3 # duración del empuje
+	knockback_time = 0.5 # duración del empuje
 	puede_moverse = false
 var en_cooldown_golpe := false
 func recibir_daño(cantidad: int) -> void:
@@ -60,17 +62,18 @@ func recibir_daño(cantidad: int) -> void:
 		return
 
 	en_cooldown_golpe = true
-	vida -= cantidad
+	vida = max(vida - cantidad, 0)
 	puede_moverse = false
 
 	vida_bar.value = vida
+	
 	vida_bar.visible = true
+	vida_etiqueta.text = str(vida) + "/" + str(vida_max)
+	vida_etiqueta.visible = true
 	barra_visible_timer = tiempo_mostrar_barra
 
 	if vida <= 0:
-		if drop_xp:
-			drop_xp.soltar_xp()
-		queue_free()
+		morir()
 		return
 
 	navigation_agent.set_velocity(Vector2.ZERO)
@@ -93,7 +96,22 @@ func create_dust_gradient() -> Gradient:
 	])
 	gradient.offsets = PackedFloat32Array([0.0, 0.5, 1.0])
 	return gradient
+func morir() -> void:
+	puede_moverse = false
+	puede_atacar = false
+	animacion_bloqueada = true
 
+	if drop_xp:
+		drop_xp.soltar_xp()
+
+	velocity = Vector2.ZERO
+	navigation_agent.set_velocity(Vector2.ZERO)
+
+	animated_sprite_2d.play("muerte")
+
+	await animated_sprite_2d.animation_finished
+
+	queue_free()
 func create_dust_texture() -> ImageTexture:
 	var image: Image = Image.create(8, 8, false, Image.FORMAT_RGBA8)
 	var center: Vector2 = Vector2(4, 4)
@@ -123,6 +141,7 @@ func setup_navigation() -> void:
 		navigation_agent.velocity_computed.connect(_on_velocity_computed)
 
 func _physics_process(delta: float) -> void:
+	vida_etiqueta.global_position = global_position + Vector2(-20, -80)
 	if knockback_time > 0:
 		knockback_time -= delta
 		velocity = velocity.lerp(knockback_velocity, 0.4)
@@ -131,9 +150,13 @@ func _physics_process(delta: float) -> void:
 
 	if vida_bar.visible:
 		barra_visible_timer -= delta
-		vida_bar.rotation = 0  # evita que rote si tu enemigo rota
+
+		vida_bar.rotation = 0
+		vida_etiqueta.rotation = 0
+
 		if barra_visible_timer <= 0:
 			vida_bar.visible = false
+			vida_etiqueta.visible = false
 	if not puede_moverse:
 		velocity = Vector2.ZERO
 		handle_animations(Vector2.ZERO)
@@ -249,4 +272,4 @@ func await_tiempo_seguro(segundos: float) -> bool:
 	return is_inside_tree()
 
 func _on_jugador_muerto() -> void:
-	queue_free()
+	morir()

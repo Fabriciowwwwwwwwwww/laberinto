@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://b8mywvmgsxqb"]
+[gd_scene format=4 uid="uid://b8mywvmgsxqb"]
 
-[ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/laberinto/mundos/Player/player.tscn" id="1_0hk23"]
+[ext_resource type="PackedScene" path="res://scenes/quests/laberinto/mundos/Player/player.scn" id="1_0hk23"]
 [ext_resource type="Script" uid="uid://c1qbygoidof11" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego bosque/interior_cabana.gd" id="1_bg4i1"]
 [ext_resource type="Texture2D" uid="uid://dx2bh411t1t64" path="res://scenes/quests/laberinto/sprite_laberinto/minijuegobosque/interior cabana tile set.png" id="2_f7m8u"]
 [ext_resource type="Script" uid="uid://bpu6jo4kvehlg" path="res://scenes/game_elements/characters/player/components/player_interaction.gd" id="4_b1khx"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://75pyab51fi7j"]
+[gd_scene format=3 uid="uid://75pyab51fi7j"]
 
 [ext_resource type="Script" uid="uid://dofm2ggkhq42r" path="res://scenes/quests/laberinto/mundos/Enemy/enemigo_bosque.gd" id="1_17k3e"]
 [ext_resource type="Texture2D" uid="uid://b4uddna3p375v" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/d.png" id="2_gk1pn"]

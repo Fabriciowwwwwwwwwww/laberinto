@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dimnje0s5j2sq"]
+[gd_scene format=3 uid="uid://dimnje0s5j2sq"]
 
 [ext_resource type="Script" uid="uid://ctkwktoaeiheg" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/puzzle_party.gd" id="1_8faka"]
 [ext_resource type="Texture2D" uid="uid://df5tmyroe8411" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/escenario_party.png" id="2_5py0x"]
@@ -20,32 +20,32 @@
 [ext_resource type="Resource" uid="uid://btp77714l1sgp" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/tiempo_party.dialogue" id="16_mgnpj"]
 [ext_resource type="Texture2D" uid="uid://bnl6ebckmh21m" path="res://scenes/quests/laberinto/sprite_laberinto/icono/guante.png" id="17_s7p1y"]
 
-[node name="MinijuegoManager" type="Node2D"]
+[node name="MinijuegoManager" type="Node2D" unique_id=854867114]
 unique_name_in_owner = true
 
-[node name="OnTheGround" type="Node2D" parent="."]
+[node name="OnTheGround" type="Node2D" parent="." unique_id=1065888515]
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Puzzle_party" type="Node2D" parent="OnTheGround"]
+[node name="Puzzle_party" type="Node2D" parent="OnTheGround" unique_id=1181199541]
 unique_name_in_owner = true
 z_index = 1
 script = ExtResource("1_8faka")
 
-[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_party"]
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround/Puzzle_party" unique_id=506968472]
 unique_name_in_owner = true
 z_index = -1
 position = Vector2(960.7001, 560)
 scale = Vector2(1.2490885, 1.09375)
 texture = ExtResource("2_5py0x")
 
-[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_party"]
+[node name="Cronometro" type="Timer" parent="OnTheGround/Puzzle_party" unique_id=904007734]
 unique_name_in_owner = true
 
-[node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_party"]
+[node name="ScreenOverlay" type="CanvasLayer" parent="OnTheGround/Puzzle_party" unique_id=813048079]
 unique_name_in_owner = true
 
-[node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
+[node name="CronometroLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=1271052289]
 unique_name_in_owner = true
 offset_left = 127.0
 offset_top = 149.0
@@ -56,7 +56,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "0"
 
-[node name="lavel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
+[node name="lavel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=879521542]
 unique_name_in_owner = true
 offset_left = 62.0
 offset_top = 55.0
@@ -67,7 +67,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "TIEMPO :"
 
-[node name="ResultadoLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay"]
+[node name="ResultadoLabel" type="Label" parent="OnTheGround/Puzzle_party/ScreenOverlay" unique_id=1175254206]
 unique_name_in_owner = true
 offset_left = 122.0
 offset_top = 234.0
@@ -79,12 +79,12 @@ theme_override_font_sizes/font_size = 45
 text = "0
 "
 
-[node name="sonido_reloj" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_party"]
+[node name="sonido_reloj" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_party" unique_id=1918403073]
 unique_name_in_owner = true
 stream = ExtResource("6_mgnpj")
 parameters/looping = false
 
-[node name="zona_objetos" type="Control" parent="OnTheGround/Puzzle_party"]
+[node name="zona_objetos" type="Control" parent="OnTheGround/Puzzle_party" unique_id=1168510601]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
@@ -92,7 +92,7 @@ offset_right = 953.0
 offset_bottom = 557.0
 mouse_filter = 2
 
-[node name="obj" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1363524991 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -102,7 +102,7 @@ offset_bottom = -158.0
 id_correcto = 1
 textura = ExtResource("6_4x57o")
 
-[node name="obj2" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj2" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1437764097 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 588.0
@@ -112,7 +112,7 @@ offset_bottom = 586.0
 id_correcto = 2
 textura = ExtResource("7_4dpcg")
 
-[node name="obj3" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj3" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=862648353 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -122,7 +122,7 @@ offset_bottom = -16.0
 id_correcto = 3
 textura = ExtResource("8_7gf6n")
 
-[node name="obj4" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj4" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=259876031 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -132,7 +132,7 @@ offset_bottom = -16.0
 id_correcto = 4
 textura = ExtResource("9_yy211")
 
-[node name="obj5" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj5" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1446482594 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -142,7 +142,7 @@ offset_bottom = -16.0
 id_correcto = 5
 textura = ExtResource("10_1fbcq")
 
-[node name="obj6" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj6" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=318493408 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -152,7 +152,7 @@ offset_bottom = -16.0
 id_correcto = 6
 textura = ExtResource("11_ejc8p")
 
-[node name="obj7" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj7" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=1102565272 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -162,7 +162,7 @@ offset_bottom = -16.0
 id_correcto = 7
 textura = ExtResource("8_7gf6n")
 
-[node name="obj8" parent="OnTheGround/Puzzle_party/zona_objetos" instance=ExtResource("7_w6pte")]
+[node name="obj8" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=903696159 instance=ExtResource("7_w6pte")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 998.0
@@ -172,7 +172,7 @@ offset_bottom = -16.0
 id_correcto = 8
 textura = ExtResource("12_6n4r7")
 
-[node name="ZonaSlots" type="Control" parent="OnTheGround/Puzzle_party"]
+[node name="ZonaSlots" type="Control" parent="OnTheGround/Puzzle_party" unique_id=1078884318]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,7 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="slot" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1788562946 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -199,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 1
 
-[node name="slot2" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot2" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=2037621897 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -215,7 +215,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 2
 
-[node name="slot3" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot3" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1291133796 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -231,7 +231,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 3
 
-[node name="slot4" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot4" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=105581725 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -247,7 +247,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 4
 
-[node name="slot5" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot5" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=441462744 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -263,7 +263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 5
 
-[node name="slot6" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot6" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=1100414581 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -279,7 +279,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 6
 
-[node name="slot7" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot7" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=997168777 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -295,7 +295,7 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 7
 
-[node name="slot8" parent="OnTheGround/Puzzle_party/ZonaSlots" instance=ExtResource("11_evk0e")]
+[node name="slot8" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=404536617 instance=ExtResource("11_evk0e")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -311,14 +311,14 @@ grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 8
 
-[node name="aceptar" type="Button" parent="OnTheGround/Puzzle_party"]
+[node name="aceptar" type="Button" parent="OnTheGround/Puzzle_party" unique_id=1970521234]
 offset_left = 1719.0
 offset_top = 971.0
 offset_right = 1785.0
 offset_bottom = 1002.0
 text = "evaluar"
 
-[node name="cinematica_party" type="Node2D" parent="." groups=["cinematica"]]
+[node name="cinematica_party" type="Node2D" parent="." unique_id=1293328729 groups=["cinematica"]]
 unique_name_in_owner = true
 position = Vector2(109, -83)
 script = ExtResource("12_op77u")
@@ -326,29 +326,29 @@ dialogue_intro = ExtResource("13_d0tjr")
 dialogue_ganar = ExtResource("14_ap2hj")
 dialogue_perder = ExtResource("15_8d8ow")
 dialogue_tiempo = ExtResource("16_mgnpj")
-next_scene = "uid://bl3lutxcqiq34"
+next_scene = "uid://vxw6popqntit"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="cinematica_party"]
+[node name="CanvasLayer" type="CanvasLayer" parent="cinematica_party" unique_id=1121792958]
 unique_name_in_owner = true
 
-[node name="Sprite2D" type="TextureRect" parent="cinematica_party/CanvasLayer"]
+[node name="Sprite2D" type="TextureRect" parent="cinematica_party/CanvasLayer" unique_id=1199266521]
 z_index = -1
 offset_right = 1536.0
 offset_bottom = 1024.0
 scale = Vector2(1.2490885, 1.09375)
 texture = ExtResource("2_5py0x")
 
-[node name="ContenedorSolucion" type="Panel" parent="cinematica_party/CanvasLayer"]
+[node name="ContenedorSolucion" type="Panel" parent="cinematica_party/CanvasLayer" unique_id=2113722574]
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_top = 0.001
 anchor_bottom = 0.001
-offset_left = -2.0
-offset_top = 22.88
-offset_right = 1909.0
-offset_bottom = 1116.88
+offset_left = 4.0
+offset_top = 6.88
+offset_right = 1921.0
+offset_bottom = 1120.88
 
-[node name="LabelCuentaAtras" type="Label" parent="cinematica_party/CanvasLayer"]
+[node name="LabelCuentaAtras" type="Label" parent="cinematica_party/CanvasLayer" unique_id=643158645]
 unique_name_in_owner = true
 offset_left = 129.0
 offset_top = 147.0
@@ -359,13 +359,13 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "0"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1752517116]
 unique_name_in_owner = true
 anchor_mode = 0
 enabled = false
 position_smoothing_enabled = true
 
-[node name="mano" type="Sprite2D" parent="."]
+[node name="mano" type="Sprite2D" parent="." unique_id=1862426625]
 position = Vector2(1846, 476.00006)
 scale = Vector2(1.1887412, 1.0079002)
 texture = ExtResource("17_s7p1y")

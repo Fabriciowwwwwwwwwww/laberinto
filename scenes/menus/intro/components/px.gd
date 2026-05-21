@@ -3,12 +3,19 @@ extends CharacterBody2D
 @export var xp_value: int = 5
 @export var ulti_charge_value: float = 5.0
 
-@export var attract_distance: float = 100.0
-@export var attract_speed: float = 120.0
+# ATRACCIÓN
+@export var attract_distance: float = 140.0
+@export var attract_speed: float = 280.0
 
-@export var expansion_speed: float = 2.0
-@export var expansion_time: float = 2
+# EXPLOSIÓN AL SALIR
+@export var expansion_speed: float = 180.0
+@export var expansion_time: float = 0.35
+
+# VIDA
 @export var lifetime: float = 10.0
+
+# FRENADO
+@export var friction: float = 450.0
 
 var player: Node2D
 
@@ -17,44 +24,86 @@ var estado := "expandiendo"
 var timer := 0.0
 
 func _ready():
+
 	add_to_group("xp_orb")
+
 	player = get_tree().get_first_node_in_group("player")
 
-	# Dirección aleatoria suave
+	# dirección aleatoria
 	var angle = randf_range(0, TAU)
 	direction = Vector2(cos(angle), sin(angle)).normalized()
 
-	# Destruir después de tiempo
+	# impulso inicial
+	velocity = direction * expansion_speed
+
+	# destruir luego
 	await get_tree().create_timer(lifetime).timeout
-	queue_free()
+
+	if is_instance_valid(self):
+		queue_free()
+
 
 func _physics_process(delta):
+
 	if player == null:
 		return
 
 	timer += delta
 
-	# ------------------ ESTADO 1: EXPANSIÓN ------------------
+	# DISTANCIA AL JUGADOR
+	var distance = global_position.distance_to(player.global_position)
+
+	# -------------------------
+	# ESTADO EXPANDIENDO
+	# -------------------------
 	if estado == "expandiendo":
-		velocity = direction * expansion_speed
 
+		# freno gradual
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+
+		# termina expansión
+		if timer >= expansion_time:
+			estado = "libre"
+
+	# -------------------------
+	# ESTADO LIBRE
+	# -------------------------
 	elif estado == "libre":
-		velocity = velocity.lerp(Vector2.ZERO, 0.08)
 
+		# si jugador se acerca
+		if distance <= attract_distance:
+			estado = "atrayendo"
+
+	# -------------------------
+	# ESTADO ATRAYENDO
+	# -------------------------
 	elif estado == "atrayendo":
-		var dir = (player.global_position - global_position).normalized()
-		velocity = velocity.lerp(dir * attract_speed, 0.08)
+
+		# dirección al jugador
+		var dir = global_position.direction_to(player.global_position)
+
+		# movimiento suave
+		velocity = velocity.move_toward(
+			dir * attract_speed,
+			900 * delta
+		)
 
 	move_and_slide()
+
+
 func _on_area_2d_body_entered(body):
+
 	if not body.is_in_group("player"):
 		return
 
+	# XP
 	if body.has_method("agregar_experiencia"):
 		body.agregar_experiencia(xp_value)
 
+	# Ultimate
 	var ult = body.get_node_or_null("UltimateWeapon")
+
 	if ult and ult.has_method("add_charge"):
 		ult.add_charge(ulti_charge_value)
 
-	queue_free() # 💥 aquí desaparece
+	queue_free()

@@ -1,9 +1,9 @@
-[gd_scene load_steps=0 format=3 uid="uid://chp411lja2iom"]
+[gd_scene format=3 uid="uid://chp411lja2iom"]
 
 [ext_resource type="Script" uid="uid://ds2hp23c0t4k0" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_cartas/dial.gd" id="1_wlvq5"]
-[ext_resource type="Texture2D" uid="uid://ckwsauhbhlod6" path="res://assets/third_party/inputs/keyboard-and-mouse/Dark/Arrow_Down_Key_Dark.png" id="2_0iecu"]
 [ext_resource type="Texture2D" uid="uid://ubl3q3pgb4ga" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/dial btn arriba.png" id="2_5lrrr"]
 [ext_resource type="Texture2D" uid="uid://ctwb6ld40jjkd" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/dial uno.png" id="3_pcsti"]
+[ext_resource type="Texture2D" uid="uid://dnf0vt50wlrgq" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/carta corazon.png" id="3_v0su3"]
 [ext_resource type="Texture2D" uid="uid://b4nwcwlvuyqud" path="res://scenes/quests/laberinto/sprite_laberinto/cartas/dial btn abajo.png" id="5_dfxpu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3pgwg"]
@@ -31,17 +31,18 @@ offset_bottom = 350.0
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("3_pcsti")
+expand_mode = 1
 
 [node name="simbolo" type="TextureRect" parent="dial" unique_id=877197434]
 clip_contents = true
 layout_mode = 0
-offset_left = 56.0
-offset_top = 121.0
-offset_right = 168.0
-offset_bottom = 221.0
-texture = ExtResource("2_0iecu")
-expand_mode = 3
-stretch_mode = 3
+offset_left = 60.0
+offset_top = 98.0
+offset_right = 172.0
+offset_bottom = 260.5
+texture = ExtResource("3_v0su3")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Flecha Abajo" type="Button" parent="." unique_id=989898789]
 layout_mode = 0

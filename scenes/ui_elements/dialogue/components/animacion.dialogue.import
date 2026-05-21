@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://qedjoao4o6s3"
+path="res://.godot/imported/animacion.dialogue-48860d47439d1882326a555d1e608276.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/dialogue/components/animacion.dialogue"
+dest_files=["res://.godot/imported/animacion.dialogue-48860d47439d1882326a555d1e608276.tres"]
+
+[params]
+
+defaults=true

@@ -1,22 +1,23 @@
 extends CanvasLayer
 
 # 🔸 UI extra
-@onready var indicador: Label = $Panel/indicador
-@onready var numero_balas: Label = $Panel/numero_balas_label
+@onready var indicador: Label = $Control/Panel/indicador
+@onready var numero_balas: Label = $Control/Panel/numero_balas_label
 
 @onready var imagenes_balas: Array[TextureRect] = [
-	$Panel/b1,
-	$Panel/b2,
-	$Panel/b3,
-	$Panel/b4,
-	$Panel/b5
+	$Control/Panel/BalasContainer/b1,
+	$Control/Panel/BalasContainer/b2,
+	$Control/Panel/BalasContainer/b3,
+	$Control/Panel/BalasContainer/b4,
+	$Control/Panel/BalasContainer/b5,
+	$Control/Panel/BalasContainer/b6
 ]
 
-@onready var recarga_bar: ProgressBar = $Panel/RecargaBar
+@onready var recarga_bar: ProgressBar = $Control/Panel/RecargaBar
 
-var balas: int = 5
+var balas: int = 6
 var recargando: bool = false
-var tiempo_recarga: float = 3.0
+var tiempo_recarga: float = 1.0
 
 # 🔸 animación puntos
 var puntos_timer: float = 0
@@ -70,15 +71,15 @@ func _process(delta: float) -> void:
 		if recarga_bar.value >= tiempo_recarga:
 			recarga_bar.value = 0.0
 			
-			if balas < 5:
+			if balas < 6:
 				imagenes_balas[balas].visible = true
 				balas += 1
 				actualizar_ui()
 			
-			if balas >= 5:
+			if balas >= 6:
 				recargando = false
 				recarga_bar.visible = false
 				indicador.text = "¡Pistola lista!"
 
 func actualizar_ui() -> void:
-	numero_balas.text = "Balas: %d/5" % balas
+	numero_balas.text = " %d/6" % balas

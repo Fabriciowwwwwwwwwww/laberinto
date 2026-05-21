@@ -44,7 +44,10 @@ var victorias_actuales: int = 0
 # -------------------------
 # READY
 # -------------------------
-func _ready() -> void:
+func _ready():
+
+	var caja_fuerte = get_node("../CajaFuerte") 
+	caja_fuerte.visible = false
 	add_to_group("puzzle")
 	secuencia_simbolos.clear()
 
@@ -246,7 +249,7 @@ func ganar() -> void:
 	cronometro.stop()
 	guardar_seleccion()
 	victorias_actuales += 1
-
+	$"../ScreenOverlay/progreso".text=str(victorias_actuales)+"/3"
 	if sonido_cartas.playing:
 		sonido_cartas.stop()
 	sonido_cartas.play()
@@ -329,6 +332,7 @@ func iniciar_tiempo() -> void:
 # FASE FINAL
 # -------------------------
 func iniciar_fase_final() -> void:
+	get_node("../CajaFuerte").visible = true
 	cronometro.stop()
 	puzzle_activo = false
 	ocultar_cartas()
@@ -344,7 +348,6 @@ func iniciar_fase_final() -> void:
 	for i in range(secuencia_simbolos.size()):
 		var nuevo_dial = dial_scene.instantiate()
 		contenedor_diales.add_child(nuevo_dial)
-
 		input_usuario.resize(secuencia_simbolos.size())
 		input_usuario[i] = nuevo_dial.get_valor()
 
@@ -394,6 +397,7 @@ func _on_confirmar_pressed() -> void:
 		canvas_final.visible = false
 		
 		victorias_actuales = 0
+		$"../ScreenOverlay/progreso".text=str(victorias_actuales)+"/3"
 		secuencia_simbolos.clear()
 		input_usuario.clear()
 		

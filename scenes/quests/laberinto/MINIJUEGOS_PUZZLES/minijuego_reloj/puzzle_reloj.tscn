@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dlo6nok5b3aeo"]
+
+[ext_resource type="Script" uid="uid://cmgyipi6lormc" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_reloj/puzzle_reloj.gd" id="1_etain"]
+[ext_resource type="Resource" uid="uid://bf6ou62ieo586" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue" id="2_h7cpo"]
+[ext_resource type="Script" uid="uid://p4nrgqxntk8w" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_reloj/cinematica_reloj.gd" id="2_uhivo"]
+[ext_resource type="Resource" uid="uid://bcvt8bcroeyfi" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/ganar_engranajes.dialogue" id="3_uhivo"]
+[ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="4_g7j11"]
+[ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="5_xgded"]
+[ext_resource type="Texture2D" uid="uid://duigm8ps0tpnt" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/reloj_.png" id="6_hpn2p"]
+[ext_resource type="Texture2D" uid="uid://eop7n6sdd3q2" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/reloj_aguja.png" id="7_n27bw"]
+[ext_resource type="Texture2D" uid="uid://c3teyic1cg1ee" path="res://scenes/quests/laberinto/sprite_laberinto/desartonillador.png" id="8_xoc7c"]
+[ext_resource type="Script" uid="uid://dalkeu5s747vy" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_ganzuas/sprite_2d_2.gd" id="9_m1xde"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5qyd"]
+
+[node name="ClockMinigame" type="Node2D" unique_id=1349815038]
+script = ExtResource("1_etain")
+velocidad_min = 100.0
+velocidad_max = 100.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1402088022]
+position = Vector2(512, 300)
+position_smoothing_enabled = true
+
+[node name="cinematica" type="Node2D" parent="." unique_id=837253594 groups=["cinematica"]]
+script = ExtResource("2_uhivo")
+dialogue_intro = ExtResource("2_h7cpo")
+dialogue_ganar = ExtResource("3_uhivo")
+dialogue_perder = ExtResource("4_g7j11")
+dialogue_tiempo = ExtResource("5_xgded")
+next_scene = "uid://vxw6popqntit"
+
+[node name="fondo" type="Sprite2D" parent="." unique_id=627528405]
+z_index = -10
+position = Vector2(512, 300)
+scale = Vector2(1.05, 1.05)
+texture = SubResource("CompressedTexture2D_e5qyd")
+
+[node name="ClockBase" type="Sprite2D" parent="." unique_id=1326954508]
+position = Vector2(522, 293)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("6_hpn2p")
+offset = Vector2(-159.715, -50)
+
+[node name="ZonaObjetivo" type="Polygon2D" parent="." unique_id=98827272]
+z_index = 1
+position = Vector2(515, 292)
+color = Color(1, 0, 0, 0.25)
+
+[node name="Timer" type="Timer" parent="." unique_id=1408423344]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=897734355]
+
+[node name="PanelIzquierdo" type="Panel" parent="CanvasLayer" unique_id=1706119144]
+offset_left = 72.0
+offset_top = 120.0
+offset_right = 270.0
+offset_bottom = 490.0
+
+[node name="LabelHoraObjetivo" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=516142473]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 40.0
+offset_right = 180.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 28
+text = "OBJETIVO"
+horizontal_alignment = 1
+
+[node name="LabelTiempo" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=1305136189]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 170.0
+offset_right = 170.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="LabelInstrucciones" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=1784351191]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 260.0
+offset_right = 180.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 18
+text = "DETÉN LA AGUJA EN LA ZONA ROJA"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelDerecho" type="Panel" parent="CanvasLayer" unique_id=391803674]
+offset_left = 760.0
+offset_top = 120.0
+offset_right = 960.0
+offset_bottom = 490.0
+
+[node name="LabelPrecision" type="Label" parent="CanvasLayer/PanelDerecho" unique_id=1017038369]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 180.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 22
+text = "PRECISIÓN"
+horizontal_alignment = 1
+
+[node name="BarraPrecision" type="ProgressBar" parent="CanvasLayer/PanelDerecho" unique_id=936211160]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 120.0
+offset_right = 178.0
+offset_bottom = 152.0
+value = 50.0
+show_percentage = false
+
+[node name="LabelResultado" type="Label" parent="CanvasLayer/PanelDerecho" unique_id=1007487322]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 240.0
+offset_right = 180.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonDetener" type="Button" parent="CanvasLayer" unique_id=239744486]
+offset_left = 430.0
+offset_top = 575.0
+offset_right = 610.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 26
+text = "DETENER"
+
+[node name="mano" type="Sprite2D" parent="." unique_id=1924308973]
+position = Vector2(80, 560)
+rotation = -0.2
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("8_xoc7c")
+script = ExtResource("9_m1xde")
+
+[node name="AgujaPivot" type="Node2D" parent="." unique_id=1979895474]
+position = Vector2(522, 293)
+scale = Vector2(1.0000001, 1)
+
+[node name="Aguja" type="Sprite2D" parent="AgujaPivot" unique_id=1087641070]
+z_index = 2
+rotation = -1.5707964
+scale = Vector2(1.1428572, 1.1696427)
+texture = ExtResource("7_n27bw")
+offset = Vector2(0, 45)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

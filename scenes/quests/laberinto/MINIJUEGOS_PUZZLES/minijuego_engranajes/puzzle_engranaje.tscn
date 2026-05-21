@@ -119,6 +119,6 @@ dialogue_intro = ExtResource("11_csqs0")
 dialogue_ganar = ExtResource("14_carfk")
 dialogue_perder = ExtResource("12_g64ev")
 dialogue_tiempo = ExtResource("13_3hkmn")
-next_scene = "uid://bl3lutxcqiq34"
+next_scene = "uid://vxw6popqntit"
 
 [connection signal="cinematica_terminada" from="cinematica" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]

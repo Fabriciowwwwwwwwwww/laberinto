@@ -1,10 +1,12 @@
-[gd_scene load_steps=0 format=3 uid="uid://67dqf6ap87vk"]
+[gd_scene format=3 uid="uid://67dqf6ap87vk"]
 
-[ext_resource type="Texture2D" uid="uid://guae02eq7p0x" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/vida/barra_vida.png" id="1_8rqnt"]
 [ext_resource type="Script" uid="uid://dcyu7td262qok" path="res://scenes/quests/laberinto/mundos/Player/barra_vida.gd" id="1_hxg3h"]
-[ext_resource type="Texture2D" uid="uid://b201wuqdggyes" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/vida/fill.png" id="2_yabe7"]
 [ext_resource type="Texture2D" uid="uid://bjakp6o3lhvcr" path="res://assets/third_party/tiny-swords/Effects/Fire/Fire.png" id="3_yabe7"]
 [ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="4_c1mco"]
+[ext_resource type="Texture2D" uid="uid://1nmidlj2360k" path="res://scenes/quests/laberinto/sprite_laberinto/sprite main paneles/fondo corazon.png" id="4_umayr"]
+[ext_resource type="Texture2D" uid="uid://dg8bml8dm4r42" path="res://scenes/quests/laberinto/sprite_laberinto/sprite main paneles/fill corazon.png" id="5_r2075"]
+[ext_resource type="Texture2D" uid="uid://cumh12u4r7q8k" path="res://scenes/quests/laberinto/sprite_laberinto/sprite main paneles/panel corazon.png" id="7_4wlp0"]
+[ext_resource type="Texture2D" uid="uid://bw64y5a7xu418" path="res://scenes/quests/laberinto/sprite_laberinto/sprite main paneles/circulo corazon.png" id="8_vwdcx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxg3h"]
 atlas = ExtResource("3_yabe7")
@@ -64,38 +66,68 @@ animations = [{
 }]
 
 [node name="barra vida" type="CanvasLayer" unique_id=80591700]
-scale = Vector2(0.69, 0.69)
-transform = Transform2D(0.69, 0, 0, 0.69, 0, 0)
 script = ExtResource("1_hxg3h")
 
-[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1314559364]
-z_index = -4
-texture_repeat = 3
-anchors_preset = -1
-anchor_right = 0.224
-offset_left = -2.8985507
-offset_top = 25.173908
-offset_right = 899.0214
-offset_bottom = 631.1739
-scale = Vector2(0.4, 0.4)
-tooltip_text = "sadsadasdas"
-value = 100.0
-texture_under = ExtResource("1_8rqnt")
-texture_progress = ExtResource("2_yabe7")
-texture_progress_offset = Vector2(48.79, 310)
-
-[node name="vida" type="Label" parent="." unique_id=1987859035]
-offset_left = 145.31885
-offset_top = 158.2029
-offset_right = 395.31885
-offset_bottom = 211.2029
-theme_override_colors/font_color = Color(0.79607844, 0.69411767, 0.14901961, 1)
+[node name="etiqueta vida" type="Label" parent="." unique_id=1710325164]
+z_index = 1
+offset_left = 179.0
+offset_top = 35.0
+offset_right = 429.0
+offset_bottom = 87.999985
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_c1mco")
-theme_override_font_sizes/font_size = 40
-text = "VIDA:100/100"
+theme_override_font_sizes/font_size = 26
+text = "VIDA"
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1314559364]
+z_index = 1
+texture_repeat = 3
+custom_minimum_size = Vector2(0.655, 0)
+anchors_preset = -1
+anchor_right = 0.224
+offset_left = 169.00003
+offset_top = 73.000015
+offset_right = 425.91998
+offset_bottom = 154.39534
+scale = Vector2(0.45, 0.45)
+tooltip_text = "sadsadasdas"
+value = 100.0
+texture_under = ExtResource("4_umayr")
+texture_progress = ExtResource("5_r2075")
+texture_progress_offset = Vector2(19.87, 10)
+
+[node name="vida" type="Label" parent="." unique_id=1987859035]
+z_index = 1
+offset_left = 275.0
+offset_top = 75.0
+offset_right = 525.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c1mco")
+theme_override_font_sizes/font_size = 22
+text = "100/100"
 
 [node name="fuego" type="AnimatedSprite2D" parent="." unique_id=1168171769]
-position = Vector2(264.15942, 82.840576)
+z_index = 1
+position = Vector2(103, 84)
 sprite_frames = SubResource("SpriteFrames_rxdb6")
 animation = &"idle"
+
+[node name="panel" type="TextureRect" parent="." unique_id=772439649]
+offset_left = 27.53623
+offset_top = 10.144928
+offset_right = 498.0
+offset_bottom = 174.0
+texture = ExtResource("7_4wlp0")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="panel" unique_id=1575795843]
+layout_mode = 0
+offset_left = 4.463772
+offset_top = 21.855072
+offset_right = 146.46378
+offset_bottom = 149.85507
+texture = ExtResource("8_vwdcx")
+expand_mode = 1

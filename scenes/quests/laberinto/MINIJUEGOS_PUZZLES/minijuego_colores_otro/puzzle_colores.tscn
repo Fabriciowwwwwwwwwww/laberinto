@@ -1,0 +1,378 @@
+[gd_scene format=3 uid="uid://bi5tnmxd3xlcr"]
+
+[ext_resource type="Script" uid="uid://bafejnolgq7oc" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores_otro/puzzle_colores.gd" id="1_tu1wn"]
+[ext_resource type="PackedScene" uid="uid://diyr6lq0st128" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores_otro/cuadro_paisajes.tscn" id="2_j6b0o"]
+[ext_resource type="Script" uid="uid://efv1ap4h527m" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores_otro/cinematica_colores.gd" id="3_x8kh8"]
+[ext_resource type="Resource" uid="uid://cdt8al61mg0kk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/intro_party.dialogue" id="4_6sx7l"]
+[ext_resource type="Resource" uid="uid://b1vsis4g0cxj4" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/ganar_party.dialogue" id="5_n34fo"]
+[ext_resource type="Resource" uid="uid://dshab1f8hkesd" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/perder party.dialogue" id="6_gkgnc"]
+[ext_resource type="Resource" uid="uid://btp77714l1sgp" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/tiempo_party.dialogue" id="7_g5obt"]
+[ext_resource type="Texture2D" uid="uid://c3teyic1cg1ee" path="res://scenes/quests/laberinto/sprite_laberinto/desartonillador.png" id="9_7oyit"]
+[ext_resource type="AudioStream" uid="uid://m773crn785f8" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3" id="10_lrxed"]
+[ext_resource type="Texture2D" uid="uid://cbr0asi31jnra" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/panel botones.png" id="11_tie0q"]
+[ext_resource type="Texture2D" uid="uid://bhqmdavptssa" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/panel resultado.png" id="12_e2gbk"]
+[ext_resource type="Texture2D" uid="uid://bydcx4jr2d65k" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/panel slider.png" id="13_mgywg"]
+[ext_resource type="Texture2D" uid="uid://cpkwt4rt0vrsk" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/b1.png" id="14_f3tm7"]
+[ext_resource type="Texture2D" uid="uid://cle52cklyea7v" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_1_p.png" id="15_rn4em"]
+[ext_resource type="Texture2D" uid="uid://cp2tpn3a6vdf0" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_1_h.png" id="16_eh1jq"]
+[ext_resource type="Texture2D" uid="uid://df8kfkv7njguk" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/b2.png" id="17_468nv"]
+[ext_resource type="Texture2D" uid="uid://dl0telfr8iffl" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_2_p.png" id="18_jnct7"]
+[ext_resource type="Texture2D" uid="uid://byohm6y8tdo0w" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_2_h.png" id="19_hdudk"]
+[ext_resource type="Texture2D" uid="uid://c5t30u5hap6h8" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/b3.png" id="20_3lags"]
+[ext_resource type="Texture2D" uid="uid://ks3ur4m6osjx" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_3_p.png" id="21_wrihh"]
+[ext_resource type="Texture2D" uid="uid://ca8kkffwkluw0" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_3_h.png" id="22_48xw5"]
+[ext_resource type="Texture2D" uid="uid://c4vpnluo2qgu4" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/b4.png" id="23_88n1v"]
+[ext_resource type="Texture2D" uid="uid://ca7mi0xbhlyog" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_4_p.png" id="24_coji5"]
+[ext_resource type="Texture2D" uid="uid://ca3e8w6ff3hed" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_4_h.png" id="25_rk8is"]
+[ext_resource type="Texture2D" uid="uid://drh56t0mp3u78" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/b5.png" id="26_ilnrc"]
+[ext_resource type="Texture2D" uid="uid://cpbkavyrgytry" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_5_9.png" id="27_g3cab"]
+[ext_resource type="Texture2D" uid="uid://bvg0ldsgn6mg5" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_5_h.png" id="28_d1mst"]
+[ext_resource type="Texture2D" uid="uid://bbqf8sqf70rfq" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/b6.png" id="29_fewh8"]
+[ext_resource type="Texture2D" uid="uid://c2o7jrq8lq1lq" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_6_p.png" id="30_ueqmn"]
+[ext_resource type="Texture2D" uid="uid://dpeqpjoo830ts" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_6_h.png" id="31_tkjrc"]
+[ext_resource type="Texture2D" uid="uid://of8ll6aiqm1s" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/normal/boton validar.png" id="32_yaskw"]
+[ext_resource type="Texture2D" uid="uid://rf3n6l4fvf6q" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/pressed/b_v_p.png" id="33_bv6k4"]
+[ext_resource type="Texture2D" uid="uid://ch1dtbxm3bvcy" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/botones/hover/b_v_h.png" id="34_qjkw2"]
+[ext_resource type="FontFile" uid="uid://xtdaunlre68q" path="res://assets/third_party/fonts/Cinzel-SemiBold.ttf" id="35_tdi37"]
+[ext_resource type="Texture2D" uid="uid://d1cxmfo0wse8a" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/panel cronometro.png" id="36_if8o4"]
+[ext_resource type="Texture2D" uid="uid://dt0wgnwq5c12o" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/boton validar indicacion.png" id="37_wrqjy"]
+[ext_resource type="Texture2D" uid="uid://dd5j2wkmlnfg6" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_colores_sprite/fondo.png" id="38_uewlf"]
+
+[node name="ColorPuzzle" type="Node2D" unique_id=1349815038]
+script = ExtResource("1_tu1wn")
+escenas_solucion = Array[PackedScene]([ExtResource("2_j6b0o"), ExtResource("2_j6b0o")])
+
+[node name="OnTheGround" type="Node2D" parent="." unique_id=567791195]
+y_sort_enabled = true
+
+[node name="ZonaSistema" type="Node2D" parent="OnTheGround" unique_id=1326489705]
+z_index = 1
+
+[node name="Zonas" type="Node2D" parent="OnTheGround/ZonaSistema" unique_id=1658893822 groups=["puzzle"]]
+position = Vector2(229, 119)
+
+[node name="LineasOverlay" type="Sprite2D" parent="OnTheGround/ZonaSistema" unique_id=592163596]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=543572143]
+position = Vector2(6, 7)
+anchor_mode = 0
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="cinematica_colores" type="Node2D" parent="." unique_id=837253594 groups=["cinematica"]]
+position = Vector2(351, 63)
+script = ExtResource("3_x8kh8")
+dialogue_intro = ExtResource("4_6sx7l")
+dialogue_ganar = ExtResource("5_n34fo")
+dialogue_perder = ExtResource("6_gkgnc")
+dialogue_tiempo = ExtResource("7_g5obt")
+next_scene = "uid://vxw6popqntit"
+
+[node name="fondo" type="Sprite2D" parent="." unique_id=1326856104]
+z_index = -1
+position = Vector2(485.00723, 280.37494)
+scale = Vector2(0.63019896, 0.5676271)
+texture = ExtResource("38_uewlf")
+
+[node name="Cronometro" type="Timer" parent="." unique_id=2052060340]
+wait_time = 2.884
+
+[node name="pincel" type="Sprite2D" parent="." unique_id=961501811]
+position = Vector2(-242, 249)
+scale = Vector2(0.149415, 0.164063)
+texture = ExtResource("9_7oyit")
+centered = false
+offset = Vector2(-1450.94, -100)
+
+[node name="sonido_reloj" type="AudioStreamPlayer2D" parent="." unique_id=307144804]
+position = Vector2(62, 11)
+stream = ExtResource("10_lrxed")
+parameters/looping = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=791983526]
+unique_name_in_owner = true
+
+[node name="ContenedorSolucion" type="Panel" parent="CanvasLayer" unique_id=1293350599]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_top = 0.001
+anchor_bottom = 0.001
+offset_left = -9.0
+offset_top = 18.88
+offset_right = 1908.0
+offset_bottom = 1132.88
+
+[node name="LabelCuentaAtras" type="Label" parent="CanvasLayer" unique_id=1955126880]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 264.0
+offset_top = 95.0
+offset_right = 457.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0"
+
+[node name="referencia" type="Control" parent="CanvasLayer" unique_id=1048282890]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1170.0
+offset_top = 366.0
+offset_right = 1170.0
+offset_bottom = 366.0
+mouse_filter = 2
+
+[node name="ContenedorReferencia" type="Node2D" parent="CanvasLayer/referencia" unique_id=316620457]
+position = Vector2(26, 100)
+
+[node name="BottomUI" type="Control" parent="CanvasLayer" unique_id=2059715780]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 760.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="panel_b" type="TextureRect" parent="CanvasLayer/BottomUI" unique_id=1731575860]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 51.0
+offset_right = 680.0
+offset_bottom = 313.0
+texture = ExtResource("11_tie0q")
+expand_mode = 1
+
+[node name="panel_b2" type="TextureRect" parent="CanvasLayer/BottomUI" unique_id=1904415876]
+layout_mode = 0
+offset_left = 1439.0
+offset_top = -738.0
+offset_right = 1848.0
+offset_bottom = -599.0
+texture = ExtResource("12_e2gbk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="panel_b3" type="TextureRect" parent="CanvasLayer/BottomUI" unique_id=319629712]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 57.0
+offset_right = 1510.0
+offset_bottom = 324.0
+texture = ExtResource("13_mgywg")
+expand_mode = 1
+
+[node name="SelectorGrupos" type="HBoxContainer" parent="CanvasLayer/BottomUI" unique_id=1503672400]
+custom_minimum_size = Vector2(80.325, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -933.0
+offset_top = -32.0
+offset_right = -288.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="color_btn_1" type="TextureButton" parent="CanvasLayer/BottomUI/SelectorGrupos" unique_id=2073034556]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+texture_normal = ExtResource("14_f3tm7")
+texture_pressed = ExtResource("15_rn4em")
+texture_hover = ExtResource("16_eh1jq")
+stretch_mode = 0
+
+[node name="color_btn_2" type="TextureButton" parent="CanvasLayer/BottomUI/SelectorGrupos" unique_id=66981658]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+texture_normal = ExtResource("17_468nv")
+texture_pressed = ExtResource("18_jnct7")
+texture_hover = ExtResource("19_hdudk")
+stretch_mode = 0
+
+[node name="color_btn_3" type="TextureButton" parent="CanvasLayer/BottomUI/SelectorGrupos" unique_id=1759804944]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+texture_normal = ExtResource("20_3lags")
+texture_pressed = ExtResource("21_wrihh")
+texture_hover = ExtResource("22_48xw5")
+stretch_mode = 0
+
+[node name="color_btn_4" type="TextureButton" parent="CanvasLayer/BottomUI/SelectorGrupos" unique_id=1325525548]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+texture_normal = ExtResource("23_88n1v")
+texture_pressed = ExtResource("24_coji5")
+texture_hover = ExtResource("25_rk8is")
+stretch_mode = 0
+
+[node name="color_btn_5" type="TextureButton" parent="CanvasLayer/BottomUI/SelectorGrupos" unique_id=24626419]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+texture_normal = ExtResource("26_ilnrc")
+texture_pressed = ExtResource("27_g3cab")
+texture_hover = ExtResource("28_d1mst")
+stretch_mode = 0
+
+[node name="color_btn_6" type="TextureButton" parent="CanvasLayer/BottomUI/SelectorGrupos" unique_id=1395516978]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+texture_normal = ExtResource("29_fewh8")
+texture_pressed = ExtResource("30_ueqmn")
+texture_hover = ExtResource("31_tkjrc")
+stretch_mode = 0
+
+[node name="SlidersRGB" type="VBoxContainer" parent="CanvasLayer/BottomUI" unique_id=1280751169]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 141.0
+offset_right = 1317.0
+offset_bottom = 360.0
+theme_override_constants/separation = 48
+
+[node name="SliderR" type="HSlider" parent="CanvasLayer/BottomUI/SlidersRGB" unique_id=482552938]
+layout_mode = 2
+max_value = 1.0
+
+[node name="SliderG" type="HSlider" parent="CanvasLayer/BottomUI/SlidersRGB" unique_id=1902781714]
+layout_mode = 2
+max_value = 1.0
+
+[node name="SliderB" type="HSlider" parent="CanvasLayer/BottomUI/SlidersRGB" unique_id=1681151989]
+layout_mode = 2
+max_value = 1.0
+
+[node name="BotonValidar" type="TextureButton" parent="CanvasLayer/BottomUI" unique_id=1365344688]
+layout_mode = 0
+offset_left = 1535.0
+offset_top = 95.0
+offset_right = 1792.645
+offset_bottom = 189.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("32_yaskw")
+texture_pressed = ExtResource("33_bv6k4")
+texture_hover = ExtResource("34_qjkw2")
+
+[node name="juego" type="Control" parent="CanvasLayer" unique_id=1067995041]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 366.0
+offset_right = 170.0
+offset_bottom = 366.0
+mouse_filter = 2
+
+[node name="ContenedorJuego" type="Node2D" parent="CanvasLayer/juego" unique_id=1122878808]
+position = Vector2(26, 100)
+
+[node name="TopUI" type="Control" parent="CanvasLayer" unique_id=1389112011]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TituloGrupo" type="Label" parent="CanvasLayer/TopUI" unique_id=720466446]
+layout_mode = 0
+offset_left = 746.0
+offset_top = 21.0
+offset_right = 1148.0
+offset_bottom = 301.0
+theme_override_colors/font_color = Color(0.654902, 0.6509804, 0.58431375, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.07058824, 0.043137256, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("35_tdi37")
+theme_override_font_sizes/font_size = 93
+text = "tytytry"
+
+[node name="TiempoPanel" type="Panel" parent="CanvasLayer/TopUI" unique_id=1102038553]
+modulate = Color(1, 1, 1, 0.92941177)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 340.0
+offset_bottom = 160.0
+
+[node name="CronometroLabel" type="Label" parent="CanvasLayer/TopUI/TiempoPanel" unique_id=78714235]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = 223.0
+offset_top = 65.0
+offset_right = 363.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopUI/TiempoPanel" unique_id=1045926180]
+layout_mode = 0
+offset_right = 373.0
+offset_bottom = 165.0
+texture = ExtResource("36_if8o4")
+expand_mode = 1
+
+[node name="ResultadoPanel" type="Panel" parent="CanvasLayer/TopUI" unique_id=1176198599]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1478.0
+offset_top = 25.0
+offset_right = 1758.0
+offset_bottom = 155.0
+
+[node name="ResultadoLabel" type="Label" parent="CanvasLayer/TopUI/ResultadoPanel" unique_id=14518970]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 123.0
+offset_top = 47.0
+offset_right = 150.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0
+"
+
+[node name="cuadro 1" type="Label" parent="CanvasLayer" unique_id=166607005]
+offset_left = 354.0
+offset_top = 186.0
+offset_right = 844.0
+offset_bottom = 466.0
+theme_override_colors/font_color = Color(0.654902, 0.6509804, 0.58431375, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.07058824, 0.043137256, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("35_tdi37")
+theme_override_font_sizes/font_size = 30
+text = "TU DIBUJO (GRIS)"
+
+[node name="cuadro 2" type="Label" parent="CanvasLayer" unique_id=296079138]
+offset_left = 1151.0
+offset_top = 195.0
+offset_right = 1641.0
+offset_bottom = 475.0
+theme_override_colors/font_color = Color(0.654902, 0.6509804, 0.58431375, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.07058824, 0.043137256, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("35_tdi37")
+theme_override_font_sizes/font_size = 30
+text = "REFERENCIA (COLOR)"
+
+[node name="INDICADOR" type="TextureRect" parent="CanvasLayer" unique_id=1853147376]
+offset_left = 1558.0
+offset_top = 976.0
+offset_right = 1839.0
+offset_bottom = 1055.0
+texture = ExtResource("37_wrqjy")

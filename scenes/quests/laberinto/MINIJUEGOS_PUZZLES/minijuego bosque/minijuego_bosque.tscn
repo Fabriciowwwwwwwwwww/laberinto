@@ -1,7 +1,7 @@
-[gd_scene load_steps=0 format=4 uid="uid://dt5r2ditwkrqq"]
+[gd_scene format=4 uid="uid://dt5r2ditwkrqq"]
 
 [ext_resource type="Script" uid="uid://cpd1q4jg6oovv" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego bosque/minijuego_bosque.gd" id="1_plsab"]
-[ext_resource type="PackedScene" uid="uid://chvtgpol8gre1" path="res://scenes/quests/laberinto/mundos/Player/player.tscn" id="3_oia2f"]
+[ext_resource type="PackedScene" path="res://scenes/quests/laberinto/mundos/Player/player.scn" id="3_oia2f"]
 [ext_resource type="Script" uid="uid://cl1i6immwfnvw" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego bosque/minijuegoreglas.gd" id="4_83c6a"]
 [ext_resource type="AudioStream" uid="uid://b4yc87j282gvo" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto corazon.mp3" id="5_mwabo"]
 [ext_resource type="AudioStream" uid="uid://d2v1e5eokv6na" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/chakra.mp3" id="5_p35dq"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b01ri1evn2ps2" path="res://scenes/quests/laberinto/sprite_laberinto/escenas/marco3.png" id="14_mwabo"]
 [ext_resource type="PackedScene" uid="uid://br321kq64yef0" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego bosque/figura.tscn" id="17_7vcvn"]
 [ext_resource type="Script" uid="uid://bpu6jo4kvehlg" path="res://scenes/game_elements/characters/player/components/player_interaction.gd" id="18_1rdnk"]
-[ext_resource type="PackedScene" uid="uid://bl3lutxcqiq34" path="res://scenes/quests/laberinto/mundos/Mundo/main.tscn" id="18_p35dq"]
+[ext_resource type="PackedScene" uid="uid://vxw6popqntit" path="res://scenes/quests/laberinto/mundos/Mundo/main.scn" id="18_h1b2p"]
 [ext_resource type="PackedScene" uid="uid://cmxpukf3kr0v1" path="res://scenes/quests/laberinto/Objetos/Escenas/Puerta_minipuzzle.tscn" id="18_plsab"]
 [ext_resource type="PackedScene" uid="uid://yfpfno276rol" path="res://scenes/game_elements/props/fixed_size_label/fixed_size_label.tscn" id="19_p35dq"]
 [ext_resource type="PackedScene" uid="uid://dkim32aqx2vtl" path="res://scenes/quests/laberinto/mundos/Player/llaves.tscn" id="22_qtwqu"]
@@ -12142,7 +12142,7 @@ layer = 6
 
 [node name="puerta_bosque" parent="." unique_id=1103044175 instance=ExtResource("18_plsab")]
 position = Vector2(2217, 2684)
-next_scene_path = ExtResource("18_p35dq")
+next_scene_path = ExtResource("18_h1b2p")
 
 [node name="LOGICA_BOSQUE" type="Node2D" parent="puerta_bosque" unique_id=1861073117]
 position = Vector2(9, 3)

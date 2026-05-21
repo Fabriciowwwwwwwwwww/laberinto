@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg87x43pey1fd"]
+[gd_scene format=3 uid="uid://dg87x43pey1fd"]
 
 [ext_resource type="Texture2D" uid="uid://dxhvgtytmpiyo" path="res://scenes/quests/laberinto/candado/candado1.PNG" id="1_1vy70"]
 [ext_resource type="Script" uid="uid://f8xd164deypb" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_engranajes/candado.gd" id="1_53rvi"]
