@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://byl87le4xe8j8"]
+
+[ext_resource type="Script" uid="uid://c5r22mnuxlqo5" path="res://scenes/quests/laberinto/jefe/final_boss.gd" id="1_k3yjs"]
+[ext_resource type="Texture2D" uid="uid://waego8srmjyv" path="res://scenes/quests/laberinto/sprite_laberinto/enemigo_sprite/animacion/idle/idle2.png" id="2_xeg1d"]
+[ext_resource type="Texture2D" uid="uid://bkwhr777vossm" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_1.png" id="3_0q7p7"]
+[ext_resource type="Texture2D" uid="uid://duyl7dquawm65" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_2.png" id="4_fobn2"]
+[ext_resource type="Texture2D" uid="uid://cxclutw0k851d" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_3.png" id="5_oakty"]
+[ext_resource type="Texture2D" uid="uid://cn7o86lwnw2ru" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_4.png" id="6_gj7g3"]
+[ext_resource type="Texture2D" uid="uid://bresepnf51cdy" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_5.png" id="7_0cd7k"]
+[ext_resource type="Texture2D" uid="uid://cwnl465sbrvj3" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_6.png" id="8_w2ec2"]
+[ext_resource type="Texture2D" uid="uid://f6h17j78fk7n" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/EXPLO_1.png" id="9_u8o0i"]
+[ext_resource type="Texture2D" uid="uid://jwwhfgs4q7a8" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/EXPLO_2.png" id="10_jl114"]
+[ext_resource type="Texture2D" uid="uid://b3djxqrgdb402" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/EXPLO_3.png" id="11_6a1rr"]
+[ext_resource type="Texture2D" uid="uid://b8hwhwq3kb6bc" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/EXPLO_4.png" id="12_bvrlv"]
+[ext_resource type="Texture2D" uid="uid://cobndxro02b5f" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/EXPLO_5.png" id="13_n6kxa"]
+[ext_resource type="Texture2D" uid="uid://qw118bx7ms4l" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/EXPLO_6.png" id="14_6mljh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60rb2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xeg1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0q7p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fobn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oakty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gj7g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0cd7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w2ec2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u8o0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jl114")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6a1rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bvrlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n6kxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6mljh")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okwr3"]
+radius = 56.0
+height = 208.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xchk6"]
+radius = 142.618
+
+[node name="Final_Boss" type="CharacterBody2D" unique_id=1726950111 groups=["boss"]]
+scale = Vector2(0.9, 0.9)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_k3yjs")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=266963398]
+position = Vector2(18.152775, -21.256948)
+scale = Vector2(0.79593086, 1.1095085)
+sprite_frames = SubResource("SpriteFrames_60rb2")
+frame_progress = 0.57943875
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=794542793]
+position = Vector2(15, -20)
+shape = SubResource("CapsuleShape2D_okwr3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=396256478]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1976251050]
+position = Vector2(1.1111116, -1.1111112)
+shape = SubResource("CircleShape2D_xchk6")
+
+[node name="Label" type="Label" parent="." unique_id=1384320312]
+visible = false
+offset_left = -5.0
+offset_top = -181.0
+offset_right = 35.0
+offset_bottom = -139.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar_boss" type="ProgressBar" parent="." unique_id=1526025861]
+modulate = Color(1, 0.270588, 1, 1)
+offset_left = -103.333
+offset_top = -223.333
+offset_right = 129.667
+offset_bottom = -196.333
+max_value = 700.0
+value = 700.0
+
+[node name="explosion_timer" type="Timer" parent="." unique_id=124741700]
+
+[node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=612564867]
+volume_db = 20.0
+
+[node name="Punch_timer" type="Timer" parent="." unique_id=126758653]
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="explosion_timer" to="." method="_on_explosion_timer_timeout"]
+[connection signal="timeout" from="Punch_timer" to="." method="_on_punch_timer_timeout"]

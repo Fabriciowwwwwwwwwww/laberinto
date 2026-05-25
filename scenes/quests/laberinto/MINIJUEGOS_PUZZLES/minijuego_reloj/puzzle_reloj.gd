@@ -1,21 +1,32 @@
 extends Node2D
 
 # =====================================================
-# MINIJUEGO RELOJ VICTORIANO
+# RELOJES
 # =====================================================
 
-@onready var aguja = $AgujaPivot
-@onready var zona_objetivo = $ZonaObjetivo
+@onready var aguja_1 = $AgujaPivot
+@onready var aguja_2 = $AgujaPivot2
 
-@onready var label_hora = $CanvasLayer/PanelIzquierdo/LabelHoraObjetivo
+@onready var zona_1 = $ClockBase1/ZonaObjetivo
+@onready var zona_2 = $ClockBase2/ZonaObjetivo2
+
+# =====================================================
+# UI
+# =====================================================
+
+@onready var label_hora_1 = $CanvasLayer/PanelIzquierdo/LabelHoraObjetivo_izquierda
+@onready var label_hora_2 = $CanvasLayer/PanelIzquierdo/LabelHoraObjetivo_derecha
+
 @onready var label_tiempo = $CanvasLayer/PanelIzquierdo/LabelTiempo
-@onready var label_instrucciones = $CanvasLayer/PanelIzquierdo/LabelInstrucciones
 
-@onready var barra_precision = $CanvasLayer/PanelDerecho/BarraPrecision
-@onready var label_precision = $CanvasLayer/PanelDerecho/LabelPrecision
-@onready var label_resultado = $CanvasLayer/PanelDerecho/LabelResultado
+@onready var barra_1 = $CanvasLayer/PanelDerecho/BarraPrecision
+@onready var barra_2 = $CanvasLayer/PanelDerecho/BarraPrecision2
 
-@onready var boton_detener = $CanvasLayer/BotonDetener
+@onready var resultado_1 = $CanvasLayer/PanelDerecho/LabelResultado
+@onready var resultado_2 = $CanvasLayer/PanelDerecho/LabelResultado2
+
+@onready var boton_1 = $CanvasLayer/BotonDetener_izquierda
+@onready var boton_2 = $CanvasLayer/BotonDetener_derecha
 
 @onready var timer = $Timer
 @onready var cinematica = $cinematica
@@ -27,24 +38,34 @@ extends Node2D
 @export var velocidad_min := 260.0
 @export var velocidad_max := 420.0
 
-# MÁS PEQUEÑA
 @export var rango_permitido := 10.0
-
 @export var radio_zona := 230.0
 
 # =====================================================
-# VARIABLES
+# VARIABLES RELOJ 1
 # =====================================================
 
-var velocidad_rotacion := 300.0
-var rotacion_actual := 0.0
+var rotacion_1 := 0.0
+var velocidad_1 := 300.0
+var hora_1 := 3
+var angulo_1 := 0.0
+var detenido_1 := false
 
-var hora_objetivo := 3
-var angulo_objetivo := 0.0
+# =====================================================
+# VARIABLES RELOJ 2
+# =====================================================
+
+var rotacion_2 := 0.0
+var velocidad_2 := 300.0
+var hora_2 := 6
+var angulo_2 := 0.0
+var detenido_2 := false
+
+# =====================================================
+# GENERAL
+# =====================================================
 
 var juego_terminado := false
-var puede_jugar := false
-
 var tiempo_restante := 15
 
 # =====================================================
@@ -55,43 +76,10 @@ func _ready():
 
 	randomize()
 
-	iniciar_ui()
-
-	boton_detener.pressed.connect(
-		detener_reloj
-	)
-
-	iniciar_nueva_ronda()
-
-# =====================================================
-# NUEVA RONDA
-# =====================================================
-
-func iniciar_nueva_ronda():
-
-	generar_hora()
+	boton_1.pressed.connect(detener_reloj_1)
+	boton_2.pressed.connect(detener_reloj_2)
 
 	iniciar_minijuego()
-
-# =====================================================
-# UI
-# =====================================================
-
-func iniciar_ui():
-
-	label_instrucciones.text = (
-		"DETÉN LA AGUJA\n"
-		+ "EN LA ZONA ROJA"
-	)
-
-	label_resultado.text = ""
-
-	label_precision.text = "PRECISIÓN"
-
-	barra_precision.max_value = 100
-	barra_precision.value = 0
-
-	boton_detener.text = "DETENER"
 
 # =====================================================
 # INICIAR
@@ -99,110 +87,88 @@ func iniciar_ui():
 
 func iniciar_minijuego():
 
-	puede_jugar = true
 	juego_terminado = false
 
-	rotacion_actual = randf_range(0, 360)
+	detenido_1 = false
+	detenido_2 = false
 
-	# NUEVA VELOCIDAD
-	velocidad_rotacion = randf_range(
+	# velocidades
+	velocidad_1 = randf_range(
 		velocidad_min,
 		velocidad_max
 	)
 
-	tiempo_restante = 15
-
-	label_tiempo.text = (
-		"TIEMPO: "
-		+ str(tiempo_restante)
+	velocidad_2 = randf_range(
+		velocidad_min,
+		velocidad_max
 	)
 
-	label_tiempo.modulate = Color.WHITE
+	# rotaciones iniciales
+	rotacion_1 = randf_range(0, 360)
+	rotacion_2 = randf_range(0, 360)
 
-	label_resultado.text = ""
+	generar_horas()
 
-	barra_precision.value = 0
+	tiempo_restante = 15
 
-	timer.wait_time = 1.0
 	timer.start()
 
 # =====================================================
-# GENERAR HORA
+# GENERAR HORAS
 # =====================================================
 
-# =====================================================
-# GENERAR HORA
-# =====================================================
+func generar_horas():
 
-func generar_hora():
-	
-	# hora aleatoria
-	hora_objetivo = randi_range(1, 12)
+	# RELOJ 1
+	hora_1 = randi_range(1, 12)
 
-	# texto UI
-	label_hora.text = (
-		"OBJETIVO:\n%02d:00"
-		% hora_objetivo
+	label_hora_1.text = (
+		"%02d:00"
+		% hora_1
 	)
 
-	# =================================================
-	# ÁNGULO REAL DEL RELOJ
-	# =================================================
-	#
-	# 12 = -90
-	# 3  = 0
-	# 6  = 90
-	# 9  = 180
-	#
-	# la aguja visual apunta hacia arriba
-	#
-	# por eso restamos 90
-	#
-	# =================================================
-
-	angulo_objetivo = (
-		((hora_objetivo % 12) * 30) - 90
-	)
-
-	angulo_objetivo = wrapf(
-		angulo_objetivo,
+	angulo_1 = wrapf(
+		((hora_1 % 12) * 30) - 90,
 		0,
 		360
-)
-	# =================================================
-	# PASAR SOLUCIÓN REAL
-	# =================================================
-
-	cinematica.set_solucion(
-		hora_objetivo
 	)
 
-	# =================================================
-	# CREAR ZONA VISUAL
-	# =================================================
-
-	crear_zona_objetivo()
-
-	print(
-		"HORA:",
-		hora_objetivo,
-		" | ANGULO:",
-		angulo_objetivo
+	crear_zona(
+		zona_1,
+		angulo_1
 	)
+
+	# RELOJ 2
+	hora_2 = randi_range(1, 12)
+
+	label_hora_2.text = (
+		"%02d:00"
+		% hora_2
+	)
+
+	angulo_2 = wrapf(
+		((hora_2 % 12) * 30) - 90,
+		0,
+		360
+	)
+
+	crear_zona(
+		zona_2,
+		angulo_2
+	)
+
 # =====================================================
 # CREAR ZONA
 # =====================================================
 
-func crear_zona_objetivo():
+func crear_zona(zona, angulo_objetivo):
 
 	var inicio = deg_to_rad(
-		angulo_objetivo
-		- rango_permitido
+		angulo_objetivo - rango_permitido
 	)
 
 	var fin = deg_to_rad(
-		angulo_objetivo
-		+ rango_permitido
+		angulo_objetivo + rango_permitido
 	)
 
 	var puntos = PackedVector2Array()
@@ -226,9 +192,9 @@ func crear_zona_objetivo():
 
 		puntos.append(punto)
 
-	zona_objetivo.polygon = puntos
+	zona.polygon = puntos
 
-	zona_objetivo.color = Color(
+	zona.color = Color(
 		0.8,
 		0,
 		0,
@@ -241,181 +207,180 @@ func crear_zona_objetivo():
 
 func _process(delta):
 
-	if !puede_jugar:
-		return
-
 	if juego_terminado:
 		return
 
-	# =================================================
-	# ROTACIÓN
-	# =================================================
+	# RELOJ 1
+	if !detenido_1:
 
-	rotacion_actual += (
-		velocidad_rotacion * delta
-	)
+		rotacion_1 += velocidad_1 * delta
+		rotacion_1 = wrapf(rotacion_1, 0, 360)
 
-	rotacion_actual = wrapf(
-		rotacion_actual,
-		0,
-		360
-	)
+		aguja_1.rotation_degrees = rotacion_1
 
-	# =================================================
-	# APLICAR
-	# =================================================
+	# RELOJ 2
+	if !detenido_2:
 
-	aguja.rotation_degrees = (
-		rotacion_actual
-	)
+		rotacion_2 += velocidad_2 * delta
+		rotacion_2 = wrapf(rotacion_2, 0, 360)
 
-	# vibración
-	aguja.scale = Vector2.ONE * (
-		1.0 +
-		sin(
-			Time.get_ticks_msec()
-			* 0.01
-		) * 0.01
-	)
-
-	# respirar
-	zona_objetivo.scale = (
-		Vector2.ONE * (
-			1.0 +
-			sin(
-				Time.get_ticks_msec()
-				* 0.004
-			) * 0.03
-		)
-	)
-
-	# pulsación
-	zona_objetivo.modulate.a = (
-		0.6 +
-		sin(
-			Time.get_ticks_msec()
-			* 0.004
-		) * 0.2
-	)
-
-	# ENTER / SPACE
-	if Input.is_action_just_pressed(
-		"ui_accept"
-	):
-
-		detener_reloj()
-func reiniciar():
-
-	juego_terminado = false
-	puede_jugar = false
-
-	timer.stop()
-
-	await get_tree().process_frame
-
-	iniciar_nueva_ronda()
-# =====================================================
-# DETENER
-# =====================================================
+		aguja_2.rotation_degrees = rotacion_2
 
 # =====================================================
-# DETENER
+# DETENER RELOJ 1
 # =====================================================
-func detener_reloj():
 
-	if juego_terminado:
+func detener_reloj_1():
+
+	if detenido_1:
 		return
 
-	juego_terminado = true
-	puede_jugar = false
-
-	timer.stop()
-
-	# =================================================
-	# ÁNGULO REAL
-	# =================================================
-
-	var angulo_aguja = rotacion_actual
-
-	# =================================================
-	# DIFERENCIA
-	# =================================================
+	detenido_1 = true
 
 	var diferencia = abs(
 		wrapf(
-			angulo_aguja
-			- angulo_objetivo,
+			rotacion_1 - angulo_1,
 			-180,
 			180
 		)
 	)
 
-	print("OBJ:", angulo_objetivo)
-	print("AGUJA:", angulo_aguja)
-	print("DIF:", diferencia)
-
-	# =================================================
-	# PRECISIÓN
-	# =================================================
-
 	var precision = clamp(
 		100.0 - (
-			(diferencia
-			/ rango_permitido)
+			(diferencia / rango_permitido)
 			* 100.0
 		),
-		0.0,
-		100.0
+		0,
+		100
 	)
 
-	barra_precision.value = precision
-
-	label_precision.text = (
-		"PRECISIÓN: %d%%"
-		% precision
-	)
-
-	# =================================================
-	# GANAR
-	# =================================================
+	barra_1.value = precision
 
 	if diferencia <= rango_permitido:
 
-		label_resultado.text = (
-			"PERFECTO"
-		)
-
-		label_resultado.modulate = (
-			Color.GREEN
-		)
-
-		await get_tree() \
-		.create_timer(1.0).timeout
-
-		await cinematica \
-		.notificar_ganador()
-
-	# =================================================
-	# PERDER
-	# =================================================
+		resultado_1.text = "OK"
+		resultado_1.modulate = Color.GREEN
 
 	else:
 
-		label_resultado.text = (
-			"FALLASTE"
+		resultado_1.text = "X"
+		resultado_1.modulate = Color.RED
+
+	verificar_final()
+
+# =====================================================
+# DETENER RELOJ 2
+# =====================================================
+
+func detener_reloj_2():
+
+	if detenido_2:
+		return
+
+	detenido_2 = true
+
+	var diferencia = abs(
+		wrapf(
+			rotacion_2 - angulo_2,
+			-180,
+			180
 		)
+	)
 
-		label_resultado.modulate = (
-			Color.RED
-		)
+	var precision = clamp(
+		100.0 - (
+			(diferencia / rango_permitido)
+			* 100.0
+		),
+		0,
+		100
+	)
 
-		await get_tree() \
-		.create_timer(1.0).timeout
+	barra_2.value = precision
 
-		await cinematica \
-		.notificar_perdida()
+	if diferencia <= rango_permitido:
 
+		resultado_2.text = "OK"
+		resultado_2.modulate = Color.GREEN
 
+	else:
+
+		resultado_2.text = "X"
+		resultado_2.modulate = Color.RED
+
+	verificar_final()
+
+# =====================================================
+# VERIFICAR FINAL
+# =====================================================
+
+func verificar_final():
+
+	# esperar ambos
+	if !detenido_1 or !detenido_2:
+		return
+
+	juego_terminado = true
+
+	var gana_1 = resultado_1.text == "OK"
+	var gana_2 = resultado_2.text == "OK"
+
+	await get_tree().create_timer(1.0).timeout
+
+	if gana_1 and gana_2:
+
+		await cinematica.notificar_ganador()
+
+	else:
+
+		await cinematica.notificar_perdida()
+
+		await get_tree().create_timer(1.0).timeout
+
+		reiniciar_puzzle()
+func reiniciar_puzzle():
+
+	juego_terminado = false
+
+	detenido_1 = false
+	detenido_2 = false
+
+	# limpiar UI
+	resultado_1.text = ""
+	resultado_2.text = ""
+
+	barra_1.value = 0
+	barra_2.value = 0
+
+	label_tiempo.modulate = Color.WHITE
+
+	# reiniciar velocidades
+	velocidad_1 = randf_range(
+		velocidad_min,
+		velocidad_max
+	)
+
+	velocidad_2 = randf_range(
+		velocidad_min,
+		velocidad_max
+	)
+
+	# nuevas posiciones
+	rotacion_1 = randf_range(0, 360)
+	rotacion_2 = randf_range(0, 360)
+
+	# nuevas horas
+	generar_horas()
+
+	tiempo_restante = 15
+
+	label_tiempo.text = (
+		"TIEMPO: "
+		+ str(tiempo_restante)
+	)
+
+	timer.start()
+# =====================================================
 # TIMER
 # =====================================================
 
@@ -431,30 +396,19 @@ func _on_timer_timeout():
 		+ str(tiempo_restante)
 	)
 
-	# tensión final
 	if tiempo_restante <= 5:
 
-		label_tiempo.modulate = (
-			Color.RED
-		)
+		label_tiempo.modulate = Color.RED
 
-		velocidad_rotacion += 14
+		velocidad_1 += 14
+		velocidad_2 += 14
 
-	# perder tiempo
 	if tiempo_restante <= 0:
 
 		juego_terminado = true
-		puede_jugar = false
 
-		label_resultado.text = (
-			"SIN TIEMPO"
-		)
+		await cinematica.notificar_perdida("tiempo")
 
-		label_resultado.modulate = (
-			Color.RED
-		)
+		await get_tree().create_timer(1.0).timeout
 
-		await cinematica \
-		.notificar_perdida(
-			"tiempo"
-		)
+		reiniciar_puzzle()

@@ -15,22 +15,21 @@ var arm_timer := 0.0
 
 
 func _ready():
-	print("Mina creada (ready)")
-
 	visible = false
 	set_physics_process(false)
 
 	if collision:
 		collision.disabled = true
-		print("✔ colisión encontrada")
 	else:
 		print("❌ NO se encontró colision (nombre mal?)")
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
 
+	await get_tree().create_timer(lifetime).timeout
+
+	if is_active:
+		print("⏰ Tiempo agotado")
+		explode()
 
 func launch(dir: Vector2, pos: Vector2):
-	print("🚀 launch llamado")
 
 	global_position = pos
 
@@ -47,7 +46,6 @@ func launch(dir: Vector2, pos: Vector2):
 	if visual:
 		visual.play("idle")
 
-	print("✔ Mina activada en:", global_position)
 
 
 func _physics_process(delta):
@@ -66,7 +64,7 @@ func _on_body_entered(body):
 	if not is_active or not is_armed:
 		return
 
-	if body.is_in_group("enemigos"):
+	if body.is_in_group("enemigos") or body.is_in_group("enemy"):
 		print("🔥 EXPLOTA")
 		explode()
 

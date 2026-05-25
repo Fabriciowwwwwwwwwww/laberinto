@@ -17,7 +17,7 @@ extends CanvasLayer
 
 var balas: int = 6
 var recargando: bool = false
-var tiempo_recarga: float = 1.0
+var tiempo_recarga: float = 1.2
 
 # 🔸 animación puntos
 var puntos_timer: float = 0

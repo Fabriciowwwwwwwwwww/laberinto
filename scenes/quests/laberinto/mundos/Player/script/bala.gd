@@ -1,5 +1,5 @@
 extends Area2D
-
+@export var poder: float = 20
 @export var speed: float = 500.0
 var direction: Vector2 = Vector2.ZERO
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("enemy"):
 		if "recibir_daño" in body:
-			body.recibir_daño(13)
+			body.recibir_daño(poder)
 		_reproducir_impacto()
 	elif body.is_in_group("wall") or body is TileMap:
 		_reproducir_impacto()

@@ -16,12 +16,12 @@ extends CharacterBody2D
 @onready var vida_bar: ProgressBar = $VidaBar
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_time: float = 0.0
-var vida_max: int = 60
+var vida_max: int = 50
 var barra_visible_timer: float = 0.0
 var tiempo_mostrar_barra: float = 2.0
 var puede_atacar: bool = true
 var animacion_bloqueada: bool = false
-@export var vida: int = 10
+@export var vida: int = 50
 var puede_moverse: bool = true
 var current_speed: float
 var last_direction: Vector2 = Vector2.DOWN

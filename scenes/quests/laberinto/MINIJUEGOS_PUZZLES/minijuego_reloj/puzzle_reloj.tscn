@@ -6,20 +6,24 @@
 [ext_resource type="Resource" uid="uid://bcvt8bcroeyfi" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/ganar_engranajes.dialogue" id="3_uhivo"]
 [ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="4_g7j11"]
 [ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="5_xgded"]
-[ext_resource type="Texture2D" uid="uid://duigm8ps0tpnt" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/reloj_.png" id="6_hpn2p"]
 [ext_resource type="Texture2D" uid="uid://eop7n6sdd3q2" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/reloj_aguja.png" id="7_n27bw"]
-[ext_resource type="Texture2D" uid="uid://c3teyic1cg1ee" path="res://scenes/quests/laberinto/sprite_laberinto/desartonillador.png" id="8_xoc7c"]
+[ext_resource type="Texture2D" uid="uid://yxoudj7k1b3c" path="res://scenes/quests/laberinto/sprite_laberinto/reloj_base.png" id="7_uhivo"]
+[ext_resource type="Texture2D" uid="uid://bnl6ebckmh21m" path="res://scenes/quests/laberinto/sprite_laberinto/icono/guante.png" id="8_g7j11"]
+[ext_resource type="Texture2D" uid="uid://dulfs3uo8l034" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/b_n_1.png" id="8_n27bw"]
 [ext_resource type="Script" uid="uid://dalkeu5s747vy" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_ganzuas/sprite_2d_2.gd" id="9_m1xde"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5qyd"]
+[ext_resource type="Texture2D" uid="uid://crwkw0rnhtir7" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/b_p_1.png" id="9_xoc7c"]
+[ext_resource type="Texture2D" uid="uid://cisaq43o5i0td" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/b_n_2.png" id="10_m1xde"]
+[ext_resource type="Texture2D" uid="uid://c78e4f4pf4om2" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/b_p_2.png" id="11_51x5e"]
+[ext_resource type="Texture2D" uid="uid://drp36d75eui4" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/fondo reloj.png" id="15_e5qyd"]
 
 [node name="ClockMinigame" type="Node2D" unique_id=1349815038]
 script = ExtResource("1_etain")
 velocidad_min = 100.0
-velocidad_max = 100.0
+velocidad_max = 150.0
+rango_permitido = 15.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1402088022]
-position = Vector2(512, 300)
+position = Vector2(957, 558)
 position_smoothing_enabled = true
 
 [node name="cinematica" type="Node2D" parent="." unique_id=837253594 groups=["cinematica"]]
@@ -30,122 +34,171 @@ dialogue_perder = ExtResource("4_g7j11")
 dialogue_tiempo = ExtResource("5_xgded")
 next_scene = "uid://vxw6popqntit"
 
-[node name="fondo" type="Sprite2D" parent="." unique_id=627528405]
-z_index = -10
-position = Vector2(512, 300)
-scale = Vector2(1.05, 1.05)
-texture = SubResource("CompressedTexture2D_e5qyd")
+[node name="ClockBase1" type="Sprite2D" parent="." unique_id=1326954508]
+position = Vector2(658.4813, 483.52124)
+scale = Vector2(1.0372413, 0.9575758)
+texture = ExtResource("7_uhivo")
 
-[node name="ClockBase" type="Sprite2D" parent="." unique_id=1326954508]
-position = Vector2(522, 293)
-scale = Vector2(0.72, 0.72)
-texture = ExtResource("6_hpn2p")
-offset = Vector2(-159.715, -50)
-
-[node name="ZonaObjetivo" type="Polygon2D" parent="." unique_id=98827272]
+[node name="ZonaObjetivo" type="Polygon2D" parent="ClockBase1" unique_id=98827272]
 z_index = 1
-position = Vector2(515, 292)
+position = Vector2(-0.46411133, 13.031616)
+scale = Vector2(1.388889, 1.388889)
 color = Color(1, 0, 0, 0.25)
+
+[node name="ClockBase2" type="Sprite2D" parent="." unique_id=416288255]
+position = Vector2(1296.4813, 483.52124)
+scale = Vector2(1.0372413, 0.9575758)
+texture = ExtResource("7_uhivo")
+
+[node name="ZonaObjetivo2" type="Polygon2D" parent="ClockBase2" unique_id=1146100086]
+z_index = 1
+position = Vector2(-5.7845764, 9.398735)
+scale = Vector2(1.388889, 1.388889)
+color = Color(1, 0, 0, 0.14500001)
 
 [node name="Timer" type="Timer" parent="." unique_id=1408423344]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=897734355]
 
 [node name="PanelIzquierdo" type="Panel" parent="CanvasLayer" unique_id=1706119144]
-offset_left = 72.0
-offset_top = 120.0
-offset_right = 270.0
-offset_bottom = 490.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 136.0
+offset_top = 25.0
+offset_right = 334.0
+offset_bottom = 395.0
 
-[node name="LabelHoraObjetivo" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=516142473]
+[node name="LabelHoraObjetivo_izquierda" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=516142473]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 40.0
-offset_right = 180.0
-offset_bottom = 92.0
+offset_left = 14.0
+offset_top = 87.0
+offset_right = 176.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 28
+text = "OBJETIVO"
+horizontal_alignment = 1
+
+[node name="LabelHoraObjetivo_derecha" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=52154020]
+layout_mode = 0
+offset_left = 1504.0
+offset_top = 94.0
+offset_right = 1666.0
+offset_bottom = 146.0
 theme_override_font_sizes/font_size = 28
 text = "OBJETIVO"
 horizontal_alignment = 1
 
 [node name="LabelTiempo" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=1305136189]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 170.0
-offset_right = 170.0
-offset_bottom = 210.0
+offset_left = -42.0
+offset_top = 348.0
+offset_right = 108.0
+offset_bottom = 388.0
 theme_override_font_sizes/font_size = 22
+text = "tiempo"
 horizontal_alignment = 1
-
-[node name="LabelInstrucciones" type="Label" parent="CanvasLayer/PanelIzquierdo" unique_id=1784351191]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 260.0
-offset_right = 180.0
-offset_bottom = 360.0
-theme_override_font_sizes/font_size = 18
-text = "DETÉN LA AGUJA EN LA ZONA ROJA"
-horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="PanelDerecho" type="Panel" parent="CanvasLayer" unique_id=391803674]
-offset_left = 760.0
-offset_top = 120.0
-offset_right = 960.0
-offset_bottom = 490.0
-
-[node name="LabelPrecision" type="Label" parent="CanvasLayer/PanelDerecho" unique_id=1017038369]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 50.0
-offset_right = 180.0
-offset_bottom = 90.0
-theme_override_font_sizes/font_size = 22
-text = "PRECISIÓN"
-horizontal_alignment = 1
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1660.0
+offset_top = 296.0
+offset_right = 1860.0
+offset_bottom = 666.0
 
 [node name="BarraPrecision" type="ProgressBar" parent="CanvasLayer/PanelDerecho" unique_id=936211160]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 120.0
-offset_right = 178.0
-offset_bottom = 152.0
+offset_left = 28.0
+offset_top = 96.0
+offset_right = 188.0
+offset_bottom = 128.0
 value = 50.0
 show_percentage = false
 
 [node name="LabelResultado" type="Label" parent="CanvasLayer/PanelDerecho" unique_id=1007487322]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 240.0
-offset_right = 180.0
-offset_bottom = 320.0
+offset_left = 71.0
+offset_top = 336.0
+offset_right = 241.0
+offset_bottom = 416.0
 theme_override_font_sizes/font_size = 32
+text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BotonDetener" type="Button" parent="CanvasLayer" unique_id=239744486]
-offset_left = 430.0
-offset_top = 575.0
-offset_right = 610.0
-offset_bottom = 640.0
-theme_override_font_sizes/font_size = 26
-text = "DETENER"
+[node name="BarraPrecision2" type="ProgressBar" parent="CanvasLayer/PanelDerecho" unique_id=2053877133]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 225.0
+offset_right = 188.0
+offset_bottom = 257.0
+value = 50.0
+show_percentage = false
+
+[node name="LabelResultado2" type="Label" parent="CanvasLayer/PanelDerecho" unique_id=597806707]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 384.0
+offset_right = 246.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 32
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonDetener_izquierda" type="TextureButton" parent="CanvasLayer" unique_id=1537990314]
+offset_left = 419.0
+offset_top = 884.0
+offset_right = 775.0
+offset_bottom = 1064.0
+texture_normal = ExtResource("8_n27bw")
+texture_pressed = ExtResource("8_n27bw")
+texture_hover = ExtResource("9_xoc7c")
+
+[node name="BotonDetener_derecha" type="TextureButton" parent="CanvasLayer" unique_id=1229834792]
+offset_left = 1185.0
+offset_top = 885.0
+offset_right = 1719.0
+offset_bottom = 1065.0
+texture_normal = ExtResource("10_m1xde")
+texture_pressed = ExtResource("10_m1xde")
+texture_hover = ExtResource("11_51x5e")
 
 [node name="mano" type="Sprite2D" parent="." unique_id=1924308973]
-position = Vector2(80, 560)
+position = Vector2(131.2435, 585.62177)
 rotation = -0.2
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("8_xoc7c")
+scale = Vector2(0.81565875, 0.5765344)
+texture = ExtResource("8_g7j11")
 script = ExtResource("9_m1xde")
 
 [node name="AgujaPivot" type="Node2D" parent="." unique_id=1979895474]
-position = Vector2(522, 293)
+position = Vector2(659, 493)
 scale = Vector2(1.0000001, 1)
 
-[node name="Aguja" type="Sprite2D" parent="AgujaPivot" unique_id=1087641070]
+[node name="Aguja1" type="Sprite2D" parent="AgujaPivot" unique_id=1087641070]
 z_index = 2
+position = Vector2(90.02365, -5.000004)
 rotation = -1.5707964
-scale = Vector2(1.1428572, 1.1696427)
+scale = Vector2(1.1428572, 0.41272992)
 texture = ExtResource("7_n27bw")
 offset = Vector2(0, 45)
+
+[node name="AgujaPivot2" type="Node2D" parent="." unique_id=71008229]
+position = Vector2(1297.4813, 493.52124)
+scale = Vector2(1.0000001, 1)
+
+[node name="Aguja2" type="Sprite2D" parent="AgujaPivot2" unique_id=1243474618]
+z_index = 2
+position = Vector2(105.6017, -5.0000043)
+rotation = -1.5707964
+scale = Vector2(1.1428572, 0.40603456)
+texture = ExtResource("7_n27bw")
+offset = Vector2(0, 45)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=105663150]
+z_index = -1
+offset_left = 13.0
+offset_top = -8.0
+offset_right = 1943.0
+offset_bottom = 1113.0
+texture = ExtResource("15_e5qyd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

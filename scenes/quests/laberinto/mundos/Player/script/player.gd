@@ -13,8 +13,8 @@ var last_input_pos := Vector2.ZERO
 @onready var keys_label: Label = safe_get_node("../llaves/Keys_label")
 
 # -------- VIDA --------
-@export var vida_maxima: int = 500
-var vida_actual: int = 500
+@export var vida_maxima: int = 100
+var vida_actual: int = 100
 @onready var vida_bar: TextureProgressBar = safe_get_node("../barra vida/ProgressBar")
 
 # -------- BALAS --------

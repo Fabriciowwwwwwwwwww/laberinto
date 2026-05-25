@@ -30,7 +30,7 @@ func _on_DamageTimer_timeout() -> void:
 	print("[VENENO] Tick de daño, cuerpos detectados: ", bodies.size())
 
 	for obj in bodies:
-		if obj.is_in_group("enemigos"):
+		if obj.is_in_group("enemigos") or obj.is_in_group("enemy"):
 			if obj.has_method("recibir_daño"):
 				obj.recibir_daño(damage_per_tick)  # ← aquí estaba el error
 

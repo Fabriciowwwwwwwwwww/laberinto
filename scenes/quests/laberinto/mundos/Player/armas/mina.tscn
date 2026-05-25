@@ -259,7 +259,9 @@ animations = [{
 }]
 
 [node name="Mina" type="Area2D" unique_id=1208596912]
+z_index = 12
 script = ExtResource("1_kht74")
+base_damage = 80.0
 
 [node name="colision" type="CollisionShape2D" parent="." unique_id=518802225]
 shape = SubResource("CircleShape2D_wxom7")
