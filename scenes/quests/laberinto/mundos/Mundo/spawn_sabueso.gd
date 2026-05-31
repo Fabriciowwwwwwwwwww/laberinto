@@ -1,145 +1,245 @@
+# =========================================================
+# SPAWNER SABUESOS
+# =========================================================
 extends Node2D
+
+signal todos_muertos
 
 @export var escena_sabueso: PackedScene
 @export var tilemap: TileMapLayer
 
 @export var max_perros := 2
 
-@export var distancia_minima := 180.0
-@export var distancia_maxima := 500.0
+@export var distancia_minima := 250.0
+@export var distancia_maxima := 900.0
 
-@export var radio_busqueda := 12
+@export var tiempo_reaparicion := 10.0
 
 var player
 
-# ==================================================
+# =========================================================
+# DATOS PERSISTENTES
+# =========================================================
+
+var datos_sabuesos := {}
+var oleada_activa := false
+# =========================================================
 # READY
-# ==================================================
+# =========================================================
 
 func _ready():
 
-	print("Spawner listo")
+	randomize()
 
 	player = get_tree().get_first_node_in_group(
 		"player"
 	)
 
 	if not player:
-		print("NO PLAYER")
 		return
+
+	iniciar_oleada()
+
+# =========================================================
+# INICIAR OLEADA
+# =========================================================
+
+func iniciar_oleada():
+
+	# ya hay enemigos activos
+	if oleada_activa:
+		return
+
+	oleada_activa = true
+
+	datos_sabuesos.clear()
 
 	for i in range(max_perros):
 
-		crear_perro()
+		var esquina = obtener_esquina()
 
-# ==================================================
-# CREAR PERRO
-# ==================================================
-func crear_perro():
+		datos_sabuesos[i] = {
+			"vida": 100,
+			"esquina": esquina,
+			"enemigo": null
+		}
 
-	var esquina = obtener_esquina()
+		crear_sabueso(i)
 
-	if esquina == Vector2.ZERO:
+# =========================================================
+# CREAR SABUESO
+# =========================================================
 
-		print("NO SE ENCONTRO ESQUINA")
+func crear_sabueso(id_sabueso: int):
+
+	if not datos_sabuesos.has(id_sabueso):
 		return
 
-	print("SPAW EN ", esquina)
+	var data = datos_sabuesos[id_sabueso]
 
-	# ==================================================
-	# DEBUG VISUAL
-	# ==================================================
+	var enemigo = escena_sabueso.instantiate()
 
-	var debug = ColorRect.new()
+	enemigo.id_sabueso = id_sabueso
+	enemigo.spawner_ref = self
 
-	debug.color = Color.RED
+	enemigo.global_position = data["esquina"]
 
-	debug.size = Vector2(32, 32)
+	enemigo.vida = data["vida"]
+	enemigo.vida_max = 100
 
-	debug.position = esquina - Vector2(16,16)
+	enemigo.punto_escape = data["esquina"]
 
-	debug.z_index = 9999
+	data["enemigo"] = enemigo
 
-	get_tree().current_scene.add_child(debug)
+	get_tree().current_scene.call_deferred(
+		"add_child",
+		enemigo
+	)
 
-	# destruir luego
-	var tween = create_tween()
+# =========================================================
+# CUANDO SE ESCONDE
+# =========================================================
 
-	tween.tween_interval(3.0)
+func sabueso_escondido(
+	id_sabueso: int,
+	vida_actual: int
+):
 
-	tween.tween_callback(debug.queue_free)
+	if not datos_sabuesos.has(id_sabueso):
+		return
 
-	# ==================================================
-	# CREAR PERRO
-	# ==================================================
+	var data = datos_sabuesos[id_sabueso]
 
-	var perro = escena_sabueso.instantiate()
+	# guardar vida
+	data["vida"] = vida_actual
 
-	get_tree().current_scene.add_child(perro)
+	# =====================================================
+	# SI JUGADOR ESTA MUY LEJOS
+	# CAMBIAR ESQUINA
+	# =====================================================
 
-	perro.global_position = esquina
+	if player.global_position.distance_to(
+		data["esquina"]
+	) > 400:
 
-	print("sabueso creado")
-# ==================================================
-# OBTENER ESQUINA
-# ==================================================
+		data["esquina"] = obtener_esquina()
+
+	# =====================================================
+	# SI MURIO
+	# =====================================================
+
+	if vida_actual <= 0:
+
+		data["enemigo"] = null
+
+		var todos_muertos_local := true
+
+		for key in datos_sabuesos:
+
+			if datos_sabuesos[key]["vida"] > 0:
+				todos_muertos_local = false
+				break
+
+		if todos_muertos_local:
+
+			oleada_activa = false
+
+			todos_muertos.emit()
+
+		return
+
+	# =====================================================
+	# REAPARECER
+	# =====================================================
+
+	await get_tree().create_timer(
+		tiempo_reaparicion
+	).timeout
+
+	crear_sabueso(id_sabueso)
+
+# =========================================================
+# OBTENER ESQUINA ESCAPE
+# =========================================================
+
+func obtener_esquina_escape(
+	id_sabueso: int
+) -> Vector2:
+
+	if not datos_sabuesos.has(id_sabueso):
+		return Vector2.ZERO
+
+	return datos_sabuesos[id_sabueso]["esquina"]
+
+# =========================================================
+# OBTENER ESQUINA REAL
+# =========================================================
 
 func obtener_esquina() -> Vector2:
 
 	if not player:
 		return Vector2.ZERO
 
-	for i in range(80):
+	var player_cell = tilemap.local_to_map(
+		tilemap.to_local(player.global_position)
+	)
 
-		var random_offset = Vector2(
-			randf_range(-500, 500),
-			randf_range(-500, 500)
-		)
+	var esquinas_validas: Array[Vector2] = []
 
-		var pos = player.global_position + random_offset
+	for x in range(-40, 40):
 
-		var dist = pos.distance_to(
-			player.global_position
-		)
+		for y in range(-40, 40):
 
-		# demasiado cerca
-		if dist < distancia_minima:
-			continue
+			var cell = player_cell + Vector2i(x, y)
 
-		# raycast para buscar pared cercana
-		if cerca_de_pared(pos):
+			if not es_esquina(cell):
+				continue
 
-			return pos
+			var world_pos = tilemap.to_global(
+				tilemap.map_to_local(cell)
+			)
 
-	return Vector2.ZERO
-func cerca_de_pared(pos: Vector2) -> bool:
+			var dist = world_pos.distance_to(
+				player.global_position
+			)
 
-	var space = get_world_2d().direct_space_state
+			if dist < distancia_minima:
+				continue
 
-	var dirs = [
-		Vector2.LEFT,
-		Vector2.RIGHT,
-		Vector2.UP,
-		Vector2.DOWN
-	]
+			if dist > distancia_maxima:
+				continue
 
-	for dir in dirs:
+			var repetida := false
 
-		var query = PhysicsRayQueryParameters2D.create(
-			pos,
-			pos + dir * 40
-		)
+			for key in datos_sabuesos:
 
-		var result = space.intersect_ray(query)
+				var esquina_existente = datos_sabuesos[key]["esquina"]
 
-		if not result.is_empty():
+				if esquina_existente.distance_to(
+					world_pos
+				) < 180:
 
-			return true
+					repetida = true
+					break
 
-	return false
+			if repetida:
+				continue
+
+			esquinas_validas.append(world_pos)
+
+	if esquinas_validas.is_empty():
+		return player.global_position + Vector2(300, 0)
+
+	esquinas_validas.shuffle()
+
+	return esquinas_validas[0]
+
+# =========================================================
+# ES ESQUINA
+# =========================================================
+
 func es_esquina(cell: Vector2i) -> bool:
 
-	# centro libre
 	if hay_pared(cell):
 		return false
 
@@ -173,9 +273,9 @@ func es_esquina(cell: Vector2i) -> bool:
 
 	return false
 
-# ==================================================
+# =========================================================
 # HAY PARED
-# ==================================================
+# =========================================================
 
 func hay_pared(cell: Vector2i) -> bool:
 

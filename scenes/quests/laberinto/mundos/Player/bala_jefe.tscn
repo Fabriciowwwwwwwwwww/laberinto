@@ -91,3 +91,5 @@ scale = Vector2(4.05852, 3)
 sprite_frames = SubResource("SpriteFrames_q3t6t")
 animation = &"impacto_bala"
 frame_progress = 0.0621275
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

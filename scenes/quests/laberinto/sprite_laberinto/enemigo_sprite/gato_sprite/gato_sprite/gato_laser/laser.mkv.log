@@ -1,0 +1,20 @@
+C:/Program Files/Krita (x64)/bin/ffmpeg.exe -hide_banner -y -y -r 24 -start_number 0 -start_number_range 1 -i C:/Users/User/OneDrive/Escritorio/gato_sprite/gato_laser/laser%04d.png -vf scale=w=294:h=506:flags=bicubic -c:v libopenh264 -b:v 5000k C:/Users/User/OneDrive/Escritorio/gato_sprite/gato_laser/laser.mkv
+=====================================================
+Input #0, image2, from 'C:/Users/User/OneDrive/Escritorio/gato_sprite/gato_laser/laser%04d.png':
+  Duration: 00:00:00.72, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc), 293x506 [SAR 13779:13779 DAR 293:506], 25 fps, 25 tbr, 25 tbn, 25 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libopenh264))
+Press [q] to stop, [?] for help
+[libopenh264 @ 00000231c97851c0] Slice count will be set automatically
+[libopenh264 @ 00000231c97851c0] [OpenH264] this = 0x00000231C9775860, Warning:bEnableFrameSkip = 0,bitrate can't be controlled for RC_QUALITY_MODE,RC_BITRATE_MODE and RC_TIMESTAMP_MODE without enabling skip frame.
+Output #0, matroska, to 'C:/Users/User/OneDrive/Escritorio/gato_sprite/gato_laser/laser.mkv':
+  Metadata:
+    encoder         : Lavf58.76.100
+  Stream #0:0: Video: h264 (H264 / 0x34363248), yuv420p(tv, progressive), 294x506 [SAR 293:294 DAR 293:506], q=2-31, 5000 kb/s, 24 fps, 1k tbn
+    Metadata:
+      encoder         : Lavc58.134.100 libopenh264
+    Side data:
+      cpb: bitrate max/min/avg: 5000000/0/5000000 buffer size: 0 vbv_delay: N/A
+frame=    1 fps=0.0 q=-0.0 size=       1kB time=00:00:00.00 bitrate=4936.0kbits/s speed=0.383x    frame=   18 fps=0.0 q=-0.0 Lsize=      94kB time=00:00:00.70 bitrate=1087.7kbits/s speed=6.32x    
+video:93kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.824164%

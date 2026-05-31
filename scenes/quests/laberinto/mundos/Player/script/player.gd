@@ -11,7 +11,7 @@ var last_input_pos := Vector2.ZERO
 # -------- LLAVES --------
 @onready var llaves: Node = safe_get_node("../llaves")
 @onready var keys_label: Label = safe_get_node("../llaves/Keys_label")
-
+var inmovilizado := false
 # -------- VIDA --------
 @export var vida_maxima: int = 100
 var vida_actual: int = 100
@@ -175,6 +175,19 @@ func setup_stamina_bar() -> void:
 func _physics_process(delta: float) -> void:
 
 	# =========================
+	# BLOQUEO POR ABDUCCION
+	# =========================
+	if inmovilizado:
+
+		velocity = Vector2.ZERO
+
+		handle_animations(Vector2.ZERO)
+
+		move_and_slide()
+
+		return
+
+	# =========================
 	# INPUT DEBUG
 	# =========================
 	var run_pressed = Input.is_action_pressed("run")
@@ -196,7 +209,6 @@ func _physics_process(delta: float) -> void:
 	# =========================
 	actualizar_pistola()
 
-
 	if Input.is_action_just_pressed("disparar"):
 		disparar()
 
@@ -205,13 +217,13 @@ func _physics_process(delta: float) -> void:
 		disparar()
 		disparo_presionado = false
 
-	
-
 	# =========================
 	# MOVIMIENTO
 	# =========================
 	var input_vector: Vector2 = Vector2.ZERO
+
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
 	if input_vector.length() > 0:
@@ -219,10 +231,12 @@ func _physics_process(delta: float) -> void:
 
 	velocity = input_vector * current_speed
 
-	handle_animations(input_vector)
 	move_and_slide()
 
+	handle_animations(input_vector)
+
 	handle_interaction()
+
 	interact_presionado = false
 # =====================================================
 # PISTOLA

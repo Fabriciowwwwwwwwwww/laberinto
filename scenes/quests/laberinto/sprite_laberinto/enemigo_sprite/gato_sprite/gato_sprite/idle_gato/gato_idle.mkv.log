@@ -1,0 +1,20 @@
+C:/Program Files/Krita (x64)/bin/ffmpeg.exe -hide_banner -y -y -r 24 -start_number 0 -start_number_range 1 -i C:/Users/User/OneDrive/Escritorio/gato_sprite/idle_gato/gato_idle%04d.png -vf scale=w=316:h=270:flags=bicubic -c:v libopenh264 -b:v 5000k C:/Users/User/OneDrive/Escritorio/gato_sprite/idle_gato/gato_idle.mkv
+=====================================================
+Input #0, image2, from 'C:/Users/User/OneDrive/Escritorio/gato_sprite/idle_gato/gato_idle%04d.png':
+  Duration: 00:00:00.28, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc), 316x269 [SAR 13779:13779 DAR 316:269], 25 fps, 25 tbr, 25 tbn, 25 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libopenh264))
+Press [q] to stop, [?] for help
+[libopenh264 @ 000001e628ad4a00] Slice count will be set automatically
+[libopenh264 @ 000001e628ad4a00] [OpenH264] this = 0x000001E62867F970, Warning:bEnableFrameSkip = 0,bitrate can't be controlled for RC_QUALITY_MODE,RC_BITRATE_MODE and RC_TIMESTAMP_MODE without enabling skip frame.
+Output #0, matroska, to 'C:/Users/User/OneDrive/Escritorio/gato_sprite/idle_gato/gato_idle.mkv':
+  Metadata:
+    encoder         : Lavf58.76.100
+  Stream #0:0: Video: h264 (H264 / 0x34363248), yuv420p(tv, progressive), 316x270 [SAR 270:269 DAR 316:269], q=2-31, 5000 kb/s, 24 fps, 1k tbn
+    Metadata:
+      encoder         : Lavc58.134.100 libopenh264
+    Side data:
+      cpb: bitrate max/min/avg: 5000000/0/5000000 buffer size: 0 vbv_delay: N/A
+frame=    1 fps=0.0 q=-0.0 size=       1kB time=00:00:00.00 bitrate=4928.0kbits/s speed=0.592x    frame=    7 fps=0.0 q=-0.0 Lsize=      64kB time=00:00:00.25 bitrate=2083.7kbits/s speed=1.98x    
+video:63kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.096386%

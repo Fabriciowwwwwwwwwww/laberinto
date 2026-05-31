@@ -85,6 +85,8 @@ func _input(event: InputEvent) -> void:
 func registrar_interaccion() -> void:
 	ha_interactuado = true
 
+
+
 # -------------------------
 # INICIO DEL PUZZLE
 # -------------------------
@@ -104,8 +106,27 @@ func generate_solution() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 
+	# Generar solución inicial
 	for i in range(num_gears):
 		solution.append(rng.randi_range(0, 1))
+
+	# Evitar demasiados iguales seguidos
+	var consecutivos := 1
+
+	for i in range(1, solution.size()):
+		if solution[i] == solution[i - 1]:
+			consecutivos += 1
+
+			# Si hay 3 iguales seguidos, forzar cambio
+			if consecutivos >= 3:
+				solution[i] = 1 - solution[i]
+				consecutivos = 1
+		else:
+			consecutivos = 1
+
+	print("Solución generada: ", solution)
+
+
 
 # -------------------------
 # CHECK
@@ -200,3 +221,10 @@ func reiniciar_flujo() -> void:
 
 	iniciar_puzzle()
 	iniciar_tiempo()
+
+
+func _on_texture_button_pressed() -> void:
+	if not ha_interactuado:
+		print("⚠️ Mueve al menos un engranaje")
+		return
+	await check_solution()

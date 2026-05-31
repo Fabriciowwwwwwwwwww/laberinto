@@ -95,26 +95,60 @@ func generate_solution() -> void:
 
 	# 1. Decidir el tipo de operación
 	var tipo = randi_range(0, 1)
+
 	var a: int
 	var b: int
 
-	# 2. Generar 'a' y 'b' (asegurando que b != a)
 	if tipo == 0:
-		tipo_operacion = "SUMA"
-		a = randi_range(1, 9)
-		b = randi_range(1, 9)
-		while b == a: # Evita que a y b sean iguales (opcional, pero ayuda a la variedad)
-			b = randi_range(1, 9)
-		objetivo = a + b
+		tipo_operacion = "POTENCIA"
+
+		# Bases pequeñas para evitar números enormes
+		var opciones = [
+			[2,2],   # 4
+			[2,3],   # 8
+			[2,4],   # 16
+			[2,5],   # 32
+
+			[3,2],   # 9
+			[3,3],   # 27
+
+			[4,3],   # 64
+
+			[5,2],   # 25
+			[5,3],   # 125
+
+			[6,2],   # 36
+			[6,3],   # 216
+
+			[7,2],   # 49
+
+			[9,2],   # 81
+
+			[10,2],  # 100
+
+			[11,2],  # 121
+
+			[12,2]   # 144
+		]
+
+		var seleccion = opciones.pick_random()
+
+		a = seleccion[0]
+		b = seleccion[1]
+
+		objetivo = int(pow(a, b))
+
 	else:
-		tipo_operacion = "MULT"
+		tipo_operacion = "MULTIPLICA"
+
 		a = randi_range(1, 5)
 		b = randi_range(1, 5)
+
 		while b == a:
 			b = randi_range(1, 5)
+
 		objetivo = a * b
 
-	# Guardamos los dos valores de la solución
 	valores_cartas.append(a)
 	valores_cartas.append(b)
 
@@ -193,11 +227,21 @@ func _input(event) -> void:
 func verificar() -> void:
 	var resultado = 0
 
-	if tipo_operacion == "SUMA":
-		for i in seleccionadas:
-			resultado += valores_cartas[i]
-	else:
+	if tipo_operacion == "POTENCIA":
+
+		if seleccionadas.size() != 2:
+			await perder("error")
+			return
+
+		var a = valores_cartas[seleccionadas[0]]
+		var b = valores_cartas[seleccionadas[1]]
+
+		resultado = int(pow(a, b))
+
+	elif tipo_operacion == "MULTIPLICA":
+
 		resultado = 1
+
 		for i in seleccionadas:
 			resultado *= valores_cartas[i]
 

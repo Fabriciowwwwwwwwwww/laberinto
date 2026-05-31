@@ -1,26 +1,38 @@
+# =========================================================
+# SABUESO
+# =========================================================
 extends EnemyBase
 
 enum Estado {
-	ESPERANDO,
 	EMERGIENDO,
 	PERSEGUIR,
 	HUYENDO,
 	ESCONDIDO
 }
 
-var estado = Estado.ESPERANDO
+var estado = Estado.EMERGIENDO
 
-var activado := false
 var emergiendo := false
 
-var esquina_origen: Vector2
-
 @export var velocidad_huida := 520.0
-@export var tiempo_reaparicion := 6.0
+var velocidad_random := 1.0
+var offset_movimiento := Vector2.ZERO
+# huir cuando pierda 25%
+@export_range(0.0, 1.0)
+var porcentaje_huida := 0.75
 
-# ==================================================
+# =========================================================
+# CONTROL SPAWNER
+# =========================================================
+
+var spawner_ref = null
+var id_sabueso := -1
+
+var punto_escape := Vector2.ZERO
+
+# =========================================================
 # READY
-# ==================================================
+# =========================================================
 
 func _ready():
 
@@ -29,31 +41,46 @@ func _ready():
 
 	super()
 
-	esquina_origen = global_position
-
-	# oculto al inicio
 	if animated_sprite_2d:
 		animated_sprite_2d.visible = false
 
-	# desactivar IA base
+	if vida_bar:
+		vida_bar.visible = false
+
+	if vida_etiqueta:
+		vida_etiqueta.visible = false
+
 	puede_moverse = false
 	puede_atacar = false
 
-	# pequeña espera para asegurar player/navigation
 	await get_tree().create_timer(0.2).timeout
 
-	activado = true
+# velocidad distinta por sabueso
+	velocidad_random = randf_range(0.85, 1.15)
+
+	# offset para que no persigan igual
+	offset_movimiento = Vector2(
+		randf_range(-120, 120),
+		randf_range(-120, 120)
+	)
+
+	# avoidance
+	navigation_agent.avoidance_enabled = true
+	navigation_agent.radius = 28.0
+	navigation_agent.neighbor_distance = 140.0
+	navigation_agent.max_neighbors = 10
+
+	# alterar velocidades heredadas
+	WALK_SPEED *= velocidad_random
+	RUN_SPEED *= velocidad_random
 
 	aparecer()
 
-# ==================================================
+# =========================================================
 # APARECER
-# ==================================================
+# =========================================================
 
 func aparecer():
-
-	if not animated_sprite_2d:
-		return
 
 	estado = Estado.EMERGIENDO
 
@@ -63,88 +90,124 @@ func aparecer():
 
 	velocity = Vector2.ZERO
 
-	# efecto dramático
 	await get_tree().create_timer(0.5).timeout
 
 	emergiendo = false
 
 	estado = Estado.PERSEGUIR
 
-	# activar IA EnemyBase
 	puede_moverse = true
 	puede_atacar = true
 
-# ==================================================
+# =========================================================
 # PHYSICS
-# ==================================================
+# =========================================================
 
 func _physics_process(delta):
 
-	# escondido
+	# =====================================================
+	# UI VIDA
+	# =====================================================
+
+	if vida_etiqueta:
+		vida_etiqueta.global_position = global_position + Vector2(-25, -75)
+
+	if vida_bar:
+		vida_bar.global_position = global_position + Vector2(-40, -55)
+
+	# =====================================================
+	# ESCONDIDO
+	# =====================================================
+
 	if estado == Estado.ESCONDIDO:
 		return
 
-	# emergiendo
+	# =====================================================
+	# EMERGIENDO
+	# =====================================================
+
 	if emergiendo:
 
 		velocity = Vector2.ZERO
-
 		move_and_slide()
 
 		return
 
-	# HUIR
+	# =====================================================
+	# HUYENDO
+	# =====================================================
+
 	if estado == Estado.HUYENDO:
 
-		var dir = (
-			esquina_origen - global_position
-		).normalized()
+		navigation_agent.target_position = (punto_escape + offset_movimiento)
 
-		velocity = dir * velocidad_huida
+		if not navigation_agent.is_navigation_finished():
 
-		move_and_slide()
+			var next_pos = navigation_agent.get_next_path_position()
 
-		# flip sprite
-		if animated_sprite_2d:
+			var dir = global_position.direction_to(
+				next_pos
+			)
+
+			velocity = dir * velocidad_huida
+
+			move_and_slide()
 
 			if velocity.x != 0:
 				animated_sprite_2d.flip_h = velocity.x < 0
 
-		# llegó a esquina
-		if global_position.distance_to(
-			esquina_origen
-		) < 20:
+		else:
 
 			desaparecer()
 
 		return
 
-	# IA NORMAL DEL ENEMYBASE
+	# =====================================================
+	# IA NORMAL
+	# =====================================================
+# =====================================================
+# IA NORMAL
+# =====================================================
+
+	if player and estado == Estado.PERSEGUIR:
+
+		navigation_agent.target_position = (
+			player.global_position + offset_movimiento
+		)
+
 	super._physics_process(delta)
 
-# ==================================================
+# =========================================================
 # RECIBIR DAÑO
-# ==================================================
+# =========================================================
 
 func recibir_daño(cantidad: int) -> void:
 
-	# ya huyendo
-	if estado == Estado.HUYENDO:
+	if estado == Estado.ESCONDIDO:
 		return
 
 	super.recibir_daño(cantidad)
 
-	# sobrevivió -> huir
-	if vida > 0:
+	if vida <= 0:
+		return
+
+	var limite_huida = vida_max * porcentaje_huida
+
+	if vida <= limite_huida \
+	and estado != Estado.HUYENDO:
 
 		estado = Estado.HUYENDO
 
 		puede_moverse = false
 		puede_atacar = false
 
-# ==================================================
+		punto_escape = spawner_ref.obtener_esquina_escape(
+			id_sabueso
+		)
+
+# =========================================================
 # DESAPARECER
-# ==================================================
+# =========================================================
 
 func desaparecer():
 
@@ -152,33 +215,45 @@ func desaparecer():
 
 	velocity = Vector2.ZERO
 
+	navigation_agent.set_velocity(Vector2.ZERO)
+
 	if animated_sprite_2d:
 		animated_sprite_2d.visible = false
+
+	if vida_bar:
+		vida_bar.visible = false
+
+	if vida_etiqueta:
+		vida_etiqueta.visible = false
+
+	for child in get_children():
+
+		if child is CollisionShape2D:
+			child.disabled = true
 
 	puede_moverse = false
 	puede_atacar = false
 
-	# esperar reaparición
-	await get_tree().create_timer(
-		tiempo_reaparicion
-	).timeout
+	if spawner_ref:
 
-	# restaurar vida
-	vida = vida_max
+		spawner_ref.sabueso_escondido(
+			id_sabueso,
+			vida
+		)
 
-	# volver a activar
-	estado = Estado.PERSEGUIR
+	queue_free()
 
-	if animated_sprite_2d:
-		animated_sprite_2d.visible = true
-
-	puede_moverse = true
-	puede_atacar = true
-
-# ==================================================
+# =========================================================
 # MUERTE
-# ==================================================
+# =========================================================
 
 func morir() -> void:
+
+	if spawner_ref:
+
+		spawner_ref.sabueso_escondido(
+			id_sabueso,
+			0
+		)
 
 	super.morir()

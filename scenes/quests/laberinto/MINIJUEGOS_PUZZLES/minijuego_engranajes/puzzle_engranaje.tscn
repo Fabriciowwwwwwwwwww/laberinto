@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dg87x43pey1fd" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_engranajes/candado.tscn" id="6_tvrh5"]
 [ext_resource type="Script" uid="uid://bada25bf3g5vh" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_engranajes/cinematica_engranaje.gd" id="7_4bfed"]
 [ext_resource type="Texture2D" uid="uid://dyn1gdivjk3gu" path="res://scenes/quests/laberinto/sprite_laberinto/barrras/recarga/recarga_panel balas.png" id="7_pn3y3"]
+[ext_resource type="Texture2D" uid="uid://cofw8ej5lsb58" path="res://scenes/quests/laberinto/sprite_laberinto/cartas sprite/p1.png" id="8_kwrll"]
 [ext_resource type="AudioStream" uid="uid://c78urf8vxxt7v" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto abrir candado.mp3" id="8_thfwp"]
 [ext_resource type="AudioStream" uid="uid://m773crn785f8" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3" id="9_csqs0"]
+[ext_resource type="Texture2D" uid="uid://kcflhnhv4mn4" path="res://scenes/quests/laberinto/sprite_laberinto/cartas sprite/p3.png" id="9_kca55"]
 [ext_resource type="Resource" uid="uid://bf6ou62ieo586" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue" id="11_csqs0"]
 [ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="12_g64ev"]
 [ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="13_3hkmn"]
@@ -98,6 +100,15 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "ghghg"
 
+[node name="TextureButton" type="TextureButton" parent="OnTheGround/Puzzle_engranaje/ScreenOverlay" unique_id=1153533261]
+offset_left = 1501.0
+offset_top = 814.0
+offset_right = 1835.0
+offset_bottom = 1079.0
+texture_normal = ExtResource("8_kwrll")
+texture_pressed = ExtResource("9_kca55")
+stretch_mode = 0
+
 [node name="sonido_candado" type="AudioStreamPlayer2D" parent="OnTheGround/Puzzle_engranaje" unique_id=1177564782]
 stream = ExtResource("8_thfwp")
 
@@ -121,4 +132,5 @@ dialogue_perder = ExtResource("12_g64ev")
 dialogue_tiempo = ExtResource("13_3hkmn")
 next_scene = "uid://vxw6popqntit"
 
+[connection signal="pressed" from="OnTheGround/Puzzle_engranaje/ScreenOverlay/TextureButton" to="OnTheGround/Puzzle_engranaje/objetos" method="_on_texture_button_pressed"]
 [connection signal="cinematica_terminada" from="cinematica" to="OnTheGround/Puzzle_engranaje" method="_on_cinematica_cinematica_terminada"]

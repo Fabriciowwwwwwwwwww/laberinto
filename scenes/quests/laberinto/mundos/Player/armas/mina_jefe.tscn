@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://x63cyagjvdf0"]
+
+[ext_resource type="Script" uid="uid://big3qj0ohllib" path="res://scenes/quests/laberinto/mundos/Player/armas/mina_jefe.gd" id="1_oqco8"]
+[ext_resource type="Texture2D" uid="uid://icfm1jglnh3n" path="res://scenes/quests/laberinto/mundos/Player/armas/1388000b-4d32-4b3e-b9a7-25c6ea06f9e1.png" id="2_cjxbb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxom7"]
+radius = 59.464275
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwowp"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(246, 0, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqs6u"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(492, 0, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r4ty"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(738, 0, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5nfi"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(0, 218, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvrwy"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(246, 218, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw24g"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(492, 218, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn46l"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(738, 218, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr0rv"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(0, 436, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsicx"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(246, 436, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_773c2"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(492, 436, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43hcs"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(0, 654, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ocly"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(246, 654, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e0fo"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(492, 654, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq7qc"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(738, 654, 246, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmabr"]
+atlas = ExtResource("2_cjxbb")
+region = Rect2(0, 0, 246, 218)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxpt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwowp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqs6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r4ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5nfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvrwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw24g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn46l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr0rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsicx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_773c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43hcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ocly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e0fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq7qc")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmabr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 40.0
+}]
+
+[node name="Mina_jefe" type="Area2D" unique_id=1208596912]
+z_index = 12
+script = ExtResource("1_oqco8")
+tiempo_explosion = 2.0
+
+[node name="colision" type="CollisionShape2D" parent="." unique_id=518802225]
+shape = SubResource("CircleShape2D_wxom7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1693823317]
+position = Vector2(-2.0000076, 2.0000038)
+scale = Vector2(0.749253, 0.48725596)
+sprite_frames = SubResource("SpriteFrames_gxpt2")
+animation = &"idle"
+
+[node name="Timer" type="Timer" parent="." unique_id=1956087745]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

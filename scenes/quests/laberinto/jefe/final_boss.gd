@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 signal damage(value: float)
 signal died
-
-# ----------------- NUEVA ESTRUCTURA DE FASES -----------------
+var madness_chasing := false
+var dash_damage := 30
+# ----------------- ESTRUCTURA DE FASES -----------------
 enum State {
 	READY_GO,         # Entrada/Bloqueo
 	CHASE_1,          # 0s -> 6s (Caza lenta)
@@ -26,11 +27,11 @@ var current_state: int = State.READY_GO
 @onready var sfx_hit: AudioStreamPlayer2D = $hit
 @onready var explosion_timer: Timer = $explosion_timer
 @onready var punch_timer: Timer = $Punch_timer
-
+@export var minion_2: PackedScene
 # --- Puntos de Ataque (Cargados desde la escena) ---
-@onready var left_attack = $"../Final_Boss/AttackPoints/LeftAttack"
-@onready var center_attack = $"../Final_Boss/AttackPoints/CenterAttack"
-@onready var right_attack = $"../Final_Boss/AttackPoints/RightAttack"
+@onready var left_attack = $"../AttackPoints/LeftAttack"
+@onready var center_attack = $"../AttackPoints/CenterAttack"
+@onready var right_attack = $"../AttackPoints/RightAttack"
 
 # --- Escenas exportadas ---
 @export var bullet_scene: PackedScene
@@ -46,7 +47,7 @@ var face_sign := 1.0
 # Oscilación estética
 var walk_freq := 1.4
 var walk_phase := 0.0
-var up_freq := 1.8          # 👈 ¡Añade esta línea exacta!
+var up_freq := 1.8
 var walk_seed := 0.0
 var side_amp := 20.0
 var up_amp := 10.0
@@ -64,6 +65,12 @@ var target_in_range: CharacterBody2D = null
 var _attack_lock := false
 var spiral_angle := 0.0
 var target_position := Vector2.ZERO
+
+# --- Control de Vida y Daño (Sincronizado con EnemyBase) ---
+@export var vida: int = 600          # Ajusta la vida base que quieras desde el Inspector
+var vida_max: int = 600
+var en_cooldown_golpe := false
+var timer_golpe: Timer
 
 # Registro de fases cruzadas por HP para no repetir transiciones
 var _f2_triggered := false
@@ -89,6 +96,12 @@ func _ready() -> void:
 	randomize()
 	walk_seed = randf() * TAU
 
+	# Sincronizar variables de vida con la ProgressBar
+	vida_max = vida
+	if bar_boss:
+		bar_boss.max_value = vida_max
+		bar_boss.value = vida
+
 	# Conexiones seguras de colisiones
 	area.monitoring = true
 	if not area.is_connected("body_entered", Callable(self, "_on_area_2d_body_entered")):
@@ -98,6 +111,13 @@ func _ready() -> void:
 
 	# Inicializar temporizador de golpes físicos
 	punch_timer.one_shot = true
+
+	# Configurar el Timer estructural de golpe (Idéntico a tu EnemyBase)
+	timer_golpe = Timer.new()
+	timer_golpe.one_shot = true
+	timer_golpe.wait_time = 0.3
+	add_child(timer_golpe)
+	timer_golpe.timeout.connect(_fin_golpe)
 
 	# Configurar timer de acumulación de números de daño
 	_stack_timer = Timer.new()
@@ -117,6 +137,17 @@ func _ready() -> void:
 	phase_timer = 0.0
 
 func _physics_process(delta: float) -> void:
+	for i in range(get_slide_collision_count()):
+
+		var collision = get_slide_collision(i)
+
+		if collision:
+
+			var collider = collision.get_collider()
+
+			if collider and collider.is_in_group("player"):
+
+				global_position -= collision.get_normal() * 4.0
 	if dead or player == null:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -142,10 +173,11 @@ func _physics_process(delta: float) -> void:
 
 # ----------------- LÓGICA DE COMPORTAMIENTOS -----------------
 func _process_states(delta: float, dist: float, dir: Vector2) -> void:
-	# Comprobaciones de Vida (Cambios de fase prioritarios)
+	# Comprobaciones de Vida (Cambios de fase prioritarios basados en % real)
 	var hp_pct = _hp_pct()
 	if hp_pct <= 0.10 and not _desperation_triggered and current_state == State.MADNESS:
 		_enter_desperation_mode()
+		return
 	elif hp_pct <= 0.33 and not _f3_triggered and current_state == State.BULLET_HELL:
 		_trigger_transition_f3()
 		return
@@ -156,57 +188,110 @@ func _process_states(delta: float, dist: float, dir: Vector2) -> void:
 	match current_state:
 		State.READY_GO:
 			velocity = Vector2.ZERO
-			if phase_timer >= 1.5: # Sincronizado con tu animación de 1.5s
+			if phase_timer >= 1.5:
 				if player and player.has_method("set_physics_process"):
 					player.set_physics_process(true)
 				current_state = State.CHASE_1
 				phase_timer = 0.0
 
 		State.CHASE_1:
+
 			speed = _base_speed
-			_apply_oscillating_movement(delta, dir, dist, 140.0, 70.0)
+
+			_apply_oscillating_movement(
+				delta,
+				dir,
+				dist,
+				140.0,
+				70.0
+			)
+
+			attack_cooldown_timer += delta
+
+			# dispara mucho más rápido
+			if attack_cooldown_timer >= 0.45:
+
+				attack_cooldown_timer = 0.0
+
+				if not _attack_lock:
+					_shoot_burst_attack(dir)
+
+			# invocar minions durante la persecución
+			sub_pattern_timer += delta
+
+			if sub_pattern_timer >= 6.0:
+
+				sub_pattern_timer = 0.0
+
+				_spawn_flying_minion()
+
 			if dist <= 80.0 and punch_timer.time_left <= 0.0:
 				_do_melee_punch(dir)
-			
-			# Cambio automático a los 6 segundos
-			if phase_timer >= 6.0:
+
+			if phase_timer >= 4.0:
+
 				current_state = State.RANGED_ATTACK
+
 				phase_timer = 0.0
+
 				sub_pattern_timer = 0.0
-				_attack_lock = false
+
+				attack_cooldown_timer = 0.0
 
 		State.RANGED_ATTACK:
-			# Deslizarse / Moverse hacia LeftAttack
+
 			if left_attack:
-				target_position = left_attack.global_position
-				velocity = velocity.move_toward((target_position - global_position).normalized() * (_base_speed * 1.5), accel * delta)
+				_move_to_marker_safely(
+					left_attack.global_position,
+					delta,
+					1.8
+				)
 			else:
 				velocity = Vector2.ZERO
 
-			# Ráfagas de disparos cada 1.5 segundos
+			# =====================================================
+			# DISPAROS EN RÁFAGAS CONTROLADAS
+			# =====================================================
+
 			attack_cooldown_timer += delta
-			if attack_cooldown_timer >= 1.5:
+
+			# SOLO si no está disparando actualmente
+			if attack_cooldown_timer >= 2.8 and not _attack_lock:
+
 				attack_cooldown_timer = 0.0
+
 				_shoot_burst_attack(dir)
 
-			# Círculos / Zonas Peligrosas en el mapa cada 1.2s
+			# =====================================================
+			# ZONAS PELIGROSAS
+			# =====================================================
+
 			sub_pattern_timer += delta
-			if sub_pattern_timer >= 1.2:
+
+			if sub_pattern_timer >= 1.8:
+
 				sub_pattern_timer = 0.0
+
 				_spawn_danger_zone()
 
-			if phase_timer >= 7.0: # Duración del patrón (7s -> 13s)
+			# transición más rápida
+			if phase_timer >= 4.5:
+
 				current_state = State.CHASE_2
+
 				phase_timer = 0.0
 
 		State.CHASE_2:
-			# Más rápido y agresivo
+			attack_cooldown_timer += delta
+			if attack_cooldown_timer >= 0.8:
+				attack_cooldown_timer = 0.0
+				if not _attack_lock:
+					_shoot_burst_attack(dir)
 			speed = _base_speed * 1.3
 			_apply_oscillating_movement(delta, dir, dist, 160.0, 50.0)
 			if dist <= 80.0 and punch_timer.time_left <= 0.0:
 				_do_melee_punch(dir)
 
-			# Bucle si no ha bajado del 66% de vida
 			if phase_timer >= 5.0:
 				current_state = State.CHASE_1
 				phase_timer = 0.0
@@ -220,71 +305,180 @@ func _process_states(delta: float, dist: float, dir: Vector2) -> void:
 				sub_pattern_timer = 0.0
 
 		State.BULLET_HELL:
-			# Ir al centro
 			if center_attack:
-				var to_center = center_attack.global_position - global_position
-				if to_center.length() > 10.0:
-					velocity = velocity.move_toward(to_center.normalized() * (_base_speed * 0.8), accel * delta)
-				else:
-					velocity = Vector2.ZERO
-			
-			# Espiral de proyectiles cada 0.15s
-			attack_cooldown_timer += delta
-			var current_spiral_speed = 0.15 if phase_timer < 8.0 else 0.08 # Acelera a los 28 segundos globales del diseño
-			if attack_cooldown_timer >= current_spiral_speed:
-				attack_cooldown_timer = 0.0
-				_shoot_spiral_wave()
+				_move_to_marker_safely(center_attack.global_position, delta, 0.7)
+			else:
+				velocity = Vector2.ZERO
 
-			# Cambiar ligeramente de posición cada 4 segundos
+			# =====================================================
+			# 🌪️ OLEADAS GRANDES
+			# =====================================================
+			attack_cooldown_timer += delta
+
+			# MUCHÍSIMO descanso entre oleadas
+			if attack_cooldown_timer >= 3.5:
+
+				attack_cooldown_timer = 0.0
+
+				if not _attack_lock:
+					_attack_lock = true
+					_start_spiral_wave_attack()
+
+			# =====================================================
+			# 👾 MINIONS DURANTE EL DESCANSO
+			# =====================================================
 			sub_pattern_timer += delta
-			if sub_pattern_timer >= 4.0:
+
+			if sub_pattern_timer >= 8.0:
+
 				sub_pattern_timer = 0.0
-				# Pequeña variación aleatoria alrededor del centro
-				if center_attack:
-					global_position = center_attack.global_position + Vector2(randf_range(-60, 60), randf_range(-30, 30))
+
+				_spawn_flying_minion()
+
+				await get_tree().create_timer(0.6).timeout
+
+				_spawn_flying_minion()
 
 		State.TRANSITION_F3:
 			velocity = Vector2.ZERO
-			if phase_timer >= 2.0:
+			if phase_timer >= 1.0:
 				current_state = State.MADNESS
 				phase_timer = 0.0
 				attack_cooldown_timer = 0.0
 				sub_pattern_timer = 0.0
-				# Teletransportar o posicionar a la izquierda
-				if left_attack:
-					global_position = left_attack.global_position
 
 		State.MADNESS:
-			# Lógica de Embestidas / Dash horizontal de Cuphead
-			velocity = Vector2.ZERO
-			attack_cooldown_timer += delta
-			
-			# Ciclo de Embiste: 1s de aviso (línea roja), luego cruza la pantalla
-			if attack_cooldown_timer >= 3.0: 
-				attack_cooldown_timer = 0.0
-				_perform_screen_dash()
 
-			# Esbirros / Sombras voladoras cada 8 segundos
+			var dist_player := global_position.distance_to(
+				player.global_position
+			)
+
+			# =====================================
+			# PERSECUCIÓN DESPUÉS DEL DASH
+			# =====================================
+			if madness_chasing:
+
+				var chase_dir := (
+					player.global_position - global_position
+				).normalized()
+
+				speed = _base_speed * 2.3
+
+				_apply_oscillating_movement(
+					delta,
+					chase_dir,
+					dist_player,
+					70.0,
+					20.0
+				)
+
+				# daño cuerpo a cuerpo
+				if dist_player <= 65.0:
+
+					if punch_timer.time_left <= 0.0:
+
+						_do_melee_punch(chase_dir)
+
+				# jugador escapó
+				if dist_player > 350.0:
+
+					madness_chasing = false
+
+					attack_cooldown_timer = 999.0
+
+			# =====================================
+			# VOLVER AL MARCADOR DERECHO
+			# =====================================
+			else:
+
+				if right_attack:
+
+					var dist_marker := global_position.distance_to(
+						right_attack.global_position
+					)
+
+					_move_to_marker_safely(
+						right_attack.global_position,
+						delta,
+						1.8
+					)
+
+					# llegó al marcador
+					if dist_marker < 25.0:
+
+						attack_cooldown_timer += delta
+
+						if attack_cooldown_timer >= 0.4:
+
+							attack_cooldown_timer = 0.0
+
+							if not _attack_lock:
+
+								await _perform_screen_dash()
+
+								madness_chasing = true
+
+			# =====================================
+			# INVOCACIONES
+			# =====================================
 			sub_pattern_timer += delta
+
+			if sub_pattern_timer >= 4.0:
+
+				_spawn_earth_minion()
+
 			if sub_pattern_timer >= 8.0:
+
 				sub_pattern_timer = 0.0
+
 				_spawn_flying_minion()
 
+				if randi() % 2 == 0:
+
+					_spawn_flying_minion()
+
+
 		State.FINAL_DESPERATION:
-			# Último 10% - Mezcla lenta de todo
 			_apply_oscillating_movement(delta, dir, dist, 200.0, 80.0)
 			
 			attack_cooldown_timer += delta
-			if attack_cooldown_timer >= 0.6: # Espirales más espaciadas
+			if attack_cooldown_timer >= 0.6: 
 				attack_cooldown_timer = 0.0
 				_shoot_spiral_wave()
 				
 			sub_pattern_timer += delta
-			if sub_pattern_timer >= 2.5: # Zonas peligrosas pausadas
+			if sub_pattern_timer >= 2.5: 
 				sub_pattern_timer = 0.0
 				_spawn_danger_zone()
 
 # ----------------- ATAQUES Y MECÁNICAS -----------------
+
+## Función estabilizadora para anclar los viajes directos a los marcadores
+func _move_to_marker_safely(
+	target_pos: Vector2,
+	delta: float,
+	speed_mult := 1.0
+) -> void:
+
+	var distance := global_position.distance_to(target_pos)
+
+	# Si ya llegó, detenerse
+	if distance < 10.0:
+		velocity = Vector2.ZERO
+		return
+
+	var move_dir := (
+		target_pos - global_position
+	).normalized()
+
+	# Reducir velocidad al acercarse para evitar rebotes
+	var final_speed := speed * speed_mult
+
+	if distance < 80.0:
+		final_speed *= distance / 80.0
+
+	velocity = move_dir * final_speed
+
 func _apply_oscillating_movement(delta: float, dir: Vector2, dist: float, max_r: float, min_r: float) -> void:
 	walk_phase += delta
 	var target_vel := Vector2.ZERO
@@ -325,21 +519,42 @@ func _do_melee_punch(dir: Vector2) -> void:
 	_attack_lock = false
 
 func _shoot_burst_attack(dir: Vector2) -> void:
-	if bullet_scene == null: return
-	for i in range(3): # Ráfaga corta de 3 proyectiles
-		var b = bullet_scene.instantiate()
-		get_parent().add_child(b)
-		b.global_position = global_position
-		# Desviación pequeña por bala para imperfección natural
-		var mod_dir = dir.rotated(randf_range(-0.1, 0.1))
-		if b.has_method("setup"):
-			b.setup(mod_dir, 320.0) # Velocidades medianamente lentas
-		await get_tree().create_timer(0.15).timeout
+
+	if bullet_scene == null:
+		return
+
+	if _attack_lock:
+		return
+
+	_attack_lock = true
+
+	# 5 balas por ráfaga
+	for i in range(5):
+
+		var bullet = bullet_scene.instantiate()
+
+		get_parent().add_child(bullet)
+
+		bullet.global_position = global_position
+
+		var mod_dir = dir.rotated(
+			randf_range(-0.20, 0.20)
+		)
+
+		if bullet.has_method("setup"):
+			bullet.setup(mod_dir, 400.0)
+
+		await get_tree().create_timer(0.08).timeout
+
+	await get_tree().create_timer(0.5).timeout
+
+	_attack_lock = false
+
 
 func _shoot_spiral_wave() -> void:
 	if bullet_scene == null: return
 	var num_bullets := 8
-	spiral_angle += 12.0 # Rotación progresiva del patrón
+	spiral_angle += 12.0 
 	for i in range(num_bullets):
 		var angle = deg_to_rad(spiral_angle + (i * (360.0 / num_bullets)))
 		var b_dir = Vector2(cos(angle), sin(angle))
@@ -347,58 +562,155 @@ func _shoot_spiral_wave() -> void:
 		get_parent().add_child(b)
 		b.global_position = global_position
 		if b.has_method("setup"):
-			b.setup(b_dir, 260.0)
+			b.setup(b_dir, 300.0)
 
 func _spawn_danger_zone() -> void:
-	if danger_zone_scene == null: return
-	var zone = danger_zone_scene.instantiate()
-	get_parent().add_child(zone)
-	
-	# Puntos aleatorios alrededor de la arena o del jugador
-	var random_offset = Vector2(randf_range(-300, 300), randf_range(-150, 150))
-	var spawn_pos = player.global_position + random_offset if player else global_position + random_offset
-	zone.global_position = spawn_pos
-	
-	if zone.has_method("setup_zone"):
-		zone.setup_zone(0.8) # 0.8s para la explosión según diseño
+
+	if danger_zone_scene == null:
+		return
+
+	var danger_root = get_node_or_null("../DangerZonePoints")
+
+	if danger_root == null:
+		return
+
+	var markers := []
+
+	for child in danger_root.get_children():
+
+		if child is Marker2D:
+			markers.append(child)
+
+	if markers.is_empty():
+		return
+
+	# cantidad de bombas por oleada
+	var bomb_count := int(min(6, markers.size()))
+
+	var usados := []
+
+	for i in range(bomb_count):
+
+		var marker: Marker2D = markers.pick_random()
+
+		while marker in usados:
+			marker = markers.pick_random()
+
+		usados.append(marker)
+
+		var zone = danger_zone_scene.instantiate()
+
+		get_parent().add_child(zone)
+
+		zone.global_position = marker.global_position
+
+		if zone.has_method("setup_zone"):
+			zone.setup_zone(randf_range(0.7, 1.0))
 
 func _perform_screen_dash() -> void:
+
+	if player == null:
+		return
+
 	_attack_lock = true
-	# 1. Mostrar advertencia visual / línea de carga aquí (puedes usar un Tween de color o un Sprite)
-	await get_tree().create_timer(1.0).timeout # 1 Segundo de advertencia
-	
-	# 2. Cruzar la pantalla (BOOM)
-	var dash_dir = Vector2.RIGHT if global_position.x < 500 else Vector2.LEFT
-	var original_gravity_state = is_on_floor() 
-	
-	var dash_tween = create_tween()
-	var target_x = global_position.x + (dash_dir.x * 1200)
-	dash_tween.tween_property(self, "global_position:x", target_x, 0.4).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	
-	# Generar daño durante el trayecto si colisiona
-	await dash_tween.finished
+
+	var hit_player := false
+
+	var dash_dir := (
+		player.global_position - global_position
+	).normalized()
+
+	var target_pos := global_position + dash_dir * 1000.0
+
+	var tween := create_tween()
+
+	tween.tween_property(
+		self,
+		"global_position",
+		target_pos,
+		0.18
+	)
+
+	while tween.is_running():
+
+		if not hit_player:
+
+			if global_position.distance_to(
+				player.global_position
+			) <= 90.0:
+
+				hit_player = true
+
+				if player.has_method("recibir_daño"):
+					player.recibir_daño(40)
+
+				elif player.has_method("recibir_dano"):
+					player.recibir_dano(40)
+
+				# inmediatamente empieza persecución
+				madness_chasing = true
+
+		await get_tree().process_frame
+
+	await tween.finished
+
 	_attack_lock = false
 
 func _spawn_flying_minion() -> void:
-	if minion_scene == null: return
-	var minion = minion_scene.instantiate()
-	get_parent().add_child(minion)
-	minion.global_position = global_position + Vector2(randf_range(-100, 100), -200) # Aparece desde arriba/sombras
+	if minion_scene == null:
+		return
+	var current_minions = []
+	for node in get_tree().get_nodes_in_group("boss_minion"):
+		if is_instance_valid(node):
+			current_minions.append(node)
 
-# ----------------- TRANSICIONES DE FASE (HP) -----------------
+	# máximo absoluto
+	if current_minions.size() >= 3:
+		return
+
+	var minion = minion_scene.instantiate()
+
+	get_parent().add_child(minion)
+
+	minion.global_position = global_position + Vector2(
+		randf_range(-420, 420),
+		randf_range(-220, 220)
+	)
+
+func _spawn_earth_minion() -> void:
+	if minion_2 == null:
+		return
+	var current_minions_2 = []
+	for node in get_tree().get_nodes_in_group("enemy"):
+		if is_instance_valid(node):
+			current_minions_2.append(node)
+
+	# máximo absoluto
+	if current_minions_2.size() >= 4:
+		return
+
+	var minion = minion_2.instantiate()
+
+	get_parent().add_child(minion)
+
+	minion.global_position = global_position + Vector2(
+		randf_range(-420, 420),
+		randf_range(-220, 220)
+	)
+
+
+# ----------------- TRANSICIONES DE FASE -----------------
 func _trigger_transition_f2() -> void:
 	_f2_triggered = true
 	current_state = State.TRANSITION_F2
 	phase_timer = 0.0
 	velocity = Vector2.ZERO
 	
-	# Efectos cinemáticos
 	var cam = get_tree().get_first_node_in_group("camara") as Camera2D
-	if cam and cam.has_method("shake"): cam.call("shake", 0.5, 15) # Shake de cámara opcional
+	if cam and cam.has_method("shake"): cam.call("shake", 0.5, 15) 
 	
-	# Flash blanco usando modulaciones en un Tween rápido
 	var t = create_tween()
-	t.tween_property(sprite_2d, "modulate", Color(5, 5, 5, 1), 0.1) # Brillo/Flash
+	t.tween_property(sprite_2d, "modulate", Color(5, 5, 5, 1), 0.1) 
 	t.tween_property(sprite_2d, "modulate", Color(1, 1, 1, 1), 0.3)
 
 func _trigger_transition_f3() -> void:
@@ -407,30 +719,32 @@ func _trigger_transition_f3() -> void:
 	phase_timer = 0.0
 	velocity = Vector2.ZERO
 	
-	# Oscuridad breve / Feedback visual
 	var t = create_tween()
-	t.tween_property(sprite_2d, "modulate", Color(0, 0, 0, 1), 0.2) # Desaparece en sombra
+	t.tween_property(sprite_2d, "modulate", Color(0, 0, 0, 1), 0.2) 
 	t.tween_property(sprite_2d, "modulate", Color(1, 1, 1, 1), 0.2).set_delay(1.0)
 
 func _enter_desperation_mode() -> void:
 	_desperation_triggered = true
 	current_state = State.FINAL_DESPERATION
 	phase_timer = 0.0
-	speed = _base_speed * 0.7 # Caos total pero más lento para no ser injusto
+	speed = _base_speed * 0.7 
 
 # ----------------- DAÑO Y MUERTE -----------------
 func _hp_pct() -> float:
-	if bar_boss == null: return 1.0
-	if bar_boss.max_value <= bar_boss.min_value: return 1.0
-	return (bar_boss.value - bar_boss.min_value) / (bar_boss.max_value - bar_boss.min_value)
+	if vida_max <= 0: return 1.0
+	return float(vida) / float(vida_max)
 
-func _on_damage(amount: float) -> void:
-	if dead: return
+func recibir_daño(cantidad: int) -> void:
+	if dead or en_cooldown_golpe: 
+		return
+		
+	en_cooldown_golpe = true
+	vida = max(vida - cantidad, 0)
+	
 	if bar_boss:
-		bar_boss.value = clamp(bar_boss.value - amount, bar_boss.min_value, bar_boss.max_value)
+		bar_boss.value = vida
 
-	# Sistema de Stack de números de daño flotantes
-	_stack_value += amount
+	_stack_value += cantidad
 	label.text = str(int(_stack_value))
 	label.visible = true
 	label.position = _label_base_pos
@@ -449,13 +763,21 @@ func _on_damage(amount: float) -> void:
 	t.parallel().tween_property(label, "modulate:a", 0.0, 0.32).set_delay(0.04)
 	_stack_timer.start(0.4)
 
-	# Sonido alternado al ser impactado
 	if sfx_hit:
 		sfx_hit.pitch_scale = randf_range(0.8, 1.5)
 		sfx_hit.play()
 
-	if bar_boss and bar_boss.value <= bar_boss.min_value:
+	if vida <= 0:
 		_die()
+		return
+
+	if sprite_2d and sprite_2d.sprite_frames.has_animation("golpeado"):
+		sprite_2d.play("golpeado")
+
+	timer_golpe.start()
+
+func _fin_golpe() -> void:
+	en_cooldown_golpe = false
 
 func _die() -> void:
 	dead = true
@@ -463,7 +785,6 @@ func _die() -> void:
 	velocity = Vector2.ZERO
 	area.set_deferred("monitoring", false)
 	
-	# Quitar proyectiles activos del mapa para dejar limpio el escenario
 	var projectiles = get_tree().get_nodes_in_group("boss_bullet")
 	for p in projectiles:
 		if p.has_method("queue_free"): p.queue_free()
@@ -475,16 +796,90 @@ func _die() -> void:
 		sprite_2d.sprite_frames.set_animation_loop("explosion", false)
 		sprite_2d.frame = 0
 		sprite_2d.play("explosion")
+		
 	else:
 		explosion_timer.start(0.3)
 
+	await get_tree().create_timer(1.2).timeout
+
+	queue_free()
+
+# ----------------- EVENTOS DE COLISIÓN (AREA2D) -----------------
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") or body.is_in_group("player_2"):
 		target_in_range = body as CharacterBody2D
 	if body.is_in_group("player_1_bullet"):
-		emit_signal("damage", 10.0)
+		recibir_daño(10)
 		if body.has_method("queue_free"): body.queue_free()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == target_in_range:
 		target_in_range = null
+
+func _start_spiral_wave_attack() -> void:
+
+	if bullet_scene == null:
+		_attack_lock = false
+		return
+
+	velocity = Vector2.ZERO
+
+	# =====================================================
+	# ACTIVA MÁS RÁPIDO
+	# =====================================================
+	await get_tree().create_timer(0.25).timeout
+
+	# =====================================================
+	# SOLO 3 OLEADAS
+	# =====================================================
+	var waves := 3
+
+	for wave in range(waves):
+
+		# =================================================
+		# SOLO 6 BALAS
+		# =================================================
+		# Mucho espacio libre
+		var bullet_count := 6
+
+		# rotación progresiva
+		var rotation = wave * 24.0
+
+		for i in range(bullet_count):
+
+			var angle = deg_to_rad(
+				(i * (360.0 / bullet_count))
+				+ rotation
+			)
+
+			var dir = Vector2(
+				cos(angle),
+				sin(angle)
+			)
+
+			var bullet = bullet_scene.instantiate()
+			get_parent().add_child(bullet)
+
+			bullet.global_position = global_position
+
+			# MÁS LENTAS
+			if bullet.has_method("setup"):
+				bullet.setup(dir, 150.0)
+
+		# =================================================
+		# ESPACIO ENTRE OLEADAS
+		# =================================================
+		await get_tree().create_timer(0.55).timeout
+
+	# =====================================================
+	# INVOCAR MINIONS DISPERSOS
+	# =====================================================
+
+	for i in range(2):
+
+		_spawn_flying_minion()
+
+	# pequeño descanso
+	await get_tree().create_timer(0.8).timeout
+
+	_attack_lock = false

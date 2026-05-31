@@ -257,7 +257,7 @@ func _on_timer_tick():
 
 	if tiempo_restante <= 0:
 		print("⌛ Tiempo agotado")
-		manejar_derrota()
+		await evaluar_resultado()
 
 # -------------------------
 func _on_aceptar_pressed():
