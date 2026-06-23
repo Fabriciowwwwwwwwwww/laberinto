@@ -31,14 +31,13 @@ func set_puzzle(p):
 # =========================
 # INTRO
 # =========================
-
 func ejecutar_secuencia_intro():
 
-	print("🎬 INTRO")
+	print("🎬 INTRO EJECUTADA")
 
-	# diálogo intro
 	await reproducir_dialogo(dialogue_intro)
 
+	print("🎬 EMITIENDO SEÑAL")
 
 	cinematica_terminada.emit()
 

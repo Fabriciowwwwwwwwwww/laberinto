@@ -47,10 +47,10 @@ expand_margin_bottom = 30.0
 [node name="MainMenu" type="CanvasLayer" unique_id=1317766809]
 
 [node name="fondo" type="TextureRect" parent="." unique_id=1298234938]
-offset_left = -1.0
-offset_top = -4.0
-offset_right = 1949.0
-offset_bottom = 1124.0
+offset_left = -65.0
+offset_top = 10.0
+offset_right = 2068.0
+offset_bottom = 1132.0
 texture = ExtResource("1_1tae7")
 
 [node name="TitleScreen" type="Control" parent="." unique_id=228277575]
@@ -64,8 +64,8 @@ tienda = ExtResource("4_ldy66")
 
 [node name="MainMenu" type="HBoxContainer" parent="TitleScreen" unique_id=1331346562]
 layout_mode = 0
-offset_right = 1939.0
-offset_bottom = 1120.0
+offset_right = 1930.0
+offset_bottom = 1134.0
 theme = ExtResource("4_gmle2")
 script = ExtResource("5_wuclt")
 

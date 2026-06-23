@@ -20,6 +20,7 @@ var escala_original := Vector2.ONE
 var tween: Tween
 var seleccionada := false
 
+
 # -------------------------
 # READY
 # -------------------------
@@ -92,3 +93,35 @@ func _on_input_event(viewport, event, shape_idx):
 		var puzzle = get_tree().get_first_node_in_group("puzzle")
 		if puzzle:
 			puzzle.seleccionar_carta(index)
+func seleccionar_desde_mando():
+
+	if tween:
+		tween.kill()
+
+	scale = escala_original * 1.15
+
+	if seleccionada:
+		modulate = Color(1.5,1.5,0.8)
+	else:
+		modulate = Color(1.2,1.2,1.2)
+
+
+func deseleccionar_desde_mando():
+
+	if tween:
+		tween.kill()
+
+	scale = escala_original
+
+	if seleccionada:
+		modulate = Color(1.5,1.5,0.8)
+	else:
+		modulate = Color(1,1,1)
+func activar_desde_mando():
+
+	seleccionada = !seleccionada
+
+	var puzzle = get_tree().get_first_node_in_group("puzzle")
+
+	if puzzle:
+		puzzle.seleccionar_carta(index)

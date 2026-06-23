@@ -24,7 +24,7 @@ texture = ExtResource("1_ghggk")
 [node name="Zonas" type="Node2D" parent="." unique_id=430912275]
 
 [node name="zona1" type="Polygon2D" parent="Zonas" unique_id=89821809 groups=["Zonas"]]
-color = Color(0.25490198, 0.39607844, 0.3254902, 0.54901963)
+color = Color(0.42876032, 0.35421523, 0, 1)
 polygon = PackedVector2Array(188, 155, 188, 227, 96, 228, 6, 227, 6, 48, 187, 48)
 script = ExtResource("2_ghggk")
 

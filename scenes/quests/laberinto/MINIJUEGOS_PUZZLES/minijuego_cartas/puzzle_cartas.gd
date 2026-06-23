@@ -4,7 +4,7 @@ extends Node2D
 var input_usuario: Array = []
 var secuencia_simbolos: Array = []
 # Diccionario para cargar las imágenes de los símbolos
-
+var carta_seleccionada := 0
 @export var tiempo_total: float = 15.0
 @export var victorias_necesarias: int = 3
 @export var music_tracks: Array[AudioStream]
@@ -53,7 +53,7 @@ func _ready():
 
 	for n in get_tree().get_nodes_in_group("cartas"):
 		cartas_nodos.append(n)
-
+	actualizar_seleccion_mando()
 	resetear_cartas()
 	cronometro.wait_time = 1.0
 	cronometro.timeout.connect(_on_cronometro_tick)
@@ -204,7 +204,47 @@ func seleccionar_carta(index) -> void:
 # ENTER
 # -------------------------
 func _input(event) -> void:
-	if event.is_action_pressed("ui_accept") and puzzle_activo:
+	if canvas_final.visible and event.is_action_pressed("undo"):
+
+		await _on_confirmar_pressed()
+		return
+	if not puzzle_activo:
+		return
+
+	# Mover selección
+	if event.is_action_pressed("ui_left"):
+		carta_seleccionada -= 1
+
+		if carta_seleccionada < 0:
+			carta_seleccionada = cartas_nodos.size() - 1
+
+		actualizar_seleccion_mando()
+		return
+
+	if event.is_action_pressed("ui_right"):
+		carta_seleccionada += 1
+
+		if carta_seleccionada >= cartas_nodos.size():
+			carta_seleccionada = 0
+
+		actualizar_seleccion_mando()
+		return
+
+	# X / Interact → seleccionar carta
+	if event.is_action_pressed("Interact"):
+
+		if cartas_nodos.is_empty():
+			return
+
+		cartas_nodos[carta_seleccionada].activar_desde_mando()
+
+		actualizar_seleccion_mando()
+
+		return
+
+	# O / Círculo → evaluar
+	if event.is_action_pressed("undo") \
+	or event.is_action_pressed("ui_accept"):
 
 		if not ha_interactuado:
 			return
@@ -214,8 +254,7 @@ func _input(event) -> void:
 		ocultar_cartas()
 
 		await get_tree().process_frame
-		
-		# ❌ SIN sonido aquí
+
 		animacion.play("esconder_cartas")
 		await animacion.animation_finished
 
@@ -447,3 +486,34 @@ func _on_confirmar_pressed() -> void:
 		
 		await cinematic_node.notificar_perdida("codigo")
 		await reiniciar_flujo()
+func actualizar_seleccion_mando():
+
+	for i in range(cartas_nodos.size()):
+
+		var carta = cartas_nodos[i]
+
+		# CARTA ACTUAL DEL CURSOR
+		if i == carta_seleccionada:
+
+			carta.scale = carta.escala_original * 1.15
+
+			# Si NO está seleccionada → brillo blanco
+			if not carta.seleccionada:
+				carta.modulate = Color(1.2, 1.2, 1.2)
+
+			# Si está seleccionada → mantener amarillo
+			else:
+				carta.modulate = Color(1.5, 1.5, 0.8)
+
+		# RESTO DE CARTAS
+		else:
+
+			carta.scale = carta.escala_original
+
+			# Mantener amarillo si ya fue seleccionada
+			if carta.seleccionada:
+				carta.modulate = Color(1.5, 1.5, 0.8)
+
+			# Si no está seleccionada → normal
+			else:
+				carta.modulate = Color.WHITE

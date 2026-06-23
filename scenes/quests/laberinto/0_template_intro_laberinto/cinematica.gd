@@ -2,7 +2,7 @@ class_name Cinematica
 extends Node2D
 
 @export var dialogue: DialogueResource
-@export_file("*.tscn") var next_scene: String
+@export_file("*.scn") var next_scene: String
 @export var spawn_point_path: String
 @export var usar_next_scene: bool = true
 

@@ -62,27 +62,23 @@ func animar_entrada():
 # -------------------------
 func _input(event):
 
-	# 👉 DERECHA
 	if event.is_action_pressed("ui_right"):
 		cambiar_categoria(1)
 
-	# 👉 IZQUIERDA
 	elif event.is_action_pressed("ui_left"):
 		cambiar_categoria(-1)
 
-	# 👉 ABAJO
 	elif event.is_action_pressed("ui_down"):
 		mover(1)
 
-	# 👉 ARRIBA
 	elif event.is_action_pressed("ui_up"):
 		mover(-1)
 
-	# 👉 CLICK / TOUCH (IMPORTANTE 🔥)
-	elif InputManager.is_pressed(event):
-		# opcional: podrías usar esto para seleccionar si quieres
-		pass
+	elif event.is_action_pressed("Interact"):
+		seleccionar()
 
+	elif event.is_action_pressed("undo"):
+		_on_comprar_button_pressed()
 # -------------------------
 func cambiar_categoria(dir):
 	categoria_actual = (categoria_actual + dir) % 3
@@ -222,21 +218,27 @@ func actualizar_preview():
 		return
 
 	var item = content.get_child(indice)
+
+	if item == null:
+		return
+
+	if not item.get("sprite_frames"):
+		print("❌ El item no tiene sprite_frames")
+		return
+
 	var frames = item.sprite_frames
+
+	if frames == null:
+		print("❌ sprite_frames es null")
+		return
 
 	var anim = $Panel/AnimatedSprite2D
 
-	if not frames:
-		print("No frames")
-		return
-
 	anim.sprite_frames = frames
 	anim.play("idle")
-
 	anim.centered = true
 	anim.position = $Panel.size / 2
-	anim.scale = Vector2(0.4, 0.4)  # 🔥 AJUSTA AQUÍ
-
+	anim.scale = Vector2(0.4, 0.4)
 
 # -------------------------
 func seleccionar():

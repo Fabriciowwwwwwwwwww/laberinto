@@ -273,3 +273,7 @@ func await_tiempo_seguro(segundos: float) -> bool:
 
 func _on_jugador_muerto() -> void:
 	morir()
+func actualizar_ui_vida():
+	vida_bar.max_value = vida_max
+	vida_bar.value = vida
+	vida_etiqueta.text = str(vida) + "/" + str(vida_max)

@@ -16,7 +16,7 @@ var inmovilizado := false
 @export var vida_maxima: int = 100
 var vida_actual: int = 100
 @onready var vida_bar: TextureProgressBar = safe_get_node("../barra vida/ProgressBar")
-
+var ultima_direccion_aim := Vector2.RIGHT
 # -------- BALAS --------
 @export var escena_bala: PackedScene
 @onready var balas_vista: Node = safe_get_node("../BalasVista")
@@ -253,22 +253,38 @@ func update_stamina_bar() -> void:
 			style.bg_color = Color(0.8, 0.8, 0.2, 1.0)
 		else:
 			style.bg_color = Color(0.8, 0.2, 0.2, 1.0)
-func actualizar_pistola() -> void:
 
-	var target: Vector2
+func actualizar_pistola():
 
-	if last_input_pos != Vector2.ZERO:
-		target = get_viewport().get_canvas_transform().affine_inverse() * last_input_pos
-	else:
-		target = get_global_mouse_position()
+	var stick := Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	)
 
-	var direccion: Vector2 = (target - global_position).normalized()
-	var angulo: float = direccion.angle()
+	# 🎮 GAMEPAD
+	if stick.length() > 0.4:
+
+		ultima_direccion_aim = stick.normalized()
+
+	# 🖱️ MOUSE SOLO SI NO HAY MANDO
+	elif Input.get_connected_joypads().is_empty():
+
+		var mouse_dir = get_global_mouse_position() - global_position
+
+		if mouse_dir.length() > 20:
+			ultima_direccion_aim = mouse_dir.normalized()
+
+	# 🔥 Siempre usa la última dirección guardada
+	var angulo := ultima_direccion_aim.angle()
 
 	arma_node.rotation = angulo
 	arma_node.position = Vector2.RIGHT.rotated(angulo) * 23.0
 
-	animated_arma.flip_v = rad_to_deg(angulo) > 90 or rad_to_deg(angulo) < -90
+	animated_arma.flip_v = (
+		rad_to_deg(angulo) > 90
+		or rad_to_deg(angulo) < -90
+	)
+
 func disparar() -> void:
 
 	if balas_vista and balas_vista.procesar_disparo():

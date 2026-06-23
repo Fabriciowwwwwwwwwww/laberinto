@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://cywj27ket6ws3"]
+
+[ext_resource type="Script" uid="uid://bf1kqg27368wf" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/escena_solucion.gd" id="1_cswdf"]
+[ext_resource type="Texture2D" uid="uid://di6u08ihnsfn3" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/cuadro1 sin fondo.png" id="2_cswdf"]
+[ext_resource type="Script" uid="uid://c77713muedy7r" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/zona.gd" id="3_0h6le"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cswdf"]
+
+[node name="EscenaSolucion" type="Node2D" unique_id=1951433615]
+script = ExtResource("1_cswdf")
+configuracion_colores = {
+0: [Color(0.6248583, 0.11306671, 0.2960614, 1), Color(0.9529412, 0.89411765, 0.10980392, 1), Color(0.5246313, 0.13070974, 0.82394356, 1)],
+1: [Color(0.1379951, 0.09642141, 0.018027775, 1)],
+2: [Color(0.96862745, 0.3529412, 0.12941177, 1)],
+3: [Color(0.017321631, 0.25053722, 0, 1)],
+4: [Color(0.3885327, 0.35185513, 0.27257335, 1)],
+5: [Color(0.21336746, 0.50330716, 0.540975, 1)]
+}
+
+[node name="LineasOverlay" type="Sprite2D" parent="." unique_id=235517966]
+z_index = 1
+position = Vector2(281, 226)
+scale = Vector2(0.3951498, 0.4269162)
+texture = ExtResource("2_cswdf")
+
+[node name="Zonas" type="Node2D" parent="." unique_id=772532704]
+position = Vector2(281, 226)
+scale = Vector2(0.3951498, 0.4269162)
+
+[node name="zona1" type="Polygon2D" parent="Zonas" unique_id=1943960718 groups=["Zonas"]]
+position = Vector2(-711.12274, -529.37787)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(85, 51, 80, 56, 77, 61, 77, 66, 79, 71, 85, 78, 92, 81, 101, 77, 106, 69, 107, 62, 102, 54, 96, 50, 93, 53, 91, 53, 90, 52)
+script = ExtResource("3_0h6le")
+
+[node name="zona2" type="Polygon2D" parent="Zonas" unique_id=1115526282 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-531.44403, -473.16074)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(86, 52, 80, 56, 78, 62, 79, 69, 80, 73, 85, 78, 92, 81, 101, 78, 107, 71, 107, 62, 103, 53, 97, 51, 93, 53, 91, 53, 90, 52)
+script = ExtResource("3_0h6le")
+
+[node name="zona3" type="Polygon2D" parent="Zonas" unique_id=1806372767 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-397.3177, -365.41125)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(86, 52, 80, 56, 78, 62, 79, 69, 80, 73, 85, 78, 92, 81, 101, 78, 107, 71, 107, 62, 103, 53, 97, 51, 93, 53, 91, 53, 90, 52)
+script = ExtResource("3_0h6le")
+
+[node name="zona4" type="Polygon2D" parent="Zonas" unique_id=1242180748 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-452.99277, -199.1023)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(86, 52, 81, 57, 79, 62, 81, 69, 82, 73, 87, 78, 93, 79, 100, 78, 105, 72, 107, 62, 103, 53, 98, 52, 93, 53, 91, 53, 90, 52)
+script = ExtResource("3_0h6le")
+
+[node name="zona15" type="Polygon2D" parent="Zonas" unique_id=1637512232 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-645.3249, -42.16281)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(55, 134, 59, 140, 67, 140, 81, 142, 96, 136, 130, 148, 121, 135, 141, 139, 163, 139, 150, 128, 138, 113, 129, 92, 124, 68, 121, 39, 122, 9, 128, -7, 133, -17, 140, -25, 161, -40, 158, -45, 146, -40, 156, -65, 150, -65, 148, -58, 118, -20, 120, -35, 131, -68, 130, -78, 124, -79, 104, -39, 95, -71, 81, -71, 87, -58, 86, -44, 77, -33, 87, -19, 86, -8, 83, 12, 60, -12, 49, -7, 62, 5, 73, 23, 76, 36, 77, 43, 72, 95, 62, 119, 49, 129)
+script = ExtResource("3_0h6le")
+id_color = 1
+
+[node name="zona5" type="Polygon2D" parent="Zonas" unique_id=1975211309 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-784.51263, -299.82465)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(86, 52, 81, 57, 79, 62, 80, 69, 82, 73, 87, 78, 93, 80, 100, 78, 106, 73, 108, 62, 103, 53, 98, 51, 93, 53, 92, 51, 89, 51)
+script = ExtResource("3_0h6le")
+
+[node name="zona6" type="Polygon2D" parent="Zonas" unique_id=1340626762 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(106.28882, -276.40088)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(96, 44, 78, 73, 113, 74)
+script = ExtResource("3_0h6le")
+
+[node name="zona21" type="Polygon2D" parent="Zonas" unique_id=1710155246 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-852.8412, -585.595)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(91, 45, 91, 230, 102, 239, 116, 238, 126, 247, 140, 248, 147, 244, 142, 235, 131, 226, 120, 224, 136, 223, 143, 219, 164, 243, 169, 216, 167, 209, 159, 200, 119, 202, 107, 190, 108, 177, 114, 171, 125, 171, 135, 176, 137, 190, 127, 202, 159, 200, 169, 187, 168, 170, 161, 159, 177, 161, 186, 192, 206, 154, 213, 153, 211, 160, 214, 166, 215, 127, 206, 116, 209, 101, 217, 97, 224, 98, 232, 100, 236, 111, 233, 120, 228, 127, 215, 127, 214, 166, 209, 175, 201, 202, 201, 212, 220, 189, 228, 176, 232, 165, 240, 167, 229, 191, 240, 186, 245, 191, 227, 204, 216, 215, 207, 232, 205, 254, 217, 257, 229, 251, 238, 260, 250, 263, 262, 258, 269, 248, 275, 246, 281, 241, 288, 231, 266, 223, 264, 237, 258, 243, 249, 243, 238, 233, 241, 220, 247, 216, 263, 217, 267, 225, 287, 232, 287, 217, 299, 212, 307, 199, 309, 190, 275, 173, 259, 160, 261, 149, 270, 145, 282, 145, 289, 156, 284, 169, 275, 173, 308, 191, 308, 182, 319, 164, 316, 148, 306, 136, 307, 123, 304, 113, 289, 104, 290, 88, 278, 77, 268, 75, 260, 60, 248, 53, 233, 57, 230, 54, 216, 47, 202, 53, 197, 47, 183, 59, 164, 82, 164, 92, 157, 102, 146, 105, 138, 101, 132, 91, 133, 82, 137, 77, 146, 74, 155, 74, 163, 82, 197, 47, 120, 46)
+script = ExtResource("3_0h6le")
+id_color = 3
+
+[node name="zona19" type="Polygon2D" parent="Zonas" unique_id=437920018 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-797.1661, -28.10849)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(79, 36, 69, 47, 70, 133, 79, 132, 87, 122, 97, 118, 106, 121, 114, 120, 127, 105, 133, 88, 134, 77, 136, 57, 135, 46, 116, 48, 111, 41, 95, 32)
+script = ExtResource("3_0h6le")
+id_color = 3
+
+[node name="zona16" type="Polygon2D" parent="Zonas" unique_id=1287823343 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-809.81946, 135.8581)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(104, 50, 87, 58, 78, 73, 92, 79, 107, 80, 113, 80, 119, 83, 138, 85, 147, 84, 154, 80, 147, 70, 138, 65, 125, 65, 116, 55)
+script = ExtResource("3_0h6le")
+id_color = 4
+
+[node name="zona14" type="Polygon2D" parent="Zonas" unique_id=1170502931 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(106.28882, -278.74323)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(203, 97, 203, 113, 197, 112, 191, 106, 184, 104, 183, 98, 184, 84)
+script = ExtResource("3_0h6le")
+id_color = 4
+
+[node name="zona13" type="Polygon2D" parent="Zonas" unique_id=152568658 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-776.9206, -117.11899)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(107, 49, 92, 46, 85, 38, 71, 39, 61, 31, 61, 86, 78, 71, 96, 73, 108, 87, 127, 85, 128, 72, 125, 55, 122, 47, 117, 45)
+script = ExtResource("3_0h6le")
+id_color = 4
+
+[node name="zona7" type="Polygon2D" parent="Zonas" unique_id=208409500 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(192.33215, -463.79123)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(96, 46, 76, 94, 93, 94, 116, 94)
+script = ExtResource("3_0h6le")
+
+[node name="zona20" type="Polygon2D" parent="Zonas" unique_id=69862528 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-559.2816, -594.9645)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(82, 48, 83, 52, 87, 57, 95, 52, 109, 54, 117, 61, 119, 59, 131, 58, 143, 63, 152, 78, 161, 79, 173, 91, 174, 109, 179, 110, 191, 124, 189, 140, 193, 141, 202, 153, 202, 172, 191, 187, 193, 199, 215, 184, 227, 193, 249, 167, 265, 154, 281, 168, 299, 189, 308, 184, 340, 209, 360, 177, 379, 205, 378, 150, 373, 148, 394, 98, 415, 150, 409, 151, 411, 173, 417, 174, 417, 182, 423, 182, 423, 173, 432, 174, 432, 182, 437, 182, 438.56418, 173.66287, 446, 173, 447, 219, 470, 234, 468, 52)
+script = ExtResource("3_0h6le")
+id_color = 5
+
+[node name="zona18" type="Polygon2D" parent="Zonas" unique_id=883415944 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-215.1083, -67.928986)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(150, 61, 129, 60, 101, 63, 53, 77, 47, 80, 16, 75, -46, 72, -42, 100, -31, 126, -19, 141, -6, 149, -5, 151, -9, 152, -47, 147, -39, 159, -50, 158, -59, 154, -75, 147, -89, 154, -84, 160, -79, 167, -90, 172, -111, 172, -117, 171, -122, 166, -140, 166, -157, 160, -154, 151, -161, 151, -161, 232, -141, 232, -130, 221, -102, 205, -71, 195, -34, 186, 50, 172, 49, 167, 44, 164, 58, 160, 122, 149, 161, 139, 171, 129, 167, 120, 147, 111, 139, 107, 136, 104, 139, 97, 145, 92, 162, 84, 185, 79, 212, 76, 192, 68, 174, 65)
+script = ExtResource("3_0h6le")
+id_color = 3
+
+[node name="zona17" type="Polygon2D" parent="Zonas" unique_id=1078345614 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(263.19135, -2.3423462)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(141, 18, 113, 17, 90, 21, 76, 25, 56, 33, 39, 43, 11, 61, 9, 67, 37, 74, 69, 79, 100, 89, 121, 98, 142, 116)
+script = ExtResource("3_0h6le")
+id_color = 3
+
+[node name="zona12" type="Polygon2D" parent="Zonas" unique_id=395541569 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(192.33215, -463.79123)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(-32, 98, -49, 114, -68, 136, -82, 129, -104, 144, -109, 153, -114, 160, -125, 166, -126, 181, -133, 191, -143, 197, -158, 211, -176, 209, -185, 200, -193, 205, -208, 202, -209, 215, -207, 241, -159, 242, -116, 249, -76, 234, -29, 227, -3, 230, 3, 219, 8, 216, 14, 206, 22, 203, 26, 192, 33, 185, 45, 186, 45, 155, 11, 128, 1, 133)
+script = ExtResource("3_0h6le")
+id_color = 4
+
+[node name="zona9" type="Polygon2D" parent="Zonas" unique_id=55186733 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(296.09027, -124.14612)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(80, 66, 79, 72, 99, 69, 127, 70, 127, 48, 121, 47, 116, 41, 110, 39, 104, 41, 100, 44, 98, 47, 95, 52, 91, 53, 86, 56, 84, 58, 83, 64)
+script = ExtResource("3_0h6le")
+id_color = 2
+
+[node name="zona10" type="Polygon2D" parent="Zonas" unique_id=825280303 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(39.01471, -74.10434)
+scale = Vector2(2.7415764, 2.2004175)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(55.923096, 59.2258, 54.076935, 69.87094, 78.076935, 75.19354, 107.61539, 84.77417, 130.69232, 69.87094, 155.61539, 56.032227, 153.76923, 52.838684, 149.15384, 49.64514, 144.53845, 43.25804, 138.07693, 35.806427, 130.69232, 35.806427, 125.15384, 36.870956, 118.69232, 41.129013, 116.84616, 34.741913, 110.38461, 29.419342, 103, 28.354828, 95.61539, 20.903214, 87.30771, 21.967728, 79.923096, 27.290314, 75.30771, 40.0645, 67, 44.32257, 62.384613, 53.9032)
+script = ExtResource("3_0h6le")
+id_color = 3
+
+[node name="zona11" type="Polygon2D" parent="Zonas" unique_id=669912665 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(-701, 306.85187)
+scale = Vector2(2.7415764, 2.2004175)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(145.84615, 27.677399, 96.92307, 43.64514, 67.38461, 59.612885, 47.07692, 76.64514, 482.7692, 77.709656, 480.92303, -18.096802, 463.38458, -36.193573, 429.23074, -52.161316, 385.84613, -61.741943, 359.07687, -69.19357, 362.7692, -76.64517, 374.7692, -88.35486, 337.84613, -83.03229, 317.53842, -75.58066, 303.69226, -63.87097, 305.53842, -55.35486, 330.46152, -42.580658, 334.1538, -33.00003, 323.99997, -22.354858, 285.23074, -10.645172, 233.53845, -3.0517578e-05, 219.69229, 3.193512, 224.30768, 11.709656)
+script = ExtResource("3_0h6le")
+id_color = 5
+
+[node name="zona8" type="Polygon2D" parent="Zonas" unique_id=742925348 groups=["Zonas"]]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(68.32849, -210.81418)
+scale = Vector2(2.530686, 2.34238)
+color = Color(0.42323443, 0.20034334, 0.73152363, 0.54901963)
+texture = SubResource("ViewportTexture_cswdf")
+polygon = PackedVector2Array(94, 46, 94, 78, 97, 83, 100, 87, 107, 86, 115, 92, 117, 95, 124, 91, 127, 90, 140, 94, 148, 105, 158, 111, 159, 77, 162, 71, 170, 69, 174, 75, 175, 92, 184, 88, 187, 84, 192, 78, 197, 76, 197, 11, 189, 11, 189, 19, 183, 19, 182.22229, 11.000002, 175, 11, 175, 18, 168, 19, 169, 13, 166.9354, 10.407965, 160, 10, 159, -13, 129, -13, 129, 46)
+script = ExtResource("3_0h6le")
+id_color = 2

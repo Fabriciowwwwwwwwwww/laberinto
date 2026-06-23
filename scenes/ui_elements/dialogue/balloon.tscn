@@ -1,10 +1,10 @@
-[gd_scene load_steps=38 format=4 uid="uid://dhydhpp43urah"]
+[gd_scene format=4 uid="uid://dhydhpp43urah"]
 
 [ext_resource type="Script" uid="uid://n1guv6m28qbw" path="res://scenes/ui_elements/dialogue/components/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="2_dbsi0"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="Texture2D" uid="uid://dng5bc3xaex85" path="res://scenes/quests/laberinto/sprite_laberinto/panel/panel_antiguo.png" id="3_dbsi0"]
+[ext_resource type="Texture2D" uid="uid://d4g450oa34plh" path="res://scenes/quests/laberinto/sprite_laberinto/panel/panel antiguo.png" id="3_noh7p"]
 [ext_resource type="FontFile" uid="uid://y58dth3rle8q" path="res://assets/third_party/fonts/EBGaramond-SemiBold.ttf" id="5_qmeow"]
 [ext_resource type="Texture2D" uid="uid://cv7vlvxl31v8a" path="res://scenes/quests/laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-001.png" id="7_nmsau"]
 [ext_resource type="Texture2D" uid="uid://bfr54eqka3bdt" path="res://scenes/quests/laberinto/sprite_laberinto/escenas/efecto_overlay/ezgif-frame-002.png" id="8_noh7p"]
@@ -34,7 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://c4dffnu7m0rj6" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/musica cinematica.mp3" id="32_noh7p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmeow"]
-texture = ExtResource("3_dbsi0")
+texture = ExtResource("3_noh7p")
 texture_margin_left = 64.0
 texture_margin_top = 64.0
 texture_margin_right = 64.0
@@ -133,19 +133,22 @@ sampling_rate = 96000.0
 
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_i865q"]
 packet_sequence = SubResource("OggPacketSequence_m6qgf")
+tags = {
+"encoder": "Lavc58.134.100 libvorbis"
+}
 loop = true
 
-[node name="DialogueBalloon" type="CanvasLayer"]
+[node name="DialogueBalloon" type="CanvasLayer" unique_id=1010413940]
 layer = 100
 script = ExtResource("1_36de5")
 
-[node name="Balloon" type="Control" parent="."]
+[node name="Balloon" type="Control" parent="." unique_id=1037334354]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("2_dbsi0")
 
-[node name="PanelContainer" type="PanelContainer" parent="Balloon"]
+[node name="PanelContainer" type="PanelContainer" parent="Balloon" unique_id=1797425239]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -159,48 +162,48 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qmeow")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/PanelContainer" unique_id=398509782]
 custom_minimum_size = Vector2(480, 192)
 layout_mode = 2
 theme = ExtResource("2_dbsi0")
 
-[node name="CharacterPanel" type="PanelContainer" parent="Balloon/PanelContainer/VBoxContainer"]
+[node name="CharacterPanel" type="PanelContainer" parent="Balloon/PanelContainer/VBoxContainer" unique_id=2114640332]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"NPCRibbon"
 
-[node name="CharacterLabel" type="Label" parent="Balloon/PanelContainer/VBoxContainer/CharacterPanel"]
+[node name="CharacterLabel" type="Label" parent="Balloon/PanelContainer/VBoxContainer/CharacterPanel" unique_id=310076503]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 text = "Musician"
 horizontal_alignment = 1
 
-[node name="DialogueLabel" parent="Balloon/PanelContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/PanelContainer/VBoxContainer" unique_id=348004461 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/table_border = Color(0.556248, 0.318013, 0.217202, 1)
 theme_override_colors/default_color = Color(0.91, 0.88, 0.83, 1)
+theme_override_colors/table_border = Color(0.556248, 0.318013, 0.217202, 1)
 theme_override_fonts/normal_font = ExtResource("5_qmeow")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 50
 theme_override_font_sizes/bold_italics_font_size = 50
 theme_override_font_sizes/italics_font_size = 50
 theme_override_font_sizes/mono_font_size = 50
-theme_override_font_sizes/normal_font_size = 80
-theme_override_font_sizes/bold_font_size = 50
 text = "Ah! Another wanderer. It's been awhile since anyone came looking for answers instead of treasure."
 autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 skip_action = &"dialogue_skip"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/PanelContainer/VBoxContainer" unique_id=1237277333]
 layout_mode = 2
 alignment = 2
 
-[node name="NextButtonContainer" type="MarginContainer" parent="Balloon/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="NextButtonContainer" type="MarginContainer" parent="Balloon/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1909680460]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
@@ -208,13 +211,13 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 30
 
-[node name="NextButton" type="Button" parent="Balloon/PanelContainer/VBoxContainer/HBoxContainer/NextButtonContainer"]
+[node name="NextButton" type="Button" parent="Balloon/PanelContainer/VBoxContainer/HBoxContainer/NextButtonContainer" unique_id=1741460912]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"FlatNextButton"
 text = "next >"
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/PanelContainer/VBoxContainer" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/PanelContainer/VBoxContainer" unique_id=2064703929 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -222,12 +225,12 @@ theme_override_constants/separation = 2
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/PanelContainer/VBoxContainer/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="Balloon/PanelContainer/VBoxContainer/ResponsesMenu" unique_id=1427136081]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 text = "Response example"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon/PanelContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon/PanelContainer" unique_id=1476680480]
 material = SubResource("CanvasItemMaterial_m3i0d")
 position = Vector2(971.5, 575)
 scale = Vector2(1.50703, 1.6)
@@ -235,12 +238,12 @@ sprite_frames = SubResource("SpriteFrames_k3elf")
 animation = &"idle"
 frame_progress = 0.705189
 
-[node name="TalkSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TalkSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=1022939027]
 stream = SubResource("AudioStreamOggVorbis_i865q")
 volume_db = 2.0
 parameters/looping = true
 
-[node name="musica" type="AudioStreamPlayer2D" parent="."]
+[node name="musica" type="AudioStreamPlayer2D" parent="." unique_id=1950513441]
 stream = ExtResource("32_noh7p")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

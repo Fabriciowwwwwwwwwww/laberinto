@@ -1,8 +1,8 @@
 extends Node2D
-
+var gear_actual := 0
 @export var num_gears: int = 7
 @export var tiempo_total: float = 30.0
-
+var engranaje_seleccionado := 0
 var solution: Array[int] = []
 var gears: Array = []
 var cinematic_node: Node
@@ -32,6 +32,13 @@ func _ready() -> void:
 	var nodes = get_tree().get_nodes_in_group("engranaje")
 	for n in nodes:
 		gears.append(n)
+
+	gears.sort_custom(
+		func(a,b):
+			return int(a.gear_id) < int(b.gear_id)
+	)
+
+	seleccionar_engranaje(0)
 
 	# 🔥 GENERAR ANTES DE LA INTRO
 	generate_solution()
@@ -64,24 +71,59 @@ func iniciar_flujo() -> void:
 # -------------------------
 func _input(event: InputEvent) -> void:
 
+	# =====================
+	# CAMBIAR ENGRANAJE
+	# =====================
+
+	if event.is_action_pressed("ui_left"):
+		seleccionar_engranaje(engranaje_seleccionado - 1)
+		return
+
+	if event.is_action_pressed("ui_right"):
+		seleccionar_engranaje(engranaje_seleccionado + 1)
+		return
+
+	# =====================
+	# SI EL PUZZLE ESTÁ BLOQUEADO
+	# =====================
+
 	if not puzzle_activo:
 		return
 
-	# SOLO TECLADO (PC)
-	if event is InputEventKey and event.pressed:
-		if event.is_action_pressed("ui_accept"):
+	# =====================
+	# GIRAR ENGRANAJE
+	# =====================
 
-			if not ha_interactuado:
-				print("⚠️ Mueve al menos un engranaje")
-				return
+	if event.is_action_pressed("Interact"):
 
-			await check_solution()
+		if gears.is_empty():
+			return
 
-	# 📱 MÓVIL (botón UI, no click en engranaje)
+		get_tree().call_group("puzzle", "registrar_interaccion")
+
+		gears[engranaje_seleccionado].activar_desde_mando()
+
+		return
+
+	# =====================
+	# VALIDAR SOLUCIÓN
+	# =====================
+
+	if Input.is_action_just_pressed("ui_accept") \
+	or Input.is_action_just_pressed("undo"):
+
+		if not ha_interactuado:
+			print("⚠️ Mueve al menos un engranaje")
+			return
+
+		await check_solution()
+
+	# =====================
+	# MÓVIL
+	# =====================
+
 	if event is InputEventScreenTouch and event.pressed:
-		# ❗ NO validar aquí directamente
 		pass
-
 func registrar_interaccion() -> void:
 	ha_interactuado = true
 
@@ -228,3 +270,34 @@ func _on_texture_button_pressed() -> void:
 		print("⚠️ Mueve al menos un engranaje")
 		return
 	await check_solution()
+func seleccionar_engranaje(indice:int):
+
+	if gears.is_empty():
+		return
+
+	# Ciclo infinito
+	engranaje_seleccionado = wrapi(
+		indice,
+		0,
+		gears.size()
+	)
+
+	for i in range(gears.size()):
+
+		var g = gears[i]
+
+		if i == engranaje_seleccionado:
+
+			g.target_scale = g.base_scale * 1.2
+
+			if g.sprite:
+				g.sprite.modulate = Color(1.4, 1.4, 1.4)
+
+		else:
+
+			g.target_scale = g.base_scale
+
+			if g.sprite:
+				g.sprite.modulate = Color.WHITE
+
+	print("⚙️ Engranaje seleccionado:", engranaje_seleccionado + 1)

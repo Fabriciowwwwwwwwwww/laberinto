@@ -112,3 +112,13 @@ func reset_total() -> void:
 
 	if sprite:
 		sprite.modulate = Color(1, 1, 1)
+func activar_desde_mando():
+
+	if puzzle and not puzzle.puzzle_activo:
+		return
+
+	get_tree().call_group("puzzle", "registrar_interaccion")
+
+	is_spinning = true
+
+	toggle_direction()

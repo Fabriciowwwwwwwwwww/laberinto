@@ -1,5 +1,6 @@
 extends Node2D
-
+var objeto_seleccionado := 0
+var objeto_agarrado: ItemOrden = null
 var porcentaje: float = 0.0
 var jugando := false
 @onready var cinematica = $"../../cinematica_party"
@@ -17,7 +18,7 @@ var distancia_max := 120
 # 🧠 DATA
 var objetos: Array = []
 var solucion_actual: Array = []
-var tiempo_restante := 30
+var tiempo_restante := 45
 
 # -------------------------
 func _ready():
@@ -31,6 +32,8 @@ func _ready():
 	set_process(false)
 
 	objetos = zona_objetos.get_children()
+	await get_tree().process_frame
+	seleccionar_objeto(0)
 	print("📦 Objetos encontrados:", objetos.size())
 
 	# 1. Generar lógica
@@ -48,7 +51,75 @@ func _ready():
 
 	# 3. Esperar intro
 	await iniciar_intro()
+func _input(event):
 
+	if not jugando:
+		return
+
+	# Cambiar selección SOLO si no hay objeto agarrado
+	if objeto_agarrado == null:
+
+		if event.is_action_pressed("ui_down"):
+			seleccionar_objeto(objeto_seleccionado + 1)
+			return
+
+		if event.is_action_pressed("ui_up"):
+			seleccionar_objeto(objeto_seleccionado - 1)
+			return
+
+	# X = agarrar / soltar
+	if event.is_action_pressed("Interact"):
+
+		if objeto_agarrado == null:
+
+			objeto_agarrado = objetos[objeto_seleccionado]
+
+			objeto_agarrado.iniciar_control_mando()
+
+			print("📦 Agarrado")
+
+		else:
+
+			objeto_agarrado.detener_control_mando()
+
+			objeto_agarrado = null
+
+			print("📦 Soltado")
+
+		return
+
+	# Círculo = evaluar
+# Círculo
+	if event.is_action_pressed("undo"):
+
+		if objeto_agarrado != null:
+			return
+
+		await evaluar_resultado()
+func seleccionar_objeto(indice:int):
+
+	if objetos.is_empty():
+		return
+
+	if indice < 0:
+		indice = objetos.size() - 1
+
+	if indice >= objetos.size():
+		indice = 0
+
+	objeto_seleccionado = indice
+
+	for i in range(objetos.size()):
+
+		var obj = objetos[i]
+
+		if not is_instance_valid(obj):
+			continue
+
+		if i == objeto_seleccionado:
+			obj.scale = Vector2.ONE * 1.15
+		else:
+			obj.scale = Vector2.ONE
 # -------------------------
 func ocultar_cronometro():
 	print("🙈 Ocultando cronómetro")

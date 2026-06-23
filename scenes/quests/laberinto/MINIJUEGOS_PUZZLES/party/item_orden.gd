@@ -10,7 +10,8 @@ var offset := Vector2.ZERO
 var slot_actual = null
 
 var posicion_inicial: Vector2  # 🔥 FALTABA ESTO
-
+var control_mando := false
+@export var velocidad_mando := 900.0
 # -------------------------
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -22,7 +23,17 @@ func _ready():
 
 	if textura:
 		sprite.texture = textura
+func _process(delta):
 
+	if not control_mando:
+		return
+
+	var dir := Vector2.ZERO
+
+	dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	dir.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+
+	global_position += dir * velocidad_mando * delta
 # -------------------------
 func _gui_input(event):
 
@@ -50,3 +61,17 @@ func _gui_input(event):
 		accept_event()
 
 # -------------------------
+func iniciar_control_mando():
+
+	control_mando = true
+	z_index = 100
+
+	if slot_actual:
+		slot_actual.item_actual = null
+		slot_actual = null
+
+
+func detener_control_mando():
+
+	control_mando = false
+	z_index = 0

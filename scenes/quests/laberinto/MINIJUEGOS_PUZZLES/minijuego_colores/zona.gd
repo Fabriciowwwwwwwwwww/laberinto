@@ -12,7 +12,9 @@ func _ready():
 # =========================
 # APLICAR COLOR
 # =========================
-func aplicar_color(nuevo_color: Color):
+func aplicar_color(nuevo_color):
+
+	modulate = Color.WHITE
 
 	color = nuevo_color
 	color_actual = nuevo_color
@@ -21,6 +23,10 @@ func aplicar_color(nuevo_color: Color):
 # RESET
 # =========================
 func resetear():
+
+	texture = null
+	modulate = Color.WHITE
+	self_modulate = Color.WHITE
 
 	color = Color(0.3, 0.3, 0.3, 0.5)
 	color_actual = color

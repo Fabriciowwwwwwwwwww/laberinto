@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c12yqb1b0kbal"
-path="res://.godot/imported/cuadro1.png-2f820929316743293e567a459929f446.ctex"
+uid="uid://d4g450oa34plh"
+path="res://.godot/imported/panel antiguo.png-b9742647b590b382217dfa719df477c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores_otro/cuadro1.png"
-dest_files=["res://.godot/imported/cuadro1.png-2f820929316743293e567a459929f446.ctex"]
+source_file="res://scenes/quests/laberinto/sprite_laberinto/panel/panel antiguo.png"
+dest_files=["res://.godot/imported/panel antiguo.png-b9742647b590b382217dfa719df477c0.ctex"]
 
 [params]
 

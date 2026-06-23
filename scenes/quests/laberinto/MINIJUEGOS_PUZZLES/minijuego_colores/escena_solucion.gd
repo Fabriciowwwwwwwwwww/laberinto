@@ -14,27 +14,40 @@ extends Node2D
 var solucion_generada := {}
 
 func generar_colores():
+
 	solucion_generada.clear()
 
-	var zonas = $Zonas.get_children()
+	var zonas = find_children("*", "Polygon2D", true, false)
 
-	# generar solución
+	# Generar solución
 	for id in configuracion_colores.keys():
+
 		var base = configuracion_colores[id].pick_random()
 		var final = variar_color(base)
+
 		solucion_generada[id] = final
 
-	# aplicar colores
+	# Aplicar colores a las zonas
 	for zona in zonas:
+
+		# Eliminar cualquier textura que pueda teñir el color
+		zona.texture = null
+
+		# Restaurar modulación normal
+		zona.modulate = Color.WHITE
+		zona.self_modulate = Color.WHITE
+
 		if not ("id_color" in zona):
 			continue
 
 		var id = zona.id_color
 
 		if solucion_generada.has(id):
+
 			if zona.has_method("aplicar_color"):
 				zona.aplicar_color(solucion_generada[id])
-
+			else:
+				zona.color = solucion_generada[id]
 func variar_color(c: Color) -> Color:
 	return Color(
 		clamp(c.r + randf_range(-variacion, variacion), 0, 1),

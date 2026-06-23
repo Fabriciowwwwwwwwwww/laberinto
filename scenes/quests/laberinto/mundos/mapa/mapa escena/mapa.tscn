@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://oeppham0jx75" path="res://scenes/quests/laberinto/mundos/mapa/mapa escena/mapa.gd" id="1_kxgk2"]
 [ext_resource type="Texture2D" uid="uid://bboey30nnflqh" path="res://scenes/quests/laberinto/sprite_laberinto/sprite main paneles/mapa.png" id="1_l0wq7"]
-[ext_resource type="Texture2D" uid="uid://dng5bc3xaex85" path="res://scenes/quests/laberinto/sprite_laberinto/panel/panel_antiguo.png" id="2_njf4j"]
+[ext_resource type="Texture2D" uid="uid://d4g450oa34plh" path="res://scenes/quests/laberinto/sprite_laberinto/panel/panel antiguo.png" id="2_njf4j"]
 [ext_resource type="Texture2D" uid="uid://d22k3gelvtcbm" path="res://scenes/quests/laberinto/mundos/mapa/mapa escena/l.jpg" id="3_6yv51"]
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="3_njf4j"]
 [ext_resource type="Script" uid="uid://c251diiy4y637" path="res://scenes/quests/laberinto/mundos/mapa/mapa escena/mapacontrol.gd" id="4_1polg"]
