@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ctiw74oi0fupl" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos3.png" id="8_7gf6n"]
 [ext_resource type="Texture2D" uid="uid://5xr78csfj4mj" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos4.png" id="9_yy211"]
 [ext_resource type="Texture2D" uid="uid://thkoqkehqqgi" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos5.png" id="10_1fbcq"]
+[ext_resource type="Texture2D" uid="uid://d2seh6c7rvd2v" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos6.png" id="11_4x57o"]
 [ext_resource type="Texture2D" uid="uid://cie17j4m0ypno" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos7.png" id="11_ejc8p"]
 [ext_resource type="PackedScene" uid="uid://dh1wpgnarnphb" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/SlotOrden.tscn" id="11_evk0e"]
-[ext_resource type="Texture2D" uid="uid://bel24lk3uhkq6" path="res://scenes/quests/laberinto/sprite_laberinto/party_sprite/ncp _sprite/objetos_puzzle_party/objetos8.png" id="12_6n4r7"]
 [ext_resource type="Script" uid="uid://dpvrq3o0yy5he" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/party/cinematica_party.gd" id="12_op77u"]
 [ext_resource type="Resource" uid="uid://cdt8al61mg0kk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/intro_party.dialogue" id="13_d0tjr"]
 [ext_resource type="Resource" uid="uid://b1vsis4g0cxj4" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/ganar_party.dialogue" id="14_ap2hj"]
@@ -160,17 +160,7 @@ offset_top = -16.0
 offset_right = 998.0
 offset_bottom = -16.0
 id_correcto = 7
-textura = ExtResource("8_7gf6n")
-
-[node name="obj8" parent="OnTheGround/Puzzle_party/zona_objetos" unique_id=903696159 instance=ExtResource("7_w6pte")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 998.0
-offset_top = -16.0
-offset_right = 998.0
-offset_bottom = -16.0
-id_correcto = 8
-textura = ExtResource("12_6n4r7")
+textura = ExtResource("11_4x57o")
 
 [node name="ZonaSlots" type="Control" parent="OnTheGround/Puzzle_party" unique_id=1078884318]
 layout_mode = 3
@@ -294,22 +284,6 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 id_correcto = 7
-
-[node name="slot8" parent="OnTheGround/Puzzle_party/ZonaSlots" unique_id=404536617 instance=ExtResource("11_evk0e")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-id_correcto = 8
 
 [node name="aceptar" type="Button" parent="OnTheGround/Puzzle_party" unique_id=1970521234]
 offset_left = 1719.0

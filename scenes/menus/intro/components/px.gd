@@ -31,10 +31,16 @@ func _ready():
 
 	# dirección aleatoria
 	var angle = randf_range(0, TAU)
-	direction = Vector2(cos(angle), sin(angle)).normalized()
+
+	# 🔥 radio controlado (evita explosiones exageradas)
+	var radius = randf_range(0.2, 1.0)
+
+	direction = Vector2(cos(angle), sin(angle)) * radius
+	direction = direction.normalized()
 
 	# impulso inicial
-	velocity = direction * expansion_speed
+	var speed_variation = randf_range(0.75, 1.15)
+	velocity = direction * expansion_speed * speed_variation
 
 	# destruir luego
 	await get_tree().create_timer(lifetime).timeout
@@ -59,7 +65,7 @@ func _physics_process(delta):
 	if estado == "expandiendo":
 
 		# freno gradual
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		velocity = velocity.lerp(Vector2.ZERO, 6.0 * delta)
 
 		# termina expansión
 		if timer >= expansion_time:

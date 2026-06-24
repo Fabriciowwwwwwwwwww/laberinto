@@ -55,7 +55,7 @@ func safe_get_node(path: NodePath) -> Node:
 # =====================================================
 # READY
 # =====================================================
-func _input(event):
+func _input(event)-> void:
 
 	# 📱 TOUCH / CLICK
 	if InputManager.is_pressed(event):

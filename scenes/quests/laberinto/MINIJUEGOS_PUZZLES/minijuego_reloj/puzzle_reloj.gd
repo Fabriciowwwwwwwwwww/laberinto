@@ -6,10 +6,10 @@ extends Node2D
 
 @onready var aguja_1 = $AgujaPivot
 @onready var aguja_2 = $AgujaPivot2
-
+var controles_habilitados := false
 @onready var zona_1 = $ClockBase1/ZonaObjetivo
 @onready var zona_2 = $ClockBase2/ZonaObjetivo2
-
+var boton_seleccionado := 0 # 0 = izquierda, 1 = derecha
 # =====================================================
 # UI
 # =====================================================
@@ -73,6 +73,9 @@ var tiempo_restante := 15
 # =====================================================
 
 func _ready():
+	boton_1.focus_mode = Control.FOCUS_ALL
+	boton_2.focus_mode = Control.FOCUS_ALL
+
 
 	randomize()
 
@@ -81,12 +84,30 @@ func _ready():
 
 	iniciar_minijuego()
 
+
 # =====================================================
 # INICIAR
 # =====================================================
+func actualizar_seleccion():
 
+	if boton_seleccionado == -1:
+		get_viewport().gui_release_focus()
+		return
+
+	if boton_seleccionado == 0:
+		boton_1.grab_focus()
+
+	elif boton_seleccionado == 1:
+		boton_2.grab_focus()
 func iniciar_minijuego():
+	controles_habilitados = false
+	boton_seleccionado = -1
 
+	actualizar_seleccion()
+
+	await get_tree().create_timer(1.0).timeout
+
+	controles_habilitados = true
 	juego_terminado = false
 
 	detenido_1 = false
@@ -209,7 +230,8 @@ func _process(delta):
 
 	if juego_terminado:
 		return
-
+	if !controles_habilitados:
+		return
 	# RELOJ 1
 	if !detenido_1:
 
@@ -225,6 +247,26 @@ func _process(delta):
 		rotacion_2 = wrapf(rotacion_2, 0, 360)
 
 		aguja_2.rotation_degrees = rotacion_2
+	# Cambiar selección con joystick o cruceta
+
+	if Input.is_action_just_pressed("ui_left"):
+		boton_seleccionado = 0
+		actualizar_seleccion()
+
+	if Input.is_action_just_pressed("ui_right"):
+		boton_seleccionado = 1
+		actualizar_seleccion()
+
+	if Input.is_action_just_pressed("Interact"):
+
+		if boton_seleccionado == -1:
+			return
+
+		if boton_seleccionado == 0:
+			boton_1.emit_signal("pressed")
+
+		elif boton_seleccionado == 1:
+			boton_2.emit_signal("pressed")
 
 # =====================================================
 # DETENER RELOJ 1

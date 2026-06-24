@@ -27,7 +27,7 @@ func _ready() -> void:
 			b.focus_entered.connect(_on_button_focus)
 			b.mouse_entered.connect(func(): _on_mouse_enter_button(b))
 
-func _on_mouse_enter_button(button):
+func _on_mouse_enter_button(button)-> void:
 	button.grab_focus()
 
 func _on_start_button_pressed() -> void:

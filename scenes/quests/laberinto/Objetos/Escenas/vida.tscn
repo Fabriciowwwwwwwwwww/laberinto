@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bdm3mrriev6ic"]
+[gd_scene format=3 uid="uid://bdm3mrriev6ic"]
 
 [ext_resource type="Script" uid="uid://c0rvshdk3do46" path="res://scenes/quests/laberinto/Objetos/Escenas/vida.gd" id="1_3oco3"]
 [ext_resource type="Texture2D" uid="uid://c7syvx63fgn72" path="res://scenes/quests/laberinto/sprite_laberinto/vida/healer idle.png" id="2_m6gob"]
@@ -376,10 +376,11 @@ size = Vector2(43.875, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u2l2"]
 radius = 27.504545
 
-[node name="vida" type="StaticBody2D"]
+[node name="vida" type="StaticBody2D" unique_id=988703898]
 script = ExtResource("1_3oco3")
+interaction_time = 2.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1204440684]
 texture_filter = 1
 position = Vector2(-1, -8)
 scale = Vector2(0.236736, 0.147532)
@@ -388,19 +389,19 @@ animation = &"cargando"
 frame = 19
 frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1044824400]
 position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_gk5y8")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=490710968]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1832029966]
 position = Vector2(0, -11)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_5u2l2")
 debug_color = Color(0.387537, 0.974723, 0.327388, 0.42)
 
-[node name="ui_container" type="Control" parent="."]
+[node name="ui_container" type="Control" parent="." unique_id=1376321090]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
@@ -408,7 +409,7 @@ offset_top = -58.0
 offset_right = 58.0
 offset_bottom = -30.0
 
-[node name="ProgressBar" type="ProgressBar" parent="ui_container"]
+[node name="ProgressBar" type="ProgressBar" parent="ui_container" unique_id=408862391]
 texture_filter = 1
 layout_mode = 0
 offset_left = -53.0
@@ -416,8 +417,9 @@ offset_top = 20.0
 offset_right = 99.0
 offset_bottom = 47.0
 scale = Vector2(0.6, 0.6)
+max_value = 50.0
 
-[node name="InteractLabel" type="Label" parent="ui_container"]
+[node name="InteractLabel" type="Label" parent="ui_container" unique_id=260517875]
 texture_filter = 1
 layout_mode = 0
 offset_left = -63.0
@@ -429,12 +431,12 @@ theme = ExtResource("4_3oco3")
 theme_override_font_sizes/font_size = 45
 text = "vida"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1112370769]
 position = Vector2(-12, 12)
 color = Color(0.862097, 0.858727, 1.15514e-06, 1)
 energy = 2.0
 shadow_enabled = true
 texture = ExtResource("3_3oco3")
 
-[node name="AudioOpen" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioOpen" type="AudioStreamPlayer2D" parent="." unique_id=1585129954]
 stream = ExtResource("4_u6jx3")

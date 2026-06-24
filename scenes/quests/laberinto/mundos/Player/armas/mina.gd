@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var explosion_radius := 80.0
-@export var base_damage := 12.0
+@export var explosion_radius := 100.0
+@export var base_damage := 30.0
 @export var knockback_force := 200.0
 @export var arm_time := 0.6
 @export var lifetime: float = 10.0

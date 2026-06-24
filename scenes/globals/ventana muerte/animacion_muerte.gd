@@ -9,10 +9,10 @@ func _ready() -> void:
 	efecto.play("idle")
 	sprite.animation_finished.connect(_on_animacion_terminada)
 
-func _on_animacion_terminada():
+func _on_animacion_terminada()-> void:
 	cambiar_escena()
 
-func cambiar_escena():
+func cambiar_escena()-> void:
 	if next_scene_path == "":
 		print("❌ No asignaste escena")
 		return

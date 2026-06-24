@@ -4,18 +4,17 @@ extends Node2D
 @export var spawn_point: Node2D
 @export var facing_node: Node2D
 
-@export var use_cooldown := 10.0
+@export var use_cooldown := 5.0
 
 var cooldown_timer := 0.0
 
 var move_input := Vector2.ZERO
 
 
-func _ready():
-	print("Spawner listo")
 
 
-func _process(delta):
+
+func _process(delta)-> void:
 
 	# =========================================
 	# BAJAR COOLDOWN

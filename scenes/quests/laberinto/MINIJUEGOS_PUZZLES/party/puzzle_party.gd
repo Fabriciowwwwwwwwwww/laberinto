@@ -5,7 +5,7 @@ var porcentaje: float = 0.0
 var jugando := false
 @onready var cinematica = $"../../cinematica_party"
 var distancia_max := 120
-
+var lista_ui: Array = []
 # ⏱️ UI
 @onready var cronometro: Timer = $Cronometro
 @onready var label_cronometro: Label = %CronometroLabel
@@ -18,7 +18,7 @@ var distancia_max := 120
 # 🧠 DATA
 var objetos: Array = []
 var solucion_actual: Array = []
-var tiempo_restante := 45
+var tiempo_restante := 50
 
 # -------------------------
 func _ready():
@@ -72,7 +72,7 @@ func _input(event):
 
 		if objeto_agarrado == null:
 
-			objeto_agarrado = objetos[objeto_seleccionado]
+			objeto_agarrado = lista_ui[objeto_seleccionado]
 
 			objeto_agarrado.iniciar_control_mando()
 
@@ -98,20 +98,20 @@ func _input(event):
 		await evaluar_resultado()
 func seleccionar_objeto(indice:int):
 
-	if objetos.is_empty():
+	if lista_ui.is_empty():
 		return
 
 	if indice < 0:
-		indice = objetos.size() - 1
+		indice = lista_ui.size() - 1
 
-	if indice >= objetos.size():
+	if indice >= lista_ui.size():
 		indice = 0
 
 	objeto_seleccionado = indice
 
-	for i in range(objetos.size()):
+	for i in range(lista_ui.size()):
 
-		var obj = objetos[i]
+		var obj = lista_ui[i]
 
 		if not is_instance_valid(obj):
 			continue
@@ -192,24 +192,30 @@ func configurar_slots():
 func _iniciar_juego():
 	print("🎮 INICIANDO JUEGO")
 
+	construir_lista_ui()
 	generar_objetos_desordenados()
 
 	jugando = true
-	tiempo_restante = 30
-	label_cronometro.text = "Tiempo: 30"
-	
+
 	for item in objetos:
 		if is_instance_valid(item):
 			item.set_process_input(true)
-	
-	cronometro.start()
-	set_process(true)
 
+	iniciar_timer() # 🔥 AQUÍ
+
+	set_process(true)
+func construir_lista_ui():
+	lista_ui = objetos.duplicate()
+
+	lista_ui.sort_custom(func(a, b):
+		return a.id_correcto < b.id_correcto
+	)
 # -------------------------
 func manejar_derrota():
 	print("💀 DERROTA")
-
+	cronometro.stop()
 	jugando = false
+	tiempo_restante = 0
 	cronometro.stop()
 	set_process(false)
 
@@ -249,9 +255,21 @@ func generar_objetos_desordenados():
 			item.global_position = item.posicion_inicial
 			print("📦 Objeto movido a:", item.global_position)
 			y_offset += 130
+func iniciar_timer():
+	tiempo_restante = 50
+	label_cronometro.text = "Tiempo: " + str(tiempo_restante)
 
+	if cronometro.is_stopped():
+		cronometro.start()
+	else:
+		cronometro.stop()
+		cronometro.start()
+
+	print("⏱️ Timer reiniciado")
 # -------------------------
 func evaluar_resultado():
+	if not jugando:
+		return
 	print("📊 Evaluando resultado")
 
 	var correctos: int = 0
@@ -321,15 +339,19 @@ func _on_timer_tick():
 	if not jugando:
 		return
 
+	if tiempo_restante <= 0:
+		return
+
 	tiempo_restante -= 1
+
 	label_cronometro.text = "Tiempo: " + str(tiempo_restante)
 
 	print("⏱️ Tiempo restante:", tiempo_restante)
 
 	if tiempo_restante <= 0:
+		tiempo_restante = 0
 		print("⌛ Tiempo agotado")
 		await evaluar_resultado()
-
 # -------------------------
 func _on_aceptar_pressed():
 	print("🟢 Botón evaluar presionado")
