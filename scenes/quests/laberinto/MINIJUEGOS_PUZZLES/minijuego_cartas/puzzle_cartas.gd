@@ -454,7 +454,7 @@ func mostrar_cartas():
 	for c in cartas_nodos:
 		c.visible = true
 
-func ocultar_cartas():
+func ocultar_cartas()-> void:
 	for c in cartas_nodos:
 		c.visible = false
 

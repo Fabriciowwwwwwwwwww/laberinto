@@ -254,7 +254,7 @@ func update_stamina_bar() -> void:
 		else:
 			style.bg_color = Color(0.8, 0.2, 0.2, 1.0)
 
-func actualizar_pistola():
+func actualizar_pistola()-> void:
 
 	var stick := Vector2(
 		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
@@ -485,7 +485,7 @@ func handle_stamina(delta: float) -> void:
 
 	update_stamina_bar()
 	# Guardar el estado del jugador
-func aplicar_skin():
+func aplicar_skin()-> void:
 	if GameStateSkin.skin_actual:
 		animated_sprite_2d.sprite_frames = GameStateSkin.skin_actual
 		animated_sprite_2d.play("idle")

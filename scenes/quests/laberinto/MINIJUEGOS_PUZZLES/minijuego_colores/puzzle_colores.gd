@@ -81,7 +81,7 @@ var juego_terminado := false
 # READY
 # =========================
 
-func _ready():
+func _ready()-> void:
 	sliders = [slider_r, slider_g, slider_b]
 	configurar_mando()
 	set_process(true)
@@ -96,7 +96,7 @@ func _ready():
 # SLIDERS
 # =========================
 
-func inicializar_sliders():
+func inicializar_sliders()-> void:
 	# ⚠️ Sliders sin foco del sistema → se controlan solo manualmente
 	slider_r.focus_mode = Control.FOCUS_NONE
 	slider_g.focus_mode = Control.FOCUS_NONE
@@ -283,7 +283,7 @@ func iniciar_ronda():
 	intro_terminada = true
 
 	await mostrar_juego()
-func mostrar_juego():
+func mostrar_juego()-> void:
 	$CanvasLayer/juego.visible = true
 	$CanvasLayer/BottomUI.visible = true
 	$CanvasLayer/referencia.visible = true
@@ -341,7 +341,7 @@ func _process(delta):
 # ESCENA RANDOM
 # =========================
 
-func seleccionar_escena_random():
+func seleccionar_escena_random()-> void:
 	if escenas_solucion.is_empty():
 		push_error("❌ No hay escenas solución")
 		return
@@ -354,7 +354,7 @@ func seleccionar_escena_random():
 # REFERENCIA (CORRECTA)
 # =========================
 
-func crear_referencia():
+func crear_referencia()-> void:
 	for c in contenedor_referencia.get_children():
 		c.queue_free()
 
@@ -373,7 +373,7 @@ func crear_referencia():
 # PUZZLE VISUAL (GRIS)
 # =========================
 
-func crear_puzzle_visual():
+func crear_puzzle_visual()-> void:
 
 	for c in contenedor_juego.get_children():
 		c.queue_free()
@@ -423,7 +423,7 @@ func crear_puzzle_visual():
 # BOTONES
 # =========================
 
-func conectar_botones():
+func conectar_botones()-> void:
 	var botones = $CanvasLayer/BottomUI/SelectorGrupos.get_children()
 
 	for i in range(botones.size()):
@@ -437,7 +437,7 @@ func conectar_botones():
 # SELECCIONAR GRUPO
 # =========================
 
-func seleccionar_grupo(id):
+func seleccionar_grupo(id)-> void:
 	# guardar color actual antes de cambiar
 	colores_guardados[grupo_actual] = Color(
 		slider_r.value,
@@ -468,7 +468,7 @@ func seleccionar_grupo(id):
 # CAMBIO COLOR
 # =========================
 
-func _on_slider_changed(_value):
+func _on_slider_changed(_value)-> void:
 	color_actual = Color(
 		slider_r.value,
 		slider_g.value,
@@ -482,7 +482,7 @@ func _on_slider_changed(_value):
 # ACTUALIZAR LABELS RGB
 # =========================
 
-func actualizar_labels_rgb():
+func actualizar_labels_rgb()-> void:
 	var r = int(slider_r.value * 255)
 	var g = int(slider_g.value * 255)
 	var b = int(slider_b.value * 255)
@@ -495,7 +495,7 @@ func actualizar_labels_rgb():
 # PINTAR
 # =========================
 
-func pintar_grupo_actual():
+func pintar_grupo_actual()-> void:
 	print("\n🖌️ Pintando grupo:", grupo_actual)
 
 	var encontradas := 0
@@ -516,7 +516,7 @@ func pintar_grupo_actual():
 # VALIDAR
 # =========================
 
-func validar():
+func validar()-> void:
 
 	if juego_terminado:
 		return
@@ -535,7 +535,7 @@ func validar():
 			continue
 
 		var color_jugador = estado_actual[id]
-		var color_real = solucion[id]
+		var color_real: Color = solucion[id]
 
 		var precision = calcular_precision_color(
 			color_jugador,
@@ -602,7 +602,7 @@ func colores_similares(a: Color, b: Color, tolerancia := 0.18):
 # LIMPIAR
 # =========================
 
-func limpiar_zonas_reales():
+func limpiar_zonas_reales()-> void:
 	for zona in zonas_reales.get_children():
 		if zona.has_method("resetear"):
 			zona.resetear()
@@ -611,8 +611,7 @@ func limpiar_zonas_reales():
 # DERROTA
 # =========================
 
-func derrota():
-	print("💀 DERROTA")
+func derrota()-> void:
 	label_resultado.text = "❌ Fallaste"
 	await cinematica.ejecutar_derrota()
 	iniciar_ronda()
@@ -621,15 +620,14 @@ func derrota():
 # VICTORIA
 # =========================
 
-func victoria():
-	print("🏆 VICTORIA")
+func victoria()-> void:
 	await cinematica.ejecutar_victoria()
 
 # =========================
 # CRONÓMETRO UI
 # =========================
 
-func actualizar_cronometro():
+func actualizar_cronometro()-> void:
 	var segundos = int(ceil(tiempo_actual))
 	cronometrolabel.text = str(segundos)
 
@@ -640,12 +638,10 @@ func actualizar_cronometro():
 func get_escena_solucion():
 	return escena_actual
 
-func ocultar_cronometro():
-	pass
 
-func mostrar_cronometro():
-	pass
-func actualizar_slider_seleccionado():
+
+
+func actualizar_slider_seleccionado()-> void:
 
 	for i in range(sliders.size()):
 
@@ -653,9 +649,8 @@ func actualizar_slider_seleccionado():
 			sliders[i].modulate = Color.WHITE
 		else:
 			sliders[i].modulate = Color(0.7, 0.7, 0.7, 1)
-func reiniciar_ronda():
+func reiniciar_ronda()-> void:
 
-	print("🔄 REINICIANDO")
 
 	intro_terminada = false
 

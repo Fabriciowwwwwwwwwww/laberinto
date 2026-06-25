@@ -70,7 +70,7 @@ func _ready() -> void:
 	actualizar_seleccion()
 
 
-func _physics_process(_delta):
+func _physics_process(_delta)-> void:
 
 	# =========================================
 	# NAVEGACIÓN JOYSTICK
@@ -100,7 +100,7 @@ func _physics_process(_delta):
 		activar_zona(zona_actual)
 
 
-func actualizar_seleccion():
+func actualizar_seleccion()-> void:
 
 	for i in range(1, zonas_totales + 1):
 

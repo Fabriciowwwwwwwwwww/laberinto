@@ -14,7 +14,7 @@ var is_armed := false
 var arm_timer := 0.0
 
 
-func _ready():
+func _ready()-> void:
 	visible = false
 	set_physics_process(false)
 
@@ -29,7 +29,7 @@ func _ready():
 		print("⏰ Tiempo agotado")
 		explode()
 
-func launch(dir: Vector2, pos: Vector2):
+func launch(dir: Vector2, pos: Vector2)-> void:
 
 	global_position = pos
 
@@ -48,7 +48,7 @@ func launch(dir: Vector2, pos: Vector2):
 
 
 
-func _physics_process(delta):
+func _physics_process(delta)-> void:
 	if not is_active:
 		return
 
@@ -60,7 +60,7 @@ func _physics_process(delta):
 
 
 
-func _on_body_entered(body):
+func _on_body_entered(body)-> void:
 	if not is_active or not is_armed:
 		return
 
@@ -69,7 +69,7 @@ func _on_body_entered(body):
 		explode()
 
 
-func explode():
+func explode()-> void:
 	print("💥 EXPLOSIÓN")
 
 	is_active = false
@@ -92,6 +92,6 @@ func explode():
 		_reset()
 
 
-func _reset():
+func _reset()-> void:
 	print("♻️ Mina eliminada")
 	queue_free()

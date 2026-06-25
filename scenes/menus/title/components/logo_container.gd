@@ -1,8 +1,8 @@
 extends Control
 
-func _ready():
+func _ready()-> void:
 	flotar()
-func flotar():
+func flotar()-> void:
 	var tween = create_tween()
 	tween.set_loops()
 	

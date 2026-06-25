@@ -5,7 +5,7 @@ var tracks: Array[AudioStream] = []
 var current_index := 0
 var playing_special := false
 
-func _ready():
+func _ready()-> void:
 	player = AudioStreamPlayer.new()
 	add_child(player)
 
@@ -32,7 +32,7 @@ func play_playlist(new_tracks: Array[AudioStream]):
 	
 	_play_current()
 
-func _play_current():
+func _play_current()-> void:
 	if tracks.is_empty():
 		return
 	
@@ -42,7 +42,7 @@ func _play_current():
 # -------------------------
 # LOOP
 # -------------------------
-func _on_music_finished():
+func _on_music_finished()-> void:
 	if playing_special:
 		playing_special = false
 		current_index = 0
@@ -54,7 +54,7 @@ func _on_music_finished():
 # -------------------------
 # SPECIAL
 # -------------------------
-func play_special(track: AudioStream):
+func play_special(track: AudioStream)-> void:
 	if not track:
 		return
 	
@@ -65,10 +65,10 @@ func play_special(track: AudioStream):
 # -------------------------
 # FADE
 # -------------------------
-func fade_out(duration := 1.0):
+func fade_out(duration := 1.0)-> void:
 	var tween = get_tree().create_tween()  # 🔥 más seguro
 	tween.tween_property(player, "volume_db", -40, duration)
 
-func fade_in(duration := 1.0):
+func fade_in(duration := 1.0)-> void:
 	var tween = get_tree().create_tween()  # 🔥 más seguro
 	tween.tween_property(player, "volume_db", 0, duration)

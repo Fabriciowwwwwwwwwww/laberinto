@@ -7,7 +7,7 @@ var last_touch_pos: Vector2 = Vector2.ZERO
 var usando_touch := false
 
 
-func _input(event):
+func _input(event)-> void:
 	# 📱 detectar dedo
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		last_touch_pos = event.position

@@ -21,7 +21,7 @@ var solucion_actual: Array = []
 var tiempo_restante := 50
 
 # -------------------------
-func _ready():
+func _ready()-> void:
 	print("🚀 READY puzzle_party")
 
 	add_to_group("puzzle_party")
@@ -51,7 +51,7 @@ func _ready():
 
 	# 3. Esperar intro
 	await iniciar_intro()
-func _input(event):
+func _input(event)-> void:
 
 	if not jugando:
 		return
@@ -96,7 +96,7 @@ func _input(event):
 			return
 
 		await evaluar_resultado()
-func seleccionar_objeto(indice:int):
+func seleccionar_objeto(indice:int)-> void:
 
 	if lista_ui.is_empty():
 		return
@@ -121,16 +121,16 @@ func seleccionar_objeto(indice:int):
 		else:
 			obj.scale = Vector2.ONE
 # -------------------------
-func ocultar_cronometro():
+func ocultar_cronometro()-> void:
 	print("🙈 Ocultando cronómetro")
 	label_cronometro.visible = false
 
-func mostrar_cronometro():
+func mostrar_cronometro()-> void:
 	print("👁️ Mostrando cronómetro")
 	label_cronometro.visible = true
 
 # -------------------------
-func iniciar_intro():
+func iniciar_intro()-> void:
 	print("🎬 Iniciando intro")
 	if cinematica.has_method("ejecutar_secuencia_intro"):
 		await cinematica.ejecutar_secuencia_intro()
@@ -139,7 +139,7 @@ func iniciar_intro():
 	_iniciar_juego()
 
 # -------------------------
-func generar_solucion():
+func generar_solucion()-> void:
 	print("🔀 Generando solución")
 
 	solucion_actual = objetos.duplicate()
@@ -152,7 +152,7 @@ func generar_solucion():
 			print("✔️ Objeto asignado id:", i)
 
 # -------------------------
-func configurar_slots():
+func configurar_slots()-> void:
 	var screen_size = get_viewport_rect().size
 	var margen := 120
 	var distancia_min := 180 # 🔥 ajusta esto a tu gusto
@@ -189,7 +189,7 @@ func configurar_slots():
 		slot.global_position = pos
 
 # -------------------------
-func _iniciar_juego():
+func _iniciar_juego()-> void:
 	print("🎮 INICIANDO JUEGO")
 
 	construir_lista_ui()
@@ -204,14 +204,14 @@ func _iniciar_juego():
 	iniciar_timer() # 🔥 AQUÍ
 
 	set_process(true)
-func construir_lista_ui():
+func construir_lista_ui()-> void:
 	lista_ui = objetos.duplicate()
 
 	lista_ui.sort_custom(func(a, b):
 		return a.id_correcto < b.id_correcto
 	)
 # -------------------------
-func manejar_derrota():
+func manejar_derrota()-> void:
 	print("💀 DERROTA")
 	cronometro.stop()
 	jugando = false
@@ -244,7 +244,7 @@ func manejar_derrota():
 	_iniciar_juego()
 
 # -------------------------
-func generar_objetos_desordenados():
+func generar_objetos_desordenados()-> void:
 	print("🧩 Desordenando objetos")
 
 	var y_offset := 0
@@ -255,7 +255,7 @@ func generar_objetos_desordenados():
 			item.global_position = item.posicion_inicial
 			print("📦 Objeto movido a:", item.global_position)
 			y_offset += 130
-func iniciar_timer():
+func iniciar_timer()-> void:
 	tiempo_restante = 50
 	label_cronometro.text = "Tiempo: " + str(tiempo_restante)
 
@@ -267,7 +267,7 @@ func iniciar_timer():
 
 	print("⏱️ Timer reiniciado")
 # -------------------------
-func evaluar_resultado():
+func evaluar_resultado()-> void:
 	if not jugando:
 		return
 	print("📊 Evaluando resultado")
@@ -335,7 +335,7 @@ func evaluar_resultado():
 		await manejar_derrota()
 
 # -------------------------
-func _on_timer_tick():
+func _on_timer_tick()-> void:
 	if not jugando:
 		return
 
@@ -353,13 +353,13 @@ func _on_timer_tick():
 		print("⌛ Tiempo agotado")
 		await evaluar_resultado()
 # -------------------------
-func _on_aceptar_pressed():
+func _on_aceptar_pressed()-> void:
 	print("🟢 Botón evaluar presionado")
 	if jugando:
 		evaluar_resultado()
 
 # -------------------------
-func resetear_slots_visual():
+func resetear_slots_visual()-> void:
 	print("🎨 Reseteando color de slots")
 
 	for slot in slots:

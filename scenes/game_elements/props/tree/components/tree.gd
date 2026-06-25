@@ -34,7 +34,7 @@ func _set_sprite_frames(new_sprite_frames: SpriteFrames) -> void:
 	animated_sprite_2d.play(animated_sprite_2d.animation)
 
 
-func sacudir():
+func sacudir()-> void:
 	if activo:
 		return
 

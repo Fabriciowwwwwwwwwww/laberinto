@@ -13,7 +13,7 @@ extends Node2D
 
 var solucion_generada := {}
 
-func generar_colores():
+func generar_colores()-> void:
 
 	solucion_generada.clear()
 

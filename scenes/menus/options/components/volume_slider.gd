@@ -8,12 +8,11 @@ func _ready() -> void:
 	min_value = -40
 	max_value = 0
 	step = 0.1
-	
-	value_changed.connect(_on_value_changed)
-	
+
+	if not value_changed.is_connected(_on_value_changed):
+		value_changed.connect(_on_value_changed)
+
 	_refresh()
-	
-	# 🔥 APLICAR el valor al iniciar
 	_on_value_changed(value)
 
 

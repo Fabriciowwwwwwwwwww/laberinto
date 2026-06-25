@@ -6,13 +6,13 @@ var color_actual: Color = Color.WHITE
 
 # 🔥 IMPORTANTE
 # NO resetear automáticamente aquí
-func _ready():
+func _ready()-> void:
 	color_actual = color
 
 # =========================
 # APLICAR COLOR
 # =========================
-func aplicar_color(nuevo_color):
+func aplicar_color(nuevo_color)-> void:
 
 	modulate = Color.WHITE
 
@@ -22,7 +22,7 @@ func aplicar_color(nuevo_color):
 # =========================
 # RESET
 # =========================
-func resetear():
+func resetear()-> void:
 
 	texture = null
 	modulate = Color.WHITE

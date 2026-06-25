@@ -14,9 +14,7 @@ var is_interacting: bool:
 @onready var luz := get_parent().get_node_or_null("PointLight2D")
 @onready var cam_player: Camera2D = get_parent().get_node_or_null("Camera2D")
 
-func _ready():
-	# Ya no configuramos cámaras aquí, la Intro se encarga.
-	pass
+
 
 func _get_is_interacting() -> bool:
 	return not interact_zone.monitoring

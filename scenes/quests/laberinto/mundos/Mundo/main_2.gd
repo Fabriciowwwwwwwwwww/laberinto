@@ -4,7 +4,7 @@ extends Node2D
 @export var player_scene_path: String = "res://scenes/quests/story_quests/template_laberinto/1_template_stealth_laberinto/Player/player.tscn"
 @onready var start_position: Marker2D = $StartPosition  # Nodo Position2D que indica donde aparecerá el jugador
 
-func _ready():
+func _ready()-> void:
 	var scene = load(player_scene_path)
 	if scene:
 		var jugador = scene.instantiate()

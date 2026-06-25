@@ -5,12 +5,12 @@ extends Node2D
 @export var radio_max: float = 300.0
 @export var max_enemigos: int = 11
 @onready var jugador = get_tree().get_first_node_in_group("player")
-func _ready():
+func _ready()-> void:
 	spawn_enemigos()
 	$Timer.wait_time = tiempo_entre_oleadas
 	$Timer.timeout.connect(_on_Timer_timeout) # <- Asegura conexión
 	$Timer.start()
-func _on_Timer_timeout():
+func _on_Timer_timeout()-> void:
 	spawn_enemigos()
 
 func contar_enemigos_actuales() -> int:

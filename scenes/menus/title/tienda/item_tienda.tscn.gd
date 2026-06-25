@@ -6,7 +6,7 @@ extends Control
 @export var sprite_frames: SpriteFrames  # 👈 EL .tres
 @export var nombre_skin: String
 
-func _ready():
+func _ready()-> void:
 	custom_minimum_size = Vector2(150, 150)
 
 	icono.expand = true

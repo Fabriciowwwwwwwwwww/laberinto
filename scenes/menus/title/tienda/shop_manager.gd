@@ -36,7 +36,7 @@ var pagina_actual := 0
 var items_por_pagina := 8
 
 # -------------------------
-func _ready():
+func _ready()-> void:
 	items_por_pagina = columnas * filas_visibles
 
 	# 🔥 FORZAR POSICIÓN INICIAL
@@ -49,7 +49,7 @@ func _ready():
 
 	animar_entrada()
 
-func animar_entrada():
+func animar_entrada()-> void:
 	var tween = create_tween()
 
 	# 🔥 delay opcional
@@ -60,7 +60,7 @@ func animar_entrada():
 		.set_trans(tipo_transicion)\
 		.set_ease(tipo_ease)
 # -------------------------
-func _input(event):
+func _input(event)-> void:
 
 	if event.is_action_pressed("ui_right"):
 		cambiar_categoria(1)
@@ -80,7 +80,7 @@ func _input(event):
 	elif event.is_action_pressed("undo"):
 		_on_comprar_button_pressed()
 # -------------------------
-func cambiar_categoria(dir):
+func cambiar_categoria(dir)-> void:
 	categoria_actual = (categoria_actual + dir) % 3
 	if categoria_actual < 0:
 		categoria_actual = 2
@@ -91,7 +91,7 @@ func cambiar_categoria(dir):
 	cargar_categoria()
 
 # -------------------------
-func cargar_categoria():
+func cargar_categoria()-> void:
 	# limpiar
 	for c in content.get_children():
 		c.queue_free()
@@ -144,7 +144,7 @@ func cargar_categoria():
 	actualizar_vista()
 	actualizar_preview()
 # -------------------------
-func mover(dir):
+func mover(dir)-> void:
 	if lista_actual.is_empty():
 		return
 
@@ -167,7 +167,7 @@ func mover(dir):
 	actualizar_preview()
 
 # -------------------------
-func actualizar_vista():
+func actualizar_vista()-> void:
 	var inicio = pagina_actual * items_por_pagina
 	var fin_real = min(inicio + items_por_pagina, lista_actual.size())
 
@@ -241,10 +241,10 @@ func actualizar_preview():
 	anim.scale = Vector2(0.4, 0.4)
 
 # -------------------------
-func seleccionar():
+func seleccionar()-> void:
 	print("[SHOP]: Seleccionado:", indice)
 
-func _on_comprar_button_pressed():
+func _on_comprar_button_pressed()-> void:
 	print("🛒 Comprar presionado")
 
 	if indice < 0 or indice >= content.get_child_count():
@@ -276,7 +276,7 @@ func _on_comprar_button_pressed():
 		)
 	else:
 		print("❌ Ruta inválida")
-func _on_item_hover(i):
+func _on_item_hover(i)-> void:
 	if indice != i:
 		indice = i
 		pagina_actual = int(indice / items_por_pagina)
@@ -287,7 +287,7 @@ func _on_item_hover(i):
 		actualizar_vista()
 		actualizar_preview()
 		
-func _on_item_click(event, i):
+func _on_item_click(event, i)-> void:
 	if event is InputEventMouseButton and event.pressed:
 		indice = i
 		seleccionar()

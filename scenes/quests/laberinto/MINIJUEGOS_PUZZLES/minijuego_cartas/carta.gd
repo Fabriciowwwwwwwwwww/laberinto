@@ -24,7 +24,7 @@ var seleccionada := false
 # -------------------------
 # READY
 # -------------------------
-func _ready():
+func _ready()-> void:
 	escala_original = scale
 	
 	randomizar_simbolo() # 🔥 CLAVE
@@ -36,7 +36,7 @@ func _ready():
 # -------------------------
 # RANDOM SIMBOLO
 # -------------------------
-func randomizar_simbolo():
+func randomizar_simbolo()-> void:
 	var random_index = randi() % simbolos.size()
 	simbolo = simbolos[random_index]
 	
@@ -45,7 +45,7 @@ func randomizar_simbolo():
 # -------------------------
 # RESET VISUAL
 # -------------------------
-func resetear():
+func resetear()-> void:
 	seleccionada = false
 	scale = escala_original
 	modulate = Color(1,1,1)
@@ -56,7 +56,7 @@ func resetear():
 # -------------------------
 # HOVER
 # -------------------------
-func _on_mouse_entered():
+func _on_mouse_entered()-> void:
 	if tween:
 		tween.kill()
 	
@@ -65,7 +65,7 @@ func _on_mouse_entered():
 	tween.tween_property(self, "scale", escala_original * 1.1, 0.15)
 	tween.parallel().tween_property(self, "modulate", Color(1.2,1.2,1.2), 0.15)
 
-func _on_mouse_exited():
+func _on_mouse_exited()-> void:
 	if tween:
 		tween.kill()
 	
@@ -80,7 +80,7 @@ func _on_mouse_exited():
 # -------------------------
 # CLICK
 # -------------------------
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(viewport, event, shape_idx)-> void:
 	if event is InputEventMouseButton and event.pressed:
 		
 		seleccionada = !seleccionada
@@ -93,7 +93,7 @@ func _on_input_event(viewport, event, shape_idx):
 		var puzzle = get_tree().get_first_node_in_group("puzzle")
 		if puzzle:
 			puzzle.seleccionar_carta(index)
-func seleccionar_desde_mando():
+func seleccionar_desde_mando()-> void:
 
 	if tween:
 		tween.kill()
@@ -106,7 +106,7 @@ func seleccionar_desde_mando():
 		modulate = Color(1.2,1.2,1.2)
 
 
-func deseleccionar_desde_mando():
+func deseleccionar_desde_mando()-> void:
 
 	if tween:
 		tween.kill()
@@ -117,7 +117,7 @@ func deseleccionar_desde_mando():
 		modulate = Color(1.5,1.5,0.8)
 	else:
 		modulate = Color(1,1,1)
-func activar_desde_mando():
+func activar_desde_mando()-> void:
 
 	seleccionada = !seleccionada
 

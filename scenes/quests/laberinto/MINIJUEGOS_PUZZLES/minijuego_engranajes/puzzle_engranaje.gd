@@ -270,7 +270,7 @@ func _on_texture_button_pressed() -> void:
 		print("⚠️ Mueve al menos un engranaje")
 		return
 	await check_solution()
-func seleccionar_engranaje(indice:int):
+func seleccionar_engranaje(indice:int)-> void:
 
 	if gears.is_empty():
 		return

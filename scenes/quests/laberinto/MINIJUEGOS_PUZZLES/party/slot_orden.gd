@@ -11,7 +11,7 @@ enum Estado {
 
 var estado_actual: Estado = Estado.GRIS
 
-func _ready():
+func _ready()-> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_to_group("slot")
 
@@ -48,11 +48,11 @@ func evaluar(objetos, distancia_max):
 		return false
 
 # -------------------------
-func reset_visual():
+func reset_visual()-> void:
 	estado_actual = Estado.GRIS
 
 # -------------------------
-func _draw():
+func _draw()-> void:
 	var color := Color(0.5, 0.5, 0.5, 0.5) # gris por defecto
 
 	match estado_actual:
@@ -66,5 +66,5 @@ func _draw():
 	draw_circle(size / 2, 35, color)
 
 # -------------------------
-func _process(_delta):
+func _process(_delta)-> void:
 	queue_redraw()

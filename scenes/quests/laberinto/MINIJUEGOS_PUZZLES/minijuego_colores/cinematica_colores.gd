@@ -57,7 +57,7 @@ func ejecutar_derrota():
 # VICTORIA
 # =========================
 
-func ejecutar_victoria():
+func ejecutar_victoria()-> void:
 
 	await reproducir_dialogo(dialogue_ganar)
 

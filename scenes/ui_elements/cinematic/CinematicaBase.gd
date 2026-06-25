@@ -34,19 +34,19 @@ func reproducir_dialogo(recurso: DialogueResource) -> void:
 	MusicManager.fade_in(1.0)
 
 # Métodos que los hijos pueden usar o sobreescribir
-func ejecutar_secuencia_intro():
+func ejecutar_secuencia_intro()-> void:
 	await reproducir_dialogo(dialogue_intro)
 	marcar_como_vista()
 	cinematica_terminada.emit()
 
-func marcar_como_vista():
+func marcar_como_vista()-> void:
 	if reproducir_una_vez:
 		Gamestateminijuegos.cinematicas_vistas[id_cinematica] = true
 
-func cambiar_escena():
+func cambiar_escena()-> void:
 	if next_scene != "":
 		SceneSwitcher2.change_to_file_with_transition(next_scene, spawn_point_path)
 
-func _finalizar_directo():
+func _finalizar_directo()-> void:
 	print("⏭️ Cinemática saltada (ya vista)")
 	cinematica_terminada.emit()

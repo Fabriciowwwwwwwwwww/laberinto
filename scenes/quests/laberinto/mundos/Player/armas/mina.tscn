@@ -1,47 +1,16 @@
 [gd_scene format=3 uid="uid://c1i80066ra7oa"]
 
 [ext_resource type="Script" uid="uid://bocomsxgeqk21" path="res://scenes/quests/laberinto/mundos/Player/armas/mina.gd" id="1_kht74"]
-[ext_resource type="Texture2D" uid="uid://bgi0acljk0ut7" path="res://assets/third_party/tiny-swords/Effects/Explosion/Explosions.png" id="2_57xkl"]
+[ext_resource type="Texture2D" uid="uid://bkwhr777vossm" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_1.png" id="2_mveu0"]
 [ext_resource type="Texture2D" uid="uid://dsbp3yn1n68pq" path="res://scenes/quests/laberinto/sprite_laberinto/player sprite/personaje 5/bomba.png" id="3_kht74"]
+[ext_resource type="Texture2D" uid="uid://duyl7dquawm65" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_2.png" id="3_l5rgk"]
+[ext_resource type="Texture2D" uid="uid://cxclutw0k851d" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_3.png" id="4_wkjop"]
+[ext_resource type="Texture2D" uid="uid://cn7o86lwnw2ru" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_4.png" id="5_gxpt2"]
+[ext_resource type="Texture2D" uid="uid://bresepnf51cdy" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_5.png" id="6_gekuo"]
+[ext_resource type="Texture2D" uid="uid://cwnl465sbrvj3" path="res://scenes/quests/laberinto/sprite_laberinto/Particulas/explosion_6.png" id="7_2eeon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxom7"]
-radius = 8.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kht74"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(0, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57xkl"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(640, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_atjji"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(1280, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxom7"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(1920, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_202wc"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(2560, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aitvk"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(3200, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mfb7"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(3840, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxfxn"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(4480, 0, 640, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwbj2"]
-atlas = ExtResource("2_57xkl")
-region = Rect2(5120, 0, 640, 640)
+radius = 15.033297
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yytns"]
 atlas = ExtResource("3_kht74")
@@ -147,35 +116,26 @@ region = Rect2(756, 592, 189, 148)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kht74")
+"texture": ExtResource("2_mveu0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_57xkl")
+"texture": ExtResource("3_l5rgk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_atjji")
+"texture": ExtResource("4_wkjop")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wxom7")
+"texture": ExtResource("5_gxpt2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_202wc")
+"texture": ExtResource("6_gekuo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aitvk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mfb7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mxfxn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwbj2")
+"texture": ExtResource("7_2eeon")
 }],
 "loop": false,
 "name": &"explosion",
-"speed": 15.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -267,11 +227,11 @@ base_damage = 80.0
 shape = SubResource("CircleShape2D_wxom7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1693823317]
-position = Vector2(2, 0)
-scale = Vector2(0.19769295, 0.15799817)
+position = Vector2(-0.9999993, 2.3841858e-07)
+scale = Vector2(0.33778304, 0.31990492)
 sprite_frames = SubResource("SpriteFrames_gxpt2")
 animation = &"explosion"
-frame = 8
+frame = 5
 frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

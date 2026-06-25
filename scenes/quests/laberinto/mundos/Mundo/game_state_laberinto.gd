@@ -42,7 +42,7 @@ func is_objeto_destruido(obj_id: String) -> bool:
 	return obj_id in objetos_destruidos
 
 # Reiniciar todo el juego
-func reset():
+func reset()-> void:
 	player_position = Vector2.ZERO
 	player_health = 100.0
 	player_inventory.clear()

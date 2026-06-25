@@ -52,7 +52,7 @@ func _ready() -> void:
 	navigation_agent.max_speed = RUN_SPEED
 
 	call_deferred("setup_navigation")
-func aplicar_knockback(dir: Vector2, fuerza: float):
+func aplicar_knockback(dir: Vector2, fuerza: float)-> void:
 	knockback_velocity = dir * fuerza
 	knockback_time = 0.5 # duración del empuje
 	puede_moverse = false
@@ -82,7 +82,7 @@ func recibir_daño(cantidad: int) -> void:
 		animated_sprite_2d.play("golpeado")
 
 	timer_golpe.start()  # ✅ AQUÍ está la clave
-func _fin_golpe():
+func _fin_golpe()-> void:
 	puede_moverse = true
 	en_cooldown_golpe = false
 
@@ -273,7 +273,7 @@ func await_tiempo_seguro(segundos: float) -> bool:
 
 func _on_jugador_muerto() -> void:
 	morir()
-func actualizar_ui_vida():
+func actualizar_ui_vida()-> void:
 	vida_bar.max_value = vida_max
 	vida_bar.value = vida
 	vida_etiqueta.text = str(vida) + "/" + str(vida_max)

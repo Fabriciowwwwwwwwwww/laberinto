@@ -72,7 +72,7 @@ var tiempo_restante := 15
 # READY
 # =====================================================
 
-func _ready():
+func _ready()-> void:
 	boton_1.focus_mode = Control.FOCUS_ALL
 	boton_2.focus_mode = Control.FOCUS_ALL
 
@@ -88,7 +88,7 @@ func _ready():
 # =====================================================
 # INICIAR
 # =====================================================
-func actualizar_seleccion():
+func actualizar_seleccion()-> void:
 
 	if boton_seleccionado == -1:
 		get_viewport().gui_release_focus()
@@ -99,7 +99,7 @@ func actualizar_seleccion():
 
 	elif boton_seleccionado == 1:
 		boton_2.grab_focus()
-func iniciar_minijuego():
+func iniciar_minijuego()-> void:
 	controles_habilitados = false
 	boton_seleccionado = -1
 
@@ -182,7 +182,7 @@ func generar_horas():
 # CREAR ZONA
 # =====================================================
 
-func crear_zona(zona, angulo_objetivo):
+func crear_zona(zona, angulo_objetivo)-> void:
 
 	var inicio = deg_to_rad(
 		angulo_objetivo - rango_permitido
@@ -226,7 +226,7 @@ func crear_zona(zona, angulo_objetivo):
 # PROCESS
 # =====================================================
 
-func _process(delta):
+func _process(delta)-> void:
 
 	if juego_terminado:
 		return
@@ -314,7 +314,7 @@ func detener_reloj_1():
 # DETENER RELOJ 2
 # =====================================================
 
-func detener_reloj_2():
+func detener_reloj_2()-> void:
 
 	if detenido_2:
 		return
@@ -356,7 +356,7 @@ func detener_reloj_2():
 # VERIFICAR FINAL
 # =====================================================
 
-func verificar_final():
+func verificar_final()-> void:
 
 	# esperar ambos
 	if !detenido_1 or !detenido_2:
@@ -380,7 +380,7 @@ func verificar_final():
 		await get_tree().create_timer(1.0).timeout
 
 		reiniciar_puzzle()
-func reiniciar_puzzle():
+func reiniciar_puzzle()-> void:
 
 	juego_terminado = false
 
@@ -426,7 +426,7 @@ func reiniciar_puzzle():
 # TIMER
 # =====================================================
 
-func _on_timer_timeout():
+func _on_timer_timeout()-> void:
 
 	if juego_terminado:
 		return

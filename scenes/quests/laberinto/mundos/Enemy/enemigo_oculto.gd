@@ -48,7 +48,7 @@ func aparecer():
 	animated_sprite_2d.play("emerger")
 	await animated_sprite_2d.animation_finished
 
-	animated_sprite_2d.play("idle")
+	animated_sprite_2d.play("Mover")
 
 	emergiendo = false
 

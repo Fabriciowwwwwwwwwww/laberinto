@@ -34,7 +34,7 @@ func _process(delta)-> void:
 			try_place_mine()
 
 
-func try_place_mine():
+func try_place_mine()-> void:
 
 	print("Intentando colocar mina...")
 

@@ -10,7 +10,7 @@ var poison_preview: Node2D = null
 var selecting_poison := false
 
 
-func _physics_process(delta):
+func _physics_process(delta)-> void:
 
 	# =========================================
 	# BAJAR COOLDOWN

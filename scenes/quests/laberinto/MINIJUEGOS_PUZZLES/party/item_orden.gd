@@ -13,7 +13,7 @@ var posicion_inicial: Vector2  # 🔥 FALTABA ESTO
 var control_mando := false
 @export var velocidad_mando := 900.0
 # -------------------------
-func _ready():
+func _ready()-> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	top_level = true  # 🔥 CLAVE
 
@@ -23,7 +23,7 @@ func _ready():
 
 	if textura:
 		sprite.texture = textura
-func _process(delta):
+func _process(delta)-> void:
 
 	if not control_mando:
 		return
@@ -35,7 +35,7 @@ func _process(delta):
 
 	global_position += dir * velocidad_mando * delta
 # -------------------------
-func _gui_input(event):
+func _gui_input(event)-> void:
 
 	if event is InputEventMouseButton:
 
@@ -61,7 +61,7 @@ func _gui_input(event):
 		accept_event()
 
 # -------------------------
-func iniciar_control_mando():
+func iniciar_control_mando()-> void:
 
 	control_mando = true
 	z_index = 100
@@ -71,7 +71,7 @@ func iniciar_control_mando():
 		slot_actual = null
 
 
-func detener_control_mando():
+func detener_control_mando()-> void:
 
 	control_mando = false
 	z_index = 0
