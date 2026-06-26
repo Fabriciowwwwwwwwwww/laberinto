@@ -38,7 +38,7 @@ func _ready():
 	if not player:
 		return
 
-	iniciar_oleada()
+
 
 # =========================================================
 # INICIAR OLEADA

@@ -105,85 +105,76 @@ func aparecer():
 
 func _physics_process(delta):
 
-	# =====================================================
 	# UI VIDA
-	# =====================================================
-
 	if vida_etiqueta:
 		vida_etiqueta.global_position = global_position + Vector2(-25, -75)
 
 	if vida_bar:
 		vida_bar.global_position = global_position + Vector2(-40, -55)
 
-	# =====================================================
 	# ESCONDIDO
-	# =====================================================
-
 	if estado == Estado.ESCONDIDO:
 		return
 
-	# =====================================================
 	# EMERGIENDO
-	# =====================================================
-
 	if emergiendo:
-
 		velocity = Vector2.ZERO
 		move_and_slide()
-
 		return
 
-	# =====================================================
 	# HUYENDO
-	# =====================================================
-
 	if estado == Estado.HUYENDO:
 
-		navigation_agent.target_position = (punto_escape + offset_movimiento)
+		navigation_agent.target_position = punto_escape + offset_movimiento
 
 		if not navigation_agent.is_navigation_finished():
 
 			var next_pos = navigation_agent.get_next_path_position()
-
-			var dir = global_position.direction_to(
-				next_pos
-			)
+			var dir = global_position.direction_to(next_pos)
 
 			velocity = dir * velocidad_huida
 
-			move_and_slide()
+			# 🔥 FORZAR ANIMACIÓN SOLO MOVER
+			if animated_sprite_2d.animation != "Mover":
+				animated_sprite_2d.play("Mover")
 
 			if velocity.x != 0:
 				animated_sprite_2d.flip_h = velocity.x < 0
 
-		else:
+			move_and_slide()
 
+		else:
 			desaparecer()
 
 		return
 
-	# =====================================================
-	# IA NORMAL
-	# =====================================================
-# =====================================================
-# IA NORMAL
-# =====================================================
-
+	# IA NORMAL (PERSEGUIR)
 	if player and estado == Estado.PERSEGUIR:
 
-		navigation_agent.target_position = (
-			player.global_position + offset_movimiento
-		)
+		var distancia := global_position.distance_to(player.global_position)
 
-	super._physics_process(delta)
+		# 🔥 EVITA PEGARSE AL JUGADOR
+		if distancia <= rango_ataque:
+			# 🔥 NO lo congeles
+			# solo deja de recalcular path agresivo
+			navigation_agent.target_position = global_position
 
+			# deja que EnemyBase controle el ataque sin interferencia
+		else:
+			navigation_agent.target_position = player.global_position + offset_movimiento
+
+		super._physics_process(delta)
 # =========================================================
 # RECIBIR DAÑO
 # =========================================================
 
 func recibir_daño(cantidad: int) -> void:
 
+	# ❌ NO recibe daño si ya está fuera de combate
 	if estado == Estado.ESCONDIDO:
+		return
+
+	if estado == Estado.EMERGIENDO:
 		return
 
 	super.recibir_daño(cantidad)
@@ -193,18 +184,14 @@ func recibir_daño(cantidad: int) -> void:
 
 	var limite_huida = vida_max * porcentaje_huida
 
-	if vida <= limite_huida \
-	and estado != Estado.HUYENDO:
+	if vida <= limite_huida and estado != Estado.HUYENDO:
 
 		estado = Estado.HUYENDO
 
 		puede_moverse = false
 		puede_atacar = false
 
-		punto_escape = spawner_ref.obtener_esquina_escape(
-			id_sabueso
-		)
-
+		punto_escape = spawner_ref.obtener_esquina_escape(id_sabueso)
 # =========================================================
 # DESAPARECER
 # =========================================================
@@ -213,21 +200,17 @@ func desaparecer():
 
 	estado = Estado.ESCONDIDO
 
-	velocity = Vector2.ZERO
+	set_physics_process(false)
+	set_process(false)
 
+	velocity = Vector2.ZERO
 	navigation_agent.set_velocity(Vector2.ZERO)
 
-	if animated_sprite_2d:
-		animated_sprite_2d.visible = false
-
-	if vida_bar:
-		vida_bar.visible = false
-
-	if vida_etiqueta:
-		vida_etiqueta.visible = false
+	animated_sprite_2d.visible = false
+	vida_bar.visible = false
+	vida_etiqueta.visible = false
 
 	for child in get_children():
-
 		if child is CollisionShape2D:
 			child.disabled = true
 
@@ -235,14 +218,9 @@ func desaparecer():
 	puede_atacar = false
 
 	if spawner_ref:
-
-		spawner_ref.sabueso_escondido(
-			id_sabueso,
-			vida
-		)
+		spawner_ref.sabueso_escondido(id_sabueso, vida)
 
 	queue_free()
-
 # =========================================================
 # MUERTE
 # =========================================================
