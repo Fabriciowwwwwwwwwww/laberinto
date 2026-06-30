@@ -30,6 +30,7 @@ func _on_options_back() -> void:
 	main_menu.show()
 
 func _on_main_menu_start_pressed() -> void:
+	GameStateLaberinto.reset()
 	(
 		SceneSwitcher2
 		. change_to_packed_with_transition(

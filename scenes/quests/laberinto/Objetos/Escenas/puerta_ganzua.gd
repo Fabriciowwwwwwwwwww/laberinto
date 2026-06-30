@@ -39,6 +39,9 @@ func interact() -> void:
 			# Guardar puerta forzada
 			GameStateLaberinto.puertas_ganzua_forzadas[puerta_id] = true
 
+			# ✅ Contabilizar puerta abierta
+			GameStateLaberinto.puertas_abiertas += 1
+
 			# Guardar cofres abiertos u otros objetos
 			GameStateLaberinto.abiertos = current_player.get_cofres_abiertos()
 

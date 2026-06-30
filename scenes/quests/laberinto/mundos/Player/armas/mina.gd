@@ -4,7 +4,7 @@ extends Area2D
 @export var base_damage := 30.0
 @export var knockback_force := 200.0
 @export var arm_time := 0.6
-@export var lifetime: float = 10.0
+@export var lifetime: float = 3
 
 @onready var visual: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = get_node_or_null("colision")
@@ -23,14 +23,9 @@ func _ready()-> void:
 	else:
 		print("❌ NO se encontró colision (nombre mal?)")
 
-	await get_tree().create_timer(lifetime).timeout
 
-	if is_active:
-		print("⏰ Tiempo agotado")
-		explode()
 
-func launch(dir: Vector2, pos: Vector2)-> void:
-
+func launch(dir: Vector2, pos: Vector2) -> void:
 	global_position = pos
 
 	is_active = true
@@ -45,6 +40,13 @@ func launch(dir: Vector2, pos: Vector2)-> void:
 
 	if visual:
 		visual.play("idle")
+
+	# Empieza a contar desde que se lanza
+	await get_tree().create_timer(lifetime).timeout
+
+	if is_active:
+		print("⏰ Tiempo agotado")
+		explode()
 
 
 

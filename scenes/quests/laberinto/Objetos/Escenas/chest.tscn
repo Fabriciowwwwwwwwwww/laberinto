@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deeqvmwcmsj33"]
+[gd_scene format=3 uid="uid://deeqvmwcmsj33"]
 
 [ext_resource type="Script" uid="uid://gxedwo2wnaa4" path="res://scenes/quests/laberinto/Objetos/Script/chest.gd" id="1_ajtcq"]
 [ext_resource type="Texture2D" uid="uid://t3n88afgb4mv" path="res://scenes/quests/laberinto/mundos/assets/Props.png" id="2_laot6"]
@@ -38,28 +38,29 @@ size = Vector2(32.875, 23.25)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5u2l2"]
 radius = 27.0185
 
-[node name="Chest" type="StaticBody2D"]
+[node name="Chest" type="StaticBody2D" unique_id=756205592]
 script = ExtResource("1_ajtcq")
+interaction_time = 1.5
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=671341231]
 texture_filter = 1
 position = Vector2(0.836001, -18)
 scale = Vector2(1, 0.677)
 sprite_frames = SubResource("SpriteFrames_gtsv1")
 animation = &"Cerrado"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=302298059]
 position = Vector2(0.5625, -8.625)
 shape = SubResource("RectangleShape2D_gk5y8")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=555062452]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1172609381]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_5u2l2")
 debug_color = Color(0.387537, 0.974723, 0.327388, 0.42)
 
-[node name="ui_container" type="Control" parent="."]
+[node name="ui_container" type="Control" parent="." unique_id=1625177367]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
@@ -67,7 +68,8 @@ offset_top = -58.0
 offset_right = 58.0
 offset_bottom = -30.0
 
-[node name="ProgressBar" type="ProgressBar" parent="ui_container"]
+[node name="ProgressBar" type="ProgressBar" parent="ui_container" unique_id=1800662594]
+modulate = Color(0.83137256, 0.19607843, 0.03137255, 0.9647059)
 texture_filter = 1
 layout_mode = 0
 offset_left = -53.0
@@ -75,8 +77,10 @@ offset_top = 20.0
 offset_right = 99.0
 offset_bottom = 47.0
 scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.07284201, 0.072842844, 0.0728429, 1)
+theme_override_colors/font_outline_color = Color(0.14509805, 0, 0, 1)
 
-[node name="InteractLabel" type="Label" parent="ui_container"]
+[node name="InteractLabel" type="Label" parent="ui_container" unique_id=1592492134]
 texture_filter = 1
 layout_mode = 0
 offset_left = -38.0
@@ -87,12 +91,12 @@ scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 15
 text = "chest"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1267053120]
 position = Vector2(0, 1)
 color = Color(0.862097, 0.858727, 1.15514e-06, 1)
 energy = 2.0
 shadow_enabled = true
 texture = ExtResource("3_laot6")
 
-[node name="AudioOpen" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioOpen" type="AudioStreamPlayer2D" parent="." unique_id=1727813411]
 stream = ExtResource("4_tfnej")

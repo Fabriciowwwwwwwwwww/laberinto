@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://blkfm386g2kmm"
+path="res://.godot/imported/perder reloj.dialogue-a9199d7f933d6dce4f23714684d13113.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/perder reloj.dialogue"
+dest_files=["res://.godot/imported/perder reloj.dialogue-a9199d7f933d6dce4f23714684d13113.tres"]
+
+[params]
+
+defaults=true

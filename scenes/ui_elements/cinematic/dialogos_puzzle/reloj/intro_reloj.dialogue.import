@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqiujopnlpnmu"
+path="res://.godot/imported/intro_reloj.dialogue-20828d79c7227260974a67da0bda4448.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/intro_reloj.dialogue"
+dest_files=["res://.godot/imported/intro_reloj.dialogue-20828d79c7227260974a67da0bda4448.tres"]
+
+[params]
+
+defaults=true

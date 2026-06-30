@@ -30,6 +30,7 @@ var path_update_timer: float = 0.0
 const PATH_UPDATE_INTERVAL: float = 0.2
 var run_timer: float = 0.0
 var is_running: bool = false
+var puede_recibir_dano := true
 var timer_golpe: Timer
 func _ready() -> void:
 	timer_golpe = Timer.new()
@@ -58,6 +59,23 @@ func aplicar_knockback(dir: Vector2, fuerza: float)-> void:
 	puede_moverse = false
 var en_cooldown_golpe := false
 func recibir_daño(cantidad: int) -> void:
+	if not puede_recibir_dano:
+		return
+
+	puede_recibir_dano = false
+
+	vida = max(vida - cantidad, 0)
+	vida_bar.value = vida
+
+	if vida <= 0:
+		morir()
+		return
+
+	animated_sprite_2d.play("golpeado")
+
+	await get_tree().create_timer(0.3).timeout
+	if is_inside_tree():
+		puede_recibir_dano = true
 	if en_cooldown_golpe:
 		return
 
@@ -100,6 +118,9 @@ func morir() -> void:
 	puede_moverse = false
 	puede_atacar = false
 	animacion_bloqueada = true
+
+	# Estadística
+	GameStateLaberinto.enemigos_eliminados += 1
 
 	if drop_xp:
 		drop_xp.soltar_xp()

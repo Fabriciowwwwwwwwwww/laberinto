@@ -80,11 +80,15 @@ func open_chest() -> void:
 	is_opened = true
 	is_interacting = false
 	interaction_progress = 0.0
-	
+
+	# ✅ Contar cofres abiertos
+	GameStateLaberinto.cofres_abiertos += 1
+
 	print("¡Cofre abierto!")
+
 	if current_player:
 		current_player.collect_key()
-	
+
 	chest_opened.emit()
 	animated_sprite_2d.play("Abierto")
 	hide_ui()

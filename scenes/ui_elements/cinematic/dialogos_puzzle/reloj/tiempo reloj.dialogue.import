@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://drgdm4po04owv"
+path="res://.godot/imported/tiempo reloj.dialogue-f5be28cfc2eb3bb6392beb96e5985326.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/tiempo reloj.dialogue"
+dest_files=["res://.godot/imported/tiempo reloj.dialogue-f5be28cfc2eb3bb6392beb96e5985326.tres"]
+
+[params]
+
+defaults=true

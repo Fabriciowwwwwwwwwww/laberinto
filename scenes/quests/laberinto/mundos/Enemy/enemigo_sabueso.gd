@@ -104,6 +104,8 @@ func aparecer():
 # =========================================================
 
 func _physics_process(delta):
+	if vida <= 0:
+		return
 
 	# UI VIDA
 	if vida_etiqueta:
@@ -170,7 +172,6 @@ func _physics_process(delta):
 
 func recibir_daño(cantidad: int) -> void:
 
-	# ❌ NO recibe daño si ya está fuera de combate
 	if estado == Estado.ESCONDIDO:
 		return
 
@@ -179,25 +180,28 @@ func recibir_daño(cantidad: int) -> void:
 
 	super.recibir_daño(cantidad)
 
+	# 🔥 Si murió, no puede huir
 	if vida <= 0:
+		morir()
 		return
 
-	var limite_huida = vida_max * porcentaje_huida
+	var limite_huida := vida_max * porcentaje_huida
 
-	if vida <= limite_huida and estado != Estado.HUYENDO:
-
+	if estado != Estado.HUYENDO and vida <= limite_huida:
 		estado = Estado.HUYENDO
 
 		puede_moverse = false
 		puede_atacar = false
 
 		punto_escape = spawner_ref.obtener_esquina_escape(id_sabueso)
+
 # =========================================================
 # DESAPARECER
 # =========================================================
 
 func desaparecer():
-
+	if vida <= 0:
+		return
 	estado = Estado.ESCONDIDO
 
 	set_physics_process(false)

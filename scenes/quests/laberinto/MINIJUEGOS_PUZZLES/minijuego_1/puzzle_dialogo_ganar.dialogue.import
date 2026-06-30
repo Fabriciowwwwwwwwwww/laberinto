@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c6qyoyyl4po6o"
+path="res://.godot/imported/puzzle_dialogo_ganar.dialogue-e8d4c20c29385e0c813b322f8e0cd50c.tres"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_1/puzzle_dialogo_ganar.dialogue"
+dest_files=["res://.godot/imported/puzzle_dialogo_ganar.dialogue-e8d4c20c29385e0c813b322f8e0cd50c.tres"]
+
+[params]
+
+defaults=true

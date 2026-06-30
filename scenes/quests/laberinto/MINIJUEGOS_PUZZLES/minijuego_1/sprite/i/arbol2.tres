@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://xs00u7acstsq"]
+
+[ext_resource type="Texture2D" uid="uid://dbo1wbfne4r7u" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_1/arbol praderas.png" id="1_gepto"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q31qq"]
+atlas = ExtResource("1_gepto")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f33ei"]
+atlas = ExtResource("1_gepto")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auojl"]
+atlas = ExtResource("1_gepto")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tnjo"]
+atlas = ExtResource("1_gepto")
+region = Rect2(576, 0, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q31qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f33ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auojl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tnjo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

@@ -250,11 +250,18 @@ func generar_objetos_desordenados()-> void:
 	var y_offset := 0
 
 	for item in solucion_actual:
-		if is_instance_valid(item):
-			item.posicion_inicial = Vector2(20, y_offset)
-			item.global_position = item.posicion_inicial
-			print("📦 Objeto movido a:", item.global_position)
-			y_offset += 130
+
+		if not item is ItemOrden:
+			continue
+
+		var obj := item as ItemOrden
+
+		obj.posicion_inicial = Vector2(20, y_offset)
+		obj.global_position = obj.posicion_inicial
+
+		print("📦 Objeto movido a:", obj.global_position)
+
+		y_offset += 130
 func iniciar_timer()-> void:
 	tiempo_restante = 50
 	label_cronometro.text = "Tiempo: " + str(tiempo_restante)

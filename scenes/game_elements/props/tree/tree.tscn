@@ -1,32 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://7873qa54birk"]
+[gd_scene format=3 uid="uid://7873qa54birk"]
 
 [ext_resource type="Script" uid="uid://b0b2y72gvp50f" path="res://scenes/game_elements/props/tree/components/tree.gd" id="1_7ot8u"]
 [ext_resource type="Material" uid="uid://bmwe2wu7hxepf" path="res://scenes/game_elements/props/tree/components/wind_affected_material.tres" id="2_f0x1c"]
-[ext_resource type="SpriteFrames" uid="uid://d36eq8tqdaxdy" path="res://scenes/game_elements/props/tree/components/tree_spriteframes_green.tres" id="3_f0x1c"]
+[ext_resource type="Texture2D" uid="uid://dbo1wbfne4r7u" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_1/arbol praderas.png" id="2_ym1v0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kt13"]
+atlas = ExtResource("2_ym1v0")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66iq5"]
+atlas = ExtResource("2_ym1v0")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xi0k"]
+atlas = ExtResource("2_ym1v0")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayl88"]
+atlas = ExtResource("2_ym1v0")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hstf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kt13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66iq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xi0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayl88")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0x1c"]
-size = Vector2(99.87685, 201.34676)
+size = Vector2(82.41023, 136.59619)
 
-[node name="Tree" type="Node2D"]
-scale = Vector2(0.8622865, 0.89079905)
+[node name="Tree" type="Node2D" unique_id=853211294]
+scale = Vector2(0.97806364, 0.95159394)
 script = ExtResource("1_7ot8u")
+sprite_frames = SubResource("SpriteFrames_hstf0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=966155671]
 unique_name_in_owner = true
 texture_filter = 1
 material = ExtResource("2_f0x1c")
-position = Vector2(1.91231, -117.841)
-scale = Vector2(3.13146, 3.13146)
-sprite_frames = ExtResource("3_f0x1c")
-animation = &"idle"
+position = Vector2(-6.958244, -99.91029)
+scale = Vector2(3.199498, 2.7307985)
+sprite_frames = SubResource("SpriteFrames_hstf0")
 
-[node name="area2d" type="Area2D" parent="."]
+[node name="area2d" type="Area2D" parent="." unique_id=1920599345]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area2d"]
-position = Vector2(3.0574577, -90.6733)
-scale = Vector2(1, 0.9999994)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area2d" unique_id=774264954]
+position = Vector2(-8.73331, -58.554348)
+scale = Vector2(1.0000001, 0.9999994)
 shape = SubResource("RectangleShape2D_f0x1c")
 
 [connection signal="area_entered" from="area2d" to="." method="_on_static_body_2d_area_entered"]

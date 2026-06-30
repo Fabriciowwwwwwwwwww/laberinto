@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://t183844ygeac"
+path="res://.godot/imported/ganar_reloj.dialogue-ebd272eee28368a9ac6d820b33c04f08.tres"
+
+[deps]
+
+source_file="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/ganar_reloj.dialogue"
+dest_files=["res://.godot/imported/ganar_reloj.dialogue-ebd272eee28368a9ac6d820b33c04f08.tres"]
+
+[params]
+
+defaults=true

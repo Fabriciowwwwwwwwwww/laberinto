@@ -1,8 +1,6 @@
 # meta-default: true
 # meta-description: Base template for Node with default Godot cycle methods. Includes Threadbare licensing header.
-# meta-name: Default (Threadbare)
-# SPDX-FileCopyrightText: The Threadbare Authors
-# SPDX-License-Identifier: MPL-2.0
+
 extends _BASE_
 
 

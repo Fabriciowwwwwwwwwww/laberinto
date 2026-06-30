@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://xdchxqhcshg1" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/puzzle_colores.gd" id="1_e5yld"]
 [ext_resource type="Texture2D" uid="uid://c3teyic1cg1ee" path="res://scenes/quests/laberinto/sprite_laberinto/desartonillador.png" id="2_5dpt2"]
 [ext_resource type="AudioStream" uid="uid://m773crn785f8" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto reloj.mp3" id="3_kjngu"]
+[ext_resource type="PackedScene" uid="uid://g3j616ock2ue" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/cuadro_paisajes.tscn" id="3_q582t"]
 [ext_resource type="PackedScene" uid="uid://cywj27ket6ws3" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/cuadro_arbolera.tscn" id="3_raoap"]
 [ext_resource type="Resource" uid="uid://cdt8al61mg0kk" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/party/intro_party.dialogue" id="3_u0xx7"]
 [ext_resource type="Script" uid="uid://klbjj3y30hv" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_colores/cinematica_colores.gd" id="4_karcu"]
@@ -75,7 +76,7 @@ texture = ExtResource("36_q582t")
 
 [node name="ColorPuzzle" type="Node2D" unique_id=1349815038]
 script = ExtResource("1_e5yld")
-escenas_solucion = Array[PackedScene]([ExtResource("3_raoap"), null])
+escenas_solucion = Array[PackedScene]([ExtResource("3_raoap"), ExtResource("3_q582t")])
 
 [node name="OnTheGround" type="Node2D" parent="." unique_id=567791195]
 y_sort_enabled = true

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dlo6nok5b3aeo"]
 
 [ext_resource type="Script" uid="uid://cmgyipi6lormc" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_reloj/puzzle_reloj.gd" id="1_etain"]
-[ext_resource type="Resource" uid="uid://bf6ou62ieo586" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/intro_engranajes.dialogue" id="2_h7cpo"]
 [ext_resource type="Script" uid="uid://p4nrgqxntk8w" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_reloj/cinematica_reloj.gd" id="2_uhivo"]
-[ext_resource type="Resource" uid="uid://bcvt8bcroeyfi" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/ganar_engranajes.dialogue" id="3_uhivo"]
-[ext_resource type="Resource" uid="uid://becanxxxv4f37" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/perder engranajes.dialogue" id="4_g7j11"]
-[ext_resource type="Resource" uid="uid://d24ac4h3shux5" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/engranajes/tiempo_engranajes.dialogue" id="5_xgded"]
+[ext_resource type="Resource" uid="uid://bqiujopnlpnmu" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/intro_reloj.dialogue" id="3_n27bw"]
+[ext_resource type="Resource" uid="uid://t183844ygeac" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/ganar_reloj.dialogue" id="4_xoc7c"]
+[ext_resource type="Resource" uid="uid://blkfm386g2kmm" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/perder reloj.dialogue" id="5_m1xde"]
+[ext_resource type="Resource" uid="uid://drgdm4po04owv" path="res://scenes/ui_elements/cinematic/dialogos_puzzle/reloj/tiempo reloj.dialogue" id="6_51x5e"]
 [ext_resource type="Texture2D" uid="uid://eop7n6sdd3q2" path="res://scenes/quests/laberinto/sprite_laberinto/minijuego_reloj_sprite/reloj_aguja.png" id="7_n27bw"]
 [ext_resource type="Texture2D" uid="uid://yxoudj7k1b3c" path="res://scenes/quests/laberinto/sprite_laberinto/reloj_base.png" id="7_uhivo"]
 [ext_resource type="Texture2D" uid="uid://bnl6ebckmh21m" path="res://scenes/quests/laberinto/sprite_laberinto/icono/guante.png" id="8_g7j11"]
@@ -28,10 +28,10 @@ position_smoothing_enabled = true
 
 [node name="cinematica" type="Node2D" parent="." unique_id=837253594 groups=["cinematica"]]
 script = ExtResource("2_uhivo")
-dialogue_intro = ExtResource("2_h7cpo")
-dialogue_ganar = ExtResource("3_uhivo")
-dialogue_perder = ExtResource("4_g7j11")
-dialogue_tiempo = ExtResource("5_xgded")
+dialogue_intro = ExtResource("3_n27bw")
+dialogue_ganar = ExtResource("4_xoc7c")
+dialogue_perder = ExtResource("5_m1xde")
+dialogue_tiempo = ExtResource("6_51x5e")
 next_scene = "uid://vxw6popqntit"
 
 [node name="ClockBase1" type="Sprite2D" parent="." unique_id=1326954508]

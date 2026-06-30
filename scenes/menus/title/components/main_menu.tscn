@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://wgmdsj1sbmja"]
+[gd_scene format=3 uid="uid://wgmdsj1sbmja"]
 
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="1_vmxej"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="1_xuf5f"]
@@ -121,7 +121,6 @@ offset_bottom = 1112.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[connection signal="credits_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_credits_pressed"]
 [connection signal="options_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_options_pressed"]
 [connection signal="start_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_start_pressed"]
 [connection signal="tienda_pressed" from="TitleScreen/MainMenu" to="TitleScreen" method="_on_main_menu_tienda_pressed"]

@@ -9,7 +9,16 @@ var player_inventory: Array = []                  # Items recogidos o usados
 var abiertos: Array = []                           # Cofres, puertas, etc. que han sido abiertos
 var objetos_destruidos: Array = []                # IDs de objetos destruidos o usados
 var puertas_ganzua_forzadas := {}                # Puertas forzadas con ganzúa
+# -------------------- ESTADÍSTICAS --------------------
+var enemigos_eliminados: int = 0
+var puertas_abiertas: int = 0
+var cofres_abiertos: int = 0
+var experiencia_obtenida: int = 0
+var dano_recibido: int = 0
 
+
+var tiempo_inicio: int = 0
+var tiempo_fin: int = 0
 # -------------------- FUNCIONES --------------------
 
 # Guardar estado del jugador
@@ -50,3 +59,45 @@ func reset()-> void:
 	abiertos.clear()
 	objetos_destruidos.clear()
 	puertas_ganzua_forzadas.clear()
+
+	# Estadísticas
+	cofres_abiertos = 0
+	experiencia_obtenida = 0
+	dano_recibido = 0
+	enemigos_eliminados = 0
+	puertas_abiertas = 0
+	experiencia_obtenida = 0
+	tiempo_inicio = 0
+	tiempo_fin = 0
+# -------------------- ESTADÍSTICAS --------------------
+
+func iniciar_partida() -> void:
+	enemigos_eliminados = 0
+	puertas_abiertas = 0
+	experiencia_obtenida = 0
+
+	tiempo_inicio = Time.get_ticks_msec()
+	tiempo_fin = 0
+
+
+func finalizar_partida() -> void:
+	tiempo_fin = Time.get_ticks_msec()
+
+
+func tiempo_partida_segundos() -> int:
+	var fin := tiempo_fin
+
+	if fin == 0:
+		fin = Time.get_ticks_msec()
+
+	return int((fin - tiempo_inicio) / 1000)
+
+
+func tiempo_formateado() -> String:
+	var total := tiempo_partida_segundos()
+
+	var horas := total / 3600
+	var minutos := (total % 3600) / 60
+	var segundos := total % 60
+
+	return "%02d:%02d:%02d" % [horas, minutos, segundos]

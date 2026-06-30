@@ -1,9 +1,10 @@
+@tool
 extends Node2D
 
-const DEFAULT_SPRITE_FRAME: SpriteFrames = preload("uid://d36eq8tqdaxdy")
-
-@export var sprite_frames: SpriteFrames = DEFAULT_SPRITE_FRAME:
-	set = _set_sprite_frames
+@export var sprite_frames: SpriteFrames:
+	set(value):
+		sprite_frames = value
+		_actualizar_sprite()
 
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
@@ -11,30 +12,25 @@ var activo := false
 
 
 func _ready() -> void:
-	add_to_group("arbol") # Grupo de árboles
-	_set_sprite_frames(sprite_frames)
-
-	var frames_length: int = animated_sprite_2d.sprite_frames.get_frame_count(
-		animated_sprite_2d.animation
-	)
-
-	animated_sprite_2d.frame = randi_range(0, frames_length)
+	add_to_group("arbol")
+	_actualizar_sprite()
 
 
-func _set_sprite_frames(new_sprite_frames: SpriteFrames) -> void:
-	sprite_frames = new_sprite_frames
-
+func _actualizar_sprite() -> void:
 	if not is_node_ready():
 		return
 
-	if new_sprite_frames == null:
-		new_sprite_frames = DEFAULT_SPRITE_FRAME
+	if animated_sprite_2d == null:
+		return
 
-	animated_sprite_2d.sprite_frames = new_sprite_frames
-	animated_sprite_2d.play(animated_sprite_2d.animation)
+	animated_sprite_2d.sprite_frames = sprite_frames
 
-
-func sacudir()-> void:
+	if sprite_frames:
+		if sprite_frames.has_animation("idle"):
+			animated_sprite_2d.play("idle")
+		elif sprite_frames.get_animation_names().size() > 0:
+			animated_sprite_2d.play(sprite_frames.get_animation_names()[0])
+func sacudir() -> void:
 	if activo:
 		return
 
@@ -57,10 +53,10 @@ func _notification(what: int) -> void:
 			scale = Vector2(x_scale, y_scale)
 
 		NOTIFICATION_EDITOR_PRE_SAVE:
-			animated_sprite_2d.frame_progress = 0
+			if animated_sprite_2d:
+				animated_sprite_2d.frame_progress = 0
 
 
-# 🔥 DETECCIÓN DEL ENEMIGO
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if activo:
 		return

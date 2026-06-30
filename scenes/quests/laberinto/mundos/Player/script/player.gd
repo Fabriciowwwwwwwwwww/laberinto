@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Player_l
+var current_interact_area: InteractArea = null
 var disparo_presionado := false
 var interact_presionado := false
 var last_input_pos := Vector2.ZERO
@@ -349,7 +350,9 @@ func clear_current_door()-> void:
 # INTERACCIONES
 # =====================================================
 func handle_interaction() -> void:
-
+	if current_interact_area and Input.is_action_just_pressed("Interact"):
+		var from_right := global_position.x > current_interact_area.global_position.x
+		current_interact_area.start_interaction(self, from_right)
 	# PC
 	if current_chest and Input.is_action_pressed("Interact"):
 		current_chest.start_interaction()
@@ -395,6 +398,7 @@ func update_keys_ui() -> void:
 # VIDA
 # =====================================================
 func recibir_daño(cantidad: int) -> void:
+	GameStateLaberinto.dano_recibido += cantidad
 	vida_actual -= cantidad
 	vida_actual = max(vida_actual, 0)
 
@@ -433,7 +437,7 @@ func morir() -> void:
 		return
 
 	# 🔴 comportamiento normal (fuera del minijuego)
-	GameStateLaberinto.reset()
+	GameStateLaberinto.finalizar_partida()
 
 	var nextscene = preload("res://scenes/globals/ventana muerte/muerte.tscn")
 
@@ -489,3 +493,12 @@ func aplicar_skin()-> void:
 	if GameStateSkin.skin_actual:
 		animated_sprite_2d.sprite_frames = GameStateSkin.skin_actual
 		animated_sprite_2d.play("idle")
+
+
+func set_current_interact_area(area: InteractArea) -> void:
+	current_interact_area = area
+
+
+func clear_current_interact_area(area: InteractArea) -> void:
+	if current_interact_area == area:
+		current_interact_area = null
