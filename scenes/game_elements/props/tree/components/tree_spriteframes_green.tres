@@ -3,10 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://yk3g6qvsjf54" path="res://scenes/quests/laberinto/0_template_intro_laberinto/arbol-v2_dark.png" id="1_n7buj"]
 [ext_resource type="Texture2D" uid="uid://dspmx2bek2uh6" path="res://scenes/quests/laberinto/sprite_laberinto/escenas/arbol sprite sacudir.png" id="2_ydkyq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydkyq"]
-atlas = ExtResource("2_ydkyq")
-region = Rect2(0, 0, 39, 79)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_w45yf"]
 atlas = ExtResource("2_ydkyq")
 region = Rect2(39, 0, 39, 79)
@@ -154,9 +150,6 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ydkyq")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w45yf")
 }, {

@@ -96,11 +96,11 @@ func _ready() -> void:
 	configurar_inputs()
 	setup_stamina_bar()
 
-	# DEBUG LLAVES
-	keys_label = get_tree().get_root().get_node("Main/Llaves/Keys_label") as Label
-	
+# DEBUG LLAVES
+	keys_label = get_tree().get_root().get_node_or_null("Main/Llaves/Keys_label") as Label
+
 	if keys_label == null:
-		print("❌ No se encontró Keys_label")
+		print("⚠️ Keys_label no existe en esta escena. Se omite la actualización de la UI.")
 	else:
 		update_keys_ui()
 

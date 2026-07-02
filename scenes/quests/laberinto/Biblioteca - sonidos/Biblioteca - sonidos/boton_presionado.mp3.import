@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://caxklao76nbox"
+path="res://.godot/imported/boton_presionado.mp3-f3446eb261f77f7d28441e3f6cb6380e.mp3str"
+
+[deps]
+
+source_file="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/boton_presionado.mp3"
+dest_files=["res://.godot/imported/boton_presionado.mp3-f3446eb261f77f7d28441e3f6cb6380e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

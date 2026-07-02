@@ -1,24 +1,21 @@
 [gd_scene format=3 uid="uid://c7bjwxyplnqgl"]
 
-[ext_resource type="Script" uid="uid://b0b2y72gvp50f" path="res://scenes/game_elements/props/tree/components/tree.gd" id="1_r5xi3"]
+[ext_resource type="Script" uid="uid://d3v3mxhby6nl8" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_1/tree_praderas.gd" id="1_rhc1p"]
 [ext_resource type="Material" uid="uid://bmwe2wu7hxepf" path="res://scenes/game_elements/props/tree/components/wind_affected_material.tres" id="2_r5kbh"]
-[ext_resource type="SpriteFrames" uid="uid://bxfk2fn0qfsun" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_1/sprite/i/farol.tres" id="3_nu606"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d888c"]
 radius = 16.0312
 
-[node name="Tree" type="Node2D" unique_id=1182216860]
-scale = Vector2(1.0197806, 0.9323216)
-script = ExtResource("1_r5xi3")
+[node name="Tree2" type="Node2D" unique_id=1182216860]
+scale = Vector2(1.1945255, 1.1145649)
+script = ExtResource("1_rhc1p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2072962223]
 unique_name_in_owner = true
 material = ExtResource("2_r5kbh")
-position = Vector2(-4.903017, -67.57324)
+position = Vector2(10.045831, -45.757767)
 scale = Vector2(1.2144394, 0.943955)
-sprite_frames = ExtResource("3_nu606")
 animation = &"idle"
-frame_progress = 0.6905859
 
 [node name="RandomFrameSpriteBehavior" type="Node2D" parent="AnimatedSprite2D" unique_id=212412706]
 position = Vector2(0, 79.7941)

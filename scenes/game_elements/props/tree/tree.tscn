@@ -44,7 +44,7 @@ animations = [{
 size = Vector2(82.41023, 136.59619)
 
 [node name="Tree" type="Node2D" unique_id=853211294]
-scale = Vector2(0.97806364, 0.95159394)
+scale = Vector2(0.8929321, 0.9218568)
 script = ExtResource("1_7ot8u")
 sprite_frames = SubResource("SpriteFrames_hstf0")
 
@@ -52,8 +52,8 @@ sprite_frames = SubResource("SpriteFrames_hstf0")
 unique_name_in_owner = true
 texture_filter = 1
 material = ExtResource("2_f0x1c")
-position = Vector2(-6.958244, -99.91029)
-scale = Vector2(3.199498, 2.7307985)
+position = Vector2(-24.346165, -62.06607)
+scale = Vector2(3.0183737, 2.336588)
 sprite_frames = SubResource("SpriteFrames_hstf0")
 
 [node name="area2d" type="Area2D" parent="." unique_id=1920599345]
