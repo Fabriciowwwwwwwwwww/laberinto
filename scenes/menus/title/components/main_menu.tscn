@@ -3,13 +3,14 @@
 [ext_resource type="Theme" uid="uid://cvitou84ni7qe" path="res://scenes/ui_elements/dialogue/components/theme.tres" id="1_vmxej"]
 [ext_resource type="Script" uid="uid://bkl8j1as8ylag" path="res://scenes/menus/title/components/main_menu.gd" id="1_xuf5f"]
 [ext_resource type="Script" uid="uid://c6nc0jka32ow2" path="res://scenes/menus/title/components/title_screen.gd" id="2_rpgwp"]
-[ext_resource type="PackedScene" uid="uid://6lieuap5vj74" path="res://scenes/quests/laberinto/0_template_intro_laberinto/template_intro_laberinto.tscn" id="3_l7ju4"]
+[ext_resource type="PackedScene" uid="uid://dy6m6cqaqm6gg" path="res://scenes/quests/laberinto/0_template_intro_laberinto/intro.scn" id="3_l7ju4"]
 [ext_resource type="Texture2D" uid="uid://rwnspnayok4k" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/fondo.png" id="3_snvmp"]
 [ext_resource type="PackedScene" uid="uid://bvcabfkw3suma" path="res://scenes/menus/title/tienda/tienda.tscn" id="4_l8ymi"]
 [ext_resource type="Texture2D" uid="uid://bwcnsnsk82l1c" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/titulo.png" id="4_snvmp"]
 [ext_resource type="Script" uid="uid://ie713t5y3hif" path="res://scenes/menus/title/components/logo_container.gd" id="6_68a5i"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="7_l7ju4"]
 [ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="8_q86al"]
+[ext_resource type="AudioStream" uid="uid://caxklao76nbox" path="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/boton_presionado.mp3" id="10_xkbot"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1659992366]
 
@@ -108,6 +109,9 @@ flat = true
 
 [node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=719774193]
 stream = ExtResource("8_q86al")
+
+[node name="sonido_presionado" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1267805780]
+stream = ExtResource("10_xkbot")
 
 [node name="Options" parent="." unique_id=361364834 instance=ExtResource("7_l7ju4")]
 visible = false

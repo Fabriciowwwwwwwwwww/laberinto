@@ -4048,7 +4048,17 @@ scale = Vector2(0.994995, 1.1000229)
 sprite_frames = ExtResource("20_f33ei")
 
 [node name="Tree8" parent="." unique_id=1221253899 instance=ExtResource("17_qs6xs")]
-position = Vector2(2176, 200)
+position = Vector2(1876, 861.99994)
+scale = Vector2(0.99710435, 0.9148481)
+sprite_frames = ExtResource("20_f33ei")
+
+[node name="Tree15" parent="." unique_id=1719500717 instance=ExtResource("17_qs6xs")]
+position = Vector2(515, 1016.00006)
+scale = Vector2(0.99710435, 0.9148481)
+sprite_frames = ExtResource("20_f33ei")
+
+[node name="Tree16" parent="." unique_id=156451015 instance=ExtResource("17_qs6xs")]
+position = Vector2(662, -85.99982)
 scale = Vector2(0.99710435, 0.9148481)
 sprite_frames = ExtResource("20_f33ei")
 

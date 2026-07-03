@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cn0gt1ihqvbcu" path="res://scenes/quests/laberinto/sprite_laberinto/MENU_PRINICPAL/menu_muerte/boton salir.png" id="8_1tae7"]
 [ext_resource type="Texture2D" uid="uid://ccavio2v8sk7c" path="res://assets/third_party/tiny-swords/UI/Banners/Carved_3Slides.png" id="8_kkbmu"]
 [ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_u60h7"]
+[ext_resource type="AudioStream" uid="uid://caxklao76nbox" path="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/boton_presionado.mp3" id="13_ldy66"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
 texture = ExtResource("6_xd8qt")
@@ -152,6 +153,9 @@ text = "EXIT GAME"
 
 [node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1889516095]
 stream = ExtResource("10_u60h7")
+
+[node name="sonido_presionado" type="AudioStreamPlayer2D" parent="TitleScreen/MainMenu/ButtonBoxMargins/ButtonBox" unique_id=1416132466]
+stream = ExtResource("13_ldy66")
 
 [node name="Options" parent="." unique_id=578351305 instance=ExtResource("6_wckas")]
 visible = false

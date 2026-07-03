@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://buajuuy3mfmko" path="res://scenes/quests/laberinto/Biblioteca - sonidos/efectos de sonido/efecto click.mp3" id="10_1xxiq"]
 [ext_resource type="PackedScene" uid="uid://dkeb0yjgcfi86" path="res://scenes/menus/options/options.tscn" id="11_jb2p7"]
 [ext_resource type="Texture2D" uid="uid://d3ntd0erv0qc5" path="res://assets/third_party/inputs/keyboard-and-mouse/Blanks/Blank_Black_Mouse.png" id="13_28rsc"]
+[ext_resource type="AudioStream" uid="uid://caxklao76nbox" path="res://scenes/quests/laberinto/Biblioteca - sonidos/Biblioteca - sonidos/boton_presionado.mp3" id="13_gu363"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkbmu"]
 texture = ExtResource("8_0431q")
@@ -118,6 +119,10 @@ text = "Comprar"
 [node name="sonido cambio" type="AudioStreamPlayer2D" parent="TitleScreen/ShopManager" unique_id=1533807981]
 position = Vector2(2, 566)
 stream = ExtResource("10_1xxiq")
+
+[node name="sonido presionado" type="AudioStreamPlayer2D" parent="TitleScreen/ShopManager" unique_id=240705111]
+position = Vector2(2, 566)
+stream = ExtResource("13_gu363")
 
 [node name="GridContainer" type="Control" parent="TitleScreen/ShopManager" unique_id=889268108]
 layout_mode = 1

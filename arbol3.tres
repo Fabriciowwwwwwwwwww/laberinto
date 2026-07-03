@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c8386gjvsf1vh"]
+
+[ext_resource type="Texture2D" uid="uid://8eog57ub8jky" path="res://scenes/quests/laberinto/MINIJUEGOS_PUZZLES/minijuego_1/sprite/ARBOL 3.png" id="1_syacx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syacx"]
+atlas = ExtResource("1_syacx")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkuys"]
+atlas = ExtResource("1_syacx")
+region = Rect2(192, 192, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syacx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkuys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]

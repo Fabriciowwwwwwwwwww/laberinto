@@ -9,6 +9,7 @@ enum ShopCategory { SKIN, BAILE, PODER }
 @export var tipo_ease := Tween.EASE_OUT
 
 @onready var sonido = $"sonido cambio"
+@onready var sonido_presionado = $"sonido presionado"
 
 @onready var content = $GridContainer
 @onready var label_categoria = $CategoryLabel
@@ -245,6 +246,7 @@ func seleccionar()-> void:
 	print("[SHOP]: Seleccionado:", indice)
 
 func _on_comprar_button_pressed()-> void:
+	sonido_presionado.play()
 	print("🛒 Comprar presionado")
 
 	if indice < 0 or indice >= content.get_child_count():
