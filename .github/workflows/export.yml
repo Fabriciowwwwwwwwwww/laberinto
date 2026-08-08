@@ -74,13 +74,13 @@ jobs:
           cp web/index.pck '${{ env.PCK_NAME }}.pck'
 
       - name: Upload web artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: web
           path: build/web
 
       - name: Upload PCK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pck
           path: build/${{ env.PCK_NAME }}.pck
